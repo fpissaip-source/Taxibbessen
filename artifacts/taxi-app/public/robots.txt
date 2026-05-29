@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://taxibb-essen.de/sitemap.xml
+
+# Taxi B&B GmbH – Taxiservice Essen
+# Kontakt: 0201 707060 | taxibb@outlook.com
