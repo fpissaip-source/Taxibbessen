@@ -50,8 +50,8 @@ function ServicesRevealSection() {
 
   return (
     <div>
-      {/* ── Scroll-Reveal: alle 6 Leistungen — 2 Spalten ── */}
-      <div className="grid grid-cols-2 gap-x-6 gap-y-12 lg:gap-x-16 lg:gap-y-20">
+      {/* ── Scroll-Reveal: alle 6 Leistungen — 1 Spalte ── */}
+      <div className="grid grid-cols-1 gap-y-12 lg:gap-y-20">
         {SERVICE_ITEMS.map(({ src, titleKey, descKey }) => (
           <motion.div
             key={src}
