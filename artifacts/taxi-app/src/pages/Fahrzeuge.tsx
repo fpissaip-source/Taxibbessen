@@ -261,20 +261,7 @@ export default function Fahrzeuge() {
             <ChevronRight className="w-5 h-5 text-white group-hover:text-primary transition-colors" />
           </button>
 
-          {/* ── Car name strip ── */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-30 w-[78%] flex items-center justify-around pb-4 px-8">
-            {CARS.map((c, i) => (
-              <button
-                key={i}
-                onClick={() => navigate(i)}
-                className={`text-[9px] lg:text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${
-                  i === active ? "text-primary" : "text-white/20 hover:text-white/45"
-                }`}
-              >
-                {c.title}
-              </button>
-            ))}
-          </div>
+
         </div>
 
         {/* ── Quality Banner ── */}
