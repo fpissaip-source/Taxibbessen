@@ -114,7 +114,9 @@ export async function sendBookingNotification(booking: BookingEmailData): Promis
 
   await resend.emails.send({
     from: "Taxi B&B Buchungen <onboarding@resend.dev>",
-    to: ["taxibb@outlook.com", "issa@hareb.org"],
+    // Ohne verifizierte Resend-Domain nur an Konto-E-Mail senden.
+    // Nach Domain-Verifizierung: ["taxibb@outlook.com", "issa@hareb.org"] eintragen.
+    to: ["fpissa.ip@gmail.com"],
     subject,
     html,
     replyTo: booking.customerPhone ? undefined : undefined,
