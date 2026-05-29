@@ -43,9 +43,9 @@ router.post("/bookings", async (req, res) => {
   }).returning();
 
   // E-Mail-Benachrichtigung asynchron senden (blockiert die Antwort nicht)
-  sendBookingNotification(booking).catch((err) => {
-    console.error("E-Mail-Versand fehlgeschlagen:", err);
-  });
+  sendBookingNotification(booking)
+    .then(() => console.log(`[EMAIL] Buchung #${booking.id}: E-Mail erfolgreich gesendet`))
+    .catch((err) => console.error(`[EMAIL] Buchung #${booking.id}: Fehler beim Senden:`, err?.message ?? err));
 
   res.status(201).json(booking);
 });
