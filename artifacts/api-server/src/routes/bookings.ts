@@ -1,6 +1,7 @@
 import { Router, type Request, type Response, type NextFunction } from "express";
 import { db, bookingsTable } from "@workspace/db";
 import { eq } from "drizzle-orm";
+import { sendBookingNotification } from "../lib/email";
 
 const router = Router();
 
@@ -40,6 +41,12 @@ router.post("/bookings", async (req, res) => {
     callbackTime: body.callbackTime ? new Date(body.callbackTime) : null,
     status: "new",
   }).returning();
+
+  // E-Mail-Benachrichtigung asynchron senden (blockiert die Antwort nicht)
+  sendBookingNotification(booking).catch((err) => {
+    console.error("E-Mail-Versand fehlgeschlagen:", err);
+  });
+
   res.status(201).json(booking);
 });
 
