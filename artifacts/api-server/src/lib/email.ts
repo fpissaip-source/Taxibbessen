@@ -114,7 +114,7 @@ export async function sendBookingNotification(booking: BookingEmailData): Promis
 
   await resend.emails.send({
     from: "Taxi B&B Buchungen <onboarding@resend.dev>",
-    to: ["taxibb@outlook.com"],
+    to: ["taxibb@outlook.com", "issa@hareb.org"],
     subject,
     html,
     replyTo: booking.customerPhone ? undefined : undefined,
