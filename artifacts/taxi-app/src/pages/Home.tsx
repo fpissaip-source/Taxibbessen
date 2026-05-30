@@ -82,7 +82,7 @@ function ServicesRevealSection() {
           >
             {/* Glass tile — visible only when this item is nearest viewport center */}
             <div
-              className="absolute inset-x-[-1.75rem] inset-y-0 rounded-2xl border border-white/[0.18] bg-white/[0.09] backdrop-blur-md shadow-[0_8px_48px_rgba(0,0,0,0.45)] pointer-events-none"
+              className="absolute inset-x-[-1rem] sm:inset-x-[-1.5rem] lg:inset-x-[-3rem] inset-y-0 rounded-2xl border border-white/[0.18] bg-white/[0.09] backdrop-blur-md shadow-[0_8px_48px_rgba(0,0,0,0.45)] pointer-events-none"
               style={{
                 opacity: activeIdx === i ? 1 : 0,
                 transition: activeIdx === i
