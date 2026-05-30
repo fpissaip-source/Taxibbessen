@@ -906,6 +906,9 @@ export default function Home() {
                 {t("reviews_sub")}
               </p>
             </motion.div>
+          </div>
+          {/* Full-bleed: Tiles laufen über den Bildschirmrand hinaus */}
+          <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen">
             <ReviewCarousel />
           </div>
         </section>
