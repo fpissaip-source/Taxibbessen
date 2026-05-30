@@ -217,6 +217,7 @@ export default function Home() {
   const storyImgRef = useRef<HTMLImageElement>(null);
   const storyLayerRef = useRef<HTMLDivElement>(null);
   const storySectionRef = useRef<HTMLElement>(null);
+  const reviewsSectionRef = useRef<HTMLElement>(null);
   const ctaSectionRef = useRef<HTMLElement>(null);
 
   usePageMeta({
@@ -365,19 +366,20 @@ export default function Home() {
 
     const measure = () => {
       const s = storySectionRef.current;
-      const c = ctaSectionRef.current;
+      const r = reviewsSectionRef.current;
       const vh = window.innerHeight;
       const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : 0;
-      const ctaTop = c ? c.getBoundingClientRect().top + window.scrollY : storyTop + vh * 3;
-      const range = Math.max(ctaTop - storyTop, 1);
-      // First frame at story top, last frame reached at the CTA section.
-      const progress = clamp((window.scrollY - storyTop) / range, 0, 1);
-      // Crossfade the hero background OUT and the story video IN during the
-      // last stretch of the services section, so the hero car is fully gone
-      // (and the seam is smooth) before the story content appears.
-      const fadeInStart = storyTop - vh * 1.25;
-      const fadeInEnd = storyTop - vh * 0.55;
-      const opacity = clamp((window.scrollY - fadeInStart) / Math.max(fadeInEnd - fadeInStart, 1), 0, 1);
+      const reviewsTop = r ? r.getBoundingClientRect().top + window.scrollY : storyTop + vh * 1.5;
+      // The clip appears AND starts scrubbing at the SAME point: the instant it's
+      // even slightly visible it is already playing — no waiting for full fade-in.
+      const appear = storyTop - vh * 1.1;
+      // Reach the last frame early (by the reviews section), well before the CTA,
+      // to leave room for the next clip.
+      const finish = reviewsTop;
+      const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
+      // Fade in fast so playback is visible almost immediately; this also
+      // crossfades the hero background out (heroLayer opacity = 1 - this).
+      const opacity = clamp((window.scrollY - appear) / (vh * 0.5), 0, 1);
       return { progress, opacity };
     };
 
@@ -686,7 +688,7 @@ export default function Home() {
 
 
         {/* ─── REVIEWS ─── */}
-        <section id="bewertungen" className="py-20 sm:py-28 relative" style={{ zIndex: 2 }}>
+        <section id="bewertungen" ref={reviewsSectionRef} className="py-20 sm:py-28 relative" style={{ zIndex: 2 }}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
