@@ -684,9 +684,11 @@ export default function Home() {
         {/* ─── HERO ─── */}
         {/* -mt-20 pulls this section up behind the fixed nav */}
         <div className="relative -mt-20" style={{ zIndex: 2 }}>
-          {/* Top+left overlays for readability — no bottom darkening */}
+          {/* Top+left overlays for readability */}
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.30) 28%, transparent 48%)" }} />
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to right, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.38) 38%, transparent 72%)" }} />
+          {/* Bottom fade — Hero fließend in Services-Section */}
+          <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 100%)" }} />
 
           <section className="relative min-h-screen flex flex-col overflow-hidden pt-20 pb-8" style={{ zIndex: 1 }}>
 
