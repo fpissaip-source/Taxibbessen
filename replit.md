@@ -34,7 +34,7 @@ _Describe the high-level user-facing capabilities of this app once they exist._
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Be token/cost-efficient: think before coding, make surgical changes (touch only what the request needs, don't refactor unrelated code), avoid speculative features. When counting/auditing across many files, write a script instead of reading them all into context. (From the user's "Nexus Brain" init doc — applied the engineering principles; the external `/api/memories` API and `.claude/` file scheme don't exist in this project and aren't used here.)
 
 ## Gotchas
 
