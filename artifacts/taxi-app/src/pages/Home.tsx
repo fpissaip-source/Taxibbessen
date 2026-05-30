@@ -801,7 +801,7 @@ export default function Home() {
         {/* Fixed video (at last frame) shines through as background */}
         <section id="leistungen" ref={servicesRef} className="py-24 lg:py-32 relative" style={{ zIndex: 2 }}>
           {/* Voll deckende Abdunklung — exakt wie deployed, dunkel→leicht→dunkel, kein schwebendes Band */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, hsl(220,20%,4%) 0%, rgba(8,10,16,0.68) 15%, rgba(8,10,16,0.72) 80%, rgba(8,10,16,0.15) 100%)" }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.82) 0%, rgba(8,10,16,0.42) 15%, rgba(8,10,16,0.42) 80%, rgba(8,10,16,0.12) 100%)" }} />
           <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
             <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
