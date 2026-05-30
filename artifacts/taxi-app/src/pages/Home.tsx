@@ -212,7 +212,7 @@ export default function Home() {
   const sharpOverlayRef = useRef<HTMLImageElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
   const ctaHeadingRef = useRef<HTMLHeadingElement>(null);
-  const ctaInView = useInView(ctaHeadingRef, { amount: 0.5, margin: "0px 0px -10% 0px" });
+  const ctaInView = useInView(ctaHeadingRef, { amount: 0.6, margin: "0px 0px -28% 0px" });
 
   usePageMeta({
     title: "Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060",
@@ -579,30 +579,16 @@ export default function Home() {
               className="font-display font-black uppercase tracking-tighter mb-6 leading-[1.05]"
               style={{ fontSize: "clamp(1.85rem, 6.8vw, 5rem)" }}
             >
-              {/* Lines 1 & 2 — appear very gently (soft, slow fade) */}
-              <motion.span
-                className="block text-white/90 whitespace-nowrap"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: ctaInView ? 1 : 0 }}
-                transition={{ duration: 1.6, ease: "easeOut" }}
-              >
-                Fragen Sie Jetzt
-              </motion.span>
-              <motion.span
-                className="block text-white/90 whitespace-nowrap"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: ctaInView ? 1 : 0 }}
-                transition={{ duration: 1.6, ease: "easeOut", delay: 0.15 }}
-              >
-                Ihre Nächste Fahrt
-              </motion.span>
-              {/* Line 3 — only "AN!" does the scroll reveal (slides up) */}
-              <span className="block overflow-hidden pb-[0.12em]">
+              {/* Lines 1 & 2 — static, no scroll reveal */}
+              <span className="block text-white/90 whitespace-nowrap">Fragen Sie Jetzt</span>
+              <span className="block text-white/90 whitespace-nowrap">Ihre Nächste Fahrt</span>
+              {/* Line 3 — only "AN!" reveals on scroll: comes in later & stronger */}
+              <span className="block overflow-hidden pt-[0.08em] pb-[0.14em]">
                 <motion.span
                   className="inline-block text-primary"
-                  initial={{ y: "120%" }}
-                  animate={ctaInView ? { y: "0%" } : { y: "120%" }}
-                  transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
+                  initial={{ y: "130%", scale: 0.9 }}
+                  animate={ctaInView ? { y: "0%", scale: 1 } : { y: "130%", scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 170, damping: 12, delay: 0.45 }}
                 >
                   An!
                 </motion.span>
