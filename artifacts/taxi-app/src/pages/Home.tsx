@@ -85,7 +85,9 @@ function ServicesRevealSection() {
               className="absolute inset-x-[-1.75rem] inset-y-0 rounded-2xl border border-white/[0.18] bg-white/[0.09] backdrop-blur-md shadow-[0_8px_48px_rgba(0,0,0,0.45)] pointer-events-none"
               style={{
                 opacity: activeIdx === i ? 1 : 0,
-                transition: "opacity 0.4s cubic-bezier(0.4,0,0.2,1)",
+                transition: activeIdx === i
+                  ? "opacity 0.45s 0.18s cubic-bezier(0.4,0,0.2,1)"
+                  : "opacity 0.3s cubic-bezier(0.4,0,0.2,1)",
               }}
             />
             <motion.div
