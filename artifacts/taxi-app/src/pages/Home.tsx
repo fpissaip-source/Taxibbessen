@@ -6,7 +6,7 @@ import { ReviewCarousel } from "@/components/ReviewCarousel";
 import { HeroBookingWidget } from "@/components/HeroBookingWidget";
 import { Button } from "@/components/ui";
 import { Phone, Shield, Sparkles, Navigation, ArrowRight, Mail, Globe, MessageCircle, ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useLanguage } from "@/i18n/useLanguage";
 import depotPoster from "@assets/IMG_1642_1780001838765.png";
 
@@ -211,6 +211,8 @@ export default function Home() {
   const imgRef = useRef<HTMLImageElement>(null);
   const sharpOverlayRef = useRef<HTMLImageElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
+  const ctaHeadingRef = useRef<HTMLHeadingElement>(null);
+  const ctaInView = useInView(ctaHeadingRef, { once: true, amount: 0.3 });
 
   usePageMeta({
     title: "Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060",
@@ -572,42 +574,40 @@ export default function Home() {
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Word-by-word reveal heading */}
-            <motion.h2
+            <h2
+              ref={ctaHeadingRef}
               className="font-display font-black uppercase tracking-tighter mb-6 leading-[1.05]"
-              style={{ fontSize: "clamp(2.4rem, 8vw, 5.5rem)" }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.25 }}
-              variants={{
-                hidden: {},
-                visible: { transition: { staggerChildren: 0.09 } },
-              }}
+              style={{ fontSize: "clamp(1.85rem, 6.8vw, 5rem)" }}
             >
-              {[
-                { words: ["Fragen", "Sie", "Jetzt"], yellow: false },
-                { words: ["Ihre", "Nächste", "Fahrt"], yellow: false },
-                { words: ["An!"], yellow: true },
-              ].map((line, li) => (
-                <span key={li} className="flex flex-wrap gap-x-[0.25em] overflow-hidden pb-[0.12em]">
-                  {line.words.map((word) => (
-                    <motion.span
-                      key={word}
-                      className={`inline-block ${line.yellow ? "text-primary" : "text-white"}`}
-                      variants={{
-                        hidden: { y: "110%", opacity: 0 },
-                        visible: {
-                          y: "0%",
-                          opacity: 1,
-                          transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-                        },
-                      }}
-                    >
-                      {word}
-                    </motion.span>
-                  ))}
-                </span>
-              ))}
-            </motion.h2>
+              {/* Lines 1 & 2 — appear very gently (soft, slow fade) */}
+              <motion.span
+                className="block text-white/90 whitespace-nowrap"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: ctaInView ? 1 : 0 }}
+                transition={{ duration: 1.6, ease: "easeOut" }}
+              >
+                Fragen Sie Jetzt
+              </motion.span>
+              <motion.span
+                className="block text-white/90 whitespace-nowrap"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: ctaInView ? 1 : 0 }}
+                transition={{ duration: 1.6, ease: "easeOut", delay: 0.15 }}
+              >
+                Ihre Nächste Fahrt
+              </motion.span>
+              {/* Line 3 — only "AN!" does the scroll reveal (slides up) */}
+              <span className="block overflow-hidden pb-[0.12em]">
+                <motion.span
+                  className="inline-block text-primary"
+                  initial={{ y: "115%", opacity: 0 }}
+                  animate={ctaInView ? { y: "0%", opacity: 1 } : { y: "115%", opacity: 0 }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                >
+                  An!
+                </motion.span>
+              </span>
+            </h2>
             <p className="text-base sm:text-lg mb-10 max-w-xl text-muted-foreground leading-relaxed">
               {t("cta_sub")}
             </p>
