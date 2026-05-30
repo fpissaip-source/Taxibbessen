@@ -575,7 +575,7 @@ export default function Home() {
       // bottom — while the photo still covers the background — so the story clip
       // is completely replaced; directly below the photo only this clip shows.
       const appear = storyTop + vh * 0.25;
-      const finish = Math.max(faqTop - vh * 0.1, appear + vh);
+      const finish = Math.max(faqTop + vh * 0.8, appear + vh);
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
       // Reaches full opacity quickly (within the photo area), no lerp lag.
       const opacity = clamp((window.scrollY - appear) / (vh * 0.25), 0, 1);
@@ -671,11 +671,11 @@ export default function Home() {
             alt=""
             aria-hidden
             className="w-full h-full object-cover"
-            style={{ objectPosition: "center", opacity: 0.9 }}
+            style={{ objectPosition: "center", opacity: 1 }}
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.62) 0%, rgba(8,10,16,0.42) 45%, rgba(8,10,16,0.72) 100%)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.45) 0%, rgba(8,10,16,0.22) 45%, rgba(8,10,16,0.48) 100%)" }}
           />
         </div>
 
@@ -692,15 +692,11 @@ export default function Home() {
             alt=""
             aria-hidden
             className="w-full h-full object-cover"
-            style={{ objectPosition: "center", opacity: 0.9 }}
+            style={{ objectPosition: "center", opacity: 1 }}
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.62) 0%, rgba(8,10,16,0.42) 45%, rgba(8,10,16,0.72) 100%)" }}
-          />
-          <div
-            className="absolute bottom-0 left-0 right-0 pointer-events-none"
-            style={{ height: "35vh", background: "linear-gradient(to top, hsl(220,20%,4%) 0%, transparent 100%)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.45) 0%, rgba(8,10,16,0.22) 45%, rgba(8,10,16,0.48) 100%)" }}
           />
         </div>
 
