@@ -183,14 +183,7 @@ function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.5 }}
-          className="mb-12 text-center max-w-2xl mx-auto rounded-3xl px-6 py-8 sm:px-10 sm:py-10"
-          style={{
-            background: "rgba(10,12,18,0.42)",
-            backdropFilter: "blur(20px) saturate(140%)",
-            WebkitBackdropFilter: "blur(20px) saturate(140%)",
-            border: "1px solid rgba(255,255,255,0.10)",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
-          }}
+          className="mb-12 text-center"
         >
           <span className="text-[13px] font-black text-primary uppercase tracking-[0.45em] mb-4 block">
             Häufige Fragen & Unsere Antworten
@@ -296,9 +289,7 @@ export default function Home() {
         ? servicesEl.getBoundingClientRect().top + window.scrollY
         : window.innerHeight * 1.5;
       const vh = window.innerHeight;
-      // Fade hero out at the 2nd service card (≈ servicesTop + 0.12vh),
-      // fully gone 0.28vh later — smooth crossfade.
-      return Math.min(Math.max(1 - (window.scrollY - (servicesTop + vh * 0.12)) / (vh * 0.28), 0), 1);
+      return Math.min(Math.max(1 - (window.scrollY - (servicesTop - vh * 0.5)) / (vh * 0.4), 0), 1);
     };
 
     const PRIORITY_COUNT = 20;
@@ -322,9 +313,7 @@ export default function Home() {
       const servicesTop = servicesEl
         ? servicesEl.getBoundingClientRect().top + window.scrollY
         : window.innerHeight * 1.5;
-      const vh = window.innerHeight;
-      // Extend hero playback into services section until crossfade completes.
-      return Math.min(Math.max(window.scrollY / Math.max(servicesTop + vh * 0.40, 1), 0), 1);
+      return Math.min(Math.max(window.scrollY / Math.max(servicesTop, 1), 0), 1);
     };
 
     const isReady = (f: HTMLImageElement) => f.complete && f.naturalWidth > 0;
@@ -441,10 +430,13 @@ export default function Home() {
       const vh = window.innerHeight;
       const servicesTop = servicesEl ? servicesEl.getBoundingClientRect().top + window.scrollY : 0;
       const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : servicesTop + vh * 3;
-      // Story crossfades in exactly as hero fades out — same window [+0.12vh, +0.40vh].
-      const opacity = clamp((window.scrollY - (servicesTop + vh * 0.12)) / (vh * 0.28), 0, 1);
-      // Frame scrubbing starts once crossfade is complete (story fully opaque).
-      const appear = servicesTop + vh * 0.40;
+      // Hero fades out via its own decoupled opacity — story can now safely
+      // rise AFTER servicesTop (heading area covered by the black band) without
+      // any silver-taxi bleed risk.
+      const opacity = clamp((window.scrollY - servicesTop) / (vh * 0.35), 0, 1);
+      // Start scrubbing once the heading's black band has scrolled up off the
+      // top (the cards are on screen and enough of the frame is visible).
+      const appear = servicesTop + vh * 0.4;
       // Reaches its last frame just ABOVE the story section's taxi-sign photo.
       const finish = storyTop;
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
@@ -692,10 +684,9 @@ export default function Home() {
         {/* ─── HERO ─── */}
         {/* -mt-20 pulls this section up behind the fixed nav */}
         <div className="relative -mt-20" style={{ zIndex: 2 }}>
-          {/* Top+left overlays for readability */}
+          {/* Top+left overlays for readability — no bottom darkening */}
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.30) 28%, transparent 48%)" }} />
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to right, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.38) 38%, transparent 72%)" }} />
-
 
           <section className="relative min-h-screen flex flex-col overflow-hidden pt-20 pb-8" style={{ zIndex: 1 }}>
 
@@ -785,10 +776,9 @@ export default function Home() {
         {/* ─── SERVICES ─── */}
         {/* Fixed video (at last frame) shines through as background */}
         <section id="leistungen" ref={servicesRef} className="py-24 lg:py-32 relative" style={{ zIndex: 2 }}>
-          {/* Smooth, continuous darkening behind the heading — long fade-in from
-              the video above and a long fade-out for the cards below, so there is
-              NO visible edge anywhere (matches the live site). */}
-          <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "75vh", background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 30%, hsl(220,20%,4%) 52%, transparent 90%)" }} />
+          {/* Black ONLY behind the heading (top band), fading out so the next
+              clip is revealed directly below it — not the whole section. */}
+          <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "70vh", background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 16%, hsl(220,20%,4%) 55%, transparent 100%)" }} />
           <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
             <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -878,14 +868,6 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.8 }}
-                className="rounded-3xl p-8 sm:p-10"
-                style={{
-                  background: "rgba(10,12,18,0.42)",
-                  backdropFilter: "blur(20px) saturate(140%)",
-                  WebkitBackdropFilter: "blur(20px) saturate(140%)",
-                  border: "1px solid rgba(255,255,255,0.10)",
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
-                }}
               >
                 <span className="text-[11px] font-black text-primary uppercase tracking-[0.45em] mb-6 block">
                   {t("story_pre")}
@@ -934,16 +916,6 @@ export default function Home() {
             <div className="w-full h-full" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,193,7,0.4) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div
-              className="rounded-3xl p-8 sm:p-10 mb-10"
-              style={{
-                background: "rgba(10,12,18,0.42)",
-                backdropFilter: "blur(20px) saturate(140%)",
-                WebkitBackdropFilter: "blur(20px) saturate(140%)",
-                border: "1px solid rgba(255,255,255,0.10)",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
-              }}
-            >
             {/* Word-by-word reveal heading */}
             <h2
               ref={ctaHeadingRef}
@@ -965,10 +937,9 @@ export default function Home() {
                 </motion.span>
               </span>
             </h2>
-            <p className="text-base sm:text-lg max-w-xl text-white/70 leading-relaxed">
+            <p className="text-base sm:text-lg mb-10 max-w-xl text-muted-foreground leading-relaxed">
               {t("cta_sub")}
             </p>
-            </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
               {/* E-Mail */}
               <a

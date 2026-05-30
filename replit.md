@@ -35,7 +35,6 @@ _Describe the high-level user-facing capabilities of this app once they exist._
 ## User preferences
 
 - Be token/cost-efficient: think before coding, make surgical changes (touch only what the request needs, don't refactor unrelated code), avoid speculative features. When counting/auditing across many files, write a script instead of reading them all into context. (From the user's "Nexus Brain" init doc — applied the engineering principles; the external `/api/memories` API and `.claude/` file scheme don't exist in this project and aren't used here.)
-- VISUAL TRANSITIONS MUST ALWAYS BE SMOOTH — never any abrupt edges, hard seams, or visible bands between sections, gradients, or video layers. Any gradient overlay must use long, gradual fades on BOTH ends (no short transparent→dark→transparent spans that create a floating "bar"). This is a hard, non-negotiable rule the user has repeated emphatically.
 
 ## Gotchas
 
