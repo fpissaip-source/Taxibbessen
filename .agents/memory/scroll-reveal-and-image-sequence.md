@@ -34,3 +34,11 @@ description: Reliable patterns for framer-motion scroll reveals and scroll-scrub
 **Why:** A `min-h-screen` hero is ~1 viewport tall, so the next section's content (e.g. service cards just under the heading) is already on screen the instant the heading reaches the top. If B's fade only *begins* at `sectionTop`, the old clip (silver taxi) bleeds through behind the new section's content. User reported this angrily ("ich sehe immernoch das taxi"). Fix: `opacity = clamp((scrollY - (sectionTop - 0.22*vh)) / (0.18*vh), 0, 1)` so it completes ~`sectionTop`, hidden inside the previous section's dark bottom gradient (so the crossfade itself isn't visible).
 
 **How to apply:** Keep opacity (crossfade) and frame-progress (scrub) on SEPARATE anchors — opacity finishes by `sectionTop`; scrub can start later (e.g. `sectionTop + 0.4*vh`, once a black band behind the heading has scrolled off). To black out only the heading (not the whole section), use a top-anchored band `absolute top-0 h-[55vh]` with a gradient that fades to transparent at its bottom so the next clip is revealed below it.
+
+# Aligning an absolutely-positioned overlay to content INSIDE a scroll-scrubbed background
+
+**Rule:** Don't guess `bottom-[%]` values to line an overlay (e.g. hero service icons) up with a feature painted in the background image sequence (e.g. a car's license plate). Take an `app_preview` screenshot at the page-load state (scroll 0 = frame 1) and measure pixel positions, then convert to % of the hero height.
+
+**Why:** The background feature MOVES with scroll because the image sequence scrubs by scroll progress, so there is no single % that aligns across frames — only the page-load frame is stable and that is the one the user judges. Blind tweaking caused many back-and-forth rounds and an angry user. Also: a framer-motion `initial={{ y: 20 }} → animate={{ y: 0 }}` makes the icons settle at a different spot than where they appear mid-animation, so the "calibrated" value was wrong once it settled — drop the `y` offset (keep opacity-only) so the resting position is what you see.
+
+**How to apply:** Hero is `min-h-screen` (≈ viewport height). Screenshot, read off icon-top y and feature y, gap_px / heroHeight_px = % to subtract from current `bottom-[%]`. Re-screenshot to confirm before replying.

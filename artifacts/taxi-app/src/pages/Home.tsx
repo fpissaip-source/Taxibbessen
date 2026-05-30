@@ -756,7 +756,7 @@ export default function Home() {
             </div>
 
             {/* ── Service Icons — absolut über Kennzeichen ── */}
-            <div className="absolute bottom-[30%] left-0 right-0 z-20 px-4 sm:px-6 lg:px-12">
+            <div className="absolute bottom-[18%] left-0 right-0 z-20 px-4 sm:px-6 lg:px-12">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
