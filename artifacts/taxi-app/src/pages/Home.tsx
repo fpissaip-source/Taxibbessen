@@ -289,7 +289,9 @@ export default function Home() {
         ? servicesEl.getBoundingClientRect().top + window.scrollY
         : window.innerHeight * 1.5;
       const vh = window.innerHeight;
-      return Math.min(Math.max(1 - (window.scrollY - (servicesTop - vh * 0.5)) / (vh * 0.4), 0), 1);
+      // Fade hero out at the 2nd service card (≈ servicesTop + 0.12vh),
+      // fully gone 0.15vh later — quick, smooth crossfade.
+      return Math.min(Math.max(1 - (window.scrollY - (servicesTop + vh * 0.12)) / (vh * 0.15), 0), 1);
     };
 
     const PRIORITY_COUNT = 20;
@@ -313,7 +315,9 @@ export default function Home() {
       const servicesTop = servicesEl
         ? servicesEl.getBoundingClientRect().top + window.scrollY
         : window.innerHeight * 1.5;
-      return Math.min(Math.max(window.scrollY / Math.max(servicesTop, 1), 0), 1);
+      const vh = window.innerHeight;
+      // Extend hero playback into services section until crossfade completes.
+      return Math.min(Math.max(window.scrollY / Math.max(servicesTop + vh * 0.27, 1), 0), 1);
     };
 
     const isReady = (f: HTMLImageElement) => f.complete && f.naturalWidth > 0;
@@ -430,13 +434,10 @@ export default function Home() {
       const vh = window.innerHeight;
       const servicesTop = servicesEl ? servicesEl.getBoundingClientRect().top + window.scrollY : 0;
       const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : servicesTop + vh * 3;
-      // Hero fades out via its own decoupled opacity — story can now safely
-      // rise AFTER servicesTop (heading area covered by the black band) without
-      // any silver-taxi bleed risk.
-      const opacity = clamp((window.scrollY - servicesTop) / (vh * 0.35), 0, 1);
-      // Start scrubbing once the heading's black band has scrolled up off the
-      // top (the cards are on screen and enough of the frame is visible).
-      const appear = servicesTop + vh * 0.4;
+      // Story crossfades in exactly as hero fades out — same window [+0.12vh, +0.27vh].
+      const opacity = clamp((window.scrollY - (servicesTop + vh * 0.12)) / (vh * 0.15), 0, 1);
+      // Frame scrubbing starts once crossfade is complete (story fully opaque).
+      const appear = servicesTop + vh * 0.27;
       // Reaches its last frame just ABOVE the story section's taxi-sign photo.
       const finish = storyTop;
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
