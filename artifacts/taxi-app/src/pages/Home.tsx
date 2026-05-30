@@ -47,26 +47,63 @@ const SERVICE_ITEMS = [
 function ServicesRevealSection() {
   const { t } = useLanguage();
   const base = import.meta.env.BASE_URL;
+  const [activeIdx, setActiveIdx] = useState(-1);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const check = () => {
+      const viewCenter = window.scrollY + window.innerHeight / 2;
+      let bestIdx = -1;
+      let bestDist = Infinity;
+      itemRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        const elCenter = top + el.offsetHeight / 2;
+        const dist = Math.abs(viewCenter - elCenter);
+        if (dist < bestDist) { bestDist = dist; bestIdx = i; }
+      });
+      setActiveIdx(bestDist < window.innerHeight * 0.42 ? bestIdx : -1);
+    };
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => { window.removeEventListener("scroll", check); window.removeEventListener("resize", check); };
+  }, []);
 
   return (
     <div>
       {/* ── Scroll-Reveal: alle 6 Leistungen — 1 Spalte ── */}
       <div className="grid grid-cols-1 gap-y-12 lg:gap-y-20">
-        {SERVICE_ITEMS.map(({ src, titleKey, descKey }) => (
-          <motion.div
+        {SERVICE_ITEMS.map(({ src, titleKey, descKey }, i) => (
+          <div
             key={src}
-            initial={{ opacity: 0, y: 48 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="py-6 text-center"
+            ref={(el) => { itemRefs.current[i] = el; }}
+            className="py-6 text-center relative"
           >
-            <div className="relative flex flex-col items-center">
+            {/* Glass tile — visible only when this item is nearest viewport center */}
+            <div
+              className="absolute inset-x-[-1.75rem] inset-y-0 rounded-2xl border border-white/[0.18] bg-white/[0.09] backdrop-blur-md shadow-[0_8px_48px_rgba(0,0,0,0.45)] pointer-events-none"
+              style={{
+                opacity: activeIdx === i ? 1 : 0,
+                transition: "opacity 0.4s cubic-bezier(0.4,0,0.2,1)",
+              }}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 48 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-60px" }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="relative flex flex-col items-center"
+              style={{
+                transform: activeIdx === i ? "scale(1.03)" : "scale(1)",
+                transition: "transform 0.4s cubic-bezier(0.4,0,0.2,1)",
+              }}
+            >
               <motion.div
                 whileInView={{ scale: [0.85, 1.04, 1] }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
-                className="flex justify-center mb-5 lg:mb-7 relative"
+                className="flex justify-center mb-5 lg:mb-7"
               >
                 <img
                   src={`${base}icons/${src}`}
@@ -77,17 +114,17 @@ function ServicesRevealSection() {
               </motion.div>
 
               <h3
-                className="font-display font-black text-white uppercase tracking-tighter mb-3 leading-none relative"
+                className="font-display font-black text-white uppercase tracking-tighter mb-3 leading-none"
                 style={{ fontSize: "clamp(1.1rem,2.4vw,2rem)" }}
               >
                 {t(titleKey)}
               </h3>
 
-              <p className="font-medium leading-relaxed mx-auto text-sm lg:text-base max-w-[240px] lg:max-w-sm text-white/75 relative">
+              <p className="font-medium leading-relaxed mx-auto text-sm lg:text-base max-w-[240px] lg:max-w-sm text-white/75">
                 {t(descKey)}
               </p>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         ))}
       </div>
     </div>
@@ -398,7 +435,10 @@ export default function Home() {
 
     const rafLoop = () => {
       currentProgress += (targetProgress - currentProgress) * 0.12;
-      currentOpacity += (targetOpacity - currentOpacity) * 0.12;
+      // Opacity is NOT lerped — the measure() ramp already gives a smooth
+      // linear fade; lerping on top just adds lag that lets the silver hero
+      // bleed through at fast scroll speeds.
+      currentOpacity = targetOpacity;
       const idx = Math.min(
         STORY_FRAME_COUNT - 1,
         Math.max(0, Math.round(currentProgress * (STORY_FRAME_COUNT - 1))),
@@ -493,14 +533,14 @@ export default function Home() {
       const faqRect = faqEl ? faqEl.getBoundingClientRect() : null;
       const faqTop = faqRect ? faqRect.top + window.scrollY : storyTop + vh * 4;
       // The last clip takes over right BELOW the story section's taxi-sign photo.
-      // It fades in WHILE the (opaque) photo still covers the background, so the
-      // story clip is fully replaced — directly under the photo only this clip
-      // is seen, never the previous one.
-      const appear = storyTop + vh * 0.4;
+      // Start the fade early enough that it is fully opaque BEFORE the photo
+      // bottom — while the photo still covers the background — so the story clip
+      // is completely replaced; directly below the photo only this clip shows.
+      const appear = storyTop + vh * 0.25;
       const finish = Math.max(faqTop - vh * 0.1, appear + vh);
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
-      // Quick fade so it is fully opaque before the bottom of the photo.
-      const opacity = clamp((window.scrollY - appear) / (vh * 0.3), 0, 1);
+      // Reaches full opacity quickly (within the photo area), no lerp lag.
+      const opacity = clamp((window.scrollY - appear) / (vh * 0.25), 0, 1);
       return { progress, opacity };
     };
 
@@ -512,7 +552,8 @@ export default function Home() {
 
     const rafLoop = () => {
       currentProgress += (targetProgress - currentProgress) * 0.12;
-      currentOpacity += (targetOpacity - currentOpacity) * 0.12;
+      // Opacity is NOT lerped — the measure() ramp is the smooth transition.
+      currentOpacity = targetOpacity;
       const idx = Math.min(
         CTA_FRAME_COUNT - 1,
         Math.max(0, Math.round(currentProgress * (CTA_FRAME_COUNT - 1))),
