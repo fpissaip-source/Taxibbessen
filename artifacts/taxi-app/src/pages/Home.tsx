@@ -158,7 +158,7 @@ function FAQSection() {
           </h2>
         </motion.div>
 
-        <div className="max-w-2xl mx-auto space-y-3">
+        <div className="max-w-2xl mx-auto rounded-3xl border border-white/10 bg-white/[0.035] backdrop-blur-md overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.28)] divide-y divide-white/[0.06]">
           {FAQ_ITEMS.map((item, idx) => (
             <motion.div
               key={idx}
@@ -166,10 +166,8 @@ function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, margin: "-40px" }}
               transition={{ duration: 0.4, delay: idx * 0.04 }}
-              className={`rounded-2xl border backdrop-blur-md overflow-hidden transition-colors shadow-[0_8px_32px_rgba(0,0,0,0.28)] ${
-                openIdx === idx
-                  ? "bg-white/[0.10] border-white/20"
-                  : "bg-white/[0.05] border-white/10 hover:bg-white/[0.08] hover:border-white/[0.18]"
+              className={`transition-colors ${
+                openIdx === idx ? "bg-white/[0.045]" : "hover:bg-white/[0.025]"
               }`}
             >
               <button
@@ -372,14 +370,17 @@ export default function Home() {
     };
 
     const measure = () => {
+      const servicesEl = servicesRef.current;
       const s = storySectionRef.current;
       const r = reviewsSectionRef.current;
       const vh = window.innerHeight;
+      const servicesTop = servicesEl ? servicesEl.getBoundingClientRect().top + window.scrollY : 0;
       const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : 0;
       const reviewsTop = r ? r.getBoundingClientRect().top + window.scrollY : storyTop + vh * 1.5;
-      // The clip appears AND starts scrubbing at the SAME point: the instant it's
-      // even slightly visible it is already playing — no waiting for full fade-in.
-      const appear = storyTop - vh * 1.1;
+      // The hero video ends (crossfades out into the dark seam) just below the
+      // "Unsere Leistungen" heading. From here the story clip is pulled up to
+      // play as the background behind the service cards, on through to reviews.
+      const appear = servicesTop + vh * 0.55;
       // Reach the last frame early (by the reviews section), well before the CTA,
       // to leave room for the next clip.
       const finish = reviewsTop;
@@ -445,7 +446,7 @@ export default function Home() {
   // ─── Third image-sequence — the "second video". Softly crossfades IN over
   // the story clip around the reviews section and scrubs through to the CTA,
   // where it holds its last frame. ───
-  const CTA_FRAME_COUNT = 73;
+  const CTA_FRAME_COUNT = 97;
   const ctaFramePath = (n: number) =>
     `${import.meta.env.BASE_URL}cta-frames/frame_${String(n).padStart(3, "0")}.jpg`;
 
@@ -490,14 +491,17 @@ export default function Home() {
       const faqEl = document.getElementById("faq");
       const vh = window.innerHeight;
       const reviewsTop = r ? r.getBoundingClientRect().top + window.scrollY : 0;
-      const faqTop = faqEl ? faqEl.getBoundingClientRect().top + window.scrollY : reviewsTop + vh * 3;
+      const faqRect = faqEl ? faqEl.getBoundingClientRect() : null;
+      const faqTop = faqRect ? faqRect.top + window.scrollY : reviewsTop + vh * 3;
+      const faqBottom = faqRect ? faqTop + faqRect.height : faqTop + vh;
       // Soft handoff: only begin fading in AFTER the story clip has reached and
       // shown its last frame (its sweep finishes at reviewsTop + lerp settle),
       // so the story clip visibly plays to the very end before this clip
       // crossfades over it.
       const appear = reviewsTop + vh * 0.2;
-      // Reaches its last frame at the FAQ section, then holds.
-      const finish = faqTop;
+      // Reaches its last frame once the FAQ section is fully in view (the bottom
+      // of the FAQ list at the bottom of the viewport), then holds.
+      const finish = Math.max(faqBottom - vh, appear + vh);
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
       // Gentle, soft fade-in over ~0.7vh.
       const opacity = clamp((window.scrollY - appear) / (vh * 0.7), 0, 1);
@@ -734,6 +738,13 @@ export default function Home() {
                 <div className="w-14 h-0.5 bg-white/10" />
               </div>
             </div>
+
+            {/* Black gradient seam below the heading — mirrors the dark gradient
+                above it; the hero background video ends (fades out) right here. */}
+            <div
+              className="relative left-1/2 -translate-x-1/2 w-screen h-48 pointer-events-none -mt-12 mb-2"
+              style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 100%)" }}
+            />
 
             <ServicesRevealSection />
 
