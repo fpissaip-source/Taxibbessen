@@ -675,6 +675,10 @@ export default function Home() {
             className="absolute inset-0"
             style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.62) 0%, rgba(8,10,16,0.42) 45%, rgba(8,10,16,0.72) 100%)" }}
           />
+          <div
+            className="absolute bottom-0 left-0 right-0 pointer-events-none"
+            style={{ height: "35vh", background: "linear-gradient(to top, hsl(220,20%,4%) 0%, transparent 100%)" }}
+          />
         </div>
 
         {/* ─── HERO ─── */}
@@ -775,7 +779,7 @@ export default function Home() {
         <section id="leistungen" ref={servicesRef} className="py-24 lg:py-32 relative" style={{ zIndex: 2 }}>
           {/* Black ONLY behind the heading (top band), fading out so the next
               clip is revealed directly below it — not the whole section. */}
-          <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "78vh", background: "linear-gradient(to bottom, hsl(220,20%,4%) 0%, hsl(220,20%,4%) 62%, transparent 100%)" }} />
+          <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "78vh", background: "linear-gradient(to bottom, transparent 0%, transparent 26%, hsl(220,20%,4%) 44%, hsl(220,20%,4%) 60%, transparent 100%)" }} />
           <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
             <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
