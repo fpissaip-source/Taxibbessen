@@ -929,7 +929,7 @@ export default function Home() {
                   alt=""
                   aria-hidden="true"
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[135%] max-w-none h-[180%] pointer-events-none select-none"
-                  style={{ filter: "brightness(0) invert(1)", opacity: 0.5 }}
+                  style={{ filter: "brightness(0)", opacity: 0.5 }}
                 />
                 <span className="relative">{t("reviews_title")}</span>
               </h2>
