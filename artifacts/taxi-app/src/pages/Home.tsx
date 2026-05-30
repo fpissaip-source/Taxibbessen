@@ -76,7 +76,7 @@ function ServicesRevealSection() {
         const dist = Math.abs(viewCenter - elCenter);
         if (dist < bestDist) { bestDist = dist; bestIdx = i; }
       });
-      setActiveIdx(bestDist < window.innerHeight * 0.42 ? bestIdx : -1);
+      setActiveIdx(bestDist < window.innerHeight * 0.26 ? bestIdx : -1);
     };
     check();
     window.addEventListener("scroll", check, { passive: true });
