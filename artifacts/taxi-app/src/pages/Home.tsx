@@ -780,7 +780,7 @@ export default function Home() {
         <section id="leistungen" ref={servicesRef} className="py-24 lg:py-32 relative" style={{ zIndex: 2 }}>
           {/* Black ONLY behind the heading (top band), fading out so the next
               clip is revealed directly below it — not the whole section. */}
-          <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "70vh", background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 16%, hsl(220,20%,4%) 55%, transparent 100%)" }} />
+          <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "70vh", background: "linear-gradient(to bottom, transparent 0%, transparent 8%, hsl(220,20%,4%) 32%, hsl(220,20%,4%) 60%, transparent 100%)" }} />
           <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
             <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
