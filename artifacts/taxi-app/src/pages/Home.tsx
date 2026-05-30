@@ -312,7 +312,7 @@ export default function Home() {
         ? servicesEl.getBoundingClientRect().top + window.scrollY
         : window.innerHeight * 1.5;
       const vh = window.innerHeight;
-      return Math.min(Math.max(1 - (window.scrollY - (servicesTop - vh * 0.75)) / (vh * 0.5), 0), 1);
+      return Math.min(Math.max(1 - (window.scrollY - (servicesTop - vh * 0.5)) / (vh * 0.4), 0), 1);
     };
 
     const PRIORITY_COUNT = 20;
@@ -456,7 +456,7 @@ export default function Home() {
       // Hero fades out via its own decoupled opacity — story can now safely
       // rise AFTER servicesTop (heading area covered by the black band) without
       // any silver-taxi bleed risk.
-      const opacity = clamp((window.scrollY - servicesTop) / (vh * 0.55), 0, 1);
+      const opacity = clamp((window.scrollY - servicesTop) / (vh * 0.35), 0, 1);
       // Start scrubbing once the heading's black band has scrolled up off the
       // top (the cards are on screen and enough of the frame is visible).
       const appear = servicesTop + vh * 0.4;
