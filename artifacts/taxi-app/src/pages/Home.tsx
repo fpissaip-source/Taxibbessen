@@ -750,7 +750,7 @@ export default function Home() {
                   { src: "kurierdienst.png",      label: t("hero_service5_title") },
                   { src: "hauszuhaus.png",        label: t("hero_service6_title") },
                 ].map(({ src, label }) => (
-                  <div key={src} className="flex flex-col items-center text-center gap-1.5 group px-2 py-3 lg:py-4 rounded-2xl border border-white/[0.12] bg-white/[0.06] backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.4)] transition-colors duration-300 hover:border-primary/30 hover:bg-white/[0.09]">
+                  <div key={src} className="flex flex-col items-center text-center gap-1.5 group px-1">
                     <div className="h-14 lg:h-20 flex items-center justify-center">
                       <img
                         src={`${import.meta.env.BASE_URL}icons/${src}`}
@@ -868,6 +868,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.8 }}
+                className="rounded-[32px] border border-white/[0.1] bg-white/[0.05] backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.4)] p-8 lg:p-12"
               >
                 <span className="text-[11px] font-black text-primary uppercase tracking-[0.45em] mb-6 block">
                   {t("story_pre")}
@@ -919,6 +920,7 @@ export default function Home() {
             <div className="w-full h-full" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,193,7,0.4) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="inline-block rounded-[32px] border border-white/[0.1] bg-white/[0.05] backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.4)] p-8 lg:p-12 mb-10 max-w-full">
             {/* Word-by-word reveal heading */}
             <h2
               ref={ctaHeadingRef}
@@ -940,9 +942,10 @@ export default function Home() {
                 </motion.span>
               </span>
             </h2>
-            <p className="text-base sm:text-lg mb-10 max-w-xl text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg max-w-xl text-muted-foreground leading-relaxed">
               {t("cta_sub")}
             </p>
+            </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
               {/* E-Mail */}
               <a
