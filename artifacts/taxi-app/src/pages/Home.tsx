@@ -15,7 +15,7 @@ const glassCard = "backdrop-blur-2xl bg-white/[0.03] border border-white/[0.08] 
 
 const ctaGlowContainer = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.22 } },
+  show: { transition: { staggerChildren: 0.1 } },
 };
 type CtaGlow = { glow: string; bgDim: string; bgLit: string };
 const ctaGlowItem = {
