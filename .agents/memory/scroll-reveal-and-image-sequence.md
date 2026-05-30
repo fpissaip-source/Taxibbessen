@@ -26,3 +26,11 @@ description: Reliable patterns for framer-motion scroll reveals and scroll-scrub
 **Why:** On Taxi B&B the story/reviews/CTA sections looked empty/flat-black below the services because they had opaque `background: hsl(220 18% 6%)` / `bg-background` covering the fixed hero layer. A second clip (97 frames, ~1.9 MB at 600px q7 via ffmpeg `scale=600:-2 -q:v 7`) was anchored: frame 0 at the story section top, last frame at the CTA section top, mapped by `(scrollY - storyTop)/(ctaTop - storyTop)`. Opacity eases in via lerp as the story section enters; a built-in dark gradient scrim keeps text readable.
 
 **How to apply:** Both fixed layers share `zIndex:1`; the later one in DOM paints on top, so keep its opacity 0 above its range so the hero shows through. Reuse the hero's rAF + lerp(0.12) + nearestReady + priority-decode pattern. Anchor scroll range with section refs measured via `getBoundingClientRect().top + scrollY` (re-measure on resize). Extract frames with ffmpeg in one pass (no `<video>` — same iOS black-frame reason as the hero).
+
+# Crossfade timing: finish the swap BEFORE the next section reaches the top
+
+**Rule:** When layer B's opacity drives layer A via `A.opacity = 1 - B.opacity`, layer B must reach opacity 1 *just before* the next section's top scrolls to the viewport top — NOT starting at that point.
+
+**Why:** A `min-h-screen` hero is ~1 viewport tall, so the next section's content (e.g. service cards just under the heading) is already on screen the instant the heading reaches the top. If B's fade only *begins* at `sectionTop`, the old clip (silver taxi) bleeds through behind the new section's content. User reported this angrily ("ich sehe immernoch das taxi"). Fix: `opacity = clamp((scrollY - (sectionTop - 0.22*vh)) / (0.18*vh), 0, 1)` so it completes ~`sectionTop`, hidden inside the previous section's dark bottom gradient (so the crossfade itself isn't visible).
+
+**How to apply:** Keep opacity (crossfade) and frame-progress (scrub) on SEPARATE anchors — opacity finishes by `sectionTop`; scrub can start later (e.g. `sectionTop + 0.4*vh`, once a black band behind the heading has scrolled off). To black out only the heading (not the whole section), use a top-anchored band `absolute top-0 h-[55vh]` with a gradient that fades to transparent at its bottom so the next clip is revealed below it.

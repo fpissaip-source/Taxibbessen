@@ -375,10 +375,12 @@ export default function Home() {
       const vh = window.innerHeight;
       const servicesTop = servicesEl ? servicesEl.getBoundingClientRect().top + window.scrollY : 0;
       const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : servicesTop + vh * 3;
-      // A black band sits ONLY behind the heading and hides this clip there.
-      // Fade the layer opaque quickly so the hero (heroLayer = 1 - this) is gone
-      // and the story clip — not the silver taxi — shows behind the cards.
-      const opacity = clamp((window.scrollY - servicesTop) / (vh * 0.35), 0, 1);
+      // The hero (silver taxi) layer opacity = 1 - this, so this MUST already be
+      // 1 by the time the heading reaches the top of the screen — otherwise the
+      // silver taxi bleeds through behind the service cards. Complete the fade
+      // JUST BEFORE servicesTop, hidden inside the hero's dark bottom, so once
+      // we are in the services section the story clip (not the hero) is shown.
+      const opacity = clamp((window.scrollY - (servicesTop - vh * 0.22)) / (vh * 0.18), 0, 1);
       // Start scrubbing once the heading's black band has scrolled up off the
       // top (the cards are on screen and enough of the frame is visible).
       const appear = servicesTop + vh * 0.4;
