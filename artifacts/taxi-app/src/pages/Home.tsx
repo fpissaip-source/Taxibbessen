@@ -756,10 +756,10 @@ export default function Home() {
             </div>
 
             {/* ── Service Icons — absolut über Kennzeichen ── */}
-            <div className="absolute bottom-[24%] left-0 right-0 z-20 px-4 sm:px-6 lg:px-12">
+            <div className="absolute bottom-[21%] left-0 right-0 z-20 px-4 sm:px-6 lg:px-12">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
                 className="grid grid-cols-3 gap-x-2 gap-y-4 lg:gap-x-8 w-full lg:w-[82%] lg:max-w-5xl mx-auto"
               >
