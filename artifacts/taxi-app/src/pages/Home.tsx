@@ -213,6 +213,10 @@ export default function Home() {
   const servicesRef = useRef<HTMLElement>(null);
   const ctaHeadingRef = useRef<HTMLHeadingElement>(null);
   const ctaInView = useInView(ctaHeadingRef, { amount: 0.3, margin: "0px 0px 5% 0px" });
+  const storyImgRef = useRef<HTMLImageElement>(null);
+  const storyLayerRef = useRef<HTMLDivElement>(null);
+  const storySectionRef = useRef<HTMLElement>(null);
+  const ctaSectionRef = useRef<HTMLElement>(null);
 
   usePageMeta({
     title: "Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060",
@@ -315,6 +319,115 @@ export default function Home() {
     };
   }, []);
 
+  // ─── Story-section scroll video — second image-sequence, fades in at the
+  // story section and reaches its last frame at the CTA section ───
+  const STORY_FRAME_COUNT = 97;
+  const storyFramePath = (n: number) =>
+    `${import.meta.env.BASE_URL}story-frames/frame_${String(n).padStart(3, "0")}.jpg`;
+
+  useEffect(() => {
+    const img = storyImgRef.current;
+    const layer = storyLayerRef.current;
+    if (!img || !layer) return;
+
+    const PRIORITY_COUNT = 16;
+    const frames: HTMLImageElement[] = [];
+    for (let i = 1; i <= STORY_FRAME_COUNT; i++) {
+      const f = new Image();
+      if (i <= PRIORITY_COUNT) (f as HTMLImageElement & { fetchpriority: string }).fetchpriority = "high";
+      f.src = storyFramePath(i);
+      frames.push(f);
+    }
+
+    const clamp = (v: number, a: number, b: number) => Math.min(Math.max(v, a), b);
+
+    let targetProgress = 0;
+    let currentProgress = 0;
+    let targetOpacity = 0;
+    let currentOpacity = 0;
+    let lastFrame = -1;
+    let rafId: number;
+    let started = false;
+
+    const isReady = (f: HTMLImageElement) => f.complete && f.naturalWidth > 0;
+    const nearestReady = (target: number) => {
+      if (isReady(frames[target])) return target;
+      for (let d = 1; d < STORY_FRAME_COUNT; d++) {
+        const lo = target - d;
+        const hi = target + d;
+        if (lo >= 0 && isReady(frames[lo])) return lo;
+        if (hi < STORY_FRAME_COUNT && isReady(frames[hi])) return hi;
+      }
+      return -1;
+    };
+
+    const measure = () => {
+      const s = storySectionRef.current;
+      const c = ctaSectionRef.current;
+      const vh = window.innerHeight;
+      const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : 0;
+      const ctaTop = c ? c.getBoundingClientRect().top + window.scrollY : storyTop + vh * 3;
+      const range = Math.max(ctaTop - storyTop, 1);
+      // First frame at story top, last frame reached at the CTA section.
+      const progress = clamp((window.scrollY - storyTop) / range, 0, 1);
+      // Soft fade-in just as the story section enters the viewport.
+      const fadeInStart = storyTop - vh * 0.95;
+      const fadeInEnd = storyTop - vh * 0.4;
+      const opacity = clamp((window.scrollY - fadeInStart) / Math.max(fadeInEnd - fadeInStart, 1), 0, 1);
+      return { progress, opacity };
+    };
+
+    const update = () => {
+      const m = measure();
+      targetProgress = m.progress;
+      targetOpacity = m.opacity;
+    };
+
+    const rafLoop = () => {
+      currentProgress += (targetProgress - currentProgress) * 0.12;
+      currentOpacity += (targetOpacity - currentOpacity) * 0.12;
+      const idx = Math.min(
+        STORY_FRAME_COUNT - 1,
+        Math.max(0, Math.round(currentProgress * (STORY_FRAME_COUNT - 1))),
+      );
+      if (idx !== lastFrame) {
+        const ready = nearestReady(idx);
+        if (ready >= 0) {
+          img.src = frames[ready].src;
+          lastFrame = idx;
+        }
+      }
+      layer.style.opacity = String(currentOpacity);
+      rafId = requestAnimationFrame(rafLoop);
+    };
+
+    const onScroll = () => update();
+    const onResize = () => update();
+
+    const startLoop = () => {
+      if (started) return;
+      started = true;
+      update();
+      currentProgress = targetProgress;
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onResize);
+      rafId = requestAnimationFrame(rafLoop);
+    };
+
+    const priorityDecodes = frames.slice(0, PRIORITY_COUNT).map((f) =>
+      f.decode ? f.decode().catch(() => {}) : Promise.resolve()
+    );
+    Promise.all(priorityDecodes).then(startLoop);
+    const fallback = setTimeout(startLoop, 800);
+
+    return () => {
+      clearTimeout(fallback);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
 
   return (
     <Layout>
@@ -336,6 +449,27 @@ export default function Home() {
             aria-hidden
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: "center", opacity: 1 }}
+          />
+        </div>
+
+        {/* ─── STORY SCROLL-VIDEO BACKGROUND — fades in at the story section, ─── */}
+        {/* ─── scrubs through story → reviews → CTA, last frame at the CTA   ─── */}
+        <div
+          ref={storyLayerRef}
+          className="fixed inset-0 overflow-hidden pointer-events-none"
+          style={{ zIndex: 1, opacity: 0 }}
+        >
+          <img
+            ref={storyImgRef}
+            src={storyFramePath(1)}
+            alt=""
+            aria-hidden
+            className="w-full h-full object-cover"
+            style={{ objectPosition: "center", opacity: 0.9 }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.62) 0%, rgba(8,10,16,0.42) 45%, rgba(8,10,16,0.72) 100%)" }}
           />
         </div>
 
@@ -487,7 +621,7 @@ export default function Home() {
         </section>
 
         {/* ─── STORY SECTION ─── */}
-        <section id="geschichte" className="py-24 lg:py-40 relative" style={{ background: "hsl(220 18% 6%)", zIndex: 2 }}>
+        <section id="geschichte" ref={storySectionRef} className="py-24 lg:py-40 relative" style={{ zIndex: 2 }}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center">
               {/* Image */}
@@ -547,7 +681,7 @@ export default function Home() {
 
 
         {/* ─── REVIEWS ─── */}
-        <section id="bewertungen" className="py-20 sm:py-28 bg-background relative" style={{ zIndex: 2 }}>
+        <section id="bewertungen" className="py-20 sm:py-28 relative" style={{ zIndex: 2 }}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -568,7 +702,7 @@ export default function Home() {
         </section>
 
         {/* ─── CTA ─── */}
-        <section className="py-20 sm:py-28 relative overflow-hidden" style={{ background: "hsl(220 18% 6%)", zIndex: 2 }}>
+        <section ref={ctaSectionRef} className="py-20 sm:py-28 relative overflow-hidden" style={{ zIndex: 2 }}>
           <div className="absolute inset-0 opacity-[0.035]">
             <div className="w-full h-full" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,193,7,0.4) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
           </div>
