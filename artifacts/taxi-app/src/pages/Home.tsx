@@ -772,7 +772,7 @@ export default function Home() {
 
         {/* ─── SERVICES ─── */}
         {/* Fixed video (at last frame) shines through as background */}
-        <section id="leistungen" ref={servicesRef} className="py-24 lg:py-32 relative overflow-hidden" style={{ zIndex: 2 }}>
+        <section id="leistungen" ref={servicesRef} className="py-24 lg:py-32 relative" style={{ zIndex: 2 }}>
           {/* Black ONLY behind the heading (top band), fading out so the next
               clip is revealed directly below it — not the whole section. */}
           <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "78vh", background: "linear-gradient(to bottom, hsl(220,20%,4%) 0%, hsl(220,20%,4%) 62%, transparent 100%)" }} />
