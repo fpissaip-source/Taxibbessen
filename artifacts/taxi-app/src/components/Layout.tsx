@@ -369,6 +369,7 @@ export function Layout({ children }: { children: ReactNode }) {
 
       {/* Footer */}
       <footer className="bg-background border-t border-white/5 py-16 relative" style={{ zIndex: 2 }}>
+        <div className="absolute -top-24 left-0 right-0 h-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 100%)", zIndex: 1 }} />
         <div className="container mx-auto px-4 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="md:col-span-2">
