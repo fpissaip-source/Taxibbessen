@@ -212,7 +212,7 @@ export default function Home() {
   const sharpOverlayRef = useRef<HTMLImageElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
   const ctaHeadingRef = useRef<HTMLHeadingElement>(null);
-  const ctaInView = useInView(ctaHeadingRef, { amount: 0.6, margin: "0px 0px -28% 0px" });
+  const ctaInView = useInView(ctaHeadingRef, { amount: 0.3, margin: "0px 0px 5% 0px" });
 
   usePageMeta({
     title: "Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060",
@@ -588,7 +588,7 @@ export default function Home() {
                   className="inline-block text-primary"
                   initial={{ y: "130%", scale: 0.9 }}
                   animate={ctaInView ? { y: "0%", scale: 1 } : { y: "130%", scale: 0.9 }}
-                  transition={{ type: "spring", stiffness: 170, damping: 12, delay: 0.45 }}
+                  transition={{ type: "spring", stiffness: 170, damping: 12, delay: 0.1 }}
                 >
                   An!
                 </motion.span>
