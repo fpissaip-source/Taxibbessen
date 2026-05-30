@@ -212,7 +212,7 @@ export default function Home() {
   const sharpOverlayRef = useRef<HTMLImageElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
   const ctaHeadingRef = useRef<HTMLHeadingElement>(null);
-  const ctaInView = useInView(ctaHeadingRef, { once: true, amount: 0.3 });
+  const ctaInView = useInView(ctaHeadingRef, { amount: 0.5, margin: "0px 0px -10% 0px" });
 
   usePageMeta({
     title: "Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060",
@@ -600,9 +600,9 @@ export default function Home() {
               <span className="block overflow-hidden pb-[0.12em]">
                 <motion.span
                   className="inline-block text-primary"
-                  initial={{ y: "115%", opacity: 0 }}
-                  animate={ctaInView ? { y: "0%", opacity: 1 } : { y: "115%", opacity: 0 }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                  initial={{ y: "120%" }}
+                  animate={ctaInView ? { y: "0%" } : { y: "120%" }}
+                  transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
                 >
                   An!
                 </motion.span>
