@@ -217,9 +217,8 @@ export default function Home() {
     description: "Ihr zuverlässiger Taxiservice in Essen seit 1992. Flughafentransfer Düsseldorf, Krankenfahrten, Großraumtaxi für 7 Personen. Jetzt buchen: 0201 707060.",
   });
 
-  // Auto-play image sequence — loops continuously like a video
+  // Image-sequence scrubber — bulletproof on iOS Safari, no <video> black-frame issues
   const FRAME_COUNT = 77;
-  const FPS = 24;
   const framePath = (n: number) =>
     `${import.meta.env.BASE_URL}hero-frames/frame_${String(n).padStart(3, "0")}.jpg`;
 
@@ -237,32 +236,50 @@ export default function Home() {
       frames.push(f);
     }
 
-    let currentIdx = 0;
-    let lastTime = 0;
+    let targetProgress = 0;
+    let currentProgress = 0;
+    let lastFrame = -1;
     let rafId: number;
-    const interval = 1000 / FPS;
+    let started = false;
 
-    // Fade out sharp overlay after first few frames
-    if (sharpOverlayRef.current) {
-      sharpOverlayRef.current.style.transition = "opacity 1.2s ease";
-      setTimeout(() => {
-        if (sharpOverlayRef.current) sharpOverlayRef.current.style.opacity = "0";
-      }, 600);
-    }
+    const getProgress = () => {
+      const servicesEl = servicesRef.current;
+      const servicesTop = servicesEl
+        ? servicesEl.getBoundingClientRect().top + window.scrollY
+        : window.innerHeight * 1.5;
+      return Math.min(Math.max(window.scrollY / Math.max(servicesTop, 1), 0), 1);
+    };
 
-    const rafLoop = (timestamp: number) => {
-      if (timestamp - lastTime >= interval) {
-        const f = frames[currentIdx];
+    const rafLoop = () => {
+      currentProgress += (targetProgress - currentProgress) * 0.12;
+      const idx = Math.min(
+        FRAME_COUNT - 1,
+        Math.max(0, Math.round(currentProgress * (FRAME_COUNT - 1))),
+      );
+      if (idx !== lastFrame) {
+        const f = frames[idx];
         if (f.complete && f.naturalWidth > 0) {
           img.src = f.src;
+          lastFrame = idx;
         }
-        currentIdx = (currentIdx + 1) % FRAME_COUNT;
-        lastTime = timestamp;
+      }
+      if (sharpOverlayRef.current) {
+        const sharpOpacity = Math.max(0, 1 - currentProgress * 25);
+        sharpOverlayRef.current.style.opacity = String(sharpOpacity);
       }
       rafId = requestAnimationFrame(rafLoop);
     };
 
+    const onScroll = () => {
+      targetProgress = getProgress();
+    };
+
     const startLoop = () => {
+      if (started) return;
+      started = true;
+      targetProgress = getProgress();
+      currentProgress = targetProgress;
+      window.addEventListener("scroll", onScroll, { passive: true });
       rafId = requestAnimationFrame(rafLoop);
     };
 
@@ -271,10 +288,12 @@ export default function Home() {
     );
 
     Promise.all(priorityDecodes).then(startLoop);
+
     const fallback = setTimeout(startLoop, 800);
 
     return () => {
       clearTimeout(fallback);
+      window.removeEventListener("scroll", onScroll);
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
@@ -422,9 +441,9 @@ export default function Home() {
             {/* ── 3 Badge-Logos am Ende der Services-Section ── */}
             <div className="mt-16 pt-10 border-t border-white/[0.07] grid grid-cols-3 gap-6">
               {[
-                { src: "icons/247.png",        label: "24 Std., 7 Tage\ndie Woche",        delay: 0 },
-                { src: "icons/grossraum7.png", label: "Großraum-Taxi's\nfür 7 Personen",   delay: 0.2 },
-                { src: "icons/bundesweit.png", label: "Essen, Bundesweit\n& Ausland",       delay: 0.4 },
+                { src: "icons/247.jpeg",        label: "24 Std., 7 Tage\ndie Woche",        delay: 0 },
+                { src: "icons/grossraum7.jpeg", label: "Großraum-Taxi's\nfür 7 Personen",   delay: 0.2 },
+                { src: "icons/bundesweit.jpeg", label: "Essen, Bundesweit\n& Ausland",       delay: 0.4 },
               ].map(({ src, label, delay }) => (
                 <motion.div
                   key={src}
@@ -536,11 +555,44 @@ export default function Home() {
           <div className="absolute inset-0 opacity-[0.035]">
             <div className="w-full h-full" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,193,7,0.4) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
           </div>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 className="text-4xl sm:text-5xl font-display font-black uppercase tracking-tighter mb-4">
-              {t("cta_title")}
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            {/* Word-by-word reveal heading */}
+            <h2 className="font-display font-black uppercase tracking-tighter mb-6 leading-[1.05]"
+              style={{ fontSize: "clamp(2.4rem, 8vw, 5.5rem)" }}>
+              {[
+                { words: ["Fragen", "Sie", "Jetzt"], yellow: false },
+                { words: ["Ihre", "Nächste", "Fahrt"], yellow: false },
+                { words: ["An!"], yellow: true },
+              ].map((line, li) => (
+                <div key={li} className="flex flex-wrap gap-x-[0.25em]">
+                  {line.words.map((word, wi) => (
+                    <motion.span
+                      key={word}
+                      className={`inline-block overflow-hidden`}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true, margin: "-80px" }}
+                      transition={{ duration: 0.01, delay: li * 0.18 + wi * 0.11 }}
+                    >
+                      <motion.span
+                        className={`inline-block ${line.yellow ? "text-primary" : "text-white"}`}
+                        initial={{ y: "110%", opacity: 0, filter: "blur(8px)" }}
+                        whileInView={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
+                        viewport={{ once: true, margin: "-80px" }}
+                        transition={{
+                          duration: 0.65,
+                          delay: li * 0.18 + wi * 0.11,
+                          ease: [0.16, 1, 0.3, 1],
+                        }}
+                      >
+                        {word}
+                      </motion.span>
+                    </motion.span>
+                  ))}
+                </div>
+              ))}
             </h2>
-            <p className="text-base sm:text-lg mb-10 max-w-xl mx-auto text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg mb-10 max-w-xl text-muted-foreground leading-relaxed">
               {t("cta_sub")}
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
