@@ -577,8 +577,10 @@ export default function Home() {
       const appear = storyTop + vh * 0.25;
       const finish = Math.max(faqTop + vh * 0.8, appear + vh);
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
-      // Reaches full opacity quickly (within the photo area), no lerp lag.
-      const opacity = clamp((window.scrollY - appear) / (vh * 0.25), 0, 1);
+      // Fade in quickly, hold at 1, then fade out smoothly from finish onward.
+      const fadeIn = clamp((window.scrollY - appear) / (vh * 0.25), 0, 1);
+      const fadeOut = clamp(1 - (window.scrollY - finish) / (vh * 0.5), 0, 1);
+      const opacity = Math.min(fadeIn, fadeOut);
       return { progress, opacity };
     };
 
