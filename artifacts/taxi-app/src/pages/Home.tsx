@@ -375,17 +375,16 @@ export default function Home() {
       const vh = window.innerHeight;
       const servicesTop = servicesEl ? servicesEl.getBoundingClientRect().top + window.scrollY : 0;
       const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : servicesTop + vh * 3;
-      // The hero video ends (crossfades out) inside the dark seam just below the
-      // "Unsere Leistungen" heading; the story clip is pulled up to play as the
-      // background behind the service cards.
-      const appear = servicesTop + vh * 0.45;
-      // Reaches its last frame just ABOVE the story section's taxi-sign photo,
-      // then hands off to the last clip — kept short so it does not drag.
+      // A black band sits ONLY behind the heading and hides this clip there.
+      // Fade the layer opaque quickly so the hero (heroLayer = 1 - this) is gone
+      // and the story clip — not the silver taxi — shows behind the cards.
+      const opacity = clamp((window.scrollY - servicesTop) / (vh * 0.35), 0, 1);
+      // Start scrubbing once the heading's black band has scrolled up off the
+      // top (the cards are on screen and enough of the frame is visible).
+      const appear = servicesTop + vh * 0.4;
+      // Reaches its last frame just ABOVE the story section's taxi-sign photo.
       const finish = storyTop;
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
-      // Fade in fast so the hero (heroLayer opacity = 1 - this) is gone — the
-      // silver taxi vanishes — right below the seam.
-      const opacity = clamp((window.scrollY - appear) / (vh * 0.28), 0, 1);
       return { progress, opacity };
     };
 
@@ -491,15 +490,15 @@ export default function Home() {
       const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : 0;
       const faqRect = faqEl ? faqEl.getBoundingClientRect() : null;
       const faqTop = faqRect ? faqRect.top + window.scrollY : storyTop + vh * 4;
-      // The last clip fades in BELOW the story section's taxi-sign photo and is
-      // the background from there on (the story clip is no longer visible).
-      const appear = storyTop + vh * 0.7;
-      // Reaches its last frame just ABOVE the FAQ section, then holds it behind
-      // the glassy FAQ panel.
+      // The last clip takes over right BELOW the story section's taxi-sign photo.
+      // It fades in WHILE the (opaque) photo still covers the background, so the
+      // story clip is fully replaced — directly under the photo only this clip
+      // is seen, never the previous one.
+      const appear = storyTop + vh * 0.4;
       const finish = Math.max(faqTop - vh * 0.1, appear + vh);
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
-      // Gentle, soft fade-in over ~0.6vh.
-      const opacity = clamp((window.scrollY - appear) / (vh * 0.6), 0, 1);
+      // Quick fade so it is fully opaque before the bottom of the photo.
+      const opacity = clamp((window.scrollY - appear) / (vh * 0.3), 0, 1);
       return { progress, opacity };
     };
 
@@ -716,7 +715,9 @@ export default function Home() {
         {/* ─── SERVICES ─── */}
         {/* Fixed video (at last frame) shines through as background */}
         <section id="leistungen" ref={servicesRef} className="py-24 lg:py-32 relative overflow-hidden" style={{ zIndex: 2 }}>
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, hsl(220,20%,4%) 0%, rgba(8,10,16,0.45) 15%, rgba(8,10,16,0.50) 80%, rgba(8,10,16,0.62) 100%)" }} />
+          {/* Black ONLY behind the heading (top band), fading out so the next
+              clip is revealed directly below it — not the whole section. */}
+          <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "55vh", background: "linear-gradient(to bottom, hsl(220,20%,4%) 0%, hsl(220,20%,4%) 72%, transparent 100%)" }} />
           <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
             <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -733,14 +734,6 @@ export default function Home() {
                 <div className="w-14 h-0.5 bg-white/10" />
               </div>
             </div>
-
-            {/* Dark seam below the heading — fades IN and back OUT symmetrically
-                (no hard edge at the bottom) so the hero video can end inside it
-                and the next clip emerges cleanly below. */}
-            <div
-              className="relative left-1/2 -translate-x-1/2 w-screen h-72 pointer-events-none -mt-16 -mb-16"
-              style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 38%, hsl(220,20%,4%) 60%, transparent 100%)" }}
-            />
 
             <ServicesRevealSection />
 
