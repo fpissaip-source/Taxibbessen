@@ -9,6 +9,7 @@ import { Phone, Shield, Sparkles, Navigation, ArrowRight, Mail, Globe, MessageCi
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useLanguage } from "@/i18n/useLanguage";
 import depotPoster from "@assets/IMG_1642_1780001838765.png";
+import brushStroke from "@assets/brush-stroke.png";
 
 const glassCard = "backdrop-blur-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.6)]";
 
@@ -923,27 +924,13 @@ export default function Home() {
               className="text-center mb-12"
             >
               <h2 className="relative inline-block text-3xl sm:text-4xl font-display font-black uppercase tracking-tighter mb-3">
-                <svg
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[118%] h-[165%] pointer-events-none"
-                  viewBox="0 0 600 140"
-                  preserveAspectRatio="none"
+                <img
+                  src={brushStroke}
+                  alt=""
                   aria-hidden="true"
-                  style={{ filter: "blur(0.4px)" }}
-                >
-                  <path
-                    d="M14,82 C70,52 150,46 300,49 C448,52 528,56 588,72 C566,98 478,104 300,101 C150,99 64,106 14,82 Z"
-                    fill="#FFC107"
-                    fillOpacity="0.26"
-                  />
-                  <path
-                    d="M40,66 C140,54 260,52 420,58 C500,61 548,64 576,70"
-                    fill="none"
-                    stroke="#FFC107"
-                    strokeOpacity="0.35"
-                    strokeWidth="6"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[135%] max-w-none h-[180%] pointer-events-none select-none"
+                  style={{ filter: "brightness(0) invert(1)", opacity: 0.5 }}
+                />
                 <span className="relative">{t("reviews_title")}</span>
               </h2>
               <p className="text-muted-foreground text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
