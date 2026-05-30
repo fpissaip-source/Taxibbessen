@@ -375,11 +375,8 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Spacer — schiebt Icons nach unten ohne absolute positioning */}
-            <div className="flex-1 min-h-8" />
-
-            {/* ── Service Icons ── */}
-            <div className="relative z-20 px-4 sm:px-6 lg:px-12 mt-4">
+            {/* ── Service Icons — absolut über Kennzeichen ── */}
+            <div className="absolute bottom-[24%] left-0 right-0 z-20 px-4 sm:px-6 lg:px-12">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
