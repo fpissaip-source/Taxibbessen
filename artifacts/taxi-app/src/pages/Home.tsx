@@ -688,8 +688,7 @@ export default function Home() {
           {/* Top+left overlays for readability */}
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.30) 28%, transparent 48%)" }} />
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to right, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.38) 38%, transparent 72%)" }} />
-          {/* Bottom fade — verbindet sich flüssig mit dem Services-Gradient darunter */}
-          <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ zIndex: 0, height: "22%", background: "linear-gradient(to bottom, transparent 0%, rgba(5,7,12,0.55) 100%)" }} />
+
 
           <section className="relative min-h-screen flex flex-col overflow-hidden pt-20 pb-8" style={{ zIndex: 1 }}>
 
