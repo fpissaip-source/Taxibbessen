@@ -684,10 +684,9 @@ export default function Home() {
         {/* ─── HERO ─── */}
         {/* -mt-20 pulls this section up behind the fixed nav */}
         <div className="relative -mt-20" style={{ zIndex: 2 }}>
-          {/* Top+left overlays for readability */}
-          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.30) 28%, transparent 48%)" }} />
-          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to right, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.38) 38%, transparent 72%)" }} />
-          {/* Bottom fade — Hero fließend in Services-Section */}
+          {/* Dark overlays for readability — exakt wie deployed */}
+          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.0) 100%)" }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 30%, rgba(0,0,0,0.45) 100%)" }} />
           <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 100%)" }} />
 
           <section className="relative min-h-screen flex flex-col overflow-hidden pt-20 pb-8" style={{ zIndex: 1 }}>
@@ -778,9 +777,8 @@ export default function Home() {
         {/* ─── SERVICES ─── */}
         {/* Fixed video (at last frame) shines through as background */}
         <section id="leistungen" ref={servicesRef} className="py-24 lg:py-32 relative" style={{ zIndex: 2 }}>
-          {/* Black ONLY behind the heading (top band), fading out so the next
-              clip is revealed directly below it — not the whole section. */}
-          <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "70vh", background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 16%, hsl(220,20%,4%) 55%, transparent 100%)" }} />
+          {/* Voll deckende Abdunklung — exakt wie deployed, dunkel→leicht→dunkel, kein schwebendes Band */}
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, hsl(220,20%,4%) 0%, rgba(8,10,16,0.68) 15%, rgba(8,10,16,0.72) 85%, hsl(220,20%,4%) 100%)" }} />
           <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
             <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">

@@ -35,6 +35,8 @@ _Describe the high-level user-facing capabilities of this app once they exist._
 ## User preferences
 
 - Be token/cost-efficient: think before coding, make surgical changes (touch only what the request needs, don't refactor unrelated code), avoid speculative features. When counting/auditing across many files, write a script instead of reading them all into context. (From the user's "Nexus Brain" init doc — applied the engineering principles; the external `/api/memories` API and `.claude/` file scheme don't exist in this project and aren't used here.)
+- KEINE ABRUPTEN KANTEN: ALL gradients/transitions must use long, gradual fades. Never `transparent → dark → transparent` with short spans (this creates a floating dark band / "Balken" the user repeatedly rejected). For section darkening, cover the full area with `dark → lighter → dark` (full opacity at both ends), like the deployed services-section overlay.
+- Source of truth for the deployed taxibbessen.de design is the GitHub repo `fpissaip-source/TaxiBB` on the `master` branch — NOT the Replit-local git history (which diverged). When the user says "the deployed version looks different", pull the exact code from that repo's `master`.
 
 ## Gotchas
 
