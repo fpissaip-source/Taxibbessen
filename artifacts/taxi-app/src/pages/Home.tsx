@@ -686,7 +686,7 @@ export default function Home() {
         <div className="relative -mt-20" style={{ zIndex: 2 }}>
           {/* Dark overlays for readability */}
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.0) 100%)" }} />
-          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 30%, rgba(0,0,0,0.45) 100%)" }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 30%)" }} />
 
           <section className="relative min-h-screen flex flex-col overflow-hidden pt-20 pb-8" style={{ zIndex: 1 }}>
 
