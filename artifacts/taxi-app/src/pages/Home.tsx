@@ -441,9 +441,9 @@ export default function Home() {
             {/* ── 3 Badge-Logos am Ende der Services-Section ── */}
             <div className="mt-16 pt-10 border-t border-white/[0.07] grid grid-cols-3 gap-6">
               {[
-                { src: "icons/247.jpeg",        label: "24 Std., 7 Tage\ndie Woche",        delay: 0 },
-                { src: "icons/grossraum7.jpeg", label: "Großraum-Taxi's\nfür 7 Personen",   delay: 0.2 },
-                { src: "icons/bundesweit.jpeg", label: "Essen, Bundesweit\n& Ausland",       delay: 0.4 },
+                { src: "icons/247.png",        label: "24 Std., 7 Tage\ndie Woche",        delay: 0 },
+                { src: "icons/grossraum7.png", label: "Großraum-Taxi's\nfür 7 Personen",   delay: 0.2 },
+                { src: "icons/bundesweit.png", label: "Essen, Bundesweit\n& Ausland",       delay: 0.4 },
               ].map(({ src, label, delay }) => (
                 <motion.div
                   key={src}
