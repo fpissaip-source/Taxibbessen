@@ -684,8 +684,9 @@ export default function Home() {
         {/* ─── HERO ─── */}
         {/* -mt-20 pulls this section up behind the fixed nav */}
         <div className="relative -mt-20" style={{ zIndex: 2 }}>
-          {/* Minimal top overlay for logo/text contrast only — no bottom darkening */}
-          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 22%)" }} />
+          {/* Top+left overlays for readability — no bottom darkening */}
+          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.30) 28%, transparent 48%)" }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to right, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.38) 38%, transparent 72%)" }} />
 
           <section className="relative min-h-screen flex flex-col overflow-hidden pt-20 pb-8" style={{ zIndex: 1 }}>
 
