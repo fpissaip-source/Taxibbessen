@@ -136,7 +136,7 @@ function FAQSection() {
     <section
       id="faq"
       className="py-20 sm:py-28 relative"
-      style={{ background: "hsl(220 18% 5%)", zIndex: 2 }}
+      style={{ zIndex: 2 }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <motion.div
@@ -158,7 +158,7 @@ function FAQSection() {
           </h2>
         </motion.div>
 
-        <div className="max-w-2xl mx-auto divide-y divide-white/[0.07]">
+        <div className="max-w-2xl mx-auto space-y-3">
           {FAQ_ITEMS.map((item, idx) => (
             <motion.div
               key={idx}
@@ -166,18 +166,23 @@ function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, margin: "-40px" }}
               transition={{ duration: 0.4, delay: idx * 0.04 }}
+              className={`rounded-2xl border backdrop-blur-md overflow-hidden transition-colors shadow-[0_8px_32px_rgba(0,0,0,0.28)] ${
+                openIdx === idx
+                  ? "bg-white/[0.10] border-white/20"
+                  : "bg-white/[0.05] border-white/10 hover:bg-white/[0.08] hover:border-white/[0.18]"
+              }`}
             >
               <button
                 type="button"
                 onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-                className="w-full flex items-start justify-between gap-4 py-5 text-left group"
+                className="w-full flex items-start justify-between gap-4 px-5 sm:px-6 py-4 sm:py-5 text-left group"
                 aria-expanded={openIdx === idx}
               >
-                <span className="text-sm sm:text-base font-bold text-white/80 group-hover:text-white transition-colors leading-snug pr-2">
+                <span className="text-sm sm:text-base font-bold text-white/85 group-hover:text-white transition-colors leading-snug pr-2">
                   {item.q}
                 </span>
                 <ChevronDown
-                  className={`w-5 h-5 shrink-0 text-primary/70 transition-transform duration-300 mt-0.5 ${
+                  className={`w-5 h-5 shrink-0 text-primary/80 transition-transform duration-300 mt-0.5 ${
                     openIdx === idx ? "rotate-180" : ""
                   }`}
                 />
@@ -192,7 +197,7 @@ function FAQSection() {
                     transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className="overflow-hidden"
                   >
-                    <p className="text-sm text-white/50 leading-relaxed pb-5 pr-10">
+                    <p className="text-sm text-white/60 leading-relaxed px-5 sm:px-6 pb-5">
                       {item.a}
                     </p>
                   </motion.div>
@@ -219,6 +224,8 @@ export default function Home() {
   const storySectionRef = useRef<HTMLElement>(null);
   const reviewsSectionRef = useRef<HTMLElement>(null);
   const ctaSectionRef = useRef<HTMLElement>(null);
+  const ctaImgRef = useRef<HTMLImageElement>(null);
+  const ctaLayerRef = useRef<HTMLDivElement>(null);
 
   usePageMeta({
     title: "Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060",
@@ -435,6 +442,117 @@ export default function Home() {
     };
   }, []);
 
+  // ─── Third image-sequence — the "second video". Softly crossfades IN over
+  // the story clip around the reviews section and scrubs through to the CTA,
+  // where it holds its last frame. ───
+  const CTA_FRAME_COUNT = 73;
+  const ctaFramePath = (n: number) =>
+    `${import.meta.env.BASE_URL}cta-frames/frame_${String(n).padStart(3, "0")}.jpg`;
+
+  useEffect(() => {
+    const img = ctaImgRef.current;
+    const layer = ctaLayerRef.current;
+    if (!img || !layer) return;
+
+    const PRIORITY_COUNT = 16;
+    const frames: HTMLImageElement[] = [];
+    for (let i = 1; i <= CTA_FRAME_COUNT; i++) {
+      const f = new Image();
+      if (i <= PRIORITY_COUNT) (f as HTMLImageElement & { fetchpriority: string }).fetchpriority = "high";
+      f.src = ctaFramePath(i);
+      frames.push(f);
+    }
+
+    const clamp = (v: number, a: number, b: number) => Math.min(Math.max(v, a), b);
+
+    let targetProgress = 0;
+    let currentProgress = 0;
+    let targetOpacity = 0;
+    let currentOpacity = 0;
+    let lastFrame = -1;
+    let rafId: number;
+    let started = false;
+
+    const isReady = (f: HTMLImageElement) => f.complete && f.naturalWidth > 0;
+    const nearestReady = (target: number) => {
+      if (isReady(frames[target])) return target;
+      for (let d = 1; d < CTA_FRAME_COUNT; d++) {
+        const lo = target - d;
+        const hi = target + d;
+        if (lo >= 0 && isReady(frames[lo])) return lo;
+        if (hi < CTA_FRAME_COUNT && isReady(frames[hi])) return hi;
+      }
+      return -1;
+    };
+
+    const measure = () => {
+      const r = reviewsSectionRef.current;
+      const faqEl = document.getElementById("faq");
+      const vh = window.innerHeight;
+      const reviewsTop = r ? r.getBoundingClientRect().top + window.scrollY : 0;
+      const faqTop = faqEl ? faqEl.getBoundingClientRect().top + window.scrollY : reviewsTop + vh * 3;
+      // Soft handoff: begins fading in just before the story clip reaches its
+      // last frame (reviewsTop), so the two clips crossfade harmoniously.
+      const appear = reviewsTop - vh * 0.6;
+      // Reaches its last frame at the FAQ section, then holds.
+      const finish = faqTop;
+      const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
+      // Gentle, soft fade-in over ~0.7vh.
+      const opacity = clamp((window.scrollY - appear) / (vh * 0.7), 0, 1);
+      return { progress, opacity };
+    };
+
+    const update = () => {
+      const m = measure();
+      targetProgress = m.progress;
+      targetOpacity = m.opacity;
+    };
+
+    const rafLoop = () => {
+      currentProgress += (targetProgress - currentProgress) * 0.12;
+      currentOpacity += (targetOpacity - currentOpacity) * 0.12;
+      const idx = Math.min(
+        CTA_FRAME_COUNT - 1,
+        Math.max(0, Math.round(currentProgress * (CTA_FRAME_COUNT - 1))),
+      );
+      if (idx !== lastFrame) {
+        const ready = nearestReady(idx);
+        if (ready >= 0) {
+          img.src = frames[ready].src;
+          lastFrame = idx;
+        }
+      }
+      layer.style.opacity = String(currentOpacity);
+      rafId = requestAnimationFrame(rafLoop);
+    };
+
+    const onScroll = () => update();
+    const onResize = () => update();
+
+    const startLoop = () => {
+      if (started) return;
+      started = true;
+      update();
+      currentProgress = targetProgress;
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onResize);
+      rafId = requestAnimationFrame(rafLoop);
+    };
+
+    const priorityDecodes = frames.slice(0, PRIORITY_COUNT).map((f) =>
+      f.decode ? f.decode().catch(() => {}) : Promise.resolve()
+    );
+    Promise.all(priorityDecodes).then(startLoop);
+    const fallback = setTimeout(startLoop, 800);
+
+    return () => {
+      clearTimeout(fallback);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
 
   return (
     <Layout>
@@ -469,6 +587,27 @@ export default function Home() {
           <img
             ref={storyImgRef}
             src={storyFramePath(1)}
+            alt=""
+            aria-hidden
+            className="w-full h-full object-cover"
+            style={{ objectPosition: "center", opacity: 0.9 }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.62) 0%, rgba(8,10,16,0.42) 45%, rgba(8,10,16,0.72) 100%)" }}
+          />
+        </div>
+
+        {/* ─── SECOND VIDEO BACKGROUND — softly crossfades in over the story ─── */}
+        {/* ─── clip around the reviews section, holds last frame at the CTA  ─── */}
+        <div
+          ref={ctaLayerRef}
+          className="fixed inset-0 overflow-hidden pointer-events-none"
+          style={{ zIndex: 1, opacity: 0 }}
+        >
+          <img
+            ref={ctaImgRef}
+            src={ctaFramePath(1)}
             alt=""
             aria-hidden
             className="w-full h-full object-cover"
