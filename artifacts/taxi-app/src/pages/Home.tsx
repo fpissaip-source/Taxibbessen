@@ -105,7 +105,7 @@ function ServicesRevealSection() {
           >
             {/* Glass tile — visible only when this item is nearest viewport center */}
             <div
-              className="absolute inset-x-[-1rem] sm:inset-x-[-1.5rem] lg:inset-x-[-3rem] inset-y-0 rounded-2xl border border-white/[0.18] bg-white/[0.09] backdrop-blur-md shadow-[0_8px_48px_rgba(0,0,0,0.45)] pointer-events-none"
+              className="absolute inset-x-[-1rem] sm:inset-x-[-1.5rem] lg:inset-x-[-3rem] inset-y-0 rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm shadow-[0_8px_48px_rgba(0,0,0,0.25)] pointer-events-none"
               style={{
                 opacity: activeIdx === i ? 1 : 0,
                 transition: activeIdx === i
@@ -834,7 +834,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: false, margin: "-40px" }}
                   transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center gap-3"
+                  className="flex flex-col items-center text-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm px-3 py-4"
                 >
                   <img
                     src={`${import.meta.env.BASE_URL}${src}`}
