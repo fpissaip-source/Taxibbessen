@@ -834,7 +834,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: false, margin: "-40px" }}
                   transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-                  className="flex flex-col items-center text-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm px-3 py-4"
+                  className="flex flex-col items-center text-center gap-3"
                 >
                   <img
                     src={`${import.meta.env.BASE_URL}${src}`}
