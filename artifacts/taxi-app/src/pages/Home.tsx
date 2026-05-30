@@ -456,7 +456,7 @@ export default function Home() {
       // Hero fades out via its own decoupled opacity — story can now safely
       // rise AFTER servicesTop (heading area covered by the black band) without
       // any silver-taxi bleed risk.
-      const opacity = clamp((window.scrollY - servicesTop) / (vh * 0.35), 0, 1);
+      const opacity = clamp((window.scrollY - (servicesTop + vh * 0.55)) / (vh * 0.35), 0, 1);
       // Start scrubbing once the heading's black band has scrolled up off the
       // top (the cards are on screen and enough of the frame is visible).
       const appear = servicesTop + vh * 0.4;
