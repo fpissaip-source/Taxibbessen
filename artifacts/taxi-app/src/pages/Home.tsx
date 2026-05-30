@@ -491,9 +491,11 @@ export default function Home() {
       const vh = window.innerHeight;
       const reviewsTop = r ? r.getBoundingClientRect().top + window.scrollY : 0;
       const faqTop = faqEl ? faqEl.getBoundingClientRect().top + window.scrollY : reviewsTop + vh * 3;
-      // Soft handoff: begins fading in just before the story clip reaches its
-      // last frame (reviewsTop), so the two clips crossfade harmoniously.
-      const appear = reviewsTop - vh * 0.6;
+      // Soft handoff: only begin fading in AFTER the story clip has reached and
+      // shown its last frame (its sweep finishes at reviewsTop + lerp settle),
+      // so the story clip visibly plays to the very end before this clip
+      // crossfades over it.
+      const appear = reviewsTop + vh * 0.2;
       // Reaches its last frame at the FAQ section, then holds.
       const finish = faqTop;
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
