@@ -183,7 +183,14 @@ function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.5 }}
-          className="mb-12 text-center"
+          className="mb-12 text-center max-w-2xl mx-auto rounded-3xl px-6 py-8 sm:px-10 sm:py-10"
+          style={{
+            background: "rgba(10,12,18,0.42)",
+            backdropFilter: "blur(20px) saturate(140%)",
+            WebkitBackdropFilter: "blur(20px) saturate(140%)",
+            border: "1px solid rgba(255,255,255,0.10)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
+          }}
         >
           <span className="text-[13px] font-black text-primary uppercase tracking-[0.45em] mb-4 block">
             Häufige Fragen & Unsere Antworten
@@ -871,6 +878,14 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.8 }}
+                className="rounded-3xl p-8 sm:p-10"
+                style={{
+                  background: "rgba(10,12,18,0.42)",
+                  backdropFilter: "blur(20px) saturate(140%)",
+                  WebkitBackdropFilter: "blur(20px) saturate(140%)",
+                  border: "1px solid rgba(255,255,255,0.10)",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
+                }}
               >
                 <span className="text-[11px] font-black text-primary uppercase tracking-[0.45em] mb-6 block">
                   {t("story_pre")}
@@ -919,6 +934,16 @@ export default function Home() {
             <div className="w-full h-full" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,193,7,0.4) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div
+              className="rounded-3xl p-8 sm:p-10 mb-10"
+              style={{
+                background: "rgba(10,12,18,0.42)",
+                backdropFilter: "blur(20px) saturate(140%)",
+                WebkitBackdropFilter: "blur(20px) saturate(140%)",
+                border: "1px solid rgba(255,255,255,0.10)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
+              }}
+            >
             {/* Word-by-word reveal heading */}
             <h2
               ref={ctaHeadingRef}
@@ -940,9 +965,10 @@ export default function Home() {
                 </motion.span>
               </span>
             </h2>
-            <p className="text-base sm:text-lg mb-10 max-w-xl text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg max-w-xl text-white/70 leading-relaxed">
               {t("cta_sub")}
             </p>
+            </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
               {/* E-Mail */}
               <a
