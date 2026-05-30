@@ -274,7 +274,21 @@ export default function Home() {
 
   useEffect(() => {
     const img = imgRef.current;
+    const heroLayer = heroLayerRef.current;
     if (!img) return;
+
+    let heroTargetOpacity = 1;
+
+    // Hero fades out on its OWN scroll progress — fully decoupled from the
+    // story effect so there is zero coupling / silver-bleed risk.
+    const getHeroOpacity = () => {
+      const servicesEl = servicesRef.current;
+      const servicesTop = servicesEl
+        ? servicesEl.getBoundingClientRect().top + window.scrollY
+        : window.innerHeight * 1.5;
+      const vh = window.innerHeight;
+      return Math.min(Math.max(1 - (window.scrollY - (servicesTop - vh * 0.5)) / (vh * 0.4), 0), 1);
+    };
 
     const PRIORITY_COUNT = 20;
     const frames: HTMLImageElement[] = [];
@@ -332,17 +346,20 @@ export default function Home() {
         const sharpOpacity = Math.max(0, 1 - currentProgress * 25);
         sharpOverlayRef.current.style.opacity = String(sharpOpacity);
       }
+      if (heroLayer) heroLayer.style.opacity = String(heroTargetOpacity);
       rafId = requestAnimationFrame(rafLoop);
     };
 
     const onScroll = () => {
       targetProgress = getProgress();
+      heroTargetOpacity = getHeroOpacity();
     };
 
     const startLoop = () => {
       if (started) return;
       started = true;
       targetProgress = getProgress();
+      heroTargetOpacity = getHeroOpacity();
       currentProgress = targetProgress;
       window.addEventListener("scroll", onScroll, { passive: true });
       rafId = requestAnimationFrame(rafLoop);
@@ -372,7 +389,6 @@ export default function Home() {
   useEffect(() => {
     const img = storyImgRef.current;
     const layer = storyLayerRef.current;
-    const heroLayer = heroLayerRef.current;
     if (!img || !layer) return;
 
     const PRIORITY_COUNT = 16;
@@ -412,12 +428,10 @@ export default function Home() {
       const vh = window.innerHeight;
       const servicesTop = servicesEl ? servicesEl.getBoundingClientRect().top + window.scrollY : 0;
       const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : servicesTop + vh * 3;
-      // The hero (silver taxi) layer opacity = 1 - this, so this MUST already be
-      // 1 by the time the heading reaches the top of the screen — otherwise the
-      // silver taxi bleeds through behind the service cards. Complete the fade
-      // JUST BEFORE servicesTop, hidden inside the hero's dark bottom, so once
-      // we are in the services section the story clip (not the hero) is shown.
-      const opacity = clamp((window.scrollY - (servicesTop - vh * 0.22)) / (vh * 0.18), 0, 1);
+      // Hero fades out via its own decoupled opacity — story can now safely
+      // rise AFTER servicesTop (heading area covered by the black band) without
+      // any silver-taxi bleed risk.
+      const opacity = clamp((window.scrollY - servicesTop) / (vh * 0.35), 0, 1);
       // Start scrubbing once the heading's black band has scrolled up off the
       // top (the cards are on screen and enough of the frame is visible).
       const appear = servicesTop + vh * 0.4;
@@ -451,7 +465,6 @@ export default function Home() {
         }
       }
       layer.style.opacity = String(currentOpacity);
-      if (heroLayer) heroLayer.style.opacity = String(1 - currentOpacity);
       rafId = requestAnimationFrame(rafLoop);
     };
 
