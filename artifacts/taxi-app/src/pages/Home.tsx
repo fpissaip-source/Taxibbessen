@@ -750,7 +750,7 @@ export default function Home() {
                   { src: "kurierdienst.png",      label: t("hero_service5_title") },
                   { src: "hauszuhaus.png",        label: t("hero_service6_title") },
                 ].map(({ src, label }) => (
-                  <div key={src} className="flex flex-col items-center text-center gap-1.5 group px-1">
+                  <div key={src} className="flex flex-col items-center text-center gap-1.5 group px-2 py-3 lg:py-4 rounded-2xl border border-white/[0.12] bg-white/[0.06] backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.4)] transition-colors duration-300 hover:border-primary/30 hover:bg-white/[0.09]">
                     <div className="h-14 lg:h-20 flex items-center justify-center">
                       <img
                         src={`${import.meta.env.BASE_URL}icons/${src}`}
