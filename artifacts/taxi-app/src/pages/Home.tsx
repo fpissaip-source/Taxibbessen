@@ -250,6 +250,21 @@ export default function Home() {
       return Math.min(Math.max(window.scrollY / Math.max(servicesTop, 1), 0), 1);
     };
 
+    const isReady = (f: HTMLImageElement) => f.complete && f.naturalWidth > 0;
+
+    // Find the closest already-loaded frame to the target index so we never
+    // "skip" to start/end when intermediate frames haven't downloaded yet.
+    const nearestReady = (target: number) => {
+      if (isReady(frames[target])) return target;
+      for (let d = 1; d < FRAME_COUNT; d++) {
+        const lo = target - d;
+        const hi = target + d;
+        if (lo >= 0 && isReady(frames[lo])) return lo;
+        if (hi < FRAME_COUNT && isReady(frames[hi])) return hi;
+      }
+      return -1;
+    };
+
     const rafLoop = () => {
       currentProgress += (targetProgress - currentProgress) * 0.12;
       const idx = Math.min(
@@ -257,9 +272,9 @@ export default function Home() {
         Math.max(0, Math.round(currentProgress * (FRAME_COUNT - 1))),
       );
       if (idx !== lastFrame) {
-        const f = frames[idx];
-        if (f.complete && f.naturalWidth > 0) {
-          img.src = f.src;
+        const ready = nearestReady(idx);
+        if (ready >= 0) {
+          img.src = frames[ready].src;
           lastFrame = idx;
         }
       }
@@ -557,25 +572,34 @@ export default function Home() {
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Word-by-word reveal heading */}
-            <h2 className="font-display font-black uppercase tracking-tighter mb-6 leading-[1.05]"
-              style={{ fontSize: "clamp(2.4rem, 8vw, 5.5rem)" }}>
+            <motion.h2
+              className="font-display font-black uppercase tracking-tighter mb-6 leading-[1.05]"
+              style={{ fontSize: "clamp(2.4rem, 8vw, 5.5rem)" }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.09 } },
+              }}
+            >
               {[
                 { words: ["Fragen", "Sie", "Jetzt"], yellow: false },
                 { words: ["Ihre", "Nächste", "Fahrt"], yellow: false },
                 { words: ["An!"], yellow: true },
               ].map((line, li) => (
-                <span key={li} className="flex flex-wrap gap-x-[0.25em] overflow-hidden pb-[0.1em]">
-                  {line.words.map((word, wi) => (
+                <span key={li} className="flex flex-wrap gap-x-[0.25em] overflow-hidden pb-[0.12em]">
+                  {line.words.map((word) => (
                     <motion.span
                       key={word}
                       className={`inline-block ${line.yellow ? "text-primary" : "text-white"}`}
-                      initial={{ y: "110%", opacity: 0 }}
-                      whileInView={{ y: "0%", opacity: 1 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{
-                        duration: 0.6,
-                        delay: li * 0.12 + wi * 0.08,
-                        ease: [0.16, 1, 0.3, 1],
+                      variants={{
+                        hidden: { y: "110%", opacity: 0 },
+                        visible: {
+                          y: "0%",
+                          opacity: 1,
+                          transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+                        },
                       }}
                     >
                       {word}
@@ -583,7 +607,7 @@ export default function Home() {
                   ))}
                 </span>
               ))}
-            </h2>
+            </motion.h2>
             <p className="text-base sm:text-lg mb-10 max-w-xl text-muted-foreground leading-relaxed">
               {t("cta_sub")}
             </p>

@@ -1,0 +1,1 @@
+- [Scroll reveal & image-sequence hero pitfalls](scroll-reveal-and-image-sequence.md) — use one parent observer + staggerChildren for word reveals; nearest-loaded-frame fallback + small assets for scroll-scrubbed image sequences (mobile).
