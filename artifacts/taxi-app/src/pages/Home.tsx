@@ -994,13 +994,13 @@ export default function Home() {
               variants={ctaGlowContainer}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: false, amount: 0.5, margin: "-18% 0px 0px 0px" }}
+              viewport={{ once: false, amount: 0.5, margin: "-40% 0px 0px 0px" }}
             >
               {/* E-Mail */}
               <motion.a
                 variants={ctaGlowItem}
-                custom={{ glow: "0 0 26px rgba(255,193,7,0.5)", bgDim: "rgba(255,255,255,0.04)", bgLit: "rgba(255,255,255,0.12)" }}
-                whileHover={{ backgroundColor: "rgba(255,255,255,0.18)", scale: 1.03 }}
+                custom={{ glow: "0 0 26px rgba(255,193,7,0.5)", bgDim: "rgba(255,255,255,0.04)", bgLit: "rgba(255,255,255,0.22)" }}
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.28)", scale: 1.03 }}
                 href="mailto:taxibb@outlook.com"
                 className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border border-primary/30 hover:border-primary/60 transition-colors"
               >
@@ -1013,8 +1013,8 @@ export default function Home() {
               {/* Telefon */}
               <motion.a
                 variants={ctaGlowItem}
-                custom={{ glow: "0 0 26px rgba(255,193,7,0.5)", bgDim: "rgba(255,255,255,0.04)", bgLit: "rgba(255,255,255,0.12)" }}
-                whileHover={{ backgroundColor: "rgba(255,255,255,0.18)", scale: 1.03 }}
+                custom={{ glow: "0 0 26px rgba(255,193,7,0.5)", bgDim: "rgba(255,255,255,0.04)", bgLit: "rgba(255,255,255,0.22)" }}
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.28)", scale: 1.03 }}
                 href="tel:0201707060"
                 className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border border-primary/30 hover:border-primary/60 transition-colors"
               >
@@ -1027,8 +1027,8 @@ export default function Home() {
               {/* WhatsApp */}
               <motion.a
                 variants={ctaGlowItem}
-                custom={{ glow: "0 0 26px rgba(37,211,102,0.55)", bgDim: "rgba(37,211,102,0.06)", bgLit: "rgba(37,211,102,0.2)" }}
-                whileHover={{ backgroundColor: "rgba(37,211,102,0.28)", scale: 1.03 }}
+                custom={{ glow: "0 0 26px rgba(37,211,102,0.55)", bgDim: "rgba(37,211,102,0.06)", bgLit: "rgba(37,211,102,0.32)" }}
+                whileHover={{ backgroundColor: "rgba(37,211,102,0.4)", scale: 1.03 }}
                 href="https://wa.me/491711111535"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -1045,8 +1045,8 @@ export default function Home() {
               {/* Online */}
               <motion.button
                 variants={ctaGlowItem}
-                custom={{ glow: "0 0 26px rgba(255,193,7,0.55)", bgDim: "rgba(255,193,7,0.06)", bgLit: "rgba(255,193,7,0.2)" }}
-                whileHover={{ backgroundColor: "rgba(255,193,7,0.28)", scale: 1.03 }}
+                custom={{ glow: "0 0 26px rgba(255,193,7,0.55)", bgDim: "rgba(255,193,7,0.06)", bgLit: "rgba(255,193,7,0.32)" }}
+                whileHover={{ backgroundColor: "rgba(255,193,7,0.4)", scale: 1.03 }}
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border border-primary/40 hover:border-primary/70 transition-colors"
               >
