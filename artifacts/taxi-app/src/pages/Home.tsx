@@ -372,22 +372,20 @@ export default function Home() {
     const measure = () => {
       const servicesEl = servicesRef.current;
       const s = storySectionRef.current;
-      const r = reviewsSectionRef.current;
       const vh = window.innerHeight;
       const servicesTop = servicesEl ? servicesEl.getBoundingClientRect().top + window.scrollY : 0;
-      const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : 0;
-      const reviewsTop = r ? r.getBoundingClientRect().top + window.scrollY : storyTop + vh * 1.5;
-      // The hero video ends (crossfades out into the dark seam) just below the
-      // "Unsere Leistungen" heading. From here the story clip is pulled up to
-      // play as the background behind the service cards, on through to reviews.
-      const appear = servicesTop + vh * 0.55;
-      // Reach the last frame early (by the reviews section), well before the CTA,
-      // to leave room for the next clip.
-      const finish = reviewsTop;
+      const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : servicesTop + vh * 3;
+      // The hero video ends (crossfades out) inside the dark seam just below the
+      // "Unsere Leistungen" heading; the story clip is pulled up to play as the
+      // background behind the service cards.
+      const appear = servicesTop + vh * 0.45;
+      // Reaches its last frame just ABOVE the story section's taxi-sign photo,
+      // then hands off to the last clip — kept short so it does not drag.
+      const finish = storyTop;
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
-      // Fade in fast so playback is visible almost immediately; this also
-      // crossfades the hero background out (heroLayer opacity = 1 - this).
-      const opacity = clamp((window.scrollY - appear) / (vh * 0.5), 0, 1);
+      // Fade in fast so the hero (heroLayer opacity = 1 - this) is gone — the
+      // silver taxi vanishes — right below the seam.
+      const opacity = clamp((window.scrollY - appear) / (vh * 0.28), 0, 1);
       return { progress, opacity };
     };
 
@@ -487,24 +485,21 @@ export default function Home() {
     };
 
     const measure = () => {
-      const r = reviewsSectionRef.current;
+      const s = storySectionRef.current;
       const faqEl = document.getElementById("faq");
       const vh = window.innerHeight;
-      const reviewsTop = r ? r.getBoundingClientRect().top + window.scrollY : 0;
+      const storyTop = s ? s.getBoundingClientRect().top + window.scrollY : 0;
       const faqRect = faqEl ? faqEl.getBoundingClientRect() : null;
-      const faqTop = faqRect ? faqRect.top + window.scrollY : reviewsTop + vh * 3;
-      const faqBottom = faqRect ? faqTop + faqRect.height : faqTop + vh;
-      // Soft handoff: only begin fading in AFTER the story clip has reached and
-      // shown its last frame (its sweep finishes at reviewsTop + lerp settle),
-      // so the story clip visibly plays to the very end before this clip
-      // crossfades over it.
-      const appear = reviewsTop + vh * 0.2;
-      // Reaches its last frame once the FAQ section is fully in view (the bottom
-      // of the FAQ list at the bottom of the viewport), then holds.
-      const finish = Math.max(faqBottom - vh, appear + vh);
+      const faqTop = faqRect ? faqRect.top + window.scrollY : storyTop + vh * 4;
+      // The last clip fades in BELOW the story section's taxi-sign photo and is
+      // the background from there on (the story clip is no longer visible).
+      const appear = storyTop + vh * 0.7;
+      // Reaches its last frame just ABOVE the FAQ section, then holds it behind
+      // the glassy FAQ panel.
+      const finish = Math.max(faqTop - vh * 0.1, appear + vh);
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
-      // Gentle, soft fade-in over ~0.7vh.
-      const opacity = clamp((window.scrollY - appear) / (vh * 0.7), 0, 1);
+      // Gentle, soft fade-in over ~0.6vh.
+      const opacity = clamp((window.scrollY - appear) / (vh * 0.6), 0, 1);
       return { progress, opacity };
     };
 
@@ -739,11 +734,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Black gradient seam below the heading — mirrors the dark gradient
-                above it; the hero background video ends (fades out) right here. */}
+            {/* Dark seam below the heading — fades IN and back OUT symmetrically
+                (no hard edge at the bottom) so the hero video can end inside it
+                and the next clip emerges cleanly below. */}
             <div
-              className="relative left-1/2 -translate-x-1/2 w-screen h-48 pointer-events-none -mt-12 mb-2"
-              style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 100%)" }}
+              className="relative left-1/2 -translate-x-1/2 w-screen h-72 pointer-events-none -mt-16 -mb-16"
+              style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 38%, hsl(220,20%,4%) 60%, transparent 100%)" }}
             />
 
             <ServicesRevealSection />
