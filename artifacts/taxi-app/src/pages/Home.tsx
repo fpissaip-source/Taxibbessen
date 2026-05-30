@@ -564,32 +564,24 @@ export default function Home() {
                 { words: ["Ihre", "Nächste", "Fahrt"], yellow: false },
                 { words: ["An!"], yellow: true },
               ].map((line, li) => (
-                <div key={li} className="flex flex-wrap gap-x-[0.25em]">
+                <span key={li} className="flex flex-wrap gap-x-[0.25em] overflow-hidden pb-[0.1em]">
                   {line.words.map((word, wi) => (
                     <motion.span
                       key={word}
-                      className={`inline-block overflow-hidden`}
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true, margin: "-80px" }}
-                      transition={{ duration: 0.01, delay: li * 0.18 + wi * 0.11 }}
+                      className={`inline-block ${line.yellow ? "text-primary" : "text-white"}`}
+                      initial={{ y: "110%", opacity: 0 }}
+                      whileInView={{ y: "0%", opacity: 1 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: li * 0.12 + wi * 0.08,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
                     >
-                      <motion.span
-                        className={`inline-block ${line.yellow ? "text-primary" : "text-white"}`}
-                        initial={{ y: "110%", opacity: 0, filter: "blur(8px)" }}
-                        whileInView={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
-                        viewport={{ once: true, margin: "-80px" }}
-                        transition={{
-                          duration: 0.65,
-                          delay: li * 0.18 + wi * 0.11,
-                          ease: [0.16, 1, 0.3, 1],
-                        }}
-                      >
-                        {word}
-                      </motion.span>
+                      {word}
                     </motion.span>
                   ))}
-                </div>
+                </span>
               ))}
             </h2>
             <p className="text-base sm:text-lg mb-10 max-w-xl text-muted-foreground leading-relaxed">
