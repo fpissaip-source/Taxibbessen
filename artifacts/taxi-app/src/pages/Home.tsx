@@ -185,15 +185,15 @@ function FAQSection() {
           transition={{ duration: 0.5 }}
           className="mb-12 text-center"
         >
-          <span className="text-[11px] font-black text-primary uppercase tracking-[0.45em] mb-4 block">
-            Häufige Fragen
+          <span className="text-[13px] font-black text-primary uppercase tracking-[0.45em] mb-4 block">
+            Häufige Fragen & Unsere Antworten
           </span>
           <h2
             className="font-display font-black uppercase tracking-tighter leading-none"
             style={{ fontSize: "clamp(2rem,5vw,3.5rem)" }}
           >
             Ihre Fragen —<br />
-            <span className="text-white/25">unsere Antworten</span>
+            <span className="text-white/70">unsere Antworten</span>
           </h2>
         </motion.div>
 
