@@ -928,8 +928,8 @@ export default function Home() {
                   src={brushStroke}
                   alt=""
                   aria-hidden="true"
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[135%] max-w-none h-[180%] pointer-events-none select-none"
-                  style={{ filter: "brightness(0) invert(1)", opacity: 0.5 }}
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[165%] max-w-none h-[210%] pointer-events-none select-none"
+                  style={{ filter: "brightness(0) invert(1)", opacity: 0.7 }}
                 />
                 <span className="relative text-black">{t("reviews_title")}</span>
               </h2>
