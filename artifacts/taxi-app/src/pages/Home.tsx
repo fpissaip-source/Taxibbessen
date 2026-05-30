@@ -217,8 +217,9 @@ export default function Home() {
     description: "Ihr zuverlässiger Taxiservice in Essen seit 1992. Flughafentransfer Düsseldorf, Krankenfahrten, Großraumtaxi für 7 Personen. Jetzt buchen: 0201 707060.",
   });
 
-  // Image-sequence scrubber — bulletproof on iOS Safari, no <video> black-frame issues
+  // Auto-play image sequence — loops continuously like a video
   const FRAME_COUNT = 77;
+  const FPS = 24;
   const framePath = (n: number) =>
     `${import.meta.env.BASE_URL}hero-frames/frame_${String(n).padStart(3, "0")}.jpg`;
 
@@ -236,50 +237,32 @@ export default function Home() {
       frames.push(f);
     }
 
-    let targetProgress = 0;
-    let currentProgress = 0;
-    let lastFrame = -1;
+    let currentIdx = 0;
+    let lastTime = 0;
     let rafId: number;
-    let started = false;
+    const interval = 1000 / FPS;
 
-    const getProgress = () => {
-      const servicesEl = servicesRef.current;
-      const servicesTop = servicesEl
-        ? servicesEl.getBoundingClientRect().top + window.scrollY
-        : window.innerHeight * 1.5;
-      return Math.min(Math.max(window.scrollY / Math.max(servicesTop, 1), 0), 1);
-    };
+    // Fade out sharp overlay after first few frames
+    if (sharpOverlayRef.current) {
+      sharpOverlayRef.current.style.transition = "opacity 1.2s ease";
+      setTimeout(() => {
+        if (sharpOverlayRef.current) sharpOverlayRef.current.style.opacity = "0";
+      }, 600);
+    }
 
-    const rafLoop = () => {
-      currentProgress += (targetProgress - currentProgress) * 0.12;
-      const idx = Math.min(
-        FRAME_COUNT - 1,
-        Math.max(0, Math.round(currentProgress * (FRAME_COUNT - 1))),
-      );
-      if (idx !== lastFrame) {
-        const f = frames[idx];
+    const rafLoop = (timestamp: number) => {
+      if (timestamp - lastTime >= interval) {
+        const f = frames[currentIdx];
         if (f.complete && f.naturalWidth > 0) {
           img.src = f.src;
-          lastFrame = idx;
         }
-      }
-      if (sharpOverlayRef.current) {
-        const sharpOpacity = Math.max(0, 1 - currentProgress * 25);
-        sharpOverlayRef.current.style.opacity = String(sharpOpacity);
+        currentIdx = (currentIdx + 1) % FRAME_COUNT;
+        lastTime = timestamp;
       }
       rafId = requestAnimationFrame(rafLoop);
     };
 
-    const onScroll = () => {
-      targetProgress = getProgress();
-    };
-
     const startLoop = () => {
-      if (started) return;
-      started = true;
-      targetProgress = getProgress();
-      currentProgress = targetProgress;
-      window.addEventListener("scroll", onScroll, { passive: true });
       rafId = requestAnimationFrame(rafLoop);
     };
 
@@ -288,12 +271,10 @@ export default function Home() {
     );
 
     Promise.all(priorityDecodes).then(startLoop);
-
     const fallback = setTimeout(startLoop, 800);
 
     return () => {
       clearTimeout(fallback);
-      window.removeEventListener("scroll", onScroll);
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
