@@ -213,6 +213,7 @@ export default function Home() {
   const servicesRef = useRef<HTMLElement>(null);
   const ctaHeadingRef = useRef<HTMLHeadingElement>(null);
   const ctaInView = useInView(ctaHeadingRef, { amount: 0.3, margin: "0px 0px 5% 0px" });
+  const heroLayerRef = useRef<HTMLDivElement>(null);
   const storyImgRef = useRef<HTMLImageElement>(null);
   const storyLayerRef = useRef<HTMLDivElement>(null);
   const storySectionRef = useRef<HTMLElement>(null);
@@ -328,6 +329,7 @@ export default function Home() {
   useEffect(() => {
     const img = storyImgRef.current;
     const layer = storyLayerRef.current;
+    const heroLayer = heroLayerRef.current;
     if (!img || !layer) return;
 
     const PRIORITY_COUNT = 16;
@@ -370,9 +372,11 @@ export default function Home() {
       const range = Math.max(ctaTop - storyTop, 1);
       // First frame at story top, last frame reached at the CTA section.
       const progress = clamp((window.scrollY - storyTop) / range, 0, 1);
-      // Soft fade-in just as the story section enters the viewport.
-      const fadeInStart = storyTop - vh * 0.95;
-      const fadeInEnd = storyTop - vh * 0.4;
+      // Crossfade the hero background OUT and the story video IN during the
+      // last stretch of the services section, so the hero car is fully gone
+      // (and the seam is smooth) before the story content appears.
+      const fadeInStart = storyTop - vh * 1.25;
+      const fadeInEnd = storyTop - vh * 0.55;
       const opacity = clamp((window.scrollY - fadeInStart) / Math.max(fadeInEnd - fadeInStart, 1), 0, 1);
       return { progress, opacity };
     };
@@ -398,6 +402,7 @@ export default function Home() {
         }
       }
       layer.style.opacity = String(currentOpacity);
+      if (heroLayer) heroLayer.style.opacity = String(1 - currentOpacity);
       rafId = requestAnimationFrame(rafLoop);
     };
 
@@ -433,7 +438,7 @@ export default function Home() {
     <Layout>
       <div>
         {/* ─── FIXED IMAGE-SEQUENCE BACKGROUND — spans Hero + Services ─── */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
+        <div ref={heroLayerRef} className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
           <img
             ref={imgRef}
             src={framePath(1)}
@@ -569,7 +574,7 @@ export default function Home() {
         {/* ─── SERVICES ─── */}
         {/* Fixed video (at last frame) shines through as background */}
         <section id="leistungen" ref={servicesRef} className="py-24 lg:py-32 relative overflow-hidden" style={{ zIndex: 2 }}>
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, hsl(220,20%,4%) 0%, rgba(8,10,16,0.45) 15%, rgba(8,10,16,0.50) 85%, hsl(220,20%,4%) 100%)" }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, hsl(220,20%,4%) 0%, rgba(8,10,16,0.45) 15%, rgba(8,10,16,0.50) 80%, rgba(8,10,16,0.62) 100%)" }} />
           <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
             <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
