@@ -16,12 +16,20 @@ const ctaGlowContainer = {
   hidden: {},
   show: { transition: { staggerChildren: 0.22 } },
 };
+type CtaGlow = { glow: string; bgDim: string; bgLit: string };
 const ctaGlowItem = {
-  hidden: { opacity: 0.45, y: 14, boxShadow: "0 0 0px rgba(0,0,0,0)" },
-  show: (glow: string) => ({
+  hidden: (c: CtaGlow) => ({
+    opacity: 0.5,
+    y: 14,
+    boxShadow: "0 0 0px rgba(0,0,0,0)",
+    backgroundColor: c.bgDim,
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const },
+  }),
+  show: (c: CtaGlow) => ({
     opacity: 1,
     y: 0,
-    boxShadow: glow,
+    boxShadow: c.glow,
+    backgroundColor: c.bgLit,
     transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
@@ -914,8 +922,29 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl sm:text-4xl font-display font-black uppercase tracking-tighter mb-3">
-                {t("reviews_title")}
+              <h2 className="relative inline-block text-3xl sm:text-4xl font-display font-black uppercase tracking-tighter mb-3">
+                <svg
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[118%] h-[165%] pointer-events-none"
+                  viewBox="0 0 600 140"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                  style={{ filter: "blur(0.4px)" }}
+                >
+                  <path
+                    d="M14,82 C70,52 150,46 300,49 C448,52 528,56 588,72 C566,98 478,104 300,101 C150,99 64,106 14,82 Z"
+                    fill="#FFC107"
+                    fillOpacity="0.26"
+                  />
+                  <path
+                    d="M40,66 C140,54 260,52 420,58 C500,61 548,64 576,70"
+                    fill="none"
+                    stroke="#FFC107"
+                    strokeOpacity="0.35"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <span className="relative">{t("reviews_title")}</span>
               </h2>
               <p className="text-muted-foreground text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
                 {t("reviews_sub")}
@@ -965,14 +994,15 @@ export default function Home() {
               variants={ctaGlowContainer}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: false, amount: 0.5 }}
+              viewport={{ once: false, amount: 0.5, margin: "-18% 0px 0px 0px" }}
             >
               {/* E-Mail */}
               <motion.a
                 variants={ctaGlowItem}
-                custom="0 0 26px rgba(255,193,7,0.45)"
+                custom={{ glow: "0 0 26px rgba(255,193,7,0.5)", bgDim: "rgba(255,255,255,0.04)", bgLit: "rgba(255,255,255,0.12)" }}
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.18)", scale: 1.03 }}
                 href="mailto:taxibb@outlook.com"
-                className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl bg-white/10 border border-primary/30 hover:bg-white/15 hover:border-primary/60 transition-colors"
+                className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border border-primary/30 hover:border-primary/60 transition-colors"
               >
                 <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
                   <Mail className="w-5 h-5 text-primary" />
@@ -983,9 +1013,10 @@ export default function Home() {
               {/* Telefon */}
               <motion.a
                 variants={ctaGlowItem}
-                custom="0 0 26px rgba(255,193,7,0.45)"
+                custom={{ glow: "0 0 26px rgba(255,193,7,0.5)", bgDim: "rgba(255,255,255,0.04)", bgLit: "rgba(255,255,255,0.12)" }}
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.18)", scale: 1.03 }}
                 href="tel:0201707060"
-                className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl bg-white/10 border border-primary/30 hover:bg-white/15 hover:border-primary/60 transition-colors"
+                className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border border-primary/30 hover:border-primary/60 transition-colors"
               >
                 <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
                   <Phone className="w-5 h-5 text-primary" />
@@ -996,11 +1027,12 @@ export default function Home() {
               {/* WhatsApp */}
               <motion.a
                 variants={ctaGlowItem}
-                custom="0 0 26px rgba(37,211,102,0.5)"
+                custom={{ glow: "0 0 26px rgba(37,211,102,0.55)", bgDim: "rgba(37,211,102,0.06)", bgLit: "rgba(37,211,102,0.2)" }}
+                whileHover={{ backgroundColor: "rgba(37,211,102,0.28)", scale: 1.03 }}
                 href="https://wa.me/491711111535"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl bg-[#25D366]/15 border border-[#25D366]/40 hover:bg-[#25D366]/25 hover:border-[#25D366]/70 transition-colors"
+                className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border border-[#25D366]/40 hover:border-[#25D366]/70 transition-colors"
               >
                 <div className="w-10 h-10 rounded-xl bg-[#25D366]/25 flex items-center justify-center group-hover:bg-[#25D366]/35 transition-colors">
                   <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#25D366]" xmlns="http://www.w3.org/2000/svg">
@@ -1013,9 +1045,10 @@ export default function Home() {
               {/* Online */}
               <motion.button
                 variants={ctaGlowItem}
-                custom="0 0 26px rgba(255,193,7,0.45)"
+                custom={{ glow: "0 0 26px rgba(255,193,7,0.55)", bgDim: "rgba(255,193,7,0.06)", bgLit: "rgba(255,193,7,0.2)" }}
+                whileHover={{ backgroundColor: "rgba(255,193,7,0.28)", scale: 1.03 }}
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl bg-primary/15 border border-primary/40 hover:bg-primary/25 hover:border-primary/70 transition-colors"
+                className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border border-primary/40 hover:border-primary/70 transition-colors"
               >
                 <div className="w-10 h-10 rounded-xl bg-primary/25 flex items-center justify-center group-hover:bg-primary/35 transition-colors">
                   <Globe className="w-5 h-5 text-primary" />
