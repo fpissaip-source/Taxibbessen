@@ -293,7 +293,7 @@ export default function Home() {
   });
 
   // Image-sequence scrubber — bulletproof on iOS Safari, no <video> black-frame issues
-  const FRAME_COUNT = 77;
+  const FRAME_COUNT = 97;
   const framePath = (n: number) =>
     `${import.meta.env.BASE_URL}hero-frames/frame_${String(n).padStart(3, "0")}.jpg`;
 
