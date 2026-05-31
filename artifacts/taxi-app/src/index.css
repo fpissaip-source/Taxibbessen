@@ -64,6 +64,7 @@
   html, body {
     overflow-x: hidden;
     max-width: 100%;
+    background-color: hsl(220, 20%, 4%);
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;

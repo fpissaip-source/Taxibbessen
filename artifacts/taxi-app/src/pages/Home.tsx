@@ -781,8 +781,8 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* ── Service Icons — absolut über Kennzeichen ── */}
-            <div className="absolute bottom-[18%] left-0 right-0 z-20 px-4 sm:px-6 lg:px-12">
+            {/* ── Service Icons — mobil: absolut, desktop: normaler Fluss nach Widget ── */}
+            <div className="absolute lg:relative bottom-[18%] lg:bottom-auto left-0 lg:left-auto right-0 lg:right-auto z-20 px-4 sm:px-6 lg:px-12 lg:mt-8">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
