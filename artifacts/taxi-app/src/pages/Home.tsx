@@ -312,7 +312,7 @@ export default function Home() {
         ? servicesEl.getBoundingClientRect().top + window.scrollY
         : window.innerHeight * 1.5;
       const vh = window.innerHeight;
-      return Math.min(Math.max(1 - (window.scrollY - (servicesTop - vh * 0.5)) / (vh * 0.4), 0), 1);
+      return Math.min(Math.max(1 - (window.scrollY - (servicesTop + vh * 0.15)) / (vh * 0.35), 0), 1);
     };
 
     const PRIORITY_COUNT = 20;
@@ -929,7 +929,7 @@ export default function Home() {
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[165%] max-w-none h-[210%] pointer-events-none select-none"
                   style={{ filter: "brightness(0) invert(1)", opacity: 0.7 }}
                 />
-                <span className="relative" style={{ color: "#FFC107", WebkitTextStroke: "2px black", textShadow: "0 2px 8px rgba(0,0,0,0.35)" }}>{t("reviews_title")}</span>
+                <span className="relative" style={{ color: "#FFC107", WebkitTextStroke: "0.6px black", textShadow: "0 2px 8px rgba(0,0,0,0.35)" }}>{t("reviews_title")}</span>
               </h2>
               <p className="text-muted-foreground text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
                 {t("reviews_sub")}
