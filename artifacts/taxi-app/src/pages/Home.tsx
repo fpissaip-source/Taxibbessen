@@ -407,7 +407,7 @@ export default function Home() {
 
   // ─── Story-section scroll video — second image-sequence, fades in at the
   // story section and reaches its last frame at the CTA section ───
-  const STORY_FRAME_COUNT = 97;
+  const STORY_FRAME_COUNT = 122;
   const storyFramePath = (n: number) =>
     `${import.meta.env.BASE_URL}story-frames/frame_${String(n).padStart(3, "0")}.jpg`;
 
@@ -523,7 +523,7 @@ export default function Home() {
   // ─── Third image-sequence — the "second video". Softly crossfades IN over
   // the story clip around the reviews section and scrubs through to the CTA,
   // where it holds its last frame. ───
-  const CTA_FRAME_COUNT = 97;
+  const CTA_FRAME_COUNT = 122;
   const ctaFramePath = (n: number) =>
     `${import.meta.env.BASE_URL}cta-frames/frame_${String(n).padStart(3, "0")}.jpg`;
 
