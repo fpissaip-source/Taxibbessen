@@ -54,7 +54,7 @@ export function CookieBanner() {
               <div>
                 <p className="text-sm font-bold text-white mb-1">Cookies & Datenschutz</p>
                 <p className="text-xs text-white/50 leading-relaxed">
-                  Wir verwenden Cookies für Kartendienste und zur Verbesserung der Website. Mehr dazu in unserer{" "}
+                  Wir verwenden ausschließlich technisch notwendige Cookies, um die Website korrekt darzustellen. Es findet kein Tracking oder Profiling statt. Mehr dazu in unserer{" "}
                   <a href="/datenschutz" className="text-yellow-400/80 hover:text-yellow-400 underline underline-offset-2 transition-colors">
                     Datenschutzerklärung
                   </a>.
