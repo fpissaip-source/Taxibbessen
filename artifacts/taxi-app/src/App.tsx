@@ -16,13 +16,20 @@ import Datenschutz from "@/pages/Datenschutz";
 import Fahrzeuge from "@/pages/Fahrzeuge";
 import UeberUns from "@/pages/UeberUns";
 import Fahrtstatus from "@/pages/Fahrtstatus";
+import { useLenis } from "@/hooks/useLenis";
+import { getLenis } from "@/lib/lenis";
 
 const queryClient = new QueryClient();
 
 function ScrollToTop() {
   const [location] = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
+    const lenis = getLenis();
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
   }, [location]);
   return null;
 }
@@ -48,14 +55,21 @@ function Router() {
   );
 }
 
+function AppInner() {
+  useLenis();
+  return (
+    <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+      <Router />
+    </WouterRouter>
+  );
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <LanguageProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-            <Router />
-          </WouterRouter>
+          <AppInner />
           <Toaster />
           <CookieBanner />
         </LanguageProvider>
