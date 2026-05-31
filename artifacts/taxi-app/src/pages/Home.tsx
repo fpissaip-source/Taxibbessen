@@ -641,13 +641,14 @@ export default function Home() {
     <Layout>
       <div>
         {/* ─── FIXED IMAGE-SEQUENCE BACKGROUND — spans Hero + Services ─── */}
-        <div ref={heroLayerRef} className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
+        <div ref={heroLayerRef} className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1, backgroundColor: "#0b0a08" }}>
+          {/* Mobile: scroll-scrubbed image-sequence */}
           <img
             ref={imgRef}
             src={framePath(1)}
             alt=""
             aria-hidden
-            className="w-full h-full object-cover"
+            className="md:hidden w-full h-full object-cover"
             style={{ objectPosition: "center", opacity: 0.75 }}
           />
           <img
@@ -655,17 +656,27 @@ export default function Home() {
             src={`${import.meta.env.BASE_URL}hero-sharp.jpg`}
             alt=""
             aria-hidden
-            className="absolute inset-0 w-full h-full object-cover"
+            className="md:hidden absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: "center", opacity: 1 }}
           />
+          {/* Desktop: looping autoplay video (16:9) */}
+          <video
+            className="hidden md:block absolute inset-0 w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{ objectPosition: "center" }}
+          >
+            <source src={`${import.meta.env.BASE_URL}hero-desktop.mp4`} type="video/mp4" />
+          </video>
         </div>
 
-        {/* ─── STORY SCROLL-VIDEO BACKGROUND — fades in at the story section, ─── */}
-        {/* ─── scrubs through story → reviews → CTA, last frame at the CTA   ─── */}
+        {/* ─── STORY SCROLL-VIDEO BACKGROUND (übrig — kein Desktop-Ersatz) ─── */}
         <div
           ref={storyLayerRef}
           className="fixed inset-0 overflow-hidden pointer-events-none"
-          style={{ zIndex: 1, opacity: 0 }}
+          style={{ zIndex: 1, opacity: 0, backgroundColor: "#100f12" }}
         >
           <img
             ref={storyImgRef}
@@ -681,21 +692,36 @@ export default function Home() {
           />
         </div>
 
-        {/* ─── SECOND VIDEO BACKGROUND — softly crossfades in over the story ─── */}
-        {/* ─── clip around the reviews section, holds last frame at the CTA  ─── */}
+        {/* ─── CTA/AIRPORT BACKGROUND ─── */}
         <div
           ref={ctaLayerRef}
           className="fixed inset-0 overflow-hidden pointer-events-none"
-          style={{ zIndex: 1, opacity: 0 }}
+          style={{ zIndex: 1, opacity: 0, backgroundColor: "#100a0a" }}
         >
+          {/* Mobile: scroll-scrubbed image-sequence */}
           <img
             ref={ctaImgRef}
             src={ctaFramePath(1)}
             alt=""
             aria-hidden
-            className="w-full h-full object-cover"
+            className="md:hidden w-full h-full object-cover"
             style={{ objectPosition: "center", opacity: 1 }}
           />
+          <div
+            className="md:hidden absolute inset-0"
+            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.45) 0%, rgba(8,10,16,0.22) 45%, rgba(8,10,16,0.48) 100%)" }}
+          />
+          {/* Desktop: looping autoplay airport video (16:9) */}
+          <video
+            className="hidden md:block absolute inset-0 w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{ objectPosition: "center" }}
+          >
+            <source src={`${import.meta.env.BASE_URL}airport-desktop.mp4`} type="video/mp4" />
+          </video>
           <div
             className="absolute inset-0"
             style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.45) 0%, rgba(8,10,16,0.22) 45%, rgba(8,10,16,0.48) 100%)" }}
