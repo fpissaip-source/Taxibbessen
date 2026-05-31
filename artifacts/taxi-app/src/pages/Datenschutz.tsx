@@ -87,9 +87,24 @@ export default function Datenschutz() {
             <section className="bg-card border border-border rounded-2xl p-6 sm:p-8">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <Globe className="w-5 h-5 text-primary" />
+                </div>
+                <h2 className="text-lg font-bold">4. WhatsApp (Meta Platforms Ireland Ltd.)</h2>
+              </div>
+              <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+                <p>Auf unserer Website bieten wir Ihnen die Möglichkeit, uns über WhatsApp zu kontaktieren und Fahrten zu buchen. WhatsApp wird betrieben von der Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland.</p>
+                <p>Wenn Sie den WhatsApp-Button nutzen, wird eine Verbindung zu den Servern von Meta hergestellt. Dabei können Ihre IP-Adresse sowie weitere technische Daten an Meta übermittelt werden. Die Kommunikationsinhalte (Nachrichten) werden gemäß der WhatsApp-Datenschutzrichtlinie verarbeitet.</p>
+                <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung/-erfüllung) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer effizienten Kundenkommunikation).</p>
+                <p>Weitere Informationen zum Datenschutz bei WhatsApp finden Sie unter: <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.whatsapp.com/legal/privacy-policy</a></p>
+              </div>
+            </section>
+
+            <section className="bg-card border border-border rounded-2xl p-6 sm:p-8">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                   <Eye className="w-5 h-5 text-primary" />
                 </div>
-                <h2 className="text-lg font-bold">4. Weitergabe an Dritte</h2>
+                <h2 className="text-lg font-bold">5. Weitergabe an Dritte</h2>
               </div>
               <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
                 <p>Eine Weitergabe Ihrer personenbezogenen Daten an Dritte erfolgt grundsätzlich nicht, außer:</p>
@@ -107,7 +122,7 @@ export default function Datenschutz() {
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                   <Database className="w-5 h-5 text-primary" />
                 </div>
-                <h2 className="text-lg font-bold">5. Speicherdauer</h2>
+                <h2 className="text-lg font-bold">6. Speicherdauer</h2>
               </div>
               <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
                 <p>Buchungsdaten werden nach Abschluss des Auftrags gelöscht, sobald keine gesetzlichen Aufbewahrungspflichten mehr bestehen. Steuerrelevante Unterlagen werden gemäß § 147 AO bis zu 10 Jahre aufbewahrt.</p>
@@ -120,7 +135,7 @@ export default function Datenschutz() {
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                   <UserCheck className="w-5 h-5 text-primary" />
                 </div>
-                <h2 className="text-lg font-bold">6. Ihre Rechte</h2>
+                <h2 className="text-lg font-bold">7. Ihre Rechte</h2>
               </div>
               <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
                 <p>Sie haben gemäß DSGVO folgende Rechte gegenüber uns:</p>
@@ -141,7 +156,7 @@ export default function Datenschutz() {
                 <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                   <Trash2 className="w-5 h-5 text-primary" />
                 </div>
-                <h2 className="text-lg font-bold">7. Beschwerderecht</h2>
+                <h2 className="text-lg font-bold">8. Beschwerderecht</h2>
               </div>
               <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
                 <p>Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren. Die zuständige Behörde für NRW ist:</p>
@@ -154,7 +169,7 @@ export default function Datenschutz() {
             </section>
 
             <section className="bg-muted/40 border border-border rounded-2xl p-6 sm:p-8">
-              <h2 className="text-base font-bold mb-3">8. Änderungen dieser Datenschutzerklärung</h2>
+              <h2 className="text-base font-bold mb-3">9. Änderungen dieser Datenschutzerklärung</h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen, insbesondere bei Änderungen der gesetzlichen Anforderungen oder unserer Dienstleistungen. Die jeweils aktuelle Version ist auf dieser Seite abrufbar.
               </p>
