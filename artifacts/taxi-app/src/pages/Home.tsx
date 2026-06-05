@@ -276,7 +276,7 @@ export default function Home() {
   const imgRef = useRef<HTMLImageElement>(null);
   const sharpOverlayRef = useRef<HTMLImageElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
-  const ctaHeadingRef = useRef<HTMLHeadingElement>(null);
+  const ctaHeadingRef = useRef<HTMLElement>(null);
   const ctaInView = useInView(ctaHeadingRef, { amount: 0.3, margin: "0px 0px 5% 0px" });
   const heroLayerRef = useRef<HTMLDivElement>(null);
   const storyImgRef = useRef<HTMLImageElement>(null);
@@ -986,17 +986,20 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── CTA ─── */}
-        <section ref={ctaSectionRef} className="py-20 sm:py-28 relative overflow-hidden" style={{ zIndex: 2 }}>
+        {/* ─── CTA / KONTAKT ─── */}
+        <section id="kontakt" ref={ctaSectionRef} className="py-20 sm:py-28 relative overflow-hidden" style={{ zIndex: 2 }}>
           <div className="absolute inset-0 opacity-[0.035]">
             <div className="w-full h-full" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,193,7,0.4) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="inline-block rounded-[32px] border border-white/[0.1] bg-white/[0.05] backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.4)] p-8 lg:p-12 mb-10 max-w-full">
-            {/* Word-by-word reveal heading */}
-            <h2
+            {/* Semantic section heading */}
+            <h2 className="text-[11px] font-black text-primary uppercase tracking-[0.45em] mb-5 block">
+              Anfrage &amp; Kontakt
+            </h2>
+            {/* Visual reveal heading — decorative sub-headline */}
+            <p
               ref={ctaHeadingRef}
-              aria-label="Jetzt Ihre nächste Fahrt anfragen"
               className="font-display font-black uppercase tracking-tighter mb-6 leading-[1.05]"
               style={{ fontSize: "clamp(1.85rem, 6.8vw, 5rem)" }}
             >
@@ -1014,7 +1017,7 @@ export default function Home() {
                   anfragen!
                 </motion.span>
               </span>
-            </h2>
+            </p>
             <p className="text-base sm:text-lg max-w-xl text-muted-foreground leading-relaxed">
               {t("cta_sub")}
             </p>
