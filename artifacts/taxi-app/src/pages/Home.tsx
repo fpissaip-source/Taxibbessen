@@ -1000,10 +1000,10 @@ export default function Home() {
               className="font-display font-black uppercase tracking-tighter mb-6 leading-[1.05]"
               style={{ fontSize: "clamp(1.85rem, 6.8vw, 5rem)" }}
             >
-              {/* Lines 1 & 2 — static, no scroll reveal */}
-              <span className="block text-white/90 whitespace-nowrap" aria-hidden="true">Fragen Sie Jetzt</span>
-              <span className="block text-white/90 whitespace-nowrap" aria-hidden="true">Ihre Nächste Fahrt</span>
-              {/* Line 3 — only "AN!" reveals on scroll: comes in later & stronger */}
+              {/* Lines 1 & 2 — static */}
+              <span className="block text-white/90 whitespace-nowrap">Jetzt Ihre</span>
+              <span className="block text-white/90 whitespace-nowrap">nächste Fahrt</span>
+              {/* Line 3 — animiert einblenden */}
               <span className="block overflow-hidden pt-[0.08em] pb-[0.14em]">
                 <motion.span
                   className="inline-block text-primary"
@@ -1011,7 +1011,7 @@ export default function Home() {
                   animate={ctaInView ? { y: "0%", scale: 1 } : { y: "130%", scale: 0.9 }}
                   transition={{ type: "spring", stiffness: 170, damping: 12, delay: 0.1 }}
                 >
-                  An!
+                  anfragen!
                 </motion.span>
               </span>
             </h2>
