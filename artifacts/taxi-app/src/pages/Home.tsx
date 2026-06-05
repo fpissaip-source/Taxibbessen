@@ -286,6 +286,7 @@ export default function Home() {
   const ctaSectionRef = useRef<HTMLElement>(null);
   const ctaImgRef = useRef<HTMLImageElement>(null);
   const ctaLayerRef = useRef<HTMLDivElement>(null);
+  const [iconsHidden, setIconsHidden] = useState(false);
 
   usePageMeta({
     title: "Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060",
@@ -777,7 +778,7 @@ export default function Home() {
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className="w-full lg:w-[82%] lg:max-w-5xl"
               >
-                <HeroBookingWidget />
+                <HeroBookingWidget onExpand={() => setIconsHidden(true)} />
               </motion.div>
             </div>
 
@@ -785,8 +786,9 @@ export default function Home() {
             <div className="absolute lg:relative bottom-[18%] lg:bottom-auto left-0 lg:left-auto right-0 lg:right-auto z-20 px-4 sm:px-6 lg:px-12 lg:mt-8">
               <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.5 }}
+                animate={{ opacity: iconsHidden ? 0 : 1, y: iconsHidden ? 18 : 0 }}
+                transition={iconsHidden ? { duration: 0.45, ease: "easeInOut" } : { duration: 0.7, delay: 0.5 }}
+                style={{ pointerEvents: iconsHidden ? "none" : undefined }}
                 className="grid grid-cols-3 gap-x-2 gap-y-4 lg:gap-x-8 w-full lg:w-[82%] lg:max-w-5xl mx-auto"
               >
                 {[
