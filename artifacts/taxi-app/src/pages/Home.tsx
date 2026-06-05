@@ -853,9 +853,9 @@ export default function Home() {
                 </p>
                 <p className="text-sm sm:text-base text-white/55 leading-relaxed max-w-xl font-medium">
                   Taxi B&amp;B GmbH ist seit 1992 Ihr zuverlässiger Taxiservice in Essen. Ob{" "}
-                  <Link href="/leistungen" className="text-primary/80 hover:text-primary underline underline-offset-2 transition-colors">
+                  <a href="#leistungen" className="text-primary/80 hover:text-primary underline underline-offset-2 transition-colors">
                     Krankenfahrten, Flughafentransfer oder Geschäftsfahrten
-                  </Link>{" "}
+                  </a>{" "}
                   – wir sind 24 Stunden am Tag, 7 Tage die Woche für Sie erreichbar. Entdecken Sie{" "}
                   <Link href="/fahrzeuge" className="text-primary/80 hover:text-primary underline underline-offset-2 transition-colors">
                     unsere modernen Mercedes-Fahrzeuge
