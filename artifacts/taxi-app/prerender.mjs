@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, 'dist/public');
-const CANONICAL_DOMAIN = 'https://taxibb-essen.de';
+const CANONICAL_DOMAIN = 'https://taxibbessen.de';
 
 const HOMEPAGE_FAQ_SCHEMA = {
   "@context": "https://schema.org",

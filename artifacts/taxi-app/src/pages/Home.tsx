@@ -59,12 +59,12 @@ function ServiceCard({ title, sub, index, icon: Icon }: { title: string; sub: st
 }
 
 const SERVICE_ITEMS = [
-  { src: "krankenfahrten.png",    titleKey: "hero_service2_title", descKey: "hero_service2_desc" },
-  { src: "geschaeftsfahrten.png", titleKey: "hero_service1_title", descKey: "hero_service1_desc" },
-  { src: "flughafentransfer.png", titleKey: "hero_service3_title", descKey: "hero_service3_desc" },
-  { src: "kurierdokumente.png",   titleKey: "hero_service4_title", descKey: "hero_service4_desc" },
-  { src: "kurierdienst.png",      titleKey: "hero_service5_title", descKey: "hero_service5_desc" },
-  { src: "hauszuhaus.png",        titleKey: "hero_service6_title", descKey: "hero_service6_desc" },
+  { src: "krankenfahrten.webp",    titleKey: "hero_service2_title", descKey: "hero_service2_desc" },
+  { src: "geschaeftsfahrten.webp", titleKey: "hero_service1_title", descKey: "hero_service1_desc" },
+  { src: "flughafentransfer.webp", titleKey: "hero_service3_title", descKey: "hero_service3_desc" },
+  { src: "kurierdokumente.webp",   titleKey: "hero_service4_title", descKey: "hero_service4_desc" },
+  { src: "kurierdienst.webp",      titleKey: "hero_service5_title", descKey: "hero_service5_desc" },
+  { src: "hauszuhaus.webp",        titleKey: "hero_service6_title", descKey: "hero_service6_desc" },
 ] as const;
 
 function ServicesRevealSection() {
@@ -737,7 +737,7 @@ export default function Home() {
           />
           <img
             ref={sharpOverlayRef}
-            src={`${import.meta.env.BASE_URL}hero-sharp.jpg`}
+            src={`${import.meta.env.BASE_URL}hero-sharp.webp`}
             alt=""
             aria-hidden
             className="md:hidden absolute inset-0 w-full h-full object-cover"
@@ -833,7 +833,7 @@ export default function Home() {
                 <h1 className="sr-only">24/7 Taxiservice in Essen – Krankenfahrten, Flughafentransfer &amp; Großraumtaxi | Taxi B&amp;B GmbH</h1>
                 <img
                   id="hero-logo"
-                  src={`${import.meta.env.BASE_URL}bb-logo-v7-transparent.png`}
+                  src={`${import.meta.env.BASE_URL}bb-logo-v7-transparent.webp`}
                   alt="Taxi B&B"
                   className="mx-auto w-auto"
                   style={{
@@ -876,12 +876,12 @@ export default function Home() {
                 className="grid grid-cols-3 gap-x-2 gap-y-4 lg:gap-x-8 w-full lg:w-[82%] lg:max-w-5xl mx-auto"
               >
                 {[
-                  { src: "krankenfahrten.png",    label: t("hero_service2_title") },
-                  { src: "geschaeftsfahrten.png", label: t("hero_service1_title") },
-                  { src: "flughafentransfer.png", label: t("hero_service3_title") },
-                  { src: "kurierdokumente.png",   label: t("hero_service4_title") },
-                  { src: "kurierdienst.png",      label: t("hero_service5_title") },
-                  { src: "hauszuhaus.png",        label: t("hero_service6_title") },
+                  { src: "krankenfahrten.webp",    label: t("hero_service2_title") },
+                  { src: "geschaeftsfahrten.webp", label: t("hero_service1_title") },
+                  { src: "flughafentransfer.webp", label: t("hero_service3_title") },
+                  { src: "kurierdokumente.webp",   label: t("hero_service4_title") },
+                  { src: "kurierdienst.webp",      label: t("hero_service5_title") },
+                  { src: "hauszuhaus.webp",        label: t("hero_service6_title") },
                 ].map(({ src, label }) => (
                   <div key={src} className="flex flex-col items-center text-center gap-1.5 group px-1">
                     <div className="h-14 lg:h-20 flex items-center justify-center">
@@ -991,7 +991,7 @@ export default function Home() {
               >
                 <div className="aspect-[4/5] rounded-[40px] overflow-hidden bg-muted">
                   <img
-                    src={`${import.meta.env.BASE_URL}story-bg.jpg`}
+                    src={`${import.meta.env.BASE_URL}story-bg.webp`}
                     alt="Taxi B&B"
                     className="w-full h-full object-cover transition-all duration-1000"
                   />

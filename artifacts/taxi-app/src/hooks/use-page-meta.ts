@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const CANONICAL_DOMAIN = "https://taxibb-essen.de";
+const CANONICAL_DOMAIN = "https://taxibbessen.de";
 
 interface PageMeta {
   title: string;

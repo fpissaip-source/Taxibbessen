@@ -1,1 +1,2 @@
 - [Scroll reveal & image-sequence hero pitfalls](scroll-reveal-and-image-sequence.md) — use one parent observer + staggerChildren for word reveals; nearest-loaded-frame fallback + small assets for scroll-scrubbed image sequences (mobile).
+- [Taxi B&B canonical domain](taxibb-canonical-domain.md) — live domain is taxibbessen.de (NO hyphen); taxibb-essen.de is NXDOMAIN. Verify a domain resolves before putting it in canonicals/sitemap.
