@@ -307,72 +307,14 @@ export default function Home() {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "inLanguage": "de",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Welches Taxiunternehmen ist in Essen am zuverlässigsten?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Taxi B&B GmbH in Essen ist seit 1992 bekannt für Zuverlässigkeit, Pünktlichkeit und Sauberkeit. Mit einer 5-Sterne-Bewertung und über 30 Jahren Erfahrung sind wir 24 Stunden täglich, 7 Tage die Woche für Sie erreichbar. Rufen Sie uns an: 0201 707060."
-          }
+      "mainEntity": FAQ_ITEMS.map((item) => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a,
         },
-        {
-          "@type": "Question",
-          "name": "Wie viel kostet ein Taxi vom Essener Hauptbahnhof zum Flughafen Düsseldorf?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ein Taxi von Essen Hauptbahnhof zum Flughafen Düsseldorf kostet bei Taxi B&B GmbH einen transparenten Festpreis – ohne böse Überraschungen. Die Strecke beträgt ca. 35–40 km. Für ein konkretes Angebot kontaktieren Sie uns: 0201 707060 oder via WhatsApp."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Kann ich ein Großraumtaxi für 7 Personen in Essen buchen?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja! Taxi B&B GmbH bietet Großraumtaxis mit Mercedes V-Klasse für bis zu 7 Passagiere an – ideal für Familienausflüge, Gruppenreisen und Flughafentransfers. Kindersitze sind auf Anfrage verfügbar. Jetzt buchen: 0201 707060."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Bieten Sie Krankenfahrten und Dialysefahrten in Essen an?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja, Taxi B&B GmbH führt Krankenfahrten, Dialysefahrten und Fahrten zur Strahlentherapie in Essen und Umgebung durch. Wir arbeiten mit Krankenkassen zusammen und holen Sie pünktlich ab. Kontakt: 0201 707060."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Ist Taxi B&B GmbH 24 Stunden erreichbar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja, Taxi B&B GmbH ist 24 Stunden am Tag, 7 Tage die Woche und 365 Tage im Jahr für Sie erreichbar. Rufen Sie jederzeit an unter 0201 707060 oder schreiben Sie uns via WhatsApp."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Wie kann ich in Essen schnell ein Taxi bestellen?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sie können bei Taxi B&B GmbH Essen auf drei Wegen buchen: (1) Anrufen: 0201 707060, (2) WhatsApp: direkt über den Button auf der Website, (3) Online-Formular: Zieladresse eingeben auf dieser Seite. Wir sind innerhalb weniger Minuten bei Ihnen."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Fahren Sie auch Langstrecken und ins Ausland?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja! Taxi B&B GmbH fährt bundesweit und ins europäische Ausland. Ob Amsterdam, Paris oder Wien – wir bringen Sie sicher ans Ziel. Festpreise auf Anfrage: 0201 707060."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Welche Fahrzeuge hat Taxi B&B GmbH?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Taxi B&B GmbH betreibt eine moderne Flotte mit Mercedes-Fahrzeugen: den E-Klasse T-Modell Kombi für komfortable Alltagsfahrten, den Mercedes E 300 e Hybrid für emissionsfreie Fahrten und die Mercedes V-Klasse für Gruppen bis 7 Personen. Alle Fahrzeuge sind klimatisiert und regelmäßig gewartet."
-          }
-        }
-      ]
+      })),
     },
   });
 
@@ -385,6 +327,8 @@ export default function Home() {
     const img = imgRef.current;
     const heroLayer = heroLayerRef.current;
     if (!img) return;
+    // Desktop uses the autoplay video — skip loading all 97 frames
+    if (!window.matchMedia('(max-width: 767px)').matches) return;
 
     let heroTargetOpacity = 1;
 
@@ -498,18 +442,17 @@ export default function Home() {
   useEffect(() => {
     const img = storyImgRef.current;
     const layer = storyLayerRef.current;
-    if (!img || !layer) return;
+    // Observe the services section — the story animation begins while it's on screen,
+    // so starting frame downloads then gives enough lead time before they're needed.
+    const triggerEl = servicesRef.current;
+    if (!img || !layer || !triggerEl) return;
 
     const PRIORITY_COUNT = 16;
-    const frames: HTMLImageElement[] = [];
-    for (let i = 1; i <= STORY_FRAME_COUNT; i++) {
-      const f = new Image();
-      if (i <= PRIORITY_COUNT) (f as HTMLImageElement & { fetchpriority: string }).fetchpriority = "high";
-      f.src = storyFramePath(i);
-      frames.push(f);
-    }
-
     const clamp = (v: number, a: number, b: number) => Math.min(Math.max(v, a), b);
+
+    // Shared mutable state between the observer callback and the RAF loop.
+    // Frames array is populated lazily; nearestReady returns -1 until then.
+    const frames: HTMLImageElement[] = [];
 
     let targetProgress = 0;
     let currentProgress = 0;
@@ -521,14 +464,16 @@ export default function Home() {
 
     const isReady = (f: HTMLImageElement) => f.complete && f.naturalWidth > 0;
     const nearestReady = (target: number) => {
-      if (isReady(frames[target])) return target;
-      for (let d = 1; d < STORY_FRAME_COUNT; d++) {
-        const lo = target - d;
-        const hi = target + d;
-        if (lo >= 0 && isReady(frames[lo])) return lo;
-        if (hi < STORY_FRAME_COUNT && isReady(frames[hi])) return hi;
+      if (!frames[target] || !isReady(frames[target])) {
+        for (let d = 1; d < frames.length; d++) {
+          const lo = target - d;
+          const hi = target + d;
+          if (lo >= 0 && frames[lo] && isReady(frames[lo])) return lo;
+          if (hi < frames.length && frames[hi] && isReady(frames[hi])) return hi;
+        }
+        return -1;
       }
-      return -1;
+      return target;
     };
 
     const measure = () => {
@@ -562,15 +507,17 @@ export default function Home() {
       // linear fade; lerping on top just adds lag that lets the silver hero
       // bleed through at fast scroll speeds.
       currentOpacity = targetOpacity;
-      const idx = Math.min(
-        STORY_FRAME_COUNT - 1,
-        Math.max(0, Math.round(currentProgress * (STORY_FRAME_COUNT - 1))),
-      );
-      if (idx !== lastFrame) {
-        const ready = nearestReady(idx);
-        if (ready >= 0) {
-          img.src = frames[ready].src;
-          lastFrame = idx;
+      if (frames.length > 0) {
+        const idx = Math.min(
+          STORY_FRAME_COUNT - 1,
+          Math.max(0, Math.round(currentProgress * (STORY_FRAME_COUNT - 1))),
+        );
+        if (idx !== lastFrame) {
+          const ready = nearestReady(idx);
+          if (ready >= 0) {
+            img.src = frames[ready].src;
+            lastFrame = idx;
+          }
         }
       }
       layer.style.opacity = String(currentOpacity);
@@ -590,14 +537,25 @@ export default function Home() {
       rafId = requestAnimationFrame(rafLoop);
     };
 
-    const priorityDecodes = frames.slice(0, PRIORITY_COUNT).map((f) =>
-      f.decode ? f.decode().catch(() => {}) : Promise.resolve()
-    );
-    Promise.all(priorityDecodes).then(startLoop);
-    const fallback = setTimeout(startLoop, 800);
+    // Start the opacity animation immediately — but defer frame src assignment
+    // until the services section is visible (IntersectionObserver fires).
+    startLoop();
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      for (let i = 1; i <= STORY_FRAME_COUNT; i++) {
+        const f = new Image();
+        if (i <= PRIORITY_COUNT) (f as HTMLImageElement & { fetchpriority: string }).fetchpriority = "high";
+        f.src = storyFramePath(i);
+        frames.push(f);
+      }
+    }, { rootMargin: '0px' });
+
+    observer.observe(triggerEl);
 
     return () => {
-      clearTimeout(fallback);
+      observer.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
       if (rafId) cancelAnimationFrame(rafId);
@@ -614,18 +572,17 @@ export default function Home() {
   useEffect(() => {
     const img = ctaImgRef.current;
     const layer = ctaLayerRef.current;
-    if (!img || !layer) return;
+    const sectionEl = ctaSectionRef.current;
+    if (!layer || !sectionEl) return;
+
+    // CTA frames are only shown on mobile (img has md:hidden); skip on desktop
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
     const PRIORITY_COUNT = 16;
-    const frames: HTMLImageElement[] = [];
-    for (let i = 1; i <= CTA_FRAME_COUNT; i++) {
-      const f = new Image();
-      if (i <= PRIORITY_COUNT) (f as HTMLImageElement & { fetchpriority: string }).fetchpriority = "high";
-      f.src = ctaFramePath(i);
-      frames.push(f);
-    }
-
     const clamp = (v: number, a: number, b: number) => Math.min(Math.max(v, a), b);
+
+    // Frames are populated lazily via IntersectionObserver on mobile only.
+    const frames: HTMLImageElement[] = [];
 
     let targetProgress = 0;
     let currentProgress = 0;
@@ -637,14 +594,16 @@ export default function Home() {
 
     const isReady = (f: HTMLImageElement) => f.complete && f.naturalWidth > 0;
     const nearestReady = (target: number) => {
-      if (isReady(frames[target])) return target;
-      for (let d = 1; d < CTA_FRAME_COUNT; d++) {
-        const lo = target - d;
-        const hi = target + d;
-        if (lo >= 0 && isReady(frames[lo])) return lo;
-        if (hi < CTA_FRAME_COUNT && isReady(frames[hi])) return hi;
+      if (!frames[target] || !isReady(frames[target])) {
+        for (let d = 1; d < frames.length; d++) {
+          const lo = target - d;
+          const hi = target + d;
+          if (lo >= 0 && frames[lo] && isReady(frames[lo])) return lo;
+          if (hi < frames.length && frames[hi] && isReady(frames[hi])) return hi;
+        }
+        return -1;
       }
-      return -1;
+      return target;
     };
 
     const measure = () => {
@@ -678,15 +637,17 @@ export default function Home() {
       currentProgress += (targetProgress - currentProgress) * 0.12;
       // Opacity is NOT lerped — the measure() ramp is the smooth transition.
       currentOpacity = targetOpacity;
-      const idx = Math.min(
-        CTA_FRAME_COUNT - 1,
-        Math.max(0, Math.round(currentProgress * (CTA_FRAME_COUNT - 1))),
-      );
-      if (idx !== lastFrame) {
-        const ready = nearestReady(idx);
-        if (ready >= 0) {
-          img.src = frames[ready].src;
-          lastFrame = idx;
+      if (isMobile && img && frames.length > 0) {
+        const idx = Math.min(
+          CTA_FRAME_COUNT - 1,
+          Math.max(0, Math.round(currentProgress * (CTA_FRAME_COUNT - 1))),
+        );
+        if (idx !== lastFrame) {
+          const ready = nearestReady(idx);
+          if (ready >= 0) {
+            img.src = frames[ready].src;
+            lastFrame = idx;
+          }
         }
       }
       layer.style.opacity = String(currentOpacity);
@@ -706,14 +667,32 @@ export default function Home() {
       rafId = requestAnimationFrame(rafLoop);
     };
 
-    const priorityDecodes = frames.slice(0, PRIORITY_COUNT).map((f) =>
-      f.decode ? f.decode().catch(() => {}) : Promise.resolve()
-    );
-    Promise.all(priorityDecodes).then(startLoop);
-    const fallback = setTimeout(startLoop, 800);
+    // Start opacity animation immediately (desktop video fade needs this).
+    // Only load frames on mobile, deferred until the CTA section is near viewport.
+    startLoop();
+
+    if (isMobile && img) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        for (let i = 1; i <= CTA_FRAME_COUNT; i++) {
+          const f = new Image();
+          if (i <= PRIORITY_COUNT) (f as HTMLImageElement & { fetchpriority: string }).fetchpriority = "high";
+          f.src = ctaFramePath(i);
+          frames.push(f);
+        }
+      }, { rootMargin: '100% 0px' });
+      observer.observe(sectionEl);
+
+      return () => {
+        observer.disconnect();
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onResize);
+        if (rafId) cancelAnimationFrame(rafId);
+      };
+    }
 
     return () => {
-      clearTimeout(fallback);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
       if (rafId) cancelAnimationFrame(rafId);

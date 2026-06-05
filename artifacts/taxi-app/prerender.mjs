@@ -16,55 +16,47 @@ const HOMEPAGE_FAQ_SCHEMA = {
       "name": "Welches Taxiunternehmen ist in Essen am zuverlässigsten?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Taxi B&B GmbH in Essen ist seit 1992 bekannt für Zuverlässigkeit, Pünktlichkeit und Sauberkeit. Mit einer 5-Sterne-Bewertung und über 30 Jahren Erfahrung sind wir 24 Stunden täglich, 7 Tage die Woche für Sie erreichbar. Rufen Sie uns an: 0201 707060."
+        "text": "Taxi B&B GmbH ist seit 1992 für Pünktlichkeit und Zuverlässigkeit bekannt – mit 5-Sterne-Bewertungen und 30+ Jahren Erfahrung. Wir sind 24/7 für Sie da: 0201 707060."
       }
     },
     {
       "@type": "Question",
-      "name": "Wie viel kostet ein Taxi vom Essener Hauptbahnhof zum Flughafen Düsseldorf?",
+      "name": "Wie viel kostet ein Taxi zum Flughafen Düsseldorf aus Essen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ein Taxi von Essen Hauptbahnhof zum Flughafen Düsseldorf kostet bei Taxi B&B GmbH einen transparenten Festpreis – ohne böse Überraschungen. Die Strecke beträgt ca. 35–40 km. Für ein konkretes Angebot kontaktieren Sie uns: 0201 707060 oder via WhatsApp."
+        "text": "Wir berechnen transparente Festpreise ohne böse Überraschungen. Die Strecke Essen–Flughafen Düsseldorf beträgt ca. 35–40 km. Rufen Sie uns für ein konkretes Angebot an: 0201 707060."
       }
     },
     {
       "@type": "Question",
-      "name": "Kann ich ein Großraumtaxi für 7 Personen in Essen buchen?",
+      "name": "Kann ich ein Großraumtaxi für 7 Personen buchen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ja! Taxi B&B GmbH bietet Großraumtaxis mit Mercedes V-Klasse für bis zu 7 Passagiere an – ideal für Familienausflüge, Gruppenreisen und Flughafentransfers. Kindersitze sind auf Anfrage verfügbar. Jetzt buchen: 0201 707060."
+        "text": "Ja! Unsere Mercedes V-Klasse bietet Platz für bis zu 7 Personen – ideal für Gruppen, Familien und Firmenausflüge. Kindersitze auf Anfrage. Jetzt buchen: 0201 707060."
       }
     },
     {
       "@type": "Question",
-      "name": "Bieten Sie Krankenfahrten und Dialysefahrten in Essen an?",
+      "name": "Bieten Sie Krankenfahrten und Dialysefahrten an?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ja, Taxi B&B GmbH führt Krankenfahrten, Dialysefahrten und Fahrten zur Strahlentherapie in Essen und Umgebung durch. Wir arbeiten mit Krankenkassen zusammen und holen Sie pünktlich ab. Kontakt: 0201 707060."
+        "text": "Ja, wir führen Krankenfahrten, Dialysefahrten und Therapiefahrten in Essen und Umgebung durch. Wir arbeiten mit Krankenkassen zusammen und holen Sie pünktlich ab."
       }
     },
     {
       "@type": "Question",
-      "name": "Ist Taxi B&B GmbH 24 Stunden erreichbar?",
+      "name": "Ist Taxi B&B GmbH wirklich 24 Stunden erreichbar?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ja, Taxi B&B GmbH ist 24 Stunden am Tag, 7 Tage die Woche und 365 Tage im Jahr für Sie erreichbar. Rufen Sie jederzeit an unter 0201 707060 oder schreiben Sie uns via WhatsApp."
+        "text": "Absolut – 24 Stunden, 7 Tage die Woche, 365 Tage im Jahr. Egal ob Nachtflug oder Frühschicht: Wir sind da. Rufen Sie einfach an: 0201 707060."
       }
     },
     {
       "@type": "Question",
-      "name": "Wie kann ich in Essen schnell ein Taxi bestellen?",
+      "name": "Fahren Sie auch ins Ausland oder bundesweit?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sie können bei Taxi B&B GmbH Essen auf drei Wegen buchen: (1) Anrufen: 0201 707060, (2) WhatsApp: direkt über den Button auf der Website, (3) Online-Formular: Zieladresse eingeben auf dieser Seite. Wir sind innerhalb weniger Minuten bei Ihnen."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Fahren Sie auch Langstrecken und ins Ausland?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja! Taxi B&B GmbH fährt bundesweit und ins europäische Ausland. Ob Amsterdam, Paris oder Wien – wir bringen Sie sicher ans Ziel. Festpreise auf Anfrage: 0201 707060."
+        "text": "Ja! Wir fahren bundesweit und ins europäische Ausland. Amsterdam, Zürich, Wien – kein Problem. Festpreise auf Anfrage."
       }
     },
     {
@@ -72,7 +64,15 @@ const HOMEPAGE_FAQ_SCHEMA = {
       "name": "Welche Fahrzeuge hat Taxi B&B GmbH?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Taxi B&B GmbH betreibt eine moderne Flotte mit Mercedes-Fahrzeugen: den E-Klasse T-Modell Kombi für komfortable Alltagsfahrten, den Mercedes E 300 e Hybrid für emissionsfreie Fahrten und die Mercedes V-Klasse für Gruppen bis 7 Personen. Alle Fahrzeuge sind klimatisiert und regelmäßig gewartet."
+        "text": "Unsere Flotte umfasst den Mercedes E-Klasse Kombi, den Mercedes E 300 e Hybrid (elektrisch) und die Mercedes V-Klasse für Gruppen. Alle Fahrzeuge sind klimatisiert und regelmäßig gewartet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie schnell kommt das Taxi nach meiner Bestellung?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In der Regel sind wir innerhalb weniger Minuten bei Ihnen in Essen. Rufen Sie uns an oder buchen Sie direkt über das Formular auf dieser Seite."
       }
     }
   ]
