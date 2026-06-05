@@ -1,0 +1,48 @@
+HIGH
+To address URL canonicalization issues, it is recommended to select a primary URL for your webpage and set up redirects from all other variations to the preferred one.
+Details
+HIGH
+To improve the website experience for your visitors, it is recommended to eliminate any render-blocking resources on this webpage.
+Details
+HIGH
+Using images in a modern format can significantly reduce the file size and improve the loading speed of a webpage, providing a better user experience and potentially increasing engagement.
+Details
+MEDIUM
+By creating a custom 404 error page with helpful links and information, users are more likely to stay on the site and continue to explore.
+Details
+MEDIUM
+Serve properly sized images to reduce page loading times and to improve user's experience.
+Details
+MEDIUM
+Avoid using distorted images, as they can have a negative impact on the user experience.
+Details
+MEDIUM
+To provide a good user experience, Google recommends that sites should aim for a First Contentful Paint value of 1.8 seconds or less.
+Details
+MEDIUM
+Consider adding cache headers for CSS resources to speed up the webpage for returning users.
+Details
+MEDIUM
+Consider adding cache headers for JavaScript resources to speed up the webpage for returning users.
+Details
+MEDIUM
+Consider adding cache headers for images to improve website performance. With cache headers, browsers can cache images and serve them quickly to returning visitors, rather than re-fetching them each time.
+Details
+MEDIUM
+Add a Google Analytics script to this website to help in diagnosing potential SEO issues by monitoring site visitors and traffic sources.
+Details
+LOW
+While a canonical link tag can help in resolving duplicate content issues, it's important to verify that the specified URL is accurate, especially if the site's URL structure has been recently updated.
+Details
+LOW
+Enable HTML compression to reduce page size and loading times.
+Details
+LOW
+Consider reducing the HTML size to improve loading times and retain visitors.
+Details
+LOW
+Without an SPF record, spammers can easily spoof emails from this domain, potentially leading to compromised email security and deliverability issues.
+Details
+LOW
+Using more than 20 HTTP requests on a webpage can negatively impact the loading time.
+Details

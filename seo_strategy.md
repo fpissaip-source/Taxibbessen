@@ -22,8 +22,9 @@
 
 ## Notes
 - Frontend is a Vite + React + Wouter single-page application.
-- Static crawler-visible HTML comes from `artifacts/taxi-app/index.html`.
-- Route-level titles and descriptions are updated client-side via `src/hooks/use-page-meta.ts`.
+- Core public routes now get build-time prerendered head tags through `artifacts/taxi-app/prerender.mjs`.
+- The public routes are still not fully SSR/SSG pages: route body content and H1s remain React-rendered after hydration unless specifically added to the static HTML shell.
+- Utility confirmation URLs (`/confirmation?id=...`) are transactional pages, not intended as search landing pages.
 
 ## Dismissed categories
 - (None yet)
