@@ -103,12 +103,20 @@ export default function Fahrzeuge() {
             <ArrowLeft className="w-4 h-4" />
             Zurück
           </Link>
-          <h1
-            className="font-display font-black uppercase tracking-tighter leading-none select-none"
-            style={{ fontSize: "clamp(2rem,6vw,4.5rem)" }}
-          >
-            SHOW<span className="text-primary italic">ROOM</span>
-          </h1>
+          <div className="text-center">
+            <h1
+              className="font-display font-black uppercase tracking-tighter leading-none select-none sr-only"
+            >
+              Unsere Fahrzeuge – Mercedes-Flotte von Taxi B&amp;B Essen
+            </h1>
+            <span
+              aria-hidden="true"
+              className="font-display font-black uppercase tracking-tighter leading-none select-none"
+              style={{ fontSize: "clamp(2rem,6vw,4.5rem)" }}
+            >
+              SHOW<span className="text-primary italic">ROOM</span>
+            </span>
+          </div>
           <div className="flex items-center gap-2">
             {CARS.map((_, i) => (
               <button
