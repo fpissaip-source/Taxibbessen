@@ -1,114 +1,68 @@
 import { useEffect } from "react";
 
+const CANONICAL_DOMAIN = "https://taxibb-essen.de";
+
 interface PageMeta {
   title: string;
   description: string;
   schemaOrg?: Record<string, unknown>;
 }
 
-const TAXI_SERVICE_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "TaxiService",
-  "name": "Taxi B&B GmbH Essen",
-  "alternateName": "Taxi B&B",
-  "description": "Ihr zuverlässiger Taxiservice in Essen seit 1992. Flughafentransfer Düsseldorf & Köln, Krankenfahrten, Großraumtaxi bis 7 Personen. 24/7 erreichbar.",
-  "url": "https://taxi-bb-essen.de",
-  "telephone": "+4920170706 0",
-  "email": "info@taxi-bb-essen.de",
-  "foundingDate": "1992",
-  "priceRange": "€€",
-  "currenciesAccepted": "EUR",
-  "paymentAccepted": "Cash, EC-Karte",
-  "areaServed": [
-    { "@type": "City", "name": "Essen" },
-    { "@type": "City", "name": "Düsseldorf" },
-    { "@type": "City", "name": "Köln" },
-    { "@type": "State", "name": "Nordrhein-Westfalen" }
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Borbecker Straße 72",
-    "addressLocality": "Essen",
-    "postalCode": "45355",
-    "addressCountry": "DE"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 51.4556,
-    "longitude": 6.9937
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
-    ],
-    "opens": "00:00",
-    "closes": "23:59"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Taxiservices",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Flughafentransfer Düsseldorf" }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Krankenfahrten & Rollstuhlservice" }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Großraumtaxi bis 7 Personen" }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Kurierfahrten & Geschäftsreisen" }
-      }
-    ]
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "47",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "sameAs": [
-    "https://www.google.com/maps?cid=taxi-bb-essen"
-  ]
-};
-
 const DEFAULT_META = {
   title: "Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060",
   description: "Taxi B&B GmbH Essen – Ihr zuverlässiger Taxiservice seit 1992. Flughafentransfer Düsseldorf, Krankenfahrten, Großraumtaxi für 7 Personen. 24/7 erreichbar: 0201 707060.",
 };
 
+function setMetaContent(selector: string, createAttrs: [string, string], content: string) {
+  let el = document.querySelector<HTMLMetaElement>(selector);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(createAttrs[0], createAttrs[1]);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
+
 export function usePageMeta({ title, description, schemaOrg }: PageMeta) {
   useEffect(() => {
+    const path = window.location.pathname.replace(/\/$/, "") || "/";
+    const canonicalUrl = path === "/" ? CANONICAL_DOMAIN : `${CANONICAL_DOMAIN}${path}`;
+
     document.title = title;
 
-    let metaDesc = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement("meta");
-      metaDesc.setAttribute("name", "description");
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute("content", description);
+    setMetaContent('meta[name="description"]', ["name", "description"], description);
 
-    const schema = schemaOrg ?? TAXI_SERVICE_SCHEMA;
-    let scriptEl = document.querySelector<HTMLScriptElement>('script[data-schema="taxiservice"]');
-    if (!scriptEl) {
-      scriptEl = document.createElement("script");
-      scriptEl.setAttribute("type", "application/ld+json");
-      scriptEl.setAttribute("data-schema", "taxiservice");
-      document.head.appendChild(scriptEl);
+    let canonicalEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonicalEl) {
+      canonicalEl = document.createElement("link");
+      canonicalEl.setAttribute("rel", "canonical");
+      document.head.appendChild(canonicalEl);
     }
-    scriptEl.textContent = JSON.stringify(schema);
+    canonicalEl.setAttribute("href", canonicalUrl);
+
+    setMetaContent('meta[property="og:url"]', ["property", "og:url"], canonicalUrl);
+    setMetaContent('meta[property="og:title"]', ["property", "og:title"], title);
+    setMetaContent('meta[property="og:description"]', ["property", "og:description"], description);
+
+    setMetaContent('meta[name="twitter:title"]', ["name", "twitter:title"], title);
+    setMetaContent('meta[name="twitter:description"]', ["name", "twitter:description"], description);
+
+    let scriptEl = document.querySelector<HTMLScriptElement>('script[data-schema="page-specific"]');
+    if (schemaOrg) {
+      if (!scriptEl) {
+        scriptEl = document.createElement("script");
+        scriptEl.setAttribute("type", "application/ld+json");
+        scriptEl.setAttribute("data-schema", "page-specific");
+        document.head.appendChild(scriptEl);
+      }
+      scriptEl.textContent = JSON.stringify(schemaOrg);
+    } else if (scriptEl) {
+      scriptEl.remove();
+    }
 
     return () => {
       document.title = DEFAULT_META.title;
-      if (metaDesc) metaDesc.setAttribute("content", DEFAULT_META.description);
+      setMetaContent('meta[name="description"]', ["name", "description"], DEFAULT_META.description);
     };
   }, [title, description, schemaOrg]);
 }
