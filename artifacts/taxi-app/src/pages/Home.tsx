@@ -108,10 +108,10 @@ function ServicesRevealSection() {
               className="absolute inset-x-[-1rem] sm:inset-x-[-1.5rem] lg:inset-x-[-3rem] inset-y-0 rounded-2xl pointer-events-none"
               style={{
                 opacity: activeIdx === i ? 1 : 0,
-                border: "1px solid rgba(255,193,7,0.28)",
-                background: "rgba(255,193,7,0.05)",
+                border: "1px solid rgba(255,193,7,0.12)",
+                background: "radial-gradient(ellipse at 50% 0%, rgba(255,193,7,0.08) 0%, transparent 70%), radial-gradient(ellipse at 50% 100%, rgba(255,193,7,0.06) 0%, transparent 60%)",
                 backdropFilter: "blur(8px)",
-                boxShadow: "0 0 40px rgba(255,193,7,0.12), inset 0 1px 0 rgba(255,193,7,0.15)",
+                boxShadow: "inset 0 0 40px rgba(255,193,7,0.08), inset 0 1px 0 rgba(255,193,7,0.4), inset 0 -1px 0 rgba(255,193,7,0.12), 0 0 60px rgba(255,193,7,0.06)",
                 transition: activeIdx === i
                   ? "opacity 0.45s 0.18s cubic-bezier(0.4,0,0.2,1)"
                   : "opacity 0.3s cubic-bezier(0.4,0,0.2,1)",
