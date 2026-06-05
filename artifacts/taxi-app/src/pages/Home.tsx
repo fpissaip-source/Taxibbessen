@@ -836,8 +836,23 @@ export default function Home() {
                 <h2 className="font-display font-black uppercase tracking-tighter mb-4 leading-none" style={{ fontSize: "clamp(3rem,8vw,6rem)" }}>
                   {t("feat_title")}
                 </h2>
-                <p className="text-lg text-white/40 font-bold italic max-w-md">
+                <p className="text-lg text-white/40 font-bold italic max-w-md mb-5">
                   {t("feat_subtitle")}
+                </p>
+                <p className="text-sm sm:text-base text-white/55 leading-relaxed max-w-xl font-medium">
+                  Taxi B&amp;B GmbH ist seit 1992 Ihr zuverlässiger Taxiservice in Essen. Ob{" "}
+                  <Link href="/leistungen" className="text-primary/80 hover:text-primary underline underline-offset-2 transition-colors">
+                    Krankenfahrten, Flughafentransfer oder Geschäftsfahrten
+                  </Link>{" "}
+                  – wir sind 24 Stunden am Tag, 7 Tage die Woche für Sie erreichbar. Entdecken Sie{" "}
+                  <Link href="/fahrzeuge" className="text-primary/80 hover:text-primary underline underline-offset-2 transition-colors">
+                    unsere modernen Mercedes-Fahrzeuge
+                  </Link>{" "}
+                  oder finden Sie Antworten auf die{" "}
+                  <a href="#faq" className="text-primary/80 hover:text-primary underline underline-offset-2 transition-colors">
+                    häufigsten Fragen zu Preisen und Buchung
+                  </a>
+                  .
                 </p>
               </div>
               <div className="flex gap-4 items-center shrink-0">
@@ -981,12 +996,13 @@ export default function Home() {
             {/* Word-by-word reveal heading */}
             <h2
               ref={ctaHeadingRef}
+              aria-label="Jetzt Ihre nächste Fahrt anfragen"
               className="font-display font-black uppercase tracking-tighter mb-6 leading-[1.05]"
               style={{ fontSize: "clamp(1.85rem, 6.8vw, 5rem)" }}
             >
               {/* Lines 1 & 2 — static, no scroll reveal */}
-              <span className="block text-white/90 whitespace-nowrap">Fragen Sie Jetzt</span>
-              <span className="block text-white/90 whitespace-nowrap">Ihre Nächste Fahrt</span>
+              <span className="block text-white/90 whitespace-nowrap" aria-hidden="true">Fragen Sie Jetzt</span>
+              <span className="block text-white/90 whitespace-nowrap" aria-hidden="true">Ihre Nächste Fahrt</span>
               {/* Line 3 — only "AN!" reveals on scroll: comes in later & stronger */}
               <span className="block overflow-hidden pt-[0.08em] pb-[0.14em]">
                 <motion.span
