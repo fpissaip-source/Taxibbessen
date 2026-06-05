@@ -145,7 +145,7 @@ function ServicesRevealSection() {
                 {t(titleKey)}
               </h3>
 
-              <p className="font-medium leading-relaxed mx-auto text-left text-sm lg:text-base max-w-[240px] lg:max-w-sm text-white/75">
+              <p className="font-medium leading-relaxed w-full text-left text-sm lg:text-base max-w-sm lg:max-w-md text-white/75">
                 {t(descKey)}
               </p>
             </motion.div>
