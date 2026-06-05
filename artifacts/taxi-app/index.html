@@ -37,7 +37,8 @@
     <!-- Fonts (lokal gehostet, keine Übertragung an Google) -->
     <link rel="preload" href="/fonts/Archivo-normal-400-latin-95938.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/DMSans-normal-100-latin-10074.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/fonts/fonts.css">
+    <link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
 
     <!-- LocalBusiness + TaxiService JSON-LD (site-wide business entity) -->
     <script type="application/ld+json">
