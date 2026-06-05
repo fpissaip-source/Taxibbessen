@@ -106,6 +106,12 @@ const routes = [
     description: 'Verfolgen Sie Ihren Fahrstatus bei Taxi B&B GmbH Essen. Buchungsnummer eingeben und Echtzeit-Status abrufen.',
   },
   {
+    path: '/confirmation',
+    title: 'Buchungsbestätigung – Taxi B&B GmbH Essen',
+    description: 'Ihre Buchung bei Taxi B&B GmbH wurde erfolgreich übermittelt.',
+    noindex: true,
+  },
+  {
     path: '/impressum',
     title: 'Impressum – Taxi B&B GmbH Essen',
     description: 'Impressum der Taxi B&B GmbH Essen. Angaben gemäß § 5 TMG.',
@@ -137,14 +143,20 @@ function buildHeadTags(route) {
   const title = escapeAttr(route.title);
   const desc = escapeAttr(route.description);
 
-  const tags = [
-    `    <link rel="canonical" href="${canonicalUrl}" />`,
-    `    <meta property="og:url" content="${canonicalUrl}" />`,
-    `    <meta property="og:title" content="${title}" />`,
-    `    <meta property="og:description" content="${desc}" />`,
-    `    <meta name="twitter:title" content="${title}" />`,
-    `    <meta name="twitter:description" content="${desc}" />`,
-  ];
+  const tags = [];
+
+  if (route.noindex) {
+    tags.push(`    <meta name="robots" content="noindex, nofollow" />`);
+  } else {
+    tags.push(
+      `    <link rel="canonical" href="${canonicalUrl}" />`,
+      `    <meta property="og:url" content="${canonicalUrl}" />`,
+      `    <meta property="og:title" content="${title}" />`,
+      `    <meta property="og:description" content="${desc}" />`,
+      `    <meta name="twitter:title" content="${title}" />`,
+      `    <meta name="twitter:description" content="${desc}" />`,
+    );
+  }
 
   if (route.schemaOrg) {
     tags.push(

@@ -1137,20 +1137,26 @@ export default function Home() {
                 <span className="text-xs font-black uppercase tracking-widest text-[#25D366] group-hover:text-[#25D366] transition-colors">WhatsApp</span>
               </motion.a>
 
-              {/* Online */}
-              <motion.button
+              {/* Online buchen */}
+              <motion.a
                 variants={ctaGlowItem}
                 custom={{ glow: "0 0 26px rgba(255,193,7,0.55)", bgDim: "rgba(255,193,7,0.06)", bgLit: "rgba(255,193,7,0.32)" }}
                 whileHover={{ backgroundColor: "rgba(255,193,7,0.4)", scale: 1.03 }}
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                href="/book"
                 className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border border-primary/40 hover:border-primary/70 transition-colors"
               >
                 <div className="w-10 h-10 rounded-xl bg-primary/25 flex items-center justify-center group-hover:bg-primary/35 transition-colors">
                   <Globe className="w-5 h-5 text-primary" />
                 </div>
                 <span className="text-xs font-black uppercase tracking-widest text-primary group-hover:text-primary transition-colors">Online</span>
-              </motion.button>
+              </motion.a>
             </motion.div>
+            <p className="text-center text-sm text-muted-foreground mt-6">
+              Buchung bereits aufgegeben?{" "}
+              <Link href="/fahrtstatus" className="text-primary font-bold hover:underline underline-offset-4">
+                Fahrtstatus prüfen →
+              </Link>
+            </p>
           </div>
         </section>
 

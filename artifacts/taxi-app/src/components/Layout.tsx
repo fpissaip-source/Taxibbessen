@@ -113,6 +113,7 @@ export function Layout({ children }: { children: ReactNode }) {
   const navLinks = [
     { href: "/", label: t("nav_home") },
     { href: "/fahrzeuge", label: t("nav_vehicles") },
+    { href: "/book", label: t("nav_book") },
   ];
 
   const scrollToSection = (id: string) => {
@@ -325,6 +326,15 @@ export function Layout({ children }: { children: ReactNode }) {
                 >
                   {t("nav_about")}
                 </Link>
+                <Link
+                  href="/fahrtstatus"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex items-center px-3 py-2.5 rounded-xl font-black text-base transition-all ${
+                    location === "/fahrtstatus" ? "bg-primary/10 text-primary" : "text-foreground hover:bg-white/5"
+                  }`}
+                >
+                  {t("nav_status")}
+                </Link>
 
               </nav>
 
@@ -410,7 +420,9 @@ export function Layout({ children }: { children: ReactNode }) {
             <div>
               <h4 className="font-black text-white uppercase tracking-widest text-xs mb-6">{t("footer_legal")}</h4>
               <ul className="space-y-4 text-sm font-bold">
-                <li><Link href="/impressum" className="text-muted-foreground hover:text-primary transition-colors">{t("footer_imprint")}</Link></li>
+                <li><Link href="/book" className="text-muted-foreground hover:text-primary transition-colors">{t("nav_book")}</Link></li>
+                <li><Link href="/fahrtstatus" className="text-muted-foreground hover:text-primary transition-colors">{t("nav_status")}</Link></li>
+                <li className="pt-2 border-t border-white/5"><Link href="/impressum" className="text-muted-foreground hover:text-primary transition-colors">{t("footer_imprint")}</Link></li>
                 <li><Link href="/datenschutz" className="text-muted-foreground hover:text-primary transition-colors">{t("footer_privacy")}</Link></li>
                 <li><Link href="/agb" className="text-muted-foreground hover:text-primary transition-colors">{t("footer_terms")}</Link></li>
               </ul>

@@ -6,10 +6,18 @@ import { CheckCircle2, MapPin, Calendar, ArrowRight, Loader2, Euro, Phone, Mail 
 import { format } from "date-fns";
 import { useLanguage } from "@/i18n/useLanguage";
 import { calculateTaxiPrice } from "@/hooks/use-bookings";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 export default function Confirmation() {
   const { t } = useLanguage();
   const [, setLocation] = useLocation();
+
+  usePageMeta({
+    title: "Buchungsbestätigung – Taxi B&B GmbH Essen",
+    description: "Ihre Buchung bei Taxi B&B GmbH wurde erfolgreich übermittelt.",
+    noindex: true,
+  });
+
   const searchParams = new URLSearchParams(window.location.search);
   const idParam = searchParams.get("id");
   const id = idParam ? parseInt(idParam, 10) : null;
@@ -23,7 +31,7 @@ export default function Confirmation() {
       <Layout>
         <div className="min-h-[60vh] flex items-center justify-center flex-col gap-4 px-4">
           <h2 className="text-2xl font-bold text-center">{t("admin_no_bookings")}</h2>
-          <Button onClick={() => setLocation("/book")}>{t("nav_book")}</Button>
+          <Button asChild><Link href="/book">{t("nav_book")}</Link></Button>
         </div>
       </Layout>
     );
@@ -44,7 +52,7 @@ export default function Confirmation() {
       <Layout>
         <div className="min-h-[60vh] flex items-center justify-center flex-col gap-4 px-4">
           <h2 className="text-xl sm:text-2xl font-bold text-destructive text-center">Buchung nicht gefunden</h2>
-          <Button onClick={() => setLocation("/book")}>{t("conf_new_booking")}</Button>
+          <Button asChild><Link href="/book">{t("conf_new_booking")}</Link></Button>
         </div>
       </Layout>
     );
@@ -209,11 +217,11 @@ export default function Confirmation() {
 
           {/* Actions */}
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-            <Button onClick={() => setLocation("/book")} className="w-full sm:w-auto">
-              {t("conf_new_booking")}
+            <Button asChild className="w-full sm:w-auto">
+              <Link href="/book">{t("conf_new_booking")}</Link>
             </Button>
-            <Button variant="outline" onClick={() => setLocation("/")} className="gap-2 w-full sm:w-auto">
-              {t("conf_home")} <ArrowRight className="w-4 h-4" />
+            <Button asChild variant="outline" className="gap-2 w-full sm:w-auto">
+              <Link href="/">{t("conf_home")} <ArrowRight className="w-4 h-4" /></Link>
             </Button>
           </div>
         </div>
