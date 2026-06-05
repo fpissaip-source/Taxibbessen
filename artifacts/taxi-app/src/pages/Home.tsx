@@ -786,9 +786,9 @@ export default function Home() {
             {/* ── Service Icons — mobil: absolut, desktop: normaler Fluss nach Widget ── */}
             <div className="absolute lg:relative bottom-[18%] lg:bottom-auto left-0 lg:left-auto right-0 lg:right-auto z-20 px-4 sm:px-6 lg:px-12 lg:mt-8">
               <motion.div
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 0, y: 0 }}
                 animate={{ opacity: iconsHidden ? 0 : 1, y: iconsHidden ? 18 : 0 }}
-                transition={iconsHidden ? { duration: 0.45, ease: "easeInOut" } : { duration: 0.7, delay: 0.5 }}
+                transition={iconsHidden ? { duration: 0.45, ease: "easeInOut" } : { opacity: { duration: 0.7, delay: 0.5 } }}
                 style={{ pointerEvents: iconsHidden ? "none" : undefined }}
                 className="grid grid-cols-3 gap-x-2 gap-y-4 lg:gap-x-8 w-full lg:w-[82%] lg:max-w-5xl mx-auto"
               >
