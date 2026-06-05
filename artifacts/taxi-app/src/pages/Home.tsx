@@ -288,7 +288,7 @@ export default function Home() {
   const imgRef = useRef<HTMLImageElement>(null);
   const sharpOverlayRef = useRef<HTMLImageElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
-  const ctaHeadingRef = useRef<HTMLElement>(null);
+  const ctaHeadingRef = useRef<HTMLParagraphElement>(null);
   const ctaInView = useInView(ctaHeadingRef, { amount: 0.3, margin: "0px 0px 5% 0px" });
   const heroLayerRef = useRef<HTMLDivElement>(null);
   const storyImgRef = useRef<HTMLImageElement>(null);

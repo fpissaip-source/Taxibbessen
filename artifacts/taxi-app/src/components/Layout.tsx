@@ -102,6 +102,7 @@ export function Layout({ children }: { children: ReactNode }) {
     // Small delay to allow route render
     const cleanup = attach();
     if (cleanup) return cleanup;
+    return undefined;
   }, [location]);
 
   useEffect(() => {
