@@ -102,6 +102,10 @@ function ServicesRevealSection() {
             key={src}
             ref={(el) => { itemRefs.current[i] = el; }}
             className="py-6 text-center relative"
+            style={{
+              transform: activeIdx === i ? "translateY(-10px)" : "translateY(0)",
+              transition: "transform 0.5s cubic-bezier(0.34, 1.4, 0.64, 1)",
+            }}
           >
             {/* Glass tile — visible only when this item is nearest viewport center */}
             <div
@@ -116,7 +120,8 @@ function ServicesRevealSection() {
                   "inset 0 -4px 28px rgba(255,193,7,0.16)",
                   "inset 4px 0 28px rgba(255,193,7,0.14)",
                   "inset -4px 0 28px rgba(255,193,7,0.14)",
-                  "0 0 80px rgba(255,193,7,0.07)",
+                  "0 24px 48px rgba(0,0,0,0.5)",
+                  "0 0 80px rgba(255,193,7,0.1)",
                 ].join(", "),
                 transition: activeIdx === i
                   ? "opacity 0.45s 0.18s cubic-bezier(0.4,0,0.2,1)"
