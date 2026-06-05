@@ -119,16 +119,13 @@ function ServicesRevealSection() {
               viewport={{ once: false, margin: "-60px" }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="relative flex flex-col items-center"
-              style={{
-                transform: activeIdx === i ? "scale(1.03)" : "scale(1)",
-                transition: "transform 0.4s cubic-bezier(0.4,0,0.2,1)",
-              }}
             >
-              <motion.div
-                whileInView={{ scale: [0.85, 1.04, 1] }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
+              <div
                 className="flex justify-center mb-5 lg:mb-7"
+                style={{
+                  transform: activeIdx === i ? "scale(1.04)" : "scale(1)",
+                  transition: "transform 0.4s cubic-bezier(0.4,0,0.2,1)",
+                }}
               >
                 <img
                   src={`${base}icons/${src}`}
@@ -136,7 +133,7 @@ function ServicesRevealSection() {
                   className="h-20 lg:h-32 w-auto object-contain"
                   style={{ filter: "drop-shadow(0 0 18px rgba(255,193,7,0.55))" }}
                 />
-              </motion.div>
+              </div>
 
               <h3
                 className="font-display font-black text-white uppercase tracking-tighter mb-3 leading-none"
