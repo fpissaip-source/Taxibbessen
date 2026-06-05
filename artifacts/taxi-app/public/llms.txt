@@ -1,0 +1,28 @@
+# Taxi B&B GmbH
+
+Taxi B&B GmbH is a licensed taxi and passenger transport company based in Essen, Germany. The company offers local and long-distance taxi rides, airport transfers, and on-demand booking services for private and business customers in the Ruhr region.
+
+## Canonical Domain
+
+https://taxibb-essen.de
+
+## Language & Market
+
+- Primary language: German (de-DE)
+- Market: Essen, North Rhine-Westphalia, Germany
+
+## Key Pages
+
+- Homepage & booking: https://taxibb-essen.de/
+- Fleet / vehicles: https://taxibb-essen.de/fahrzeuge
+- About us: https://taxibb-essen.de/ueber-uns
+- Book a ride: https://taxibb-essen.de/book
+- Ride status: https://taxibb-essen.de/fahrtstatus
+- Legal notice (Impressum): https://taxibb-essen.de/impressum
+- Privacy policy (Datenschutz): https://taxibb-essen.de/datenschutz
+- Terms & conditions (AGB): https://taxibb-essen.de/agb
+
+## Contact
+
+- Phone: 0201 707060
+- Email: taxibb@outlook.com
