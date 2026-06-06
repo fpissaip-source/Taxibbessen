@@ -733,6 +733,11 @@ export default function Home() {
           >
             <source src={`${import.meta.env.BASE_URL}hero-desktop.mp4`} type="video/mp4" />
           </video>
+          {/* Cover AI-generated video watermark bottom-right */}
+          <div
+            className="hidden md:block absolute bottom-0 right-0 pointer-events-none"
+            style={{ width: 160, height: 48, background: "linear-gradient(to top left, #0b0a08 30%, transparent 100%)" }}
+          />
         </div>
 
         {/* ─── STORY SCROLL-VIDEO BACKGROUND (übrig — kein Desktop-Ersatz) ─── */}
