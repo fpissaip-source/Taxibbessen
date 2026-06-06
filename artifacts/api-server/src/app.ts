@@ -33,6 +33,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", router);
 
+function escHtml(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
 // Nexus Brain Dashboard
 app.get("/", async (_req: Request, res: Response) => {
   let rows: { id: number; content: string; category: string; importance: number; createdAt: Date }[] = [];
@@ -42,7 +46,7 @@ app.get("/", async (_req: Request, res: Response) => {
     // DB not ready yet
   }
   const items = rows.map((m) =>
-    `<tr><td>${m.id}</td><td style="max-width:420px;word-break:break-word">${m.content}</td><td>${m.category}</td><td>${m.importance.toFixed(2)}</td><td>${m.createdAt.toISOString().slice(0,10)}</td></tr>`
+    `<tr><td>${m.id}</td><td style="max-width:420px;word-break:break-word">${escHtml(m.content)}</td><td>${escHtml(m.category)}</td><td>${m.importance.toFixed(2)}</td><td>${m.createdAt.toISOString().slice(0,10)}</td></tr>`
   ).join("");
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.send(`<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><title>Nexus Brain</title>

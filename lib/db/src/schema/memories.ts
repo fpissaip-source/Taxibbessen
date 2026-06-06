@@ -17,6 +17,7 @@ export const memoriesTable = pgTable("memories", {
   content: text("content").notNull(),
   category: memoryCategoryEnum("category").notNull().default("general"),
   importance: real("importance").notNull().default(0.5),
+  embedding: text("embedding"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

@@ -7,7 +7,8 @@ const router = Router();
 // GET /api/memories/context?q=...&limit=10
 router.get("/memories/context", async (req, res) => {
   const q = String(req.query["q"] ?? "");
-  const limit = Math.min(Number(req.query["limit"] ?? 10), 50);
+  const rawLimit = Number(req.query["limit"]);
+  const limit = Math.min(Number.isFinite(rawLimit) && rawLimit > 0 ? rawLimit : 10, 50);
 
   const rows = await db
     .select()
@@ -40,7 +41,8 @@ router.get("/memories/context", async (req, res) => {
 // GET /api/memories/session/restore?q=...&limit=20
 router.get("/memories/session/restore", async (req, res) => {
   const q = String(req.query["q"] ?? "");
-  const limit = Math.min(Number(req.query["limit"] ?? 20), 100);
+  const rawLimit2 = Number(req.query["limit"]);
+  const limit = Math.min(Number.isFinite(rawLimit2) && rawLimit2 > 0 ? rawLimit2 : 20, 100);
 
   const rows = await db
     .select()
