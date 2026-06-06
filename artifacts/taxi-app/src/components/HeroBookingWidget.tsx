@@ -6,9 +6,10 @@ import { useCreateBooking } from "@/hooks/use-bookings";
 
 interface Props {
   onExpand?: () => void;
+  onCollapse?: () => void;
 }
 
-export function HeroBookingWidget({ onExpand }: Props) {
+export function HeroBookingWidget({ onExpand, onCollapse }: Props) {
   const createBooking = useCreateBooking();
 
   const [collapsed, setCollapsed] = useState(() => window.innerWidth < 1024);
@@ -33,7 +34,10 @@ export function HeroBookingWidget({ onExpand }: Props) {
     if (collapsed) return;
     function handleOutside(e: MouseEvent | TouchEvent) {
       if (widgetRef.current && !widgetRef.current.contains(e.target as Node)) {
-        if (isEmpty) setCollapsed(true);
+        if (isEmpty) {
+          setCollapsed(true);
+          onCollapse?.();
+        }
       }
     }
     document.addEventListener("mousedown", handleOutside);

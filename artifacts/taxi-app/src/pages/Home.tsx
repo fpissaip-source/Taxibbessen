@@ -910,7 +910,7 @@ export default function Home() {
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className="w-full lg:w-[82%] lg:max-w-5xl"
               >
-                <HeroBookingWidget onExpand={() => setIconsHidden(true)} />
+                <HeroBookingWidget onExpand={() => setIconsHidden(true)} onCollapse={() => setIconsHidden(false)} />
               </motion.div>
             </div>
 
