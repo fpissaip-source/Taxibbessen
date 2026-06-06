@@ -1,0 +1,128 @@
+Ja — frischer Check für taxibbessen.de.
+
+Neuer Stand: besser als vorher, aber noch nicht sauber genug.
+Ich würde aktuell geben:
+
+SEO: 68/100
+AEO: 58/100
+
+1. Gute Nachricht: taxi.de ist jetzt besser
+
+Auf taxi.de steht aktuell bei Taxi B&B:
+
+Taxi B&B GmbH, Menzelstraße 8–10, 45147 Essen, 0201 707060 und als Website jetzt taxibbessen.de. Das ist sehr gut, weil vorher dort noch die alte Taxi-Beige-Domain problematisch war.  
+
+Das ist ein echter Fortschritt.
+
+2. Hauptproblem bleibt: Unterseiten sind da, aber dupliziert
+
+Die URLs existieren, ja. Aber sie liefern aktuell fast denselben Inhalt wie die Startseite.
+
+Die Startseite hat die H1:
+
+„24/7 Taxiservice in Essen – Krankenfahrten, Flughafentransfer und Großraumtaxi“.  
+
+Aber /book/ zeigt dieselbe H1 und denselben Leistungs-/FAQ-/Kontaktblock.  
+/fahrzeuge/ zeigt ebenfalls dieselbe H1 und denselben Inhalt.  
+/ueber-uns/ zeigt ebenfalls wieder dieselbe H1 und denselben Inhalt.  
+
+Das heißt: Die Unterseiten sind technisch vorhanden, aber SEO-mäßig noch keine echten eigenständigen Seiten.
+
+Du brauchst jetzt für jede URL eigenen Content.
+
+Beispiel:
+
+/book/
+H1: Taxi in Essen online buchen
+Fokus: Buchung, Ablauf, Sofortfahrt, Vorbestellung, Telefonnummer
+/fahrzeuge/
+H1: Großraumtaxi Essen bis 7 Personen
+Fokus: Mercedes V-Klasse, Gepäck, Gruppen, Flughafenfahrten
+/ueber-uns/
+H1: Über Taxi B&B GmbH in Essen
+Fokus: seit 1992, Unternehmen, Standort, Erfahrung, Team
+
+3. Website selbst ist als Landingpage okay
+
+Die Startseite hat gute Kernsignale: Taxi B&B wird als Taxiservice seit 1992 beschrieben, mit Krankenfahrten, Flughafentransfer, Geschäftsfahrten, Kurierdienst und Großraumtaxi bis 7 Personen. Die Nummer 0201 707060 steht sichtbar drin.  
+
+Die FAQ ist auch gut, aber noch zu kurz. Es gibt Fragen zu Flughafen Düsseldorf, 24h-Erreichbarkeit und Fahrten bundesweit/ins Ausland.  
+
+Für AEO braucht ihr eher 20–30 FAQ-Fragen, nicht nur 3.
+
+4. Externe Verwirrung ist noch nicht komplett gelöst
+
+Gelbe Seiten ist noch problematisch: Dort steht Taxi B&B mit richtiger Adresse und Nummer 0201 70 70 60, aber als Website wird weiterhin taxi-beige-essen.de und zusätzlich taxi-beige.de angezeigt.  
+
+Taxi Beige Essen ist ebenfalls noch verwirrend, weil die Seite oben als Taxi Beige GmbH mit 0201 70 70 68 auftritt, unten aber im Footer Taxi B&B GmbH, Menzelstraße, Essen und Taxibb@outlook.com steht.  
+
+ProvenExpert ist auch noch schlecht: Profil ist nicht bewertet, nutzt info@taxi-beige.de, verlinkt auf taxi-beige.de und hat unpassende Angebote wie Versicherungen, Finanzberatung, Kapitalanlage und Immobilienfinanzierung.  
+
+Das ist für AEO richtig schlecht, weil KI-Systeme solche Quellen lesen und dann unsicher werden, ob Taxi B&B, Taxi Beige, alte Domain und neue Domain zusammengehören.
+
+Was jetzt Priorität hat
+
+Priorität 1: Gelbe Seiten korrigieren
+
+Dort muss raus:
+
+taxi-beige-essen.de
+taxi-beige.de
+
+Rein muss:
+
+https://taxibbessen.de/
+
+Die Beschreibung bei Gelbe Seiten ist eigentlich stark: 24h Taxi-Service, Flughafentransfer, Krankenfahrten, Schulfahrten, Firmenfahrten, Langstrecken, Großraumtaxi bis 7 Personen.  
+Aber die falschen Website-Links schwächen das.
+
+Priorität 2: ProvenExpert sofort bereinigen
+
+Entweder komplett korrigieren oder erstmal nicht mehr verlinken.
+
+Korrigieren auf:
+
+Website: https://taxibbessen.de/
+E-Mail: taxibb@outlook.com oder info@taxibbessen.de
+Angebote: Taxi, Krankenfahrten, Flughafentransfer, Großraumtaxi, Kurierfahrten
+
+Die ganzen Versicherungs-/Finanzbegriffe müssen weg.
+
+Priorität 3: Unterseiten wirklich einzigartig machen
+
+Aktuell bringt /book/, /fahrzeuge/, /ueber-uns/ SEO-mäßig fast nichts, weil sie dieselbe Seite wiederholen.
+
+Du solltest als Entwickler jetzt zuerst diese 3 Seiten sauber machen:
+
+/ueber-uns/
+Title: Über Taxi B&B GmbH Essen | Seit 1992
+H1: Über Taxi B&B GmbH in Essen
+/book/
+Title: Taxi Essen online buchen | Taxi B&B
+H1: Taxi in Essen online buchen
+/fahrzeuge/
+Title: Großraumtaxi Essen bis 7 Personen | Taxi B&B
+H1: Großraumtaxi und Mercedes V-Klasse in Essen
+
+Priorität 4: AEO-Block einbauen
+
+Auf die Startseite sollte ein klarer Faktenblock:
+
+Offizielle Informationen zur Taxi B&B GmbH
+Taxi B&B GmbH ist ein Taxiunternehmen aus Essen-Holsterhausen.
+Die offizielle Website ist taxibbessen.de.
+Die offizielle Telefonnummer ist 0201 707060.
+Die Adresse lautet Menzelstraße 8–10, 45147 Essen.
+Taxi B&B bietet 24h-Taxiservice, Krankenfahrten, Dialysefahrten, Flughafentransfer, Kurierfahrten und Großraumtaxen bis 7 Personen an.
+
+Das ist wichtig für ChatGPT, Perplexity, Gemini und Google AI Overviews.
+
+Fazit
+
+Besser geworden: taxi.de zeigt jetzt taxibbessen.de. Das ist stark.
+Noch schlecht: Gelbe Seiten, ProvenExpert und Taxi Beige verwirren weiterhin.
+Größter Website-Fehler: Unterseiten existieren, aber sie sind inhaltlich noch Duplikate.
+
+Der nächste beste Schritt ist nicht Design, sondern:
+
+Gelbe Seiten korrigieren, ProvenExpert bereinigen und /book/, /fahrzeuge/, /ueber-uns/ mit echtem eigenen Inhalt füllen.
