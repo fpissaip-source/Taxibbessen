@@ -132,8 +132,8 @@ const routes = [
   },
   {
     path: '/book',
-    title: 'Taxi buchen – Taxi B&B GmbH Essen | Online Buchung',
-    description: 'Taxi in Essen einfach online buchen. Festpreis, sofortige Bestätigung, 24/7 verfügbar. Taxi B&B GmbH – 0201 707060.',
+    title: 'Taxi buchen – Taxi B&B GmbH Essen | Online Anfrage',
+    description: 'Taxi in Essen einfach anfragen. Wir melden uns sofort. Taxi B&B GmbH – 0201 707060.',
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi online buchen in Essen – Festpreis, Flughafentransfer und Krankenfahrten</h1>
         <p>Buchen Sie Ihr Taxi in Essen schnell und einfach online. Wählen Sie Abholadresse, Ziel, Datum und Uhrzeit – wir bestätigen Ihre Buchung umgehend. <a href="/ueber-uns">Seit 1992</a> Ihr zuverlässiger Taxiservice.</p>
