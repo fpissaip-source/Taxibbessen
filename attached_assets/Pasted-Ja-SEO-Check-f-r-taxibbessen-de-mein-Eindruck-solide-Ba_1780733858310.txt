@@ -1,0 +1,112 @@
+Ja. SEO-Check für taxibbessen.de — mein Eindruck: solide Basis, aber lokal noch viel Potenzial.
+Aktueller Score: ca. 62/100.
+
+1. Was schon gut ist
+
+Die Startseite ist grundsätzlich indexierbar und wird gefunden. Der Title ist klar: „Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060“, und die Meta-Beschreibung zielt gut auf Taxi Essen, seit 1992, Flughafentransfer, Krankenfahrten, Großraumtaxi ab.  
+
+Die H1 ist auch stark: „24/7 Taxiservice in Essen – Krankenfahrten, Flughafentransfer und Großraumtaxi“. Das trifft gute Suchbegriffe wie Taxi Essen, Krankenfahrten Essen, Flughafentransfer Düsseldorf und Großraumtaxi Essen.  
+
+Auch positiv: Telefonnummer, Adresse und E-Mail sind direkt sichtbar. Für lokale Dienstleister ist das wichtig, weil Google lokale Relevanz stark über vollständige, korrekte Unternehmensdaten bewertet. Google nennt für Local Rankings besonders Relevance, Distance und Prominence.  
+
+2. Größtes Problem: NAP-Inkonsistenz
+
+Das ist der wichtigste Punkt.
+
+Auf taxibbessen.de steht:
+
+Taxi B&B GmbH · Menzelstraße 8–10 · 45147 Essen
+Telefon: 0201 707060
+E-Mail: taxibb@outlook.com  
+
+Aber externe Seiten zeigen unterschiedliche Daten:
+
+taxi.de listet Taxi B&B mit derselben Adresse und 0201 707060, aber als Website taxi-beige.de.  
+
+Gelbe Seiten listet Taxi B&B ebenfalls mit 0201 70 70 60 und Website taxi-beige.de.  
+
+Eine andere Gelbe-Seiten-Seite zeigt aber 0201 70 70 68.  
+
+Und taxi-beige-essen.de zeigt auch 0201 70 70 68, nennt aber unten ebenfalls Taxi B&B GmbH und die Adresse in Essen.  
+
+Das verwirrt Google. Für Local SEO sollte überall exakt dasselbe stehen:
+
+Name: Taxi B&B GmbH
+Adresse: Menzelstraße 8–10, 45147 Essen
+Telefon: eine einzige Hauptnummer
+Website: eine einzige Hauptdomain
+E-Mail: eine einheitliche geschäftliche Mail
+
+Aktuell wirkt es so, als würden taxibbessen.de, taxi-beige.de und taxi-beige-essen.de miteinander konkurrieren oder uneinheitlich auf dasselbe Unternehmen zeigen.
+
+3. Content ist okay, aber zu dünn
+
+Die Seite hat gute Keywords, aber sie ist sehr kurz. Sichtbar sind im Kern nur Startseite, Leistungen, FAQ und Kontakt.  
+
+Für bessere Rankings würde ich eigene Unterseiten bauen:
+
+* /taxi-essen/
+* /flughafentransfer-essen-duesseldorf/
+* /krankenfahrten-essen/
+* /dialysefahrten-essen/
+* /grossraumtaxi-essen/
+* /kurierdienst-essen/
+* /taxi-essen-holsterhausen/
+* /taxi-essen-ruettenscheid/
+* /taxi-essen-frohnhausen/
+* /taxi-essen-suedviertel/
+
+Gerade lokale Seiten für Stadtteile können stark sein, wenn sie nicht nur Keyword-Spam sind, sondern echte Infos enthalten: Abholgebiete, typische Ziele, Flughäfen, Kliniken, Bahnhöfe, Preise/Festpreis-Anfrage, Ablauf der Buchung.
+
+4. Trust-Signale fehlen fast komplett
+
+Für ein Taxiunternehmen zählt Vertrauen extrem. Auf der Seite sehe ich zwar „seit 1992“, Telefonnummer und Adresse, aber wenig echte Belege: keine Team-/Fahrerfotos, keine Fahrzeugbilder, keine sichtbaren Google-Bewertungen, keine Zertifikate, keine klare Unternehmensgeschichte, keine Zahlungsarten, keine echte FAQ-Tiefe.  
+
+ProvenExpert ist verlinkt, aber das Profil ist nicht bewertet. Noch schlechter: In einem Suchergebnis zu ProvenExpert tauchen unter „Angebote“ plötzlich viele unpassende Versicherungs-/Finanzbegriffe auf. Das wirkt unsauber und kann Vertrauen kosten.  
+
+Gelbe Seiten zeigt ebenfalls keine Rezensionen.  
+Das Telefonbuch zeigt zwar Google-Bewertungen mit 4,0/5 bei 4 Bewertungen, aber das ist wenig Social Proof.  
+
+5. Strukturierte Daten fehlen wahrscheinlich oder sind nicht sichtbar
+
+Für Local SEO sollte die Seite unbedingt LocalBusiness/TaxiService Schema als JSON-LD haben. Google sagt, Local-Business-Structured-Data kann Suchmaschinen Details wie Öffnungszeiten, Adresse, Unternehmensdaten und weitere lokale Infos verständlicher machen.  
+
+Empfohlenes Schema:
+
+{
+  "@context": "https://schema.org",
+  "@type": "TaxiService",
+  "name": "Taxi B&B GmbH",
+  "url": "https://taxibbessen.de/",
+  "telephone": "+49201707060",
+  "email": "taxibb@outlook.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Menzelstraße 8-10",
+    "postalCode": "45147",
+    "addressLocality": "Essen",
+    "addressCountry": "DE"
+  },
+  "areaServed": ["Essen", "Düsseldorf Flughafen", "Dortmund Flughafen", "Köln/Bonn Flughafen"],
+  "openingHours": "Mo-Su 00:00-23:59",
+  "priceRange": "€€"
+}
+
+6. Konkrete Prioritäten
+
+Sofort machen:
+
+1. Entscheiden, welche Domain die Hauptdomain ist: wahrscheinlich taxibbessen.de.
+2. Alle anderen Domains sauber per 301 auf die Hauptdomain weiterleiten oder klar trennen.
+3. Telefonnummer überall angleichen: entweder 0201 707060 oder 0201 707068, aber nicht beides durcheinander.
+4. Google Unternehmensprofil optimieren: gleiche NAP-Daten, Leistungen, Fotos, Öffnungszeiten, Buchungslink, Kategorien.
+5. Echte Bewertungen sammeln: nach jeder Fahrt QR-Code oder WhatsApp-Link schicken.
+6. Eigene Unterseiten für Flughafentransfer, Krankenfahrten und Großraumtaxi erstellen.
+7. LocalBusiness/TaxiService Schema einbauen.
+8. Impressum, Datenschutz und Footer sichtbar und professionell machen, falls nicht sauber vorhanden.
+9. ProvenExpert-Profil bereinigen, besonders die falschen Versicherungs-/Finanzbegriffe.
+10. Bilder von echten Fahrzeugen, Innenraum, Fahrerteam und Standort einbauen.
+
+Mein Fazit
+
+Die Seite hat eine gute SEO-Grundlage, aber sie wirkt noch wie eine schnelle Landingpage. Für „Taxi Essen“ gegen starke Anbieter wie Taxi Essen e.G. wird das allein schwer. Für spezifischere Suchbegriffe wie „Krankenfahrten Essen“, „Flughafentransfer Essen Düsseldorf“, „Großraumtaxi Essen“ und „Taxi Holsterhausen“ kann die Seite aber mit besseren Unterseiten, einheitlichen Firmendaten und Bewertungen deutlich stärker werden.

@@ -1,0 +1,391 @@
+Ja. Hier sauber getrennt:
+
+Was Taxi B&B als Unternehmen machen muss
+
+Das sind Dinge, die du als Entwickler nicht allein lösen kannst, weil sie vom Unternehmen selbst kommen müssen.
+
+1. Einheitliche Unternehmensdaten festlegen
+
+Taxi B&B muss entscheiden, was überall offiziell genutzt wird:
+
+Firmenname: Taxi B&B GmbH
+Adresse: Menzelstraße 8–10, 45147 Essen
+Telefon: eine Hauptnummer, z. B. 0201 707060
+E-Mail: am besten professionelle Mail wie info@taxibbessen.de
+Website: https://taxibbessen.de
+
+Wichtig: Keine unterschiedlichen Nummern, Domains oder Schreibweisen mehr.
+
+⸻
+
+2. Google Unternehmensprofil pflegen
+
+Taxi B&B muss Zugriff auf das Google Business Profile haben oder bekommen.
+
+Dort müssen sie:
+
+* richtige Telefonnummer eintragen
+* richtige Website eintragen
+* Öffnungszeiten auf 24/7 setzen
+* Kategorie „Taxiunternehmen“ wählen
+* Leistungen eintragen
+* echte Fotos hochladen
+* regelmäßig Bewertungen sammeln
+* auf Bewertungen antworten
+
+Das ist extrem wichtig für Google Maps.
+
+⸻
+
+3. Bewertungen aktiv sammeln
+
+Nach jeder Fahrt sollte Taxi B&B Kunden um eine Bewertung bitten.
+
+Zum Beispiel per WhatsApp:
+
+Vielen Dank für Ihre Fahrt mit Taxi B&B. Wenn Sie zufrieden waren, freuen wir uns sehr über eine kurze Google-Bewertung: [Link]
+
+Ziel: mindestens 50 echte Bewertungen.
+
+Besonders wertvoll sind Bewertungen mit Begriffen wie:
+
+* Flughafentransfer
+* Krankenfahrt
+* Dialysefahrt
+* pünktlich
+* Essen
+* Düsseldorf Flughafen
+* Großraumtaxi
+
+Nicht künstlich erzwingen, aber natürlich entstehen lassen.
+
+⸻
+
+4. Echte Bilder liefern
+
+Taxi B&B sollte dir Material geben:
+
+* Fotos der Fahrzeuge
+* Innenraumfotos
+* Fahrer-/Teamfotos
+* Standortfoto
+* Logo in guter Qualität
+* eventuell Videos für Social Media
+
+Ohne echte Bilder wirkt die Seite generisch.
+
+⸻
+
+5. Leistungen genau erklären
+
+Das Unternehmen muss dir sagen:
+
+* Bieten sie Krankenfahrten mit Krankenkassenabrechnung an?
+* Welche Flughäfen fahren sie regelmäßig an?
+* Gibt es Großraumtaxen?
+* Wie viele Personen maximal?
+* Gibt es Rollstuhlservice oder nur normale Krankenfahrten?
+* Gibt es Festpreise oder nur Taxameter?
+* Welche Zahlungsmittel werden akzeptiert?
+* Sind Kartenzahlungen möglich?
+* Wird WhatsApp-Buchung angeboten?
+
+Diese Infos brauchst du für gute SEO-Texte.
+
+⸻
+
+6. Branchenverzeichnisse korrigieren
+
+Taxi B&B muss Einträge aktualisieren lassen bei:
+
+* Google Maps
+* Apple Maps
+* Bing Places
+* Gelbe Seiten
+* Das Telefonbuch
+* taxi.de
+* 11880
+* Facebook
+* Instagram
+* lokalen Verzeichnissen
+
+Überall müssen Name, Adresse, Telefonnummer und Website gleich sein.
+
+⸻
+
+7. Kooperationen aufbauen
+
+Für starke lokale SEO sollte Taxi B&B Kontakte aufbauen zu:
+
+* Arztpraxen
+* Dialysezentren
+* Krankenhäusern
+* Hotels
+* Pflegeheimen
+* Eventlocations
+* Restaurants
+
+Wenn solche Partner auf Taxi B&B verlinken oder sie erwähnen, stärkt das die lokale Sichtbarkeit enorm.
+
+⸻
+
+Was du als Entwickler machen musst
+
+Das sind die technischen und strategischen Aufgaben auf der Website.
+
+1. Website-Struktur neu aufbauen
+
+Du solltest nicht nur eine Startseite machen, sondern mehrere SEO-Unterseiten.
+
+Pflichtseiten:
+
+/
+ /krankenfahrten-essen/
+ /dialysefahrten-essen/
+ /flughafentransfer-essen-duesseldorf/
+ /grossraumtaxi-essen/
+ /kurierdienst-essen/
+ /taxi-essen-holsterhausen/
+ /taxi-essen-frohnhausen/
+ /taxi-essen-ruettenscheid/
+ /taxi-essen-hbf/
+ /kontakt/
+
+Das ist einer der wichtigsten Punkte.
+
+⸻
+
+2. Jede Seite auf ein Keyword optimieren
+
+Beispiel:
+
+Seite	Hauptkeyword
+/krankenfahrten-essen/	Krankenfahrten Essen
+/dialysefahrten-essen/	Dialysefahrten Essen
+/flughafentransfer-essen-duesseldorf/	Flughafentransfer Essen Düsseldorf
+/grossraumtaxi-essen/	Großraumtaxi Essen
+/taxi-essen-holsterhausen/	Taxi Holsterhausen
+/taxi-essen-frohnhausen/	Taxi Frohnhausen
+/taxi-essen-hbf/	Taxi Essen Hauptbahnhof
+
+Nicht alles auf eine Seite packen.
+
+⸻
+
+3. Saubere Title Tags und Meta Descriptions schreiben
+
+Beispiel für Krankenfahrten:
+
+<title>Krankenfahrten Essen | Taxi B&B GmbH</title>
+<meta name="description" content="Taxi B&B bietet zuverlässige Krankenfahrten in Essen, z. B. zur Dialyse, Strahlentherapie, Chemotherapie oder Arztpraxis. Jetzt Fahrt buchen.">
+
+Beispiel für Flughafentransfer:
+
+<title>Flughafentransfer Essen Düsseldorf | Taxi B&B</title>
+<meta name="description" content="Pünktlicher Flughafentransfer von Essen zum Flughafen Düsseldorf. Taxi B&B fährt 24/7, auch für Gruppen und Geschäftsreisende.">
+
+⸻
+
+4. LocalBusiness Schema einbauen
+
+Du solltest strukturierte Daten als JSON-LD einbauen.
+
+Beispiel:
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TaxiService",
+  "name": "Taxi B&B GmbH",
+  "url": "https://taxibbessen.de/",
+  "telephone": "+49201707060",
+  "email": "info@taxibbessen.de",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Menzelstraße 8-10",
+    "postalCode": "45147",
+    "addressLocality": "Essen",
+    "addressCountry": "DE"
+  },
+  "areaServed": [
+    "Essen",
+    "Essen-Holsterhausen",
+    "Essen-Frohnhausen",
+    "Essen-Rüttenscheid",
+    "Flughafen Düsseldorf"
+  ],
+  "openingHours": "Mo-Su 00:00-23:59",
+  "priceRange": "€€"
+}
+</script>
+
+Zusätzlich auf FAQ-Seiten auch FAQ-Schema.
+
+⸻
+
+5. Technische SEO sauber machen
+
+Du musst sicherstellen:
+
+* schnelle Ladezeit
+* mobil perfekt nutzbar
+* saubere H1/H2-Struktur
+* klickbare Telefonnummer
+* klare Call-to-Action Buttons
+* HTTPS aktiv
+* Sitemap vorhanden
+* robots.txt korrekt
+* Canonical Tags korrekt
+* Bilder komprimiert
+* Alt-Texte bei Bildern
+* keine kaputten Links
+* saubere 301-Weiterleitungen
+
+⸻
+
+6. Conversion-Design verbessern
+
+Die Seite muss nicht nur ranken, sondern Anrufe bringen.
+
+Oben auf jeder Seite sollten direkt sichtbar sein:
+
+* Jetzt Taxi rufen
+* 0201 707060
+* Flughafentransfer anfragen
+* Krankenfahrt buchen
+
+Mobile besonders wichtig: Sticky Call Button unten.
+
+Beispiel:
+
+<a href="tel:+49201707060" class="call-button">
+  Jetzt Taxi rufen
+</a>
+
+⸻
+
+7. Interne Verlinkung aufbauen
+
+Auf jeder Seite solltest du sinnvoll verlinken.
+
+Beispiel auf Krankenfahrten-Seite:
+
+Sie benötigen regelmäßig eine Fahrt zur Dialyse? Dann informieren Sie sich auch über unsere Dialysefahrten in Essen.
+
+Verlinkung:
+
+<a href="/dialysefahrten-essen/">Dialysefahrten in Essen</a>
+
+Das hilft Google, die Seiten besser zu verstehen.
+
+⸻
+
+8. Inhalte schreiben oder strukturieren
+
+Du musst für jede Unterseite starke Inhalte erstellen.
+
+Gute Struktur:
+
+H1: Krankenfahrten Essen mit Taxi B&B
+Einleitung
+H2: Für welche Fahrten eignet sich unser Service?
+H2: Dialyse, Strahlentherapie und Arzttermine
+H2: Krankenfahrt mit Krankenkasse
+H2: Warum Taxi B&B?
+H2: Krankenfahrt in Essen buchen
+FAQ
+
+Wichtig: Nicht übertreiben, nicht spammen. Natürlich schreiben.
+
+⸻
+
+9. Google Search Console einrichten
+
+Du als Entwickler solltest einrichten:
+
+* Google Search Console
+* Bing Webmaster Tools
+* Sitemap einreichen
+* Indexierung prüfen
+* Fehler überwachen
+* Suchbegriffe auswerten
+
+Ohne Search Console fliegt man blind.
+
+⸻
+
+10. Tracking einbauen
+
+Mindestens tracken:
+
+* Klicks auf Telefonnummer
+* Klicks auf WhatsApp
+* Kontaktformular-Absendungen
+* Seitenaufrufe
+* Top-Landingpages
+
+Mit Google Analytics, Matomo oder Plausible.
+
+⸻
+
+Klare Aufteilung
+
+Taxi B&B muss liefern:
+
+* offizielle Telefonnummer
+* offizielle E-Mail
+* Zugriff auf Google Business Profile
+* echte Fotos
+* echte Leistungsinfos
+* Bewertungslink
+* Entscheidung zur Hauptdomain
+* Korrektur externer Verzeichnisse
+* Kooperationen/Backlinks
+* Kundenbewertungen
+
+Du musst umsetzen:
+
+* Website-Struktur
+* SEO-Unterseiten
+* Meta Titles/Descriptions
+* Texte strukturieren
+* LocalBusiness Schema
+* FAQ-Schema
+* technische SEO
+* Ladezeit
+* Mobile Design
+* Call Buttons
+* interne Verlinkung
+* Sitemap
+* Search Console
+* Tracking
+* Weiterleitungen
+
+Wichtigste Reihenfolge
+
+Erst Taxi B&B:
+
+1. Hauptnummer und Hauptdomain festlegen
+2. Google Unternehmensprofil sichern
+3. echte Fotos bereitstellen
+4. Bewertungsprozess starten
+5. externe Einträge korrigieren
+
+Dann du:
+
+1. Website technisch sauber machen
+2. SEO-Unterseiten bauen
+3. Schema einbauen
+4. Inhalte optimieren
+5. Search Console einrichten
+6. Conversion-Tracking einbauen
+
+Kurz gesagt
+
+Taxi B&B muss die echten lokalen Signale liefern.
+Also Bewertungen, Fotos, korrekte Daten, Google-Profil und Vertrauen.
+
+Du musst daraus eine technisch saubere SEO-Maschine bauen.
+Also Struktur, Unterseiten, Schema, Geschwindigkeit, Inhalte und Conversion.
+
+Ohne Taxi B&Bs Mitarbeit kannst du die Website hübsch machen, aber nicht maximal ranken. Ohne deine technische Arbeit hat Taxi B&B zwar Daten, aber keine starke Website.
