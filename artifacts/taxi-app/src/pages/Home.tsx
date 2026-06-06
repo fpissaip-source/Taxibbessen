@@ -142,16 +142,19 @@ function ServicesRevealSection() {
                   transition: "transform 0.4s cubic-bezier(0.4,0,0.2,1)",
                 }}
               >
-                <img
-                  src={`${base}icons/${src}`}
-                  alt={t(titleKey)}
-                  width="128"
-                  height="128"
-                  loading="lazy"
-                  decoding="async"
-                  className="h-20 lg:h-32 w-auto object-contain"
-                  style={{ filter: "drop-shadow(0 0 18px rgba(255,193,7,0.55))" }}
-                />
+                <picture>
+                  <source type="image/avif" srcSet={`${base}icons/${src.replace(/\.webp$/, ".avif")}`} />
+                  <img
+                    src={`${base}icons/${src}`}
+                    alt={t(titleKey)}
+                    width="128"
+                    height="128"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-20 lg:h-32 w-auto object-contain"
+                    style={{ filter: "drop-shadow(0 0 18px rgba(255,193,7,0.55))" }}
+                  />
+                </picture>
               </div>
 
               <h3
@@ -1006,16 +1009,20 @@ export default function Home() {
                   transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
                   className="flex flex-col items-center text-center gap-3"
                 >
-                  <img
-                    src={`${import.meta.env.BASE_URL}${src}`}
-                    alt={label}
-                    width="64"
-                    height="64"
-                    loading="lazy"
-                    decoding="async"
-                    className="h-16 w-auto object-contain"
-                    style={{ mixBlendMode: "screen", filter: "contrast(2) brightness(1.1)" }}
-                  />
+                  <picture>
+                    <source type="image/avif" srcSet={`${import.meta.env.BASE_URL}${src.replace(/\.png$/, ".avif")}`} />
+                    <source type="image/webp" srcSet={`${import.meta.env.BASE_URL}${src.replace(/\.png$/, ".webp")}`} />
+                    <img
+                      src={`${import.meta.env.BASE_URL}${src}`}
+                      alt={label}
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-16 w-auto object-contain"
+                      style={{ mixBlendMode: "screen", filter: "contrast(2) brightness(1.1)" }}
+                    />
+                  </picture>
                   <span className="text-[10px] font-bold tracking-wide text-white/60 leading-tight whitespace-pre-line uppercase">
                     {label}
                   </span>
