@@ -107,7 +107,7 @@ export default function Fahrzeuge() {
             <h1
               className="font-display font-black uppercase tracking-tighter leading-none select-none sr-only"
             >
-              Unsere Fahrzeuge – Mercedes-Flotte von Taxi B&amp;B Essen
+              Mercedes-Flotte in Essen – Limousinen, Kombis und Großraumtaxi für bis zu 7 Personen
             </h1>
             <span
               aria-hidden="true"

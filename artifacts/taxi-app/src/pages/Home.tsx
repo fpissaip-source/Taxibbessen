@@ -809,7 +809,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="text-center"
               >
-                <h1 className="sr-only">24/7 Taxiservice in Essen – Krankenfahrten, Flughafentransfer &amp; Großraumtaxi | Taxi B&amp;B GmbH</h1>
+                <h1 className="sr-only">24/7 Taxiservice in Essen – Krankenfahrten, Flughafentransfer und Großraumtaxi</h1>
                 <img
                   id="hero-logo"
                   src={`${import.meta.env.BASE_URL}bb-logo-v7-transparent.webp`}

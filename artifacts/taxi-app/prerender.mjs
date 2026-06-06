@@ -99,14 +99,14 @@ const routes = [
     title: 'Unsere Fahrzeuge – Taxi B&B GmbH Essen | Mercedes Flotte',
     description: 'Moderne Mercedes-Flotte bei Taxi B&B GmbH: E-Klasse Kombi, E 300 e Hybrid und V-Klasse Großraumtaxi für bis zu 7 Personen. Komfortabel, klimatisiert, zuverlässig.',
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
-        <h1>Unsere Fahrzeuge – Mercedes-Flotte von Taxi B&amp;B Essen</h1>
-        <p>Taxi B&amp;B GmbH betreibt eine moderne, gepflegte Fahrzeugflotte aus dem Hause Mercedes-Benz. Alle Fahrzeuge sind klimatisiert, regelmäßig gewartet und bieten höchsten Fahrkomfort.</p>
+        <h1>Mercedes-Flotte in Essen – Limousinen, Kombis und Großraumtaxi für bis zu 7 Personen</h1>
+        <p>Taxi B&amp;B GmbH betreibt eine moderne, gepflegte Fahrzeugflotte aus dem Hause Mercedes-Benz. Alle Fahrzeuge sind klimatisiert, regelmäßig gewartet und bieten höchsten Fahrkomfort. <a href="/book">Jetzt Fahrt buchen</a> oder <a href="/ueber-uns">mehr über uns erfahren</a>.</p>
         <h2>Mercedes E-Klasse Kombi</h2>
-        <p>Unser Standardfahrzeug für Einzel- und Kleingruppenfahrten. Großzügiger Kofferraum, bequeme Sitze und modernste Sicherheitstechnik – ideal für Flughafentransfers und Geschäftsreisen.</p>
+        <p>Unser Standardfahrzeug für Einzel- und Kleingruppenfahrten. Großzügiger Kofferraum, bequeme Sitze und modernste Sicherheitstechnik – ideal für <a href="https://www.dus.com">Flughafentransfers Düsseldorf</a> und Geschäftsreisen.</p>
         <h2>Mercedes E 300 e Hybrid</h2>
         <p>Unser umweltfreundlicher Hybrid-Taxi. Der E 300 e fährt im Stadtbereich rein elektrisch und reduziert so Emissionen und Lärm – ohne Abstriche beim Komfort.</p>
         <h2>Mercedes V-Klasse – Großraumtaxi für bis zu 7 Personen</h2>
-        <p>Für Gruppen, Familien und Firmenreisende: Die V-Klasse bietet Platz für 7 Personen plus Gepäck. Kindersitze auf Anfrage verfügbar. Ideal für Flughafentransfers in der Gruppe.</p>
+        <p>Für Gruppen, Familien und Firmenreisende: Die V-Klasse bietet Platz für 7 Personen plus Gepäck. Kindersitze auf Anfrage verfügbar. Ideal für Flughafentransfers in der Gruppe. <a href="/book">Jetzt Großraumtaxi buchen</a>.</p>
         ${CONTACT_BLOCK}
       </article>`,
   },
@@ -115,17 +115,18 @@ const routes = [
     title: 'Über uns – Taxi B&B GmbH Essen | Seit 1992',
     description: 'Taxi B&B GmbH – Ihr Familienbetrieb in Essen seit 1992. 30+ Jahre Erfahrung, Festpreise, 24/7 Erreichbarkeit. Lernen Sie uns kennen.',
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
-        <h1>Mehr als ein Taxi – ein Versprechen.</h1>
+        <h1>Taxiunternehmen in Essen seit 1992 – Geschichte und Team</h1>
         <p>Taxi B&amp;B GmbH wurde 1992 in Essen gegründet. Wir sind kein anonymes Fahrdienst-Portal, kein Algorithmus und keine App, die Sie vergisst, sobald die Fahrt endet. Wir sind ein Essener Familienunternehmen – und das spürt man.</p>
         <h2>Unsere Geschichte</h2>
-        <p>Taxi B&amp;B GmbH wurde 1992 in Essen gegründet – in einer Zeit, als ein Taxi noch mehr war als eine Fahrt von A nach B. Was damals mit einem Fahrzeug und dem festen Willen begann, Passagiere pünktlich, sicher und freundlich zu befördern, ist heute ein eingespieltes Team aus erfahrenen Fahrern, einer gepflegten Flotte und einem Kundenstamm, der uns seit Jahrzehnten treu ist.</p>
+        <p>Taxi B&amp;B GmbH wurde 1992 in Essen gegründet – in einer Zeit, als ein Taxi noch mehr war als eine Fahrt von A nach B. Was damals mit einem Fahrzeug und dem festen Willen begann, Passagiere pünktlich, sicher und freundlich zu befördern, ist heute ein eingespieltes Team aus erfahrenen Fahrern, einer <a href="/fahrzeuge">gepflegten Mercedes-Flotte</a> und einem Kundenstamm, der uns seit Jahrzehnten treu ist.</p>
         <h2>Was uns ausmacht</h2>
         <ul>
           <li><strong>Pünktlichkeit:</strong> Wir holen Sie zur vereinbarten Zeit ab – ohne Ausreden.</li>
           <li><strong>Festpreise:</strong> Transparente Preise ohne böse Überraschungen. Kein Taxameter-Risiko bei Stau.</li>
           <li><strong>24/7 Erreichbarkeit:</strong> Tag und Nacht, 365 Tage im Jahr für Sie da: 0201 707060.</li>
-          <li><strong>Erfahrung:</strong> Über 30 Jahre Taxiservice in Essen und der Region.</li>
+          <li><strong>Erfahrung:</strong> Über 30 Jahre Taxiservice in Essen. Bewertungen auf <a href="https://www.provenexpert.com/de-de/taxi-bb-gmbh/">ProvenExpert</a>.</li>
         </ul>
+        <p><a href="/book">Jetzt Fahrt buchen</a> oder telefonisch unter 0201 707060.</p>
         ${CONTACT_BLOCK}
       </article>`,
   },
@@ -134,8 +135,8 @@ const routes = [
     title: 'Taxi buchen – Taxi B&B GmbH Essen | Online Buchung',
     description: 'Taxi in Essen einfach online buchen. Festpreis, sofortige Bestätigung, 24/7 verfügbar. Taxi B&B GmbH – 0201 707060.',
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
-        <h1>Taxi buchen – Taxi B&amp;B GmbH Essen</h1>
-        <p>Buchen Sie Ihr Taxi in Essen schnell und einfach online. Wählen Sie Abholadresse, Ziel, Datum und Uhrzeit – wir bestätigen Ihre Buchung umgehend.</p>
+        <h1>Taxi online buchen in Essen – Festpreis, Flughafentransfer und Krankenfahrten</h1>
+        <p>Buchen Sie Ihr Taxi in Essen schnell und einfach online. Wählen Sie Abholadresse, Ziel, Datum und Uhrzeit – wir bestätigen Ihre Buchung umgehend. <a href="/ueber-uns">Seit 1992</a> Ihr zuverlässiger Taxiservice.</p>
         <h2>So buchen Sie</h2>
         <ol>
           <li>Abholadresse und Ziel angeben</li>
@@ -147,9 +148,9 @@ const routes = [
         <p>Rund um die Uhr erreichbar: <a href="tel:+4920170706"><strong>0201 707060</strong></a>. Wir nehmen Ihre Buchung sofort entgegen.</p>
         <h2>Unsere Leistungen</h2>
         <ul>
-          <li>Flughafentransfer Düsseldorf, Köln/Bonn, Frankfurt</li>
+          <li>Flughafentransfer <a href="https://www.dus.com">Düsseldorf</a>, Köln/Bonn, Frankfurt</li>
           <li>Krankenfahrten und Dialysefahrten</li>
-          <li>Großraumtaxi für bis zu 7 Personen</li>
+          <li><a href="/fahrzeuge">Großraumtaxi für bis zu 7 Personen</a></li>
           <li>Privat- und Geschäftsfahrten</li>
           <li>Kurierdienst Essen</li>
         </ul>
@@ -161,10 +162,11 @@ const routes = [
     title: 'Fahrtstatus – Taxi B&B GmbH Essen | Buchung verfolgen',
     description: 'Verfolgen Sie Ihren Fahrstatus bei Taxi B&B GmbH Essen. Buchungsnummer eingeben und Echtzeit-Status abrufen.',
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
-        <h1>Fahrtstatus – Buchung verfolgen</h1>
+        <h1>Fahrtstatus prüfen – Ihre Taxibuchung bei Taxi B&B Essen verfolgen</h1>
         <p>Geben Sie Ihre Buchungsnummer ein, um den aktuellen Status Ihrer Taxifahrt bei Taxi B&amp;B GmbH Essen abzurufen.</p>
         <p>Sie haben keine Buchungsnummer zur Hand oder benötigen sofortige Auskunft? Rufen Sie uns direkt an:</p>
         <p><a href="tel:+4920170706"><strong>0201 707060</strong></a> – 24 Stunden, 7 Tage die Woche.</p>
+        <p>Noch keine Fahrt gebucht? <a href="/book">Jetzt Taxi online buchen</a> oder <a href="/ueber-uns">mehr über uns erfahren</a>.</p>
         ${CONTACT_BLOCK}
       </article>`,
   },
