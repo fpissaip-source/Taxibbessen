@@ -44,6 +44,34 @@
     <link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
 
+    <!-- Person / Founder JSON-LD (E-E-A-T: Expertise, Autorität, Vertrauen) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://taxibbessen.de/#founder",
+      "name": "Gründerfamilie Barger & Beige",
+      "jobTitle": "Gründer & Inhaber",
+      "description": "Gründer von Taxi B&B GmbH Essen im Jahr 1992. Über 30 Jahre Erfahrung in der Personenbeförderung im Ruhrgebiet.",
+      "knowsAbout": ["Taxiservice", "Personenbeförderung", "Krankenfahrten", "Flughafentransfer", "Großraumtaxi"],
+      "worksFor": {
+        "@id": "https://taxibbessen.de/#organization"
+      },
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Taxiunternehmer",
+        "occupationLocation": {
+          "@type": "City",
+          "name": "Essen"
+        }
+      },
+      "affiliation": {
+        "@id": "https://taxibbessen.de/#organization"
+      },
+      "url": "https://taxibbessen.de/ueber-uns"
+    }
+    </script>
+
     <!-- LocalBusiness + TaxiService JSON-LD (site-wide business entity) -->
     <script type="application/ld+json">
     {

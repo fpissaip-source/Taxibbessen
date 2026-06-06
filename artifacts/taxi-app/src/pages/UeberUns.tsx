@@ -1,7 +1,7 @@
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { Layout } from "@/components/Layout";
 import { Link } from "wouter";
-import { ArrowLeft, Shield, Clock, Heart, Award, Users, MapPin } from "lucide-react";
+import { ArrowLeft, Shield, Clock, Heart, Award, Users, MapPin, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const values = [
@@ -35,6 +35,58 @@ const values = [
     title: "Ganz Essen & Umgebung",
     text: "Ob Essen-Rüttenscheid, Steele, Altendorf oder der Flughafen Düsseldorf – wir kennen jede Straße und bringen Sie sicher ans Ziel.",
   },
+];
+
+const timeline = [
+  {
+    year: "1992",
+    title: "Die Gründung",
+    text: "Die Gründerfamilie Barger & Beige startet Taxi B&B GmbH in Essen mit dem Versprechen: Pünktlichkeit, Verlässlichkeit und ein persönliches Lächeln bei jeder Fahrt.",
+  },
+  {
+    year: "1997",
+    title: "Erstes Wachstum",
+    text: "Die steigende Nachfrage erfordert eine Erweiterung der Flotte. Neue Fahrer werden eingestellt – allesamt mit lokaler Ortskenntnis und Leidenschaft für den Kundenservice.",
+  },
+  {
+    year: "2003",
+    title: "Flottenmodernisierung",
+    text: "Investition in moderne Komfort-Limousinen und schrittweise Umstellung auf klimatisierte Fahrzeuge – für mehr Komfort bei jedem Wetter im Ruhrgebiet.",
+  },
+  {
+    year: "2008",
+    title: "Großraumtaxi eingeführt",
+    text: "Mit dem Einstieg in das Großraumtaxi-Segment können nun auch Familien und Gruppen mit bis zu 7 Personen bequem und kostengünstig reisen.",
+  },
+  {
+    year: "2012",
+    title: "Krankenfahrten & Dialyse",
+    text: "Aufnahme der genehmigungspflichtigen Krankenfahrten und Dialysefahrten. Direkte Kassenabrechnungen machen medizinische Transporte für Patienten stressfrei.",
+  },
+  {
+    year: "Heute",
+    title: "Über 30 Jahre Vertrauen",
+    text: "Taxi B&B GmbH zählt zu den etablierten Taxiunternehmen in Essen. Hunderte Stammkunden, eine gepflegte Flotte und dasselbe Versprechen wie am ersten Tag.",
+    highlight: true,
+  },
+];
+
+const services = [
+  { label: "Krankenfahrten Essen", href: "/krankenfahrten-essen" },
+  { label: "Flughafentransfer Düsseldorf", href: "/flughafentransfer-essen-duesseldorf" },
+  { label: "Großraumtaxi Essen", href: "/grossraumtaxi-essen" },
+  { label: "Kurierdienst Essen", href: "/kurierdienst-essen" },
+  { label: "Dialysefahrten Essen", href: "/dialysefahrten-essen" },
+  { label: "Unsere Fahrzeuge", href: "/fahrzeuge" },
+];
+
+const certifications = [
+  "Konzession Personenbeförderungsgesetz (PBefG)",
+  "Zulassung für Krankenfahrten & Dialysefahrten",
+  "Mitglied bei taxi.de – Deutsches Taxi- und Mietwagengewerbe",
+  "Eingetragen im Handelsregister: HRB 36284 Amtsgericht Essen",
+  "Regelmäßige Hauptuntersuchungen & Fahrzeuginspektionen (TÜV)",
+  "Alle Fahrer mit amtlichem Personenbeförderungsschein (P-Schein)",
 ];
 
 const fadeUp = {
@@ -93,6 +145,7 @@ export default function UeberUns() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl py-14 sm:py-20 space-y-14">
 
+          {/* Unternehmensgeschichte */}
           <section className="space-y-5">
             <Reveal>
               <h2 className="text-2xl sm:text-3xl font-display font-bold">Unsere Geschichte</h2>
@@ -115,12 +168,21 @@ export default function UeberUns() {
               </Reveal>
               <Reveal delay={0.15}>
                 <p>
+                  Im Laufe der Jahrzehnte wurde die Flotte kontinuierlich modernisiert und erweitert: Komfort-Limousinen für
+                  Geschäftsreisende, die Mercedes V-Klasse als Großraumtaxi für bis zu 7 Personen, und speziell ausgestattete
+                  Fahrzeuge für Kranken- und Dialysefahrten. Heute decken wir das gesamte Spektrum der Personenbeförderung ab –
+                  von der nächtlichen Heimfahrt bis zum internationalen Flughafentransfer.
+                </p>
+              </Reveal>
+              <Reveal delay={0.2}>
+                <p>
                   Das ist kein Zufall. Das ist das Ergebnis von über drei Jahrzehnten gelebtem Vertrauen.
                 </p>
               </Reveal>
             </div>
           </section>
 
+          {/* Zitat */}
           <Reveal>
             <section className="bg-primary/5 border border-primary/10 rounded-2xl p-7 sm:p-10">
               <p className="text-lg sm:text-xl font-display italic text-foreground/90 leading-relaxed">
@@ -131,6 +193,45 @@ export default function UeberUns() {
             </section>
           </Reveal>
 
+          {/* Timeline */}
+          <section className="space-y-6">
+            <Reveal>
+              <h2 className="text-2xl sm:text-3xl font-display font-bold">Meilensteine seit 1992</h2>
+            </Reveal>
+            <div className="relative">
+              <div className="absolute left-[18px] top-3 bottom-3 w-px bg-border" aria-hidden="true" />
+              <ol className="space-y-0">
+                {timeline.map((item, i) => (
+                  <Reveal key={item.year} delay={i * 0.07}>
+                    <li className="relative flex gap-5 pb-8 last:pb-0">
+                      <div className="relative z-10 flex-shrink-0 mt-0.5">
+                        <div
+                          className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold border-2 ${
+                            item.highlight
+                              ? "bg-primary text-primary-foreground border-primary"
+                              : "bg-card text-primary border-primary/40"
+                          }`}
+                        >
+                          {item.highlight ? "★" : item.year.slice(-2)}
+                        </div>
+                      </div>
+                      <div className="pt-1 pb-1">
+                        <div className="flex items-baseline gap-3 flex-wrap mb-1.5">
+                          <span className={`text-xs font-semibold tracking-widest uppercase ${item.highlight ? "text-primary" : "text-muted-foreground"}`}>
+                            {item.year}
+                          </span>
+                          <h3 className="font-bold text-sm sm:text-base">{item.title}</h3>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
+                      </div>
+                    </li>
+                  </Reveal>
+                ))}
+              </ol>
+            </div>
+          </section>
+
+          {/* Was uns ausmacht */}
           <section className="space-y-5">
             <Reveal>
               <h2 className="text-2xl sm:text-3xl font-display font-bold">Was uns ausmacht</h2>
@@ -153,6 +254,7 @@ export default function UeberUns() {
             </div>
           </section>
 
+          {/* Warum Kunden wiederkommen */}
           <section className="space-y-5">
             <Reveal>
               <h2 className="text-2xl sm:text-3xl font-display font-bold">Warum Kunden wiederkommen</h2>
@@ -181,6 +283,56 @@ export default function UeberUns() {
             </div>
           </section>
 
+          {/* Lizenzen & Mitgliedschaften */}
+          <section className="space-y-5">
+            <Reveal>
+              <h2 className="text-2xl sm:text-3xl font-display font-bold">Lizenzen & Mitgliedschaften</h2>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <p className="text-[15px] sm:text-base text-foreground/80 leading-relaxed">
+                Als konzessioniertes Taxiunternehmen erfüllen wir alle gesetzlichen Anforderungen des
+                Personenbeförderungsgesetzes (PBefG). Unsere Fahrer sind geprüft, unsere Fahrzeuge regelmäßig inspiziert –
+                damit Sie jederzeit sicher und legal befördert werden.
+              </p>
+            </Reveal>
+            <div className="grid grid-cols-1 gap-2.5">
+              {certifications.map((item, i) => (
+                <Reveal key={item} delay={i * 0.05}>
+                  <div className="flex items-start gap-3 bg-card border border-border rounded-xl px-4 py-3.5">
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-foreground/80 leading-snug">{item}</span>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+
+          {/* Unsere Leistungen – interne Links */}
+          <section className="space-y-5">
+            <Reveal>
+              <h2 className="text-2xl sm:text-3xl font-display font-bold">Unsere Leistungen</h2>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <p className="text-[15px] sm:text-base text-foreground/80 leading-relaxed">
+                Ob Krankenfahrt, Flughafentransfer oder Großraumtaxi – entdecken Sie das vollständige Angebot von Taxi B&B GmbH:
+              </p>
+            </Reveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {services.map((s, i) => (
+                <Reveal key={s.href} delay={i * 0.06}>
+                  <Link
+                    href={s.href}
+                    className="flex items-center gap-3 bg-card hover:bg-primary/5 border border-border hover:border-primary/30 rounded-xl px-4 py-3.5 text-sm font-medium text-foreground transition-colors group"
+                  >
+                    <ArrowLeft className="w-4 h-4 text-primary rotate-180 flex-shrink-0 transition-transform group-hover:translate-x-0.5" />
+                    {s.label}
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+
+          {/* CTA */}
           <Reveal>
             <section className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl p-7 sm:p-10 text-center space-y-4">
               <h2 className="text-xl sm:text-2xl font-display font-bold">Bereit, uns kennenzulernen?</h2>
