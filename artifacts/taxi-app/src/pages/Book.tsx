@@ -2,8 +2,8 @@ import { useState } from "react";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { getPageMeta } from "@/page-meta-manifest";
 import { Layout } from "@/components/Layout";
-import { Link } from "wouter";
-import { Phone, Mail, User, MessageSquare, CheckCircle2, Loader2 } from "lucide-react";
+import { Link, useSearch } from "wouter";
+import { Phone, Mail, User, MessageSquare, CheckCircle2, Loader2, Info, Car } from "lucide-react";
 
 const WaIcon = () => (
   <svg viewBox="0 0 24 24" className="w-4 h-4 shrink-0 fill-current" xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +18,10 @@ const { title: _bookTitle, description: _bookDesc } = getPageMeta('/book');
 export default function Book() {
   usePageMeta({ title: _bookTitle, description: _bookDesc });
 
-  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+  const search = useSearch();
+  const preMsg = new URLSearchParams(search).get("msg") ?? "";
+
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", message: preMsg });
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const update = (k: keyof typeof form) =>
@@ -75,6 +78,25 @@ export default function Book() {
           <h1 className="text-3xl font-display font-black text-white mb-1">Taxi in Essen buchen</h1>
           <p className="text-white/70 text-base font-semibold mb-1">online oder per Telefon</p>
           <p className="text-white/50 text-sm mb-8">Wir melden uns sofort zurück.</p>
+
+          {/* Ergänzende Links */}
+          <div className="flex gap-3 mb-6 flex-wrap">
+            <Link
+              href="/ueber-uns"
+              className="inline-flex items-center gap-1.5 text-xs text-white/50 hover:text-primary font-bold transition-colors"
+            >
+              <Info className="w-3.5 h-3.5" />
+              Mehr über uns
+            </Link>
+            <span className="text-white/20 text-xs">·</span>
+            <Link
+              href="/fahrzeuge"
+              className="inline-flex items-center gap-1.5 text-xs text-white/50 hover:text-primary font-bold transition-colors"
+            >
+              <Car className="w-3.5 h-3.5" />
+              Unsere Fahrzeuge
+            </Link>
+          </div>
 
           {/* Zwei Buchungswege */}
           <div className="grid grid-cols-2 gap-3 mb-8">

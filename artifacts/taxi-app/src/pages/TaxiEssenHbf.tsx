@@ -90,10 +90,16 @@ export default function TaxiEssenHbf() {
       intro="Ihr Taxi am Essen Hauptbahnhof – pünktlich, wenn Ihr Zug ankommt. Wir bringen Sie direkt zu Ihrem Ziel in Essen, zum Flughafen oder in die gesamte Region."
       sections={sections}
       faq={faq}
+      stadtteileLinks={[
+        { href: "/taxi-essen-ruettenscheid", label: "Taxi Rüttenscheid" },
+        { href: "/taxi-essen-holsterhausen", label: "Taxi Holsterhausen" },
+        { href: "/taxi-essen-frohnhausen", label: "Taxi Frohnhausen" },
+        { href: "/taxi-essen-suedviertel", label: "Taxi Südviertel" },
+      ]}
       relatedLinks={[
         { href: "/flughafentransfer-essen-duesseldorf", label: "Flughafentransfer Essen" },
         { href: "/grossraumtaxi-essen", label: "Großraumtaxi Essen" },
-        { href: "/taxi-essen-ruettenscheid", label: "Taxi Rüttenscheid" },
+        { href: "/krankenfahrten-essen", label: "Krankenfahrten Essen" },
       ]}
       schema={schema}
       breadcrumbLabel="Taxi Essen Hauptbahnhof"

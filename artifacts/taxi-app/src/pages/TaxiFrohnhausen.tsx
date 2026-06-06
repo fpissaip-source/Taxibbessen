@@ -78,11 +78,16 @@ export default function TaxiFrohnhausen() {
         { q: "Fahren Sie auch nachts in Frohnhausen?", a: "Ja, wir sind 24/7 erreichbar – auch nachts und am Wochenende." },
         { q: "Gibt es Festpreise für Fahrten aus Frohnhausen?", a: "Ja, wir berechnen Festpreise. Rufen Sie uns für ein Angebot an: 0201 707060." },
       ]}
-      relatedLinks={[
-        { href: "/taxi-essen-holsterhausen", label: "Taxi Holsterhausen" },
+      stadtteileLinks={[
+        { href: "/taxi-essen-hbf", label: "Taxi Essen HBF" },
         { href: "/taxi-essen-ruettenscheid", label: "Taxi Rüttenscheid" },
+        { href: "/taxi-essen-holsterhausen", label: "Taxi Holsterhausen" },
+        { href: "/taxi-essen-suedviertel", label: "Taxi Südviertel" },
+      ]}
+      relatedLinks={[
         { href: "/flughafentransfer-essen-duesseldorf", label: "Flughafentransfer Essen" },
         { href: "/krankenfahrten-essen", label: "Krankenfahrten Essen" },
+        { href: "/grossraumtaxi-essen", label: "Großraumtaxi Essen" },
       ]}
       schema={schema}
       breadcrumbLabel="Taxi Frohnhausen"

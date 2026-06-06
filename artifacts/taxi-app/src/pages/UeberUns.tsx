@@ -353,6 +353,12 @@ export default function UeberUns() {
                 >
                   0201 707060 anrufen
                 </a>
+                <Link
+                  href="/book"
+                  className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-black font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
+                >
+                  Online buchen
+                </Link>
               </div>
             </section>
           </Reveal>

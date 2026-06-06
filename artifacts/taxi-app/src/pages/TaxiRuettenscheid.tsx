@@ -79,11 +79,16 @@ export default function TaxiRuettenscheid() {
         { q: "Fahren Sie auch nachts im Rü?", a: "Ja, wir sind 24/7 erreichbar – ideal für den Heimweg nach dem Abendessen oder Nachtleben." },
         { q: "Gibt es ein Großraumtaxi für Gruppen in Rüttenscheid?", a: "Ja, unsere Mercedes V-Klasse fasst bis zu 7 Personen – perfekt für Gruppen." },
       ]}
-      relatedLinks={[
+      stadtteileLinks={[
+        { href: "/taxi-essen-hbf", label: "Taxi Essen HBF" },
         { href: "/taxi-essen-holsterhausen", label: "Taxi Holsterhausen" },
         { href: "/taxi-essen-frohnhausen", label: "Taxi Frohnhausen" },
+        { href: "/taxi-essen-suedviertel", label: "Taxi Südviertel" },
+      ]}
+      relatedLinks={[
         { href: "/flughafentransfer-essen-duesseldorf", label: "Flughafentransfer Essen" },
         { href: "/grossraumtaxi-essen", label: "Großraumtaxi Essen" },
+        { href: "/krankenfahrten-essen", label: "Krankenfahrten Essen" },
       ]}
       schema={schema}
       breadcrumbLabel="Taxi Rüttenscheid"

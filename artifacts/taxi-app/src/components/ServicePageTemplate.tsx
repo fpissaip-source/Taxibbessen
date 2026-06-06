@@ -18,6 +18,7 @@ interface ServicePageTemplateProps {
   sections: ContentSection[];
   faq?: FAQItem[];
   relatedLinks?: RelatedLink[];
+  stadtteileLinks?: RelatedLink[];
   schema: Record<string, unknown>;
   breadcrumbLabel: string;
 }
@@ -78,7 +79,7 @@ function FAQAccordion({ items }: { items: FAQItem[] }) {
 }
 
 export function ServicePageTemplate({
-  title, description, h1, badge, intro, sections, faq, relatedLinks, schema, breadcrumbLabel,
+  title, description, h1, badge, intro, sections, faq, relatedLinks, stadtteileLinks, schema, breadcrumbLabel,
 }: ServicePageTemplateProps) {
   usePageMeta({ title, description, schemaOrg: schema });
 
@@ -144,6 +145,29 @@ export function ServicePageTemplate({
             </div>
           </div>
         </section>
+
+        {/* Weitere Stadtteile */}
+        {stadtteileLinks && stadtteileLinks.length > 0 && (
+          <section className="py-12 border-t border-white/5">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-3xl">
+              <Reveal>
+                <h2 className="text-xs font-black text-primary uppercase tracking-[0.4em] mb-6">Weitere Stadtteile</h2>
+                <div className="flex flex-wrap gap-3">
+                  {stadtteileLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="inline-flex items-center gap-2 border border-white/20 text-white/70 hover:text-white hover:border-white/40 font-bold px-4 py-2 rounded-xl text-sm transition-all"
+                    >
+                      {link.label}
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        )}
 
         {/* Related links */}
         {relatedLinks && relatedLinks.length > 0 && (

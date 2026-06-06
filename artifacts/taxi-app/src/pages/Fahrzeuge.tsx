@@ -27,6 +27,8 @@ const CARS = [
     specs: ["Großer Kofferraum", "Klimaanlage", "Executive-Sitze", "USB-Ladung"],
     icon: Star,
     objectPosition: "center 45%",
+    bookLabel: "Kombi anfragen",
+    bookMsg: "Ich möchte den Kombi (Mercedes E-Klasse) anfragen.",
   },
   {
     image: "car-grossraum2.webp",
@@ -37,6 +39,8 @@ const CARS = [
     specs: ["7 Passagiere", "Kindersitze", "WLAN"],
     icon: Users,
     objectPosition: "center 45%",
+    bookLabel: "Großraumtaxi anfragen",
+    bookMsg: "Ich möchte das Großraumtaxi (Mercedes V-Klasse) anfragen.",
   },
   {
     image: "car-elektro2.webp",
@@ -47,6 +51,8 @@ const CARS = [
     specs: ["Emissionsarm", "Silent Drive", "Modernste Technik"],
     icon: Zap,
     objectPosition: "center 45%",
+    bookLabel: "Hybrid-Taxi anfragen",
+    bookMsg: "Ich möchte das Hybrid-/Elektrotaxi (Mercedes E 300 e) anfragen.",
   },
 ];
 
@@ -234,15 +240,13 @@ export default function Fahrzeuge() {
                               </span>
                             ))}
                           </div>
-                          <a
-                            href="https://wa.me/491711111535"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                          <Link
+                            href={`/book?msg=${encodeURIComponent(c.bookMsg)}`}
                             className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest text-[10px] lg:text-xs group hover:gap-4 transition-all duration-300"
                           >
                             <span className="w-5 h-px bg-primary group-hover:w-8 transition-all duration-300" />
-                            Fahrt anfragen
-                          </a>
+                            {c.bookLabel}
+                          </Link>
                         </div>
                       </motion.div>
                     </AnimatePresence>
