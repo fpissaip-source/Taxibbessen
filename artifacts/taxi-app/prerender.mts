@@ -245,6 +245,256 @@ const FAHRZEUGE_SCHEMA = {
   ]
 };
 
+const PROVIDER = {
+  "@type": "LocalBusiness",
+  "@id": "https://taxibbessen.de/#localbusiness",
+  "name": "Taxi B&B GmbH",
+  "telephone": "+492017070600",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Menzelstraße 8-10",
+    "addressLocality": "Essen",
+    "postalCode": "45147",
+    "addressCountry": "DE"
+  }
+} as const;
+
+const FLUGHAFENTRANSFER_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Flughafentransfer Essen – Düsseldorf, Köln/Bonn, Frankfurt",
+  "alternateName": "Taxi Flughafentransfer Essen",
+  "description": "Komfortabler Flughafentransfer von Essen zu allen Flughäfen der Region: Düsseldorf (DUS), Köln/Bonn (CGN), Dortmund (DTM) und Frankfurt (FRA). Festpreise, Flugverfolgung, kostenlose Wartezeit bei Verspätungen. 24/7 erreichbar.",
+  "url": "https://taxibbessen.de/flughafentransfer-essen-duesseldorf",
+  "serviceType": "Flughafentransfer",
+  "category": "Personenbeförderung",
+  "provider": PROVIDER,
+  "areaServed": [
+    { "@type": "City", "name": "Essen" },
+    { "@type": "Airport", "name": "Flughafen Düsseldorf", "iataCode": "DUS" },
+    { "@type": "Airport", "name": "Flughafen Köln/Bonn", "iataCode": "CGN" },
+    { "@type": "Airport", "name": "Flughafen Dortmund", "iataCode": "DTM" },
+    { "@type": "Airport", "name": "Flughafen Frankfurt", "iataCode": "FRA" }
+  ],
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": { "@type": "ContactPoint", "telephone": "+492017070600", "contactType": "reservations", "availableLanguage": "de", "hoursAvailable": "Mo-Su 00:00-23:59" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "description": "Festpreis auf Anfrage – kein Taxameter-Risiko",
+    "seller": PROVIDER
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Flughafentransfer-Leistungen",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Flughafentransfer Essen – Düsseldorf (DUS)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Flughafentransfer Essen – Köln/Bonn (CGN)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Flughafentransfer Essen – Frankfurt (FRA)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Großraumtaxi-Flughafentransfer bis 7 Personen" } }
+    ]
+  }
+};
+
+const KRANKENFAHRTEN_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Krankenfahrten Essen – Taxi B&B GmbH",
+  "description": "Zugelassene Krankenfahrten in Essen mit direkter Abrechnung bei gesetzlichen Krankenkassen. Für Dialyse, Strahlentherapie, Arzttermine, Rehakliniken und Krankenhausaufnahmen. Einfühlsame, erfahrene Fahrer. 24/7 erreichbar.",
+  "url": "https://taxibbessen.de/krankenfahrten-essen",
+  "medicalSpecialty": "Personenbeförderung im Gesundheitswesen",
+  "availableService": [
+    { "@type": "MedicalTherapy", "name": "Dialysefahrten Essen" },
+    { "@type": "MedicalTherapy", "name": "Strahlentherapie-Fahrten" },
+    { "@type": "MedicalTherapy", "name": "Chemotherapie-Fahrten" },
+    { "@type": "MedicalTherapy", "name": "Arzttermin-Fahrten" },
+    { "@type": "MedicalTherapy", "name": "Rehabilitationsfahrten" }
+  ],
+  "provider": PROVIDER,
+  "areaServed": { "@type": "City", "name": "Essen" },
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": { "@type": "ContactPoint", "telephone": "+492017070600", "contactType": "reservations", "availableLanguage": "de", "hoursAvailable": "Mo-Su 00:00-23:59" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "description": "Direkte Kassenabrechnung – kein Vorschuss erforderlich",
+    "seller": PROVIDER
+  }
+};
+
+const DIALYSEFAHRTEN_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Dialysefahrten Essen – Taxi B&B GmbH",
+  "description": "Regelmäßige, pünktliche Dialysefahrten in Essen, Bochum, Gelsenkirchen und Duisburg. Direkte Abrechnung mit gesetzlichen Krankenkassen. Fester Fahrplan auf Wunsch, einfühlsame Fahrer, Haustür-zu-Haustür-Service.",
+  "url": "https://taxibbessen.de/dialysefahrten-essen",
+  "medicalSpecialty": "Dialyse-Patientenbeförderung",
+  "availableService": [
+    { "@type": "MedicalTherapy", "name": "Dialysefahrten Essen" },
+    { "@type": "MedicalTherapy", "name": "Dialysefahrten Bochum" },
+    { "@type": "MedicalTherapy", "name": "Dialysefahrten Gelsenkirchen" },
+    { "@type": "MedicalTherapy", "name": "Dialysefahrten Duisburg" }
+  ],
+  "provider": PROVIDER,
+  "areaServed": [
+    { "@type": "City", "name": "Essen" },
+    { "@type": "City", "name": "Bochum" },
+    { "@type": "City", "name": "Gelsenkirchen" },
+    { "@type": "City", "name": "Duisburg" }
+  ],
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": { "@type": "ContactPoint", "telephone": "+492017070600", "contactType": "reservations", "availableLanguage": "de", "hoursAvailable": "Mo-Su 00:00-23:59" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "description": "Direkte Kassenabrechnung – kein Vorschuss erforderlich",
+    "seller": PROVIDER
+  }
+};
+
+const GROSSRAUMTAXI_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Großraumtaxi Essen – Mercedes V-Klasse bis 7 Personen",
+  "alternateName": "Gruppenfahrt Taxi Essen",
+  "description": "Großraumtaxi in Essen mit der Mercedes V-Klasse – Platz für bis zu 7 Personen, WLAN, Klimaanlage, Kindersitze auf Anfrage. Ideal für Flughafentransfers, Familienausflüge, Firmenfahrten, Hochzeiten und Gruppenreisen.",
+  "url": "https://taxibbessen.de/grossraumtaxi-essen",
+  "serviceType": "Großraumtaxi / Gruppenbeförderung",
+  "category": "Personenbeförderung",
+  "provider": PROVIDER,
+  "areaServed": [
+    { "@type": "City", "name": "Essen" },
+    { "@type": "State", "name": "Nordrhein-Westfalen" }
+  ],
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": { "@type": "ContactPoint", "telephone": "+492017070600", "contactType": "reservations", "availableLanguage": "de", "hoursAvailable": "Mo-Su 00:00-23:59" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "description": "Festpreis auf Anfrage",
+    "seller": PROVIDER
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Großraumtaxi-Leistungen",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gruppenflughafentransfer Essen bis 7 Personen" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Familienfahrt mit Kindersitzen" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Firmentransfer und Delegationsfahrten" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hochzeitsfahrt und Event-Transfer" } }
+    ]
+  },
+  "vehicle": {
+    "@type": "Vehicle",
+    "name": "Mercedes V-Klasse",
+    "brand": { "@type": "Brand", "name": "Mercedes-Benz" },
+    "vehicleSeatingCapacity": 7,
+    "additionalProperty": [
+      { "@type": "PropertyValue", "name": "WLAN", "value": "inklusive" },
+      { "@type": "PropertyValue", "name": "Klimaanlage", "value": "inklusive" },
+      { "@type": "PropertyValue", "name": "Kindersitz", "value": "auf Anfrage" }
+    ]
+  }
+};
+
+const KURIERDIENST_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Kurierdienst Essen – Schnell, Diskret & Zuverlässig",
+  "alternateName": "Express-Kurierfahrten Essen",
+  "description": "Express-Kurierfahrten in Essen und Region: diskret, direkt, 24/7. Für Unternehmen, Kanzleien, Arztpraxen und Privatpersonen. Transport von Dokumenten, Paketen, medizinischen Proben und persönlichen Gegenständen. Bundesweit auf Anfrage.",
+  "url": "https://taxibbessen.de/kurierdienst-essen",
+  "serviceType": "Kurierdienst / Express-Transport",
+  "category": "Güterbeförderung / Kurierfahrten",
+  "provider": PROVIDER,
+  "areaServed": [
+    { "@type": "City", "name": "Essen" },
+    { "@type": "City", "name": "Bochum" },
+    { "@type": "City", "name": "Gelsenkirchen" },
+    { "@type": "City", "name": "Duisburg" },
+    { "@type": "City", "name": "Dortmund" },
+    { "@type": "Country", "name": "Deutschland" }
+  ],
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": { "@type": "ContactPoint", "telephone": "+492017070600", "contactType": "customer service", "availableLanguage": "de", "hoursAvailable": "Mo-Su 00:00-23:59" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "description": "Festpreis auf Anfrage",
+    "seller": PROVIDER
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Kurierdienst-Leistungen",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dokumenten- und Aktentransport" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medizinische Proben und Unterlagen" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Unternehmenspaket-Lieferung" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bundesweite Kurierfahrten auf Anfrage" } }
+    ]
+  }
+};
+
+function makeDistrictSchema(district: string, districtSlug: string): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": `Taxi ${district} Essen – Taxi B&B GmbH`,
+    "description": `Taxiservice in Essen-${district}: 24/7 erreichbar, Festpreise, klimatisierte Mercedes-Fahrzeuge. Flughafentransfers, Krankenfahrten und Großraumtaxi. Schnelle Abholung in ${district}.`,
+    "url": `https://taxibbessen.de/${districtSlug}`,
+    "serviceType": "Taxiservice",
+    "category": "Personenbeförderung",
+    "provider": PROVIDER,
+    "areaServed": { "@type": "Place", "name": `Essen-${district}`, "containedInPlace": { "@type": "City", "name": "Essen" } },
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "servicePhone": { "@type": "ContactPoint", "telephone": "+492017070600", "contactType": "reservations", "availableLanguage": "de", "hoursAvailable": "Mo-Su 00:00-23:59" }
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "description": "Festpreis auf Anfrage",
+      "seller": PROVIDER
+    }
+  };
+}
+
+const TAXI_HBF_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Taxi Essen Hauptbahnhof – Taxi B&B GmbH",
+  "description": "Taxiservice am Essen Hauptbahnhof: 24/7 erreichbar, schnelle Abholung, Festpreise. Zuverlässiger Transfer zu Hotels, Messe Essen, Flughafen Düsseldorf und allen Stadtteilen Essens.",
+  "url": "https://taxibbessen.de/taxi-essen-hbf",
+  "serviceType": "Taxiservice / Bahnhofstransfer",
+  "category": "Personenbeförderung",
+  "provider": PROVIDER,
+  "areaServed": {
+    "@type": "CivicStructure",
+    "name": "Essen Hauptbahnhof",
+    "containedInPlace": { "@type": "City", "name": "Essen" }
+  },
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": { "@type": "ContactPoint", "telephone": "+492017070600", "contactType": "reservations", "availableLanguage": "de", "hoursAvailable": "Mo-Su 00:00-23:59" }
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "description": "Festpreis auf Anfrage",
+    "seller": PROVIDER
+  }
+};
+
 const NOSCRIPT_STYLE = 'font-family:sans-serif;max-width:800px;margin:2rem auto;padding:1rem;color:#111';
 const CONTACT_BLOCK = `
         <h2>Kontakt</h2>
@@ -476,6 +726,7 @@ const routes: PrerenderRoute[] = [
   // ── Service-Unterseiten ──────────────────────────────────────────────────
   {
     ...meta('/flughafentransfer-essen-duesseldorf'),
+    schemaOrg: FLUGHAFENTRANSFER_SCHEMA,
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Flughafentransfer Essen Düsseldorf – Pünktlich &amp; Komfortabel</h1>
         <p>Taxi B&amp;B GmbH bringt Sie bequem und pünktlich von Essen zu allen wichtigen Flughäfen der Region. Die beliebteste Strecke ist der Flughafentransfer Essen–Düsseldorf (DUS) mit ca. 35–40 km Entfernung. Wir fahren Sie auch zum Flughafen Köln/Bonn (CGN), Dortmund (DTM) und Frankfurt (FRA). Festpreise, keine bösen Überraschungen. Einfach anrufen oder <a href="/book">online buchen</a>.</p>
@@ -500,6 +751,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/krankenfahrten-essen'),
+    schemaOrg: KRANKENFAHRTEN_SCHEMA,
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Krankenfahrten Essen – Zuverlässig &amp; mit Krankenkassenabrechnung</h1>
         <p>Taxi B&amp;B GmbH führt alle gesetzlich genehmigten Krankenfahrten in Essen und Umgebung durch. Wir rechnen direkt mit Ihrer Krankenkasse ab – kein bürokratischer Aufwand für Sie. Sie benötigen lediglich eine gültige Verordnung Ihres Arztes. Wir sind für alle gesetzlichen Krankenversicherungen zugelassen und kennen die Abrechnungsprozesse genau.</p>
@@ -522,6 +774,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/grossraumtaxi-essen'),
+    schemaOrg: GROSSRAUMTAXI_SCHEMA,
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Großraumtaxi Essen – Mercedes V-Klasse für bis zu 7 Personen</h1>
         <p>Unser Großraumtaxi in Essen ist die Mercedes V-Klasse – mit Platz für bis zu 7 Personen und reichlich Kofferraumplatz. Ob Familie mit Kindern, Reisegruppe oder Firmenteam: Sie reisen bequem, klimatisiert und ohne Stress. Das Fahrzeug ist regelmäßig gewartet und gepflegt. Einfach anrufen: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -544,6 +797,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/dialysefahrten-essen'),
+    schemaOrg: DIALYSEFAHRTEN_SCHEMA,
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Dialysefahrten Essen – Regelmäßig, Pünktlich &amp; Zuverlässig</h1>
         <p>Dialysepatienten sind auf zuverlässige, regelmäßige Fahrten angewiesen – meist dreimal pro Woche, immer zur gleichen Zeit. Taxi B&amp;B GmbH übernimmt diese Verantwortung mit Sorgfalt und Pünktlichkeit. Wir kennen die Dialysezentren und Kliniken in Essen und Umgebung genau. Anrufen: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -560,6 +814,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/kurierdienst-essen'),
+    schemaOrg: KURIERDIENST_SCHEMA,
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Kurierdienst Essen – Schnell, Diskret &amp; Zuverlässig</h1>
         <p>Taxi B&amp;B GmbH übernimmt für Sie Express-Kurierfahrten in Essen und der gesamten Region. Wir liefern direkt von Absender zu Empfänger – ohne Umwege, ohne Wartezeiten. Ideal für Unternehmen, Kanzleien, Arztpraxen und Privatpersonen mit zeitkritischen Sendungen. Wir sind 24/7 erreichbar. Rufen Sie an: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -582,6 +837,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/taxi-essen-hbf'),
+    schemaOrg: TAXI_HBF_SCHEMA,
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi Essen Hauptbahnhof – Immer da wenn Sie ankommen</h1>
         <p>Der Essen Hauptbahnhof ist einer der wichtigsten Verkehrsknotenpunkte im Ruhrgebiet – hier kommen täglich tausende Reisende an. Taxi B&amp;B GmbH ist 24 Stunden am Tag erreichbar und bringt Sie vom Essen HBF schnell und bequem zu Ihrem Ziel. Ob Hotel, Geschäftstermin, Messe oder Privatadresse – wir kennen Essen und bringen Sie ohne Umwege dorthin. Rufen Sie an: 0201 707060 oder <a href="/book">online vorbestellen</a>.</p>
@@ -606,6 +862,7 @@ const routes: PrerenderRoute[] = [
   // ── Stadtteil-Unterseiten ────────────────────────────────────────────────
   {
     ...meta('/taxi-essen-holsterhausen'),
+    schemaOrg: makeDistrictSchema('Holsterhausen', 'taxi-essen-holsterhausen'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi Holsterhausen – Ihr Taxiservice in Essen-Holsterhausen</h1>
         <p>Taxi B&amp;B GmbH ist Ihr zuverlässiger Taxiservice direkt in Essen-Holsterhausen. Unser Unternehmen sitzt in der Menzelstraße 8–10 – mitten im Stadtgebiet und damit schnell bei Ihnen. Wir kennen Holsterhausen und die umliegenden Straßen wie unsere Westentasche. Von der Abholung an der Haustür bis zur Ankunft am Ziel – wir bringen Sie komfortabel und pünktlich dorthin. 24 Stunden am Tag, 7 Tage die Woche. Rufen Sie an: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -626,6 +883,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/taxi-essen-ruettenscheid'),
+    schemaOrg: makeDistrictSchema('Rüttenscheid', 'taxi-essen-ruettenscheid'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi Rüttenscheid – Ihr Taxiservice in Essen-Rüttenscheid</h1>
         <p>Essen-Rüttenscheid ist eines der beliebtesten Viertel der Stadt – bekannt für seine Restaurants, Cafés und das lebhafte Nachtleben auf der Rüttenscheider Straße. Taxi B&amp;B GmbH ist Ihr verlässlicher Partner für alle Fahrten im und aus dem Rü. Ob nach dem Restaurantbesuch nach Hause, zum Flughafen oder zum Arzttermin – wir sind rund um die Uhr für Sie erreichbar. Rufen Sie an: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -646,6 +904,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/taxi-essen-frohnhausen'),
+    schemaOrg: makeDistrictSchema('Frohnhausen', 'taxi-essen-frohnhausen'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi Frohnhausen – Ihr Taxiservice in Essen-Frohnhausen</h1>
         <p>Taxi B&amp;B GmbH ist Ihr verlässlicher Taxiservice in Essen-Frohnhausen. Wir kennen den Stadtteil und seine Straßen genau und sind schnell bei Ihnen – egal ob tagsüber oder nachts. Von Frohnhausen aus fahren wir Sie zu allen Zielen in Essen und darüber hinaus – zum Flughafen, zum Arzt, zum Bahnhof oder einfach nach Hause. 24/7 erreichbar. Rufen Sie an: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -666,6 +925,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/taxi-essen-suedviertel'),
+    schemaOrg: makeDistrictSchema('Südviertel', 'taxi-essen-suedviertel'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi Südviertel Essen – Ihr Taxiservice im Essener Südviertel</h1>
         <p>Das Essener Südviertel liegt zentral und gut angebunden – und Taxi B&amp;B GmbH ist schnell bei Ihnen. Ob morgens zum Termin, mittags zum Einkaufen oder abends sicher nach Hause – wir fahren Sie 24/7. Als alteingesessenes Taxiunternehmen aus Essen kennen wir das Südviertel und die gesamte Stadt genau. Kurze Wartezeiten, Festpreise, klimatisierte Fahrzeuge. Rufen Sie an: 0201 707060 oder <a href="/book">online buchen</a>.</p>
