@@ -1,10 +1,20 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { indexableRoutes } from './src/routes.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, 'dist/public');
 const CANONICAL_DOMAIN = 'https://taxibbessen.de';
+
+type PrerenderRoute = {
+  path: string;
+  title: string;
+  description: string;
+  noindex?: boolean;
+  noscriptBody?: string;
+  schemaOrg?: Record<string, unknown>;
+};
 
 const HOMEPAGE_FAQ_SCHEMA = {
   "@context": "https://schema.org",
@@ -87,7 +97,7 @@ const CONTACT_BLOCK = `
           E-Mail: <a href="mailto:taxibb@outlook.com">taxibb@outlook.com</a>
         </address>`;
 
-const routes = [
+const routes: PrerenderRoute[] = [
   {
     path: '/',
     title: 'Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060',
@@ -468,7 +478,37 @@ const routes = [
   },
 ];
 
-function escapeAttr(str) {
+// ── Validation: alle indexierbaren Routen aus routes.ts müssen einen
+//    Prerender-Eintrag haben. So wird prerender.mts automatisch aktuell
+//    gehalten, sobald neue Routen in routes.ts hinzugefügt werden. ─────────
+function validateAgainstRouteManifest(): void {
+  const prerenderPaths = new Set(routes.map((r) => r.path));
+
+  // Jede indexierbare Route braucht einen Prerender-Eintrag
+  const missing = indexableRoutes
+    .filter((r) => !prerenderPaths.has(r.path))
+    .map((r) => r.path);
+
+  if (missing.length > 0) {
+    console.error('\n❌  Prerender aborted: Fehlende Einträge für indexierbare Routen:');
+    missing.forEach((p) => console.error(`   ${p}`));
+    console.error('\nFüge diese Routen in prerender.mts hinzu, um SEO-Abdeckung sicherzustellen.\n');
+    process.exit(1);
+  }
+
+  // Alle nicht-indizierbaren Pfade in routes müssen als noindex markiert sein
+  const indexablePaths = new Set(indexableRoutes.map((r) => r.path));
+  const shouldBeNoindex = routes
+    .filter((r) => !indexablePaths.has(r.path) && !r.noindex)
+    .map((r) => r.path);
+
+  if (shouldBeNoindex.length > 0) {
+    console.warn('\n⚠️   Nicht-indexierbare Routen ohne noindex-Flag:');
+    shouldBeNoindex.forEach((p) => console.warn(`   ${p}`));
+  }
+}
+
+function escapeAttr(str: string): string {
   return str
     .replace(/&/g, '&amp;')
     .replace(/"/g, '&quot;')
@@ -476,18 +516,17 @@ function escapeAttr(str) {
     .replace(/>/g, '&gt;');
 }
 
-function buildHeadTags(route) {
-  const canonicalUrl = route.path === '/'
-    ? CANONICAL_DOMAIN
-    : `${CANONICAL_DOMAIN}${route.path}`;
+function buildHeadTags(route: PrerenderRoute): string {
+  const canonicalUrl =
+    route.path === '/'
+      ? CANONICAL_DOMAIN
+      : `${CANONICAL_DOMAIN}${route.path}`;
   const title = escapeAttr(route.title);
   const desc = escapeAttr(route.description);
 
-  const tags = [];
+  const tags: string[] = [];
 
-  if (route.noindex) {
-    tags.push(`    <meta name="robots" content="noindex, nofollow" />`);
-  } else {
+  if (!route.noindex) {
     tags.push(
       `    <link rel="canonical" href="${canonicalUrl}" />`,
       `    <meta property="og:url" content="${canonicalUrl}" />`,
@@ -507,7 +546,7 @@ function buildHeadTags(route) {
   return tags.join('\n');
 }
 
-function renderRoute(shellHtml, route) {
+function renderRoute(shellHtml: string, route: PrerenderRoute): string {
   let html = shellHtml;
 
   html = html.replace(
@@ -525,6 +564,14 @@ function renderRoute(shellHtml, route) {
     `$1${escapeAttr(route.title)}$2`,
   );
 
+  // Replace existing robots meta for noindex pages to avoid duplicate directives
+  if (route.noindex) {
+    html = html.replace(
+      /<meta name="robots" content="[^"]*"\s*\/>/,
+      `<meta name="robots" content="noindex, nofollow" />`,
+    );
+  }
+
   const injection = buildHeadTags(route);
   html = html.replace('  </head>', `${injection}\n  </head>`);
 
@@ -538,7 +585,9 @@ function renderRoute(shellHtml, route) {
   return html;
 }
 
-function main() {
+function main(): void {
+  validateAgainstRouteManifest();
+
   const shellPath = join(DIST, 'index.html');
   if (!existsSync(shellPath)) {
     console.error(`Build output not found: ${shellPath}`);
@@ -563,7 +612,7 @@ function main() {
     }
   }
 
-  console.log(`\nPrerendered ${routes.length} routes.`);
+  console.log(`\n✅  Prerendered ${routes.length} routes (${indexableRoutes.length} indexable from routes.ts).`);
 }
 
 main();
