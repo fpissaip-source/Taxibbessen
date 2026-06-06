@@ -141,12 +141,6 @@ export default function Book() {
     }
   };
 
-  const laterOptions: { value: LaterPickupOption; label: string; icon: React.ReactNode }[] = [
-    { value: "none", label: t("later_pickup_none"), icon: <RotateCcw className="w-4 h-4" /> },
-    { value: "same", label: t("later_pickup_yes"), icon: <RotateCcw className="w-4 h-4" /> },
-    { value: "different", label: t("later_pickup_yes_other"), icon: <MapPin className="w-4 h-4" /> },
-    { value: "callback", label: t("later_pickup_maybe"), icon: <PhoneCall className="w-4 h-4" /> },
-  ];
 
   return (
     <Layout>
@@ -323,23 +317,45 @@ export default function Book() {
                   <RotateCcw className="w-4 h-4 text-muted-foreground" />
                   {t("later_pickup_label")}
                 </Label>
-                <div className="grid grid-cols-2 gap-2">
-                  {laterOptions.map((opt) => (
-                    <button
-                      key={opt.value}
-                      type="button"
-                      onClick={() => setValue("laterPickup", opt.value, { shouldValidate: true })}
-                      className={`p-3 rounded-xl border-2 flex items-center gap-2 font-semibold transition-all text-xs sm:text-sm text-left ${
-                        laterPickup === opt.value
-                          ? "border-primary bg-primary/5 text-foreground"
-                          : "border-border bg-transparent text-muted-foreground hover:border-primary/50"
-                      }`}
-                    >
-                      {opt.icon}
-                      <span className="leading-tight">{opt.label}</span>
-                    </button>
-                  ))}
+                <div className="flex gap-2">
+                  {(["none", "same"] as const).map((val) => {
+                    const isActive = val === "none" ? laterPickup === "none" : laterPickup !== "none";
+                    return (
+                      <button
+                        key={val}
+                        type="button"
+                        onClick={() => setValue("laterPickup", val, { shouldValidate: true })}
+                        className={`flex-1 py-2.5 rounded-xl border-2 font-semibold text-sm transition-all ${
+                          isActive
+                            ? "border-primary bg-primary/5 text-foreground"
+                            : "border-border bg-transparent text-muted-foreground hover:border-primary/50"
+                        }`}
+                      >
+                        {val === "none" ? t("later_pickup_none") : t("later_pickup_yes")}
+                      </button>
+                    );
+                  })}
                 </div>
+                <AnimatePresence>
+                  {laterPickup !== "none" && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <select
+                        value={laterPickup}
+                        onChange={(e) => setValue("laterPickup", e.target.value as LaterPickupOption, { shouldValidate: true })}
+                        className="w-full h-10 rounded-xl border-2 border-border bg-background px-3 text-sm text-foreground focus:outline-none focus:border-primary transition-colors"
+                      >
+                        <option value="same">{t("later_pickup_yes")}</option>
+                        <option value="different">{t("later_pickup_yes_other")}</option>
+                        <option value="callback">{t("later_pickup_maybe")}</option>
+                      </select>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 <AnimatePresence>
                   {(laterPickup === "same" || laterPickup === "different") && (
