@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui";
 import { Phone, Mail, CheckCircle2, AlertCircle, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,6 +19,30 @@ export function HeroBookingWidget({ onExpand }: Props) {
   const [message, setMessage]     = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError]         = useState(false);
+
+  const widgetRef = useRef<HTMLDivElement>(null);
+
+  const isEmpty =
+    firstName.trim() === "" &&
+    lastName.trim() === "" &&
+    phone.trim() === "" &&
+    email.trim() === "" &&
+    message.trim() === "";
+
+  useEffect(() => {
+    if (collapsed) return;
+    function handleOutside(e: MouseEvent | TouchEvent) {
+      if (widgetRef.current && !widgetRef.current.contains(e.target as Node)) {
+        if (isEmpty) setCollapsed(true);
+      }
+    }
+    document.addEventListener("mousedown", handleOutside);
+    document.addEventListener("touchstart", handleOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleOutside);
+      document.removeEventListener("touchstart", handleOutside);
+    };
+  }, [collapsed, isEmpty]);
 
   const valid =
     firstName.trim().length >= 2 &&
@@ -68,12 +92,11 @@ export function HeroBookingWidget({ onExpand }: Props) {
       transition={{ duration: 0.5, delay: 0.3 }}
       className="w-full"
     >
-      <div className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-2xl shadow-2xl shadow-black/30 overflow-hidden">
+      <div ref={widgetRef} className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-2xl shadow-2xl shadow-black/30 overflow-hidden">
         <div className="p-5 sm:p-6">
 
           <AnimatePresence mode="wait">
             {submitted ? (
-              /* ── Erfolg ─────────────────────────────────── */
               <motion.div
                 key="success"
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -89,10 +112,19 @@ export function HeroBookingWidget({ onExpand }: Props) {
                 </p>
               </motion.div>
             ) : (
-              /* ── Formular ────────────────────────────────── */
               <motion.form key="form" onSubmit={handleSubmit} className="space-y-3">
 
-                {/* Titel + Felder — nur sichtbar wenn aufgeklappt */}
+                {/* Titel — immer sichtbar */}
+                <div className="mb-4">
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-white leading-snug">
+                    Stellen Sie jetzt Ihre Anfrage
+                  </h2>
+                  <p className="text-sm sm:text-base font-semibold text-primary/90 mt-1.5">
+                    zum günstigsten Festpreis.
+                  </p>
+                </div>
+
+                {/* Eingabefelder — nur sichtbar wenn aufgeklappt */}
                 <AnimatePresence>
                   {!collapsed && (
                     <motion.div
@@ -103,16 +135,6 @@ export function HeroBookingWidget({ onExpand }: Props) {
                       transition={{ duration: 0.38, ease: [0.25, 0.46, 0.45, 0.94] }}
                       className="overflow-hidden"
                     >
-                      {/* Titel */}
-                      <div className="mb-4">
-                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-white leading-snug">
-                          Stellen Sie jetzt Ihre Anfrage
-                        </h2>
-                        <p className="text-sm sm:text-base font-semibold text-primary/90 mt-1.5">
-                          zum günstigsten Festpreis.
-                        </p>
-                      </div>
-
                       {/* Vorname / Nachname */}
                       <div className="grid grid-cols-2 gap-2.5 mb-3">
                         <div className="relative">
