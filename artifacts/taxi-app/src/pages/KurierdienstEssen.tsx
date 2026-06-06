@@ -2,20 +2,23 @@ import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Kurierdienst",
-  "name": "Kurierdienst Essen",
-  "url": "https://taxibbessen.de/kurierdienst-essen",
-  "provider": { "@id": "https://taxibbessen.de/#organization" },
-  "areaServed": ["Essen", "Ruhrgebiet", "Nordrhein-Westfalen"],
-  "description": "Schneller Kurierdienst in Essen – Dokumente, Pakete, vertrauliche Unterlagen. Express, diskret, zuverlässig. Taxi B&B GmbH – 0201 707060.",
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-      { "@type": "ListItem", "position": 2, "name": "Kurierdienst Essen", "item": "https://taxibbessen.de/kurierdienst-essen" },
-    ],
-  },
+  "@graph": [
+    {
+      "@type": "TaxiService",
+      "name": "Kurierdienst Essen",
+      "url": "https://taxibbessen.de/kurierdienst-essen",
+      "provider": { "@id": "https://taxibbessen.de/#organization" },
+      "areaServed": ["Essen", "Ruhrgebiet", "Nordrhein-Westfalen"],
+      "description": "Schneller Kurierdienst in Essen – Dokumente, Pakete, vertrauliche Unterlagen. Express, diskret, zuverlässig. Taxi B&B GmbH – 0201 707060.",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Kurierdienst Essen", "item": "https://taxibbessen.de/kurierdienst-essen" },
+      ],
+    },
+  ],
 };
 
 const sections = [

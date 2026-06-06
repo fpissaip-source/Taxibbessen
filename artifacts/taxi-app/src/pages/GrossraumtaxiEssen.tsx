@@ -2,20 +2,23 @@ import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Großraumtaxi",
-  "name": "Großraumtaxi Essen",
-  "url": "https://taxibbessen.de/grossraumtaxi-essen",
-  "provider": { "@id": "https://taxibbessen.de/#organization" },
-  "areaServed": ["Essen", "Ruhrgebiet", "Düsseldorf", "Nordrhein-Westfalen"],
-  "description": "Großraumtaxi Essen für bis zu 7 Personen – Mercedes V-Klasse, Flughafentransfer, Gruppenfahrten. Kindersitze auf Anfrage. Taxi B&B GmbH – 24/7.",
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-      { "@type": "ListItem", "position": 2, "name": "Großraumtaxi Essen", "item": "https://taxibbessen.de/grossraumtaxi-essen" },
-    ],
-  },
+  "@graph": [
+    {
+      "@type": "TaxiService",
+      "name": "Großraumtaxi Essen",
+      "url": "https://taxibbessen.de/grossraumtaxi-essen",
+      "provider": { "@id": "https://taxibbessen.de/#organization" },
+      "areaServed": ["Essen", "Ruhrgebiet", "Düsseldorf", "Nordrhein-Westfalen"],
+      "description": "Großraumtaxi Essen für bis zu 7 Personen – Mercedes V-Klasse, Flughafentransfer, Gruppenfahrten. Kindersitze auf Anfrage. Taxi B&B GmbH – 24/7.",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Großraumtaxi Essen", "item": "https://taxibbessen.de/grossraumtaxi-essen" },
+      ],
+    },
+  ],
 };
 
 const sections = [

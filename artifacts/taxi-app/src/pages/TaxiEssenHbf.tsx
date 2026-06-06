@@ -2,20 +2,23 @@ import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Taxi",
-  "name": "Taxi Essen Hauptbahnhof",
-  "url": "https://taxibbessen.de/taxi-essen-hbf",
-  "provider": { "@id": "https://taxibbessen.de/#organization" },
-  "areaServed": ["Essen", "Essen Hauptbahnhof", "Essen-Stadtmitte"],
-  "description": "Taxi am Essen Hauptbahnhof – schnell, zuverlässig, 24/7. Vorbestellung möglich. Taxi B&B GmbH – 0201 707060.",
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-      { "@type": "ListItem", "position": 2, "name": "Taxi Essen Hauptbahnhof", "item": "https://taxibbessen.de/taxi-essen-hbf" },
-    ],
-  },
+  "@graph": [
+    {
+      "@type": "TaxiService",
+      "name": "Taxi Essen Hauptbahnhof",
+      "url": "https://taxibbessen.de/taxi-essen-hbf",
+      "provider": { "@id": "https://taxibbessen.de/#organization" },
+      "areaServed": ["Essen", "Essen Hauptbahnhof", "Essen-Stadtmitte"],
+      "description": "Taxi am Essen Hauptbahnhof – schnell, zuverlässig, 24/7. Vorbestellung möglich. Taxi B&B GmbH – 0201 707060.",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Taxi Essen Hauptbahnhof", "item": "https://taxibbessen.de/taxi-essen-hbf" },
+      ],
+    },
+  ],
 };
 
 const sections = [

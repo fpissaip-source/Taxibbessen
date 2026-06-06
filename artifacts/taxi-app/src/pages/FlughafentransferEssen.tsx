@@ -2,20 +2,23 @@ import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Flughafentransfer",
-  "name": "Flughafentransfer Essen Düsseldorf",
-  "url": "https://taxibbessen.de/flughafentransfer-essen-duesseldorf",
-  "provider": { "@id": "https://taxibbessen.de/#organization" },
-  "areaServed": ["Essen", "Düsseldorf", "Köln", "Dortmund", "Frankfurt"],
-  "description": "Zuverlässiger Flughafentransfer von Essen zu allen Flughäfen – Düsseldorf, Köln/Bonn, Frankfurt, Dortmund. Festpreis, 24/7, Flugverfolgung inklusive.",
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-      { "@type": "ListItem", "position": 2, "name": "Flughafentransfer Essen Düsseldorf", "item": "https://taxibbessen.de/flughafentransfer-essen-duesseldorf" },
-    ],
-  },
+  "@graph": [
+    {
+      "@type": "TaxiService",
+      "name": "Flughafentransfer Essen Düsseldorf",
+      "url": "https://taxibbessen.de/flughafentransfer-essen-duesseldorf",
+      "provider": { "@id": "https://taxibbessen.de/#organization" },
+      "areaServed": ["Essen", "Düsseldorf", "Köln", "Dortmund", "Frankfurt"],
+      "description": "Zuverlässiger Flughafentransfer von Essen zu allen Flughäfen – Düsseldorf, Köln/Bonn, Frankfurt, Dortmund. Festpreis, 24/7, Flugverfolgung inklusive.",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Flughafentransfer Essen Düsseldorf", "item": "https://taxibbessen.de/flughafentransfer-essen-duesseldorf" },
+      ],
+    },
+  ],
 };
 
 const sections = [

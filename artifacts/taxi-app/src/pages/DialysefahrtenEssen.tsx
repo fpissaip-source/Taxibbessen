@@ -2,20 +2,23 @@ import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Dialysefahrten",
-  "name": "Dialysefahrten Essen",
-  "url": "https://taxibbessen.de/dialysefahrten-essen",
-  "provider": { "@id": "https://taxibbessen.de/#organization" },
-  "areaServed": ["Essen", "Bochum", "Gelsenkirchen", "Nordrhein-Westfalen"],
-  "description": "Zuverlässige Dialysefahrten in Essen – regelmäßig, pünktlich, direkte Abrechnung mit der Krankenkasse. Taxi B&B GmbH – 0201 707060.",
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-      { "@type": "ListItem", "position": 2, "name": "Dialysefahrten Essen", "item": "https://taxibbessen.de/dialysefahrten-essen" },
-    ],
-  },
+  "@graph": [
+    {
+      "@type": "TaxiService",
+      "name": "Dialysefahrten Essen",
+      "url": "https://taxibbessen.de/dialysefahrten-essen",
+      "provider": { "@id": "https://taxibbessen.de/#organization" },
+      "areaServed": ["Essen", "Bochum", "Gelsenkirchen", "Nordrhein-Westfalen"],
+      "description": "Zuverlässige Dialysefahrten in Essen – regelmäßig, pünktlich, direkte Abrechnung mit der Krankenkasse. Taxi B&B GmbH – 0201 707060.",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Dialysefahrten Essen", "item": "https://taxibbessen.de/dialysefahrten-essen" },
+      ],
+    },
+  ],
 };
 
 const sections = [

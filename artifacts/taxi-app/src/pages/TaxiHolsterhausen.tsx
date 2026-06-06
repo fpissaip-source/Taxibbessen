@@ -2,20 +2,23 @@ import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Taxi",
-  "name": "Taxi Essen-Holsterhausen",
-  "url": "https://taxibbessen.de/taxi-essen-holsterhausen",
-  "provider": { "@id": "https://taxibbessen.de/#organization" },
-  "areaServed": ["Essen-Holsterhausen", "Essen", "Nordrhein-Westfalen"],
-  "description": "Taxi in Essen-Holsterhausen – schnell, zuverlässig, 24/7. Flughafentransfer, Krankenfahrten, Großraumtaxi. Taxi B&B GmbH – 0201 707060.",
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-      { "@type": "ListItem", "position": 2, "name": "Taxi Essen-Holsterhausen", "item": "https://taxibbessen.de/taxi-essen-holsterhausen" },
-    ],
-  },
+  "@graph": [
+    {
+      "@type": "TaxiService",
+      "name": "Taxi Essen-Holsterhausen",
+      "url": "https://taxibbessen.de/taxi-essen-holsterhausen",
+      "provider": { "@id": "https://taxibbessen.de/#organization" },
+      "areaServed": ["Essen-Holsterhausen", "Essen", "Nordrhein-Westfalen"],
+      "description": "Taxi in Essen-Holsterhausen – schnell, zuverlässig, 24/7. Flughafentransfer, Krankenfahrten, Großraumtaxi. Taxi B&B GmbH – 0201 707060.",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Taxi Essen-Holsterhausen", "item": "https://taxibbessen.de/taxi-essen-holsterhausen" },
+      ],
+    },
+  ],
 };
 
 const sections = [

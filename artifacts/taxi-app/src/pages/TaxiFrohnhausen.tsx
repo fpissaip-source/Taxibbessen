@@ -2,20 +2,23 @@ import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Taxi",
-  "name": "Taxi Essen-Frohnhausen",
-  "url": "https://taxibbessen.de/taxi-essen-frohnhausen",
-  "provider": { "@id": "https://taxibbessen.de/#organization" },
-  "areaServed": ["Essen-Frohnhausen", "Essen", "Nordrhein-Westfalen"],
-  "description": "Taxi in Essen-Frohnhausen – zuverlässig, 24/7, Festpreis. Flughafentransfer, Krankenfahrten. Taxi B&B GmbH – 0201 707060.",
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-      { "@type": "ListItem", "position": 2, "name": "Taxi Essen-Frohnhausen", "item": "https://taxibbessen.de/taxi-essen-frohnhausen" },
-    ],
-  },
+  "@graph": [
+    {
+      "@type": "TaxiService",
+      "name": "Taxi Essen-Frohnhausen",
+      "url": "https://taxibbessen.de/taxi-essen-frohnhausen",
+      "provider": { "@id": "https://taxibbessen.de/#organization" },
+      "areaServed": ["Essen-Frohnhausen", "Essen", "Nordrhein-Westfalen"],
+      "description": "Taxi in Essen-Frohnhausen – zuverlässig, 24/7, Festpreis. Flughafentransfer, Krankenfahrten. Taxi B&B GmbH – 0201 707060.",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Taxi Essen-Frohnhausen", "item": "https://taxibbessen.de/taxi-essen-frohnhausen" },
+      ],
+    },
+  ],
 };
 
 const sections = [

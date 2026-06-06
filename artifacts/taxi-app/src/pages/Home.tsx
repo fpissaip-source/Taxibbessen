@@ -60,11 +60,11 @@ function ServiceCard({ title, sub, index, icon: Icon }: { title: string; sub: st
 
 const SERVICE_ITEMS = [
   { src: "krankenfahrten.webp",    titleKey: "hero_service2_title", descKey: "hero_service2_desc", href: "/krankenfahrten-essen" },
-  { src: "geschaeftsfahrten.webp", titleKey: "hero_service1_title", descKey: "hero_service1_desc", href: null },
+  { src: "geschaeftsfahrten.webp", titleKey: "hero_service1_title", descKey: "hero_service1_desc", href: "/grossraumtaxi-essen" },
   { src: "flughafentransfer.webp", titleKey: "hero_service3_title", descKey: "hero_service3_desc", href: "/flughafentransfer-essen-duesseldorf" },
-  { src: "kurierdokumente.webp",   titleKey: "hero_service4_title", descKey: "hero_service4_desc", href: null },
+  { src: "kurierdokumente.webp",   titleKey: "hero_service4_title", descKey: "hero_service4_desc", href: "/dialysefahrten-essen" },
   { src: "kurierdienst.webp",      titleKey: "hero_service5_title", descKey: "hero_service5_desc", href: "/kurierdienst-essen" },
-  { src: "hauszuhaus.webp",        titleKey: "hero_service6_title", descKey: "hero_service6_desc", href: null },
+  { src: "hauszuhaus.webp",        titleKey: "hero_service6_title", descKey: "hero_service6_desc", href: "/taxi-essen-hbf" },
 ] as const;
 
 function ServicesRevealSection() {

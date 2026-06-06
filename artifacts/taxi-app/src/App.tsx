@@ -18,7 +18,7 @@ import UeberUns from "@/pages/UeberUns";
 import FlughafentransferEssen from "@/pages/FlughafentransferEssen";
 import KrankenfahrtenEssen from "@/pages/KrankenfahrtenEssen";
 import GrossraumtaxiEssen from "@/pages/GrossraumtaxiEssen";
-import DialysefahrtenEssen from "@/pages/DialsyefahrtenEssen";
+import DialysefahrtenEssen from "@/pages/DialysefahrtenEssen";
 import KurierdienstEssen from "@/pages/KurierdienstEssen";
 import TaxiEssenHbf from "@/pages/TaxiEssenHbf";
 import TaxiHolsterhausen from "@/pages/TaxiHolsterhausen";

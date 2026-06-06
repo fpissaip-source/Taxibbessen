@@ -2,20 +2,23 @@ import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Taxi",
-  "name": "Taxi Essen-Südviertel",
-  "url": "https://taxibbessen.de/taxi-essen-suedviertel",
-  "provider": { "@id": "https://taxibbessen.de/#organization" },
-  "areaServed": ["Essen-Südviertel", "Essen", "Nordrhein-Westfalen"],
-  "description": "Taxi in Essen-Südviertel – zuverlässig, 24/7, Festpreis. Flughafentransfer, Krankenfahrten. Taxi B&B GmbH – 0201 707060.",
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-      { "@type": "ListItem", "position": 2, "name": "Taxi Essen-Südviertel", "item": "https://taxibbessen.de/taxi-essen-suedviertel" },
-    ],
-  },
+  "@graph": [
+    {
+      "@type": "TaxiService",
+      "name": "Taxi Essen-Südviertel",
+      "url": "https://taxibbessen.de/taxi-essen-suedviertel",
+      "provider": { "@id": "https://taxibbessen.de/#organization" },
+      "areaServed": ["Essen-Südviertel", "Essen", "Nordrhein-Westfalen"],
+      "description": "Taxi in Essen-Südviertel – zuverlässig, 24/7, Festpreis. Flughafentransfer, Krankenfahrten. Taxi B&B GmbH – 0201 707060.",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Taxi Essen-Südviertel", "item": "https://taxibbessen.de/taxi-essen-suedviertel" },
+      ],
+    },
+  ],
 };
 
 const sections = [

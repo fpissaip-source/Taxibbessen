@@ -2,20 +2,23 @@ import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Krankenfahrten",
-  "name": "Krankenfahrten Essen",
-  "url": "https://taxibbessen.de/krankenfahrten-essen",
-  "provider": { "@id": "https://taxibbessen.de/#organization" },
-  "areaServed": ["Essen", "Bochum", "Duisburg", "Nordrhein-Westfalen"],
-  "description": "Zuverlässige Krankenfahrten in Essen – Dialyse, Strahlentherapie, Arzttermine. Direkte Abrechnung mit der Krankenkasse. Taxi B&B GmbH seit 1992.",
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-      { "@type": "ListItem", "position": 2, "name": "Krankenfahrten Essen", "item": "https://taxibbessen.de/krankenfahrten-essen" },
-    ],
-  },
+  "@graph": [
+    {
+      "@type": "TaxiService",
+      "name": "Krankenfahrten Essen",
+      "url": "https://taxibbessen.de/krankenfahrten-essen",
+      "provider": { "@id": "https://taxibbessen.de/#organization" },
+      "areaServed": ["Essen", "Bochum", "Duisburg", "Nordrhein-Westfalen"],
+      "description": "Zuverlässige Krankenfahrten in Essen – Dialyse, Strahlentherapie, Arzttermine. Direkte Abrechnung mit der Krankenkasse. Taxi B&B GmbH seit 1992.",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
+        { "@type": "ListItem", "position": 2, "name": "Krankenfahrten Essen", "item": "https://taxibbessen.de/krankenfahrten-essen" },
+      ],
+    },
+  ],
 };
 
 const sections = [
