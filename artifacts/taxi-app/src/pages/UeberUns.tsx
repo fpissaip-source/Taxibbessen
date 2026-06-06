@@ -127,12 +127,11 @@ export default function UeberUns() {
               </Link>
             </Reveal>
 
-            <h1 className="sr-only">Taxiunternehmen in Essen seit 1992 – Geschichte und Team</h1>
             <Reveal delay={0.05}>
-              <h2 className="text-4xl sm:text-5xl font-display font-bold leading-tight mb-5">
+              <h1 className="text-4xl sm:text-5xl font-display font-bold leading-tight mb-5">
                 Mehr als ein Taxi –<br />
                 <span className="text-primary">ein Versprechen.</span>
-              </h2>
+              </h1>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
