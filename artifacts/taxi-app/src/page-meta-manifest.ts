@@ -53,6 +53,12 @@ export const PAGE_META_MANIFEST: PageMetaEntry[] = [
     description: 'Verfolgen Sie Ihren Fahrstatus bei Taxi B&B GmbH Essen. Buchungsnummer eingeben und Echtzeit-Status abrufen.',
     noindex: true,
   },
+  {
+    path: '/admin',
+    title: 'Admin – Taxi B&B GmbH',
+    description: 'Interner Adminbereich.',
+    noindex: true,
+  },
 
   // ── Service-Unterseiten ──────────────────────────────────────────────────
   {

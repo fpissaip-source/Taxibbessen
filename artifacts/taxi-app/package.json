@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "node scripts/convert-images.mjs && vite build --config vite.config.ts && tsx prerender.mts",
+    "build": "node scripts/convert-images.mjs && tsx scripts/validate-meta.mts && vite build --config vite.config.ts && tsx prerender.mts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
