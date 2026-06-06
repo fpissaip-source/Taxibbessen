@@ -1,13 +1,13 @@
 import { usePageMeta } from "@/hooks/use-page-meta";
+import { getPageMeta } from "@/page-meta-manifest";
 import { Layout } from "@/components/Layout";
 import { Link } from "wouter";
 import { ArrowLeft, Mail, Building2, Scale, Receipt } from "lucide-react";
 
+const { title: _impTitle, description: _impDesc } = getPageMeta('/impressum');
+
 export default function Impressum() {
-  usePageMeta({
-    title: "Impressum – Taxi B&B GmbH Essen",
-    description: "Impressum der Taxi B&B GmbH Essen. Angaben gemäß § 5 TMG.",
-  });
+  usePageMeta({ title: _impTitle, description: _impDesc });
   return (
     <Layout>
       <div className="min-h-screen bg-background py-12 sm:py-20">

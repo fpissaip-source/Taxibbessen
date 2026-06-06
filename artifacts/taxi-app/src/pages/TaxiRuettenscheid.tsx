@@ -1,4 +1,5 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
+import { getPageMeta } from "@/page-meta-manifest";
 
 const schema = {
   "@context": "https://schema.org",
@@ -62,11 +63,13 @@ const sections = [
   },
 ];
 
+const { title: _title, description: _desc } = getPageMeta('/taxi-essen-ruettenscheid');
+
 export default function TaxiRuettenscheid() {
   return (
     <ServicePageTemplate
-      title="Taxi Essen-Rüttenscheid | 24/7 | Taxi B&B GmbH – 0201 707060"
-      description="Taxi in Essen-Rüttenscheid – zuverlässig, 24/7, Festpreis. Flughafentransfer, Nachttaxi, Krankenfahrten. Taxi B&B GmbH – Ihr lokaler Taxiservice im Rü."
+      title={_title}
+      description={_desc}
       h1="Taxi Rüttenscheid"
       badge="Essen-Rüttenscheid · 24/7 verfügbar"
       intro="Ihr Taxi im Rü – schnell, zuverlässig, rund um die Uhr. Taxi B&B GmbH bringt Sie aus Essen-Rüttenscheid zu jedem Ziel – Flughafen, HBF oder sicher nach Hause nach dem Abend."

@@ -1,4 +1,5 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
+import { getPageMeta } from "@/page-meta-manifest";
 
 const schema = {
   "@context": "https://schema.org",
@@ -77,11 +78,13 @@ const faq = [
   },
 ];
 
+const { title: _title, description: _desc } = getPageMeta('/taxi-essen-hbf');
+
 export default function TaxiEssenHbf() {
   return (
     <ServicePageTemplate
-      title="Taxi Essen Hauptbahnhof – 24/7 | Taxi B&B GmbH – 0201 707060"
-      description="Taxi am Essen Hauptbahnhof – schnell, zuverlässig, 24/7 erreichbar. Vorbestellung empfohlen. Taxi B&B GmbH bringt Sie zu jedem Ziel in Essen und Umgebung."
+      title={_title}
+      description={_desc}
       h1="Taxi Essen Hauptbahnhof"
       badge="24/7 · Vorbestellung möglich"
       intro="Ihr Taxi am Essen Hauptbahnhof – pünktlich, wenn Ihr Zug ankommt. Wir bringen Sie direkt zu Ihrem Ziel in Essen, zum Flughafen oder in die gesamte Region."

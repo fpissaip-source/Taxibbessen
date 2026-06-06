@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, type ComponentType } from "react";
 import { usePageMeta } from "@/hooks/use-page-meta";
+import { getPageMeta } from "@/page-meta-manifest";
 import { Link } from "wouter";
 import { Layout } from "@/components/Layout";
 import { ReviewCarousel } from "@/components/ReviewCarousel";
@@ -344,9 +345,10 @@ export default function Home() {
   const ctaLayerRef = useRef<HTMLDivElement>(null);
   const [iconsHidden, setIconsHidden] = useState(false);
 
+  const { title: _homeTitle, description: _homeDesc } = getPageMeta('/');
   usePageMeta({
-    title: "Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060",
-    description: "Ihr zuverlässiger Taxiservice in Essen seit 1992. Flughafentransfer Düsseldorf, Krankenfahrten, Großraumtaxi für 7 Personen. Jetzt buchen: 0201 707060.",
+    title: _homeTitle,
+    description: _homeDesc,
     schemaOrg: {
       "@context": "https://schema.org",
       "@type": "FAQPage",

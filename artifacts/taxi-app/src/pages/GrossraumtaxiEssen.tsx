@@ -1,4 +1,5 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
+import { getPageMeta } from "@/page-meta-manifest";
 
 const schema = {
   "@context": "https://schema.org",
@@ -82,11 +83,13 @@ const faq = [
   },
 ];
 
+const { title: _title, description: _desc } = getPageMeta('/grossraumtaxi-essen');
+
 export default function GrossraumtaxiEssen() {
   return (
     <ServicePageTemplate
-      title="Großraumtaxi Essen – 7 Personen | Mercedes V-Klasse | Taxi B&B"
-      description="Großraumtaxi Essen für bis zu 7 Personen mit Mercedes V-Klasse. Flughafentransfer, Gruppenfahrten, Kindersitze auf Anfrage. Taxi B&B GmbH – 0201 707060."
+      title={_title}
+      description={_desc}
       h1="Großraumtaxi Essen"
       badge="Bis zu 7 Personen · Mercedes V-Klasse"
       intro="Platz für die ganze Gruppe: Unsere Mercedes V-Klasse fasst bis zu 7 Personen mit Gepäck – ideal für Flughafentransfers, Familienausflüge und Firmenfahrten in Essen und Umgebung."

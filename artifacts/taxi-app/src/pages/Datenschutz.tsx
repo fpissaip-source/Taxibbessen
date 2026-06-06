@@ -1,13 +1,13 @@
 import { usePageMeta } from "@/hooks/use-page-meta";
+import { getPageMeta } from "@/page-meta-manifest";
 import { Layout } from "@/components/Layout";
 import { Link } from "wouter";
 import { ArrowLeft, Lock, Database, UserCheck, Eye, Trash2, Globe } from "lucide-react";
 
+const { title: _dsTitle, description: _dsDesc } = getPageMeta('/datenschutz');
+
 export default function Datenschutz() {
-  usePageMeta({
-    title: "Datenschutz – Taxi B&B GmbH Essen",
-    description: "Datenschutzerklärung der Taxi B&B GmbH Essen gemäß DSGVO. Informationen zur Verarbeitung Ihrer personenbezogenen Daten.",
-  });
+  usePageMeta({ title: _dsTitle, description: _dsDesc });
   return (
     <Layout>
       <div className="min-h-screen bg-background py-12 sm:py-20">

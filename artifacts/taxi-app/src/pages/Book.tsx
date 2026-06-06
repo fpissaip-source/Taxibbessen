@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { usePageMeta } from "@/hooks/use-page-meta";
+import { getPageMeta } from "@/page-meta-manifest";
 import { Layout } from "@/components/Layout";
 import { Link } from "wouter";
 import { Phone, Mail, User, MessageSquare, CheckCircle2, Loader2 } from "lucide-react";
@@ -12,11 +13,10 @@ const WaIcon = () => (
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
+const { title: _bookTitle, description: _bookDesc } = getPageMeta('/book');
+
 export default function Book() {
-  usePageMeta({
-    title: "Taxi buchen – Taxi B&B GmbH Essen | Online Anfrage",
-    description: "Taxi in Essen einfach anfragen. Wir melden uns sofort. Taxi B&B GmbH – 0201 707060.",
-  });
+  usePageMeta({ title: _bookTitle, description: _bookDesc });
 
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", message: "" });
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");

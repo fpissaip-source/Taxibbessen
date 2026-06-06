@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { indexableRoutes } from './src/routes.ts';
+import { PAGE_META_MANIFEST } from './src/page-meta-manifest.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, 'dist/public');
@@ -15,6 +16,12 @@ type PrerenderRoute = {
   noscriptBody?: string;
   schemaOrg?: Record<string, unknown>;
 };
+
+function meta(path: string): Pick<PrerenderRoute, 'path' | 'title' | 'description' | 'noindex'> {
+  const m = PAGE_META_MANIFEST.find((e) => e.path === path);
+  if (!m) throw new Error(`Kein Manifest-Eintrag für "${path}" – bitte in page-meta-manifest.ts ergänzen.`);
+  return m;
+}
 
 const HOMEPAGE_FAQ_SCHEMA = {
   "@context": "https://schema.org",
@@ -99,15 +106,11 @@ const CONTACT_BLOCK = `
 
 const routes: PrerenderRoute[] = [
   {
-    path: '/',
-    title: 'Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060',
-    description: 'Ihr zuverlässiger Taxiservice in Essen seit 1992. Flughafentransfer Düsseldorf, Krankenfahrten, Großraumtaxi für 7 Personen. Jetzt buchen: 0201 707060.',
+    ...meta('/'),
     schemaOrg: HOMEPAGE_FAQ_SCHEMA,
   },
   {
-    path: '/fahrzeuge',
-    title: 'Unsere Fahrzeuge – Taxi B&B GmbH Essen | Mercedes Flotte',
-    description: 'Moderne Mercedes-Flotte bei Taxi B&B GmbH: E-Klasse Kombi, E 300 e Hybrid und V-Klasse Großraumtaxi für bis zu 7 Personen. Komfortabel, klimatisiert, zuverlässig.',
+    ...meta('/fahrzeuge'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Mercedes-Flotte in Essen – Limousinen, Kombis und Großraumtaxi für bis zu 7 Personen</h1>
         <p>Taxi B&amp;B GmbH betreibt eine moderne, gepflegte Fahrzeugflotte aus dem Hause Mercedes-Benz. Alle Fahrzeuge sind klimatisiert, regelmäßig gewartet und bieten höchsten Fahrkomfort. <a href="/book">Jetzt Fahrt buchen</a> oder <a href="/ueber-uns">mehr über uns erfahren</a>.</p>
@@ -121,9 +124,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/ueber-uns',
-    title: 'Über uns – Taxi B&B GmbH Essen | Seit 1992',
-    description: 'Taxi B&B GmbH – Ihr Familienbetrieb in Essen seit 1992. 30+ Jahre Erfahrung, Festpreise, 24/7 Erreichbarkeit. Lernen Sie uns kennen.',
+    ...meta('/ueber-uns'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxiunternehmen in Essen seit 1992 – Geschichte und Team</h1>
         <p>Taxi B&amp;B GmbH wurde 1992 in Essen gegründet. Wir sind kein anonymes Fahrdienst-Portal, kein Algorithmus und keine App, die Sie vergisst, sobald die Fahrt endet. Wir sind ein Essener Familienunternehmen – und das spürt man.</p>
@@ -141,9 +142,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/book',
-    title: 'Taxi buchen – Taxi B&B GmbH Essen | Online Anfrage',
-    description: 'Taxi in Essen einfach anfragen. Wir melden uns sofort. Taxi B&B GmbH – 0201 707060.',
+    ...meta('/book'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi online buchen in Essen – Festpreis, Flughafentransfer und Krankenfahrten</h1>
         <p>Buchen Sie Ihr Taxi in Essen schnell und einfach online. Wählen Sie Abholadresse, Ziel, Datum und Uhrzeit – wir bestätigen Ihre Buchung umgehend. <a href="/ueber-uns">Seit 1992</a> Ihr zuverlässiger Taxiservice.</p>
@@ -168,10 +167,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/confirmation',
-    title: 'Buchungsbestätigung – Taxi B&B GmbH Essen',
-    description: 'Ihre Buchung bei Taxi B&B GmbH wurde erfolgreich übermittelt.',
-    noindex: true,
+    ...meta('/confirmation'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Buchungsbestätigung – Taxi B&amp;B GmbH Essen</h1>
         <p>Ihre Buchungsanfrage wurde erfolgreich übermittelt. Sie erhalten in Kürze eine Bestätigung.</p>
@@ -179,9 +175,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/impressum',
-    title: 'Impressum – Taxi B&B GmbH Essen',
-    description: 'Impressum der Taxi B&B GmbH Essen. Angaben gemäß § 5 TMG.',
+    ...meta('/impressum'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Impressum</h1>
         <p>Angaben gemäß § 5 TMG</p>
@@ -203,9 +197,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/datenschutz',
-    title: 'Datenschutz – Taxi B&B GmbH Essen',
-    description: 'Datenschutzerklärung der Taxi B&B GmbH Essen gemäß DSGVO. Informationen zur Verarbeitung Ihrer personenbezogenen Daten.',
+    ...meta('/datenschutz'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Datenschutzerklärung</h1>
         <p>Taxi B&amp;B GmbH – Essen · Gemäß DSGVO &amp; TDDDG</p>
@@ -225,9 +217,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/agb',
-    title: 'AGB – Taxi B&B GmbH Essen | Allgemeine Geschäftsbedingungen',
-    description: 'Allgemeine Geschäftsbedingungen der Taxi B&B GmbH Essen für Taxifahrten und Beförderungsleistungen.',
+    ...meta('/agb'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Allgemeine Geschäftsbedingungen</h1>
         <p>Taxi B&amp;B GmbH – Essen</p>
@@ -247,9 +237,7 @@ const routes: PrerenderRoute[] = [
 
   // ── Service-Unterseiten ──────────────────────────────────────────────────
   {
-    path: '/flughafentransfer-essen-duesseldorf',
-    title: 'Flughafentransfer Essen Düsseldorf | Taxi B&B GmbH – 0201 707060',
-    description: 'Zuverlässiger Flughafentransfer von Essen nach Düsseldorf, Köln/Bonn, Frankfurt und Dortmund. Festpreis, Flugverfolgung, 24/7. Taxi B&B GmbH – 0201 707060.',
+    ...meta('/flughafentransfer-essen-duesseldorf'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Flughafentransfer Essen Düsseldorf – Pünktlich &amp; Komfortabel</h1>
         <p>Taxi B&amp;B GmbH bringt Sie bequem und pünktlich von Essen zu allen wichtigen Flughäfen der Region. Die beliebteste Strecke ist der Flughafentransfer Essen–Düsseldorf (DUS) mit ca. 35–40 km Entfernung. Wir fahren Sie auch zum Flughafen Köln/Bonn (CGN), Dortmund (DTM) und Frankfurt (FRA). Festpreise, keine bösen Überraschungen. Einfach anrufen oder <a href="/book">online buchen</a>.</p>
@@ -273,9 +261,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/krankenfahrten-essen',
-    title: 'Krankenfahrten Essen | Taxi B&B GmbH – Krankenkasse & Dialyse',
-    description: 'Zuverlässige Krankenfahrten in Essen – Dialyse, Strahlentherapie, Arzttermine. Direkte Abrechnung mit der Krankenkasse. Taxi B&B GmbH – 0201 707060.',
+    ...meta('/krankenfahrten-essen'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Krankenfahrten Essen – Zuverlässig &amp; mit Krankenkassenabrechnung</h1>
         <p>Taxi B&amp;B GmbH führt alle gesetzlich genehmigten Krankenfahrten in Essen und Umgebung durch. Wir rechnen direkt mit Ihrer Krankenkasse ab – kein bürokratischer Aufwand für Sie. Sie benötigen lediglich eine gültige Verordnung Ihres Arztes. Wir sind für alle gesetzlichen Krankenversicherungen zugelassen und kennen die Abrechnungsprozesse genau.</p>
@@ -297,9 +283,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/grossraumtaxi-essen',
-    title: 'Großraumtaxi Essen – 7 Personen | Mercedes V-Klasse | Taxi B&B',
-    description: 'Großraumtaxi Essen für bis zu 7 Personen mit Mercedes V-Klasse. Flughafentransfer, Gruppenfahrten, Kindersitze auf Anfrage. Taxi B&B GmbH – 0201 707060.',
+    ...meta('/grossraumtaxi-essen'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Großraumtaxi Essen – Mercedes V-Klasse für bis zu 7 Personen</h1>
         <p>Unser Großraumtaxi in Essen ist die Mercedes V-Klasse – mit Platz für bis zu 7 Personen und reichlich Kofferraumplatz. Ob Familie mit Kindern, Reisegruppe oder Firmenteam: Sie reisen bequem, klimatisiert und ohne Stress. Das Fahrzeug ist regelmäßig gewartet und gepflegt. Einfach anrufen: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -321,9 +305,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/dialysefahrten-essen',
-    title: 'Dialysefahrten Essen | Krankenkasse | Taxi B&B GmbH – 0201 707060',
-    description: 'Zuverlässige Dialysefahrten in Essen – regelmäßig, pünktlich, direkte Abrechnung mit der Krankenkasse. Fester Fahrplan möglich. Taxi B&B GmbH – 0201 707060.',
+    ...meta('/dialysefahrten-essen'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Dialysefahrten Essen – Regelmäßig, Pünktlich &amp; Zuverlässig</h1>
         <p>Dialysepatienten sind auf zuverlässige, regelmäßige Fahrten angewiesen – meist dreimal pro Woche, immer zur gleichen Zeit. Taxi B&amp;B GmbH übernimmt diese Verantwortung mit Sorgfalt und Pünktlichkeit. Wir kennen die Dialysezentren und Kliniken in Essen und Umgebung genau. Anrufen: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -339,9 +321,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/kurierdienst-essen',
-    title: 'Kurierdienst Essen – Express & Diskret | Taxi B&B GmbH – 0201 707060',
-    description: 'Schneller Kurierdienst in Essen – Dokumente, Pakete, vertrauliche Unterlagen. Express, diskret, zuverlässig. Taxi B&B GmbH – 24/7 erreichbar – 0201 707060.',
+    ...meta('/kurierdienst-essen'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Kurierdienst Essen – Schnell, Diskret &amp; Zuverlässig</h1>
         <p>Taxi B&amp;B GmbH übernimmt für Sie Express-Kurierfahrten in Essen und der gesamten Region. Wir liefern direkt von Absender zu Empfänger – ohne Umwege, ohne Wartezeiten. Ideal für Unternehmen, Kanzleien, Arztpraxen und Privatpersonen mit zeitkritischen Sendungen. Wir sind 24/7 erreichbar. Rufen Sie an: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -363,9 +343,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/taxi-essen-hbf',
-    title: 'Taxi Essen Hauptbahnhof – 24/7 | Taxi B&B GmbH – 0201 707060',
-    description: 'Taxi am Essen Hauptbahnhof – schnell, zuverlässig, 24/7 erreichbar. Vorbestellung empfohlen. Taxi B&B GmbH bringt Sie zu jedem Ziel in Essen und Umgebung.',
+    ...meta('/taxi-essen-hbf'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi Essen Hauptbahnhof – Immer da wenn Sie ankommen</h1>
         <p>Der Essen Hauptbahnhof ist einer der wichtigsten Verkehrsknotenpunkte im Ruhrgebiet – hier kommen täglich tausende Reisende an. Taxi B&amp;B GmbH ist 24 Stunden am Tag erreichbar und bringt Sie vom Essen HBF schnell und bequem zu Ihrem Ziel. Ob Hotel, Geschäftstermin, Messe oder Privatadresse – wir kennen Essen und bringen Sie ohne Umwege dorthin. Rufen Sie an: 0201 707060 oder <a href="/book">online vorbestellen</a>.</p>
@@ -389,9 +367,7 @@ const routes: PrerenderRoute[] = [
 
   // ── Stadtteil-Unterseiten ────────────────────────────────────────────────
   {
-    path: '/taxi-essen-holsterhausen',
-    title: 'Taxi Essen-Holsterhausen | 24/7 | Taxi B&B GmbH – 0201 707060',
-    description: 'Taxi in Essen-Holsterhausen – zuverlässig, 24/7, Festpreis. Flughafentransfer, Krankenfahrten, Großraumtaxi. Taxi B&B GmbH – Ihr lokaler Taxiservice.',
+    ...meta('/taxi-essen-holsterhausen'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi Holsterhausen – Ihr Taxiservice in Essen-Holsterhausen</h1>
         <p>Taxi B&amp;B GmbH ist Ihr zuverlässiger Taxiservice direkt in Essen-Holsterhausen. Unser Unternehmen sitzt in der Menzelstraße 8–10 – mitten im Stadtgebiet und damit schnell bei Ihnen. Wir kennen Holsterhausen und die umliegenden Straßen wie unsere Westentasche. Von der Abholung an der Haustür bis zur Ankunft am Ziel – wir bringen Sie komfortabel und pünktlich dorthin. 24 Stunden am Tag, 7 Tage die Woche. Rufen Sie an: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -411,9 +387,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/taxi-essen-ruettenscheid',
-    title: 'Taxi Essen-Rüttenscheid | 24/7 | Taxi B&B GmbH – 0201 707060',
-    description: 'Taxi in Essen-Rüttenscheid – zuverlässig, 24/7, Festpreis. Flughafentransfer, Nachttaxi, Krankenfahrten. Taxi B&B GmbH – Ihr lokaler Taxiservice im Rü.',
+    ...meta('/taxi-essen-ruettenscheid'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi Rüttenscheid – Ihr Taxiservice in Essen-Rüttenscheid</h1>
         <p>Essen-Rüttenscheid ist eines der beliebtesten Viertel der Stadt – bekannt für seine Restaurants, Cafés und das lebhafte Nachtleben auf der Rüttenscheider Straße. Taxi B&amp;B GmbH ist Ihr verlässlicher Partner für alle Fahrten im und aus dem Rü. Ob nach dem Restaurantbesuch nach Hause, zum Flughafen oder zum Arzttermin – wir sind rund um die Uhr für Sie erreichbar. Rufen Sie an: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -433,9 +407,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/taxi-essen-frohnhausen',
-    title: 'Taxi Essen-Frohnhausen | 24/7 | Taxi B&B GmbH – 0201 707060',
-    description: 'Taxi in Essen-Frohnhausen – zuverlässig, 24/7, Festpreis. Flughafentransfer, Krankenfahrten, Großraumtaxi. Taxi B&B GmbH – Ihr lokaler Taxiservice.',
+    ...meta('/taxi-essen-frohnhausen'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi Frohnhausen – Ihr Taxiservice in Essen-Frohnhausen</h1>
         <p>Taxi B&amp;B GmbH ist Ihr verlässlicher Taxiservice in Essen-Frohnhausen. Wir kennen den Stadtteil und seine Straßen genau und sind schnell bei Ihnen – egal ob tagsüber oder nachts. Von Frohnhausen aus fahren wir Sie zu allen Zielen in Essen und darüber hinaus – zum Flughafen, zum Arzt, zum Bahnhof oder einfach nach Hause. 24/7 erreichbar. Rufen Sie an: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -455,9 +427,7 @@ const routes: PrerenderRoute[] = [
       </article>`,
   },
   {
-    path: '/taxi-essen-suedviertel',
-    title: 'Taxi Essen-Südviertel | 24/7 | Taxi B&B GmbH – 0201 707060',
-    description: 'Taxi in Essen-Südviertel – zuverlässig, 24/7, Festpreis. Flughafentransfer Düsseldorf, Krankenfahrten, Großraumtaxi. Taxi B&B GmbH – Ihr lokaler Service.',
+    ...meta('/taxi-essen-suedviertel'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi Südviertel Essen – Ihr Taxiservice im Essener Südviertel</h1>
         <p>Das Essener Südviertel liegt zentral und gut angebunden – und Taxi B&amp;B GmbH ist schnell bei Ihnen. Ob morgens zum Termin, mittags zum Einkaufen oder abends sicher nach Hause – wir fahren Sie 24/7. Als alteingesessenes Taxiunternehmen aus Essen kennen wir das Südviertel und die gesamte Stadt genau. Kurze Wartezeiten, Festpreise, klimatisierte Fahrzeuge. Rufen Sie an: 0201 707060 oder <a href="/book">online buchen</a>.</p>

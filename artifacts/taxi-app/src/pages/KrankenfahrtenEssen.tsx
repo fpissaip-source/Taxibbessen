@@ -1,4 +1,5 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
+import { getPageMeta } from "@/page-meta-manifest";
 
 const schema = {
   "@context": "https://schema.org",
@@ -82,11 +83,13 @@ const faq = [
   },
 ];
 
+const { title: _title, description: _desc } = getPageMeta('/krankenfahrten-essen');
+
 export default function KrankenfahrtenEssen() {
   return (
     <ServicePageTemplate
-      title="Krankenfahrten Essen | Taxi B&B GmbH – Krankenkasse & Dialyse"
-      description="Zuverlässige Krankenfahrten in Essen – Dialyse, Strahlentherapie, Arzttermine. Direkte Abrechnung mit der Krankenkasse. Taxi B&B GmbH – 0201 707060."
+      title={_title}
+      description={_desc}
       h1="Krankenfahrten Essen"
       badge="Taxi B&B GmbH · Seit 1992"
       intro="Wir führen alle gesetzlich genehmigten Krankenfahrten in Essen durch und rechnen direkt mit Ihrer Krankenkasse ab. Einfühlsam, pünktlich und ohne bürokratischen Aufwand für Sie."

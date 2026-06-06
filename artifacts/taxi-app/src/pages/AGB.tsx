@@ -1,13 +1,13 @@
 import { usePageMeta } from "@/hooks/use-page-meta";
+import { getPageMeta } from "@/page-meta-manifest";
 import { Layout } from "@/components/Layout";
 import { Link } from "wouter";
 import { ArrowLeft, FileText, ShieldCheck, CreditCard, AlertTriangle, Users, BookOpen } from "lucide-react";
 
+const { title: _agbTitle, description: _agbDesc } = getPageMeta('/agb');
+
 export default function AGB() {
-  usePageMeta({
-    title: "AGB – Taxi B&B GmbH Essen | Allgemeine Geschäftsbedingungen",
-    description: "Allgemeine Geschäftsbedingungen der Taxi B&B GmbH Essen für Taxifahrten und Beförderungsleistungen.",
-  });
+  usePageMeta({ title: _agbTitle, description: _agbDesc });
   return (
     <Layout>
       <div className="min-h-screen bg-background py-12 sm:py-20">

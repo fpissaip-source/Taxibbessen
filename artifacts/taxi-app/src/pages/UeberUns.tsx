@@ -1,4 +1,5 @@
 import { usePageMeta } from "@/hooks/use-page-meta";
+import { getPageMeta } from "@/page-meta-manifest";
 import { Layout } from "@/components/Layout";
 import { Link } from "wouter";
 import { ArrowLeft, Shield, Clock, Heart, Award, Users, MapPin, CheckCircle } from "lucide-react";
@@ -110,10 +111,8 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 }
 
 export default function UeberUns() {
-  usePageMeta({
-    title: "Über uns – Taxi B&B GmbH Essen | Seit 1992",
-    description: "Taxi B&B GmbH – Ihr Familienbetrieb in Essen seit 1992. 30+ Jahre Erfahrung, Festpreise, 24/7 Erreichbarkeit. Lernen Sie uns kennen.",
-  });
+  const { title, description } = getPageMeta('/ueber-uns');
+  usePageMeta({ title, description });
   return (
     <Layout>
       <div className="min-h-screen bg-background">

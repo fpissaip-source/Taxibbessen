@@ -1,4 +1,5 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
+import { getPageMeta } from "@/page-meta-manifest";
 
 const schema = {
   "@context": "https://schema.org",
@@ -62,11 +63,13 @@ const sections = [
   },
 ];
 
+const { title: _title, description: _desc } = getPageMeta('/taxi-essen-suedviertel');
+
 export default function TaxiSuedviertel() {
   return (
     <ServicePageTemplate
-      title="Taxi Essen-Südviertel | 24/7 | Taxi B&B GmbH – 0201 707060"
-      description="Taxi in Essen-Südviertel – zuverlässig, 24/7, Festpreis. Flughafentransfer Düsseldorf, Krankenfahrten, Großraumtaxi. Taxi B&B GmbH – Ihr lokaler Service."
+      title={_title}
+      description={_desc}
       h1="Taxi Südviertel Essen"
       badge="Essen-Südviertel · 24/7 verfügbar"
       intro="Ihr zuverlässiger Taxiservice im Essener Südviertel – rund um die Uhr, pünktlich und zum Festpreis. Wir kennen den Stadtteil und bringen Sie überall hin."

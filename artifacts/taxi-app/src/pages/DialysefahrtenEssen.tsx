@@ -1,4 +1,5 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
+import { getPageMeta } from "@/page-meta-manifest";
 
 const schema = {
   "@context": "https://schema.org",
@@ -78,11 +79,13 @@ const faq = [
   },
 ];
 
+const { title: _title, description: _desc } = getPageMeta('/dialysefahrten-essen');
+
 export default function DialogsefahrtenEssen() {
   return (
     <ServicePageTemplate
-      title="Dialysefahrten Essen | Krankenkasse | Taxi B&B GmbH – 0201 707060"
-      description="Zuverlässige Dialysefahrten in Essen – regelmäßig, pünktlich, direkte Abrechnung mit der Krankenkasse. Fester Fahrplan möglich. Taxi B&B GmbH – 0201 707060."
+      title={_title}
+      description={_desc}
       h1="Dialysefahrten Essen"
       badge="Regelmäßig · Pünktlich · Krankenkasse"
       intro="Zuverlässige Dialysefahrten in Essen mit direkter Abrechnung bei Ihrer Krankenkasse. Wir richten gerne einen festen Fahrplan ein – dreimal die Woche, immer pünktlich."

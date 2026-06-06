@@ -1,4 +1,5 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
+import { getPageMeta } from "@/page-meta-manifest";
 
 const schema = {
   "@context": "https://schema.org",
@@ -82,11 +83,13 @@ const faq = [
   },
 ];
 
+const { title: _title, description: _desc } = getPageMeta('/kurierdienst-essen');
+
 export default function KurierdienstEssen() {
   return (
     <ServicePageTemplate
-      title="Kurierdienst Essen – Express & Diskret | Taxi B&B GmbH – 0201 707060"
-      description="Schneller Kurierdienst in Essen – Dokumente, Pakete, vertrauliche Unterlagen. Express, diskret, zuverlässig. Taxi B&B GmbH – 24/7 erreichbar – 0201 707060."
+      title={_title}
+      description={_desc}
       h1="Kurierdienst Essen"
       badge="Express · Diskret · Zuverlässig"
       intro="Schnelle, diskrete Kurierfahrten in Essen und der gesamten Region. Wir liefern direkt von Absender zu Empfänger – Dokumente, Pakete, vertrauliche Unterlagen – 24/7."

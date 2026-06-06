@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { usePageMeta } from "@/hooks/use-page-meta";
+import { getPageMeta } from "@/page-meta-manifest";
 import { Layout } from "@/components/Layout";
 import { Card, Button } from "@/components/ui";
 import { Input } from "@/components/ui/input";
@@ -52,11 +53,10 @@ const STATUS_COLORS: Record<BookingStatus, string> = {
   rejected: "bg-destructive/10 text-destructive border-destructive/20",
 };
 
+const { title: _fsTitle, description: _fsDesc, noindex: _fsNoindex } = getPageMeta('/fahrtstatus');
+
 export default function Fahrtstatus() {
-  usePageMeta({
-    title: "Fahrtstatus – Taxi B&B GmbH Essen | Buchung verfolgen",
-    description: "Verfolgen Sie Ihren Fahrstatus bei Taxi B&B GmbH Essen. Buchungsnummer eingeben und Echtzeit-Status abrufen.",
-  });
+  usePageMeta({ title: _fsTitle, description: _fsDesc, noindex: _fsNoindex });
   const { t } = useLanguage();
   const prefill = new URLSearchParams(window.location.search).get("booking_nr") ?? "";
   const [bookingNr, setBookingNr] = useState(prefill);

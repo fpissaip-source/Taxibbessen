@@ -1,4 +1,5 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
+import { getPageMeta } from "@/page-meta-manifest";
 
 const schema = {
   "@context": "https://schema.org",
@@ -61,11 +62,13 @@ const sections = [
   },
 ];
 
+const { title: _title, description: _desc } = getPageMeta('/taxi-essen-frohnhausen');
+
 export default function TaxiFrohnhausen() {
   return (
     <ServicePageTemplate
-      title="Taxi Essen-Frohnhausen | 24/7 | Taxi B&B GmbH – 0201 707060"
-      description="Taxi in Essen-Frohnhausen – zuverlässig, 24/7, Festpreis. Flughafentransfer, Krankenfahrten, Großraumtaxi. Taxi B&B GmbH – Ihr lokaler Taxiservice."
+      title={_title}
+      description={_desc}
       h1="Taxi Frohnhausen"
       badge="Essen-Frohnhausen · 24/7 verfügbar"
       intro="Ihr zuverlässiges Taxi in Essen-Frohnhausen – rund um die Uhr, Festpreis. Wir bringen Sie schnell und bequem zu jedem Ziel in Essen und Umgebung."

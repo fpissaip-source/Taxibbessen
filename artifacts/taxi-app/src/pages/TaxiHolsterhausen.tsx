@@ -1,4 +1,5 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
+import { getPageMeta } from "@/page-meta-manifest";
 
 const schema = {
   "@context": "https://schema.org",
@@ -61,11 +62,13 @@ const sections = [
   },
 ];
 
+const { title: _title, description: _desc } = getPageMeta('/taxi-essen-holsterhausen');
+
 export default function TaxiHolsterhausen() {
   return (
     <ServicePageTemplate
-      title="Taxi Essen-Holsterhausen | 24/7 | Taxi B&B GmbH – 0201 707060"
-      description="Taxi in Essen-Holsterhausen – zuverlässig, 24/7, Festpreis. Flughafentransfer, Krankenfahrten, Großraumtaxi. Taxi B&B GmbH – Ihr lokaler Taxiservice."
+      title={_title}
+      description={_desc}
       h1="Taxi Holsterhausen"
       badge="Essen-Holsterhausen · 24/7 verfügbar"
       intro="Ihr zuverlässiges Taxi in Essen-Holsterhausen – direkt vor Ihrer Tür. Taxi B&B GmbH kennt den Stadtteil und bringt Sie schnell an jedes Ziel."

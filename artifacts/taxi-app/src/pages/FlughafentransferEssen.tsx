@@ -1,4 +1,5 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
+import { getPageMeta } from "@/page-meta-manifest";
 
 const schema = {
   "@context": "https://schema.org",
@@ -81,11 +82,13 @@ const faq = [
   },
 ];
 
+const { title: _title, description: _desc } = getPageMeta('/flughafentransfer-essen-duesseldorf');
+
 export default function FlughafentransferEssen() {
   return (
     <ServicePageTemplate
-      title="Flughafentransfer Essen Düsseldorf | Taxi B&B GmbH – 0201 707060"
-      description="Zuverlässiger Flughafentransfer von Essen nach Düsseldorf, Köln/Bonn, Frankfurt und Dortmund. Festpreis, Flugverfolgung, 24/7. Taxi B&B GmbH – 0201 707060."
+      title={_title}
+      description={_desc}
       h1="Flughafentransfer Essen Düsseldorf"
       badge="Taxi B&B GmbH · Essen"
       intro="Pünktlich, komfortabel und zum Festpreis – wir bringen Sie von Essen zu allen Flughäfen der Region. Mit Echtzeit-Flugverfolgung und kostenloser Wartezeit."

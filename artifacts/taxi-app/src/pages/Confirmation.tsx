@@ -7,16 +7,14 @@ import { format } from "date-fns";
 import { useLanguage } from "@/i18n/useLanguage";
 import { calculateTaxiPrice } from "@/hooks/use-bookings";
 import { usePageMeta } from "@/hooks/use-page-meta";
+import { getPageMeta } from "@/page-meta-manifest";
 
 export default function Confirmation() {
   const { t } = useLanguage();
   const [, setLocation] = useLocation();
 
-  usePageMeta({
-    title: "Buchungsbestätigung – Taxi B&B GmbH Essen",
-    description: "Ihre Buchung bei Taxi B&B GmbH wurde erfolgreich übermittelt.",
-    noindex: true,
-  });
+  const { title, description, noindex } = getPageMeta('/confirmation');
+  usePageMeta({ title, description, noindex });
 
   const searchParams = new URLSearchParams(window.location.search);
   const idParam = searchParams.get("id");

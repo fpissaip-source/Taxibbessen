@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { usePageMeta } from "@/hooks/use-page-meta";
+import { getPageMeta } from "@/page-meta-manifest";
 import { Layout } from "@/components/Layout";
 import { Link } from "wouter";
 import {
@@ -64,11 +65,10 @@ function getCardProps(position: number) {
   return { x: `${dir * 115}%`, scale: 0.7, opacity: 0, zIndex: 1, dim: true, clickable: false };
 }
 
+const { title: _fzTitle, description: _fzDesc } = getPageMeta('/fahrzeuge');
+
 export default function Fahrzeuge() {
-  usePageMeta({
-    title: "Unsere Fahrzeuge – Taxi B&B GmbH Essen | Mercedes Flotte",
-    description: "Moderne Mercedes-Flotte bei Taxi B&B GmbH: E-Klasse Kombi, E 300 e Hybrid und V-Klasse Großraumtaxi für bis zu 7 Personen. Komfortabel, klimatisiert, zuverlässig.",
-  });
+  usePageMeta({ title: _fzTitle, description: _fzDesc });
   const [active, setActive] = useState(0);
   const [dragStartX, setDragStartX] = useState<number | null>(null);
 
