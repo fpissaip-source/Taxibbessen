@@ -78,6 +78,15 @@ const HOMEPAGE_FAQ_SCHEMA = {
   ]
 };
 
+const NOSCRIPT_STYLE = 'font-family:sans-serif;max-width:800px;margin:2rem auto;padding:1rem;color:#111';
+const CONTACT_BLOCK = `
+        <h2>Kontakt</h2>
+        <address>
+          Taxi B&amp;B GmbH · Menzelstraße 8-10 · 45147 Essen<br>
+          Telefon: <a href="tel:+4920170706">0201 707060</a><br>
+          E-Mail: <a href="mailto:taxibb@outlook.com">taxibb@outlook.com</a>
+        </address>`;
+
 const routes = [
   {
     path: '/',
@@ -89,42 +98,152 @@ const routes = [
     path: '/fahrzeuge',
     title: 'Unsere Fahrzeuge – Taxi B&B GmbH Essen | Mercedes Flotte',
     description: 'Moderne Mercedes-Flotte bei Taxi B&B GmbH: E-Klasse Kombi, E 300 e Hybrid und V-Klasse Großraumtaxi für bis zu 7 Personen. Komfortabel, klimatisiert, zuverlässig.',
+    noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
+        <h1>Unsere Fahrzeuge – Mercedes-Flotte von Taxi B&amp;B Essen</h1>
+        <p>Taxi B&amp;B GmbH betreibt eine moderne, gepflegte Fahrzeugflotte aus dem Hause Mercedes-Benz. Alle Fahrzeuge sind klimatisiert, regelmäßig gewartet und bieten höchsten Fahrkomfort.</p>
+        <h2>Mercedes E-Klasse Kombi</h2>
+        <p>Unser Standardfahrzeug für Einzel- und Kleingruppenfahrten. Großzügiger Kofferraum, bequeme Sitze und modernste Sicherheitstechnik – ideal für Flughafentransfers und Geschäftsreisen.</p>
+        <h2>Mercedes E 300 e Hybrid</h2>
+        <p>Unser umweltfreundlicher Hybrid-Taxi. Der E 300 e fährt im Stadtbereich rein elektrisch und reduziert so Emissionen und Lärm – ohne Abstriche beim Komfort.</p>
+        <h2>Mercedes V-Klasse – Großraumtaxi für bis zu 7 Personen</h2>
+        <p>Für Gruppen, Familien und Firmenreisende: Die V-Klasse bietet Platz für 7 Personen plus Gepäck. Kindersitze auf Anfrage verfügbar. Ideal für Flughafentransfers in der Gruppe.</p>
+        ${CONTACT_BLOCK}
+      </article>`,
   },
   {
     path: '/ueber-uns',
     title: 'Über uns – Taxi B&B GmbH Essen | Seit 1992',
     description: 'Taxi B&B GmbH – Ihr Familienbetrieb in Essen seit 1992. 30+ Jahre Erfahrung, Festpreise, 24/7 Erreichbarkeit. Lernen Sie uns kennen.',
+    noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
+        <h1>Mehr als ein Taxi – ein Versprechen.</h1>
+        <p>Taxi B&amp;B GmbH wurde 1992 in Essen gegründet. Wir sind kein anonymes Fahrdienst-Portal, kein Algorithmus und keine App, die Sie vergisst, sobald die Fahrt endet. Wir sind ein Essener Familienunternehmen – und das spürt man.</p>
+        <h2>Unsere Geschichte</h2>
+        <p>Taxi B&amp;B GmbH wurde 1992 in Essen gegründet – in einer Zeit, als ein Taxi noch mehr war als eine Fahrt von A nach B. Was damals mit einem Fahrzeug und dem festen Willen begann, Passagiere pünktlich, sicher und freundlich zu befördern, ist heute ein eingespieltes Team aus erfahrenen Fahrern, einer gepflegten Flotte und einem Kundenstamm, der uns seit Jahrzehnten treu ist.</p>
+        <h2>Was uns ausmacht</h2>
+        <ul>
+          <li><strong>Pünktlichkeit:</strong> Wir holen Sie zur vereinbarten Zeit ab – ohne Ausreden.</li>
+          <li><strong>Festpreise:</strong> Transparente Preise ohne böse Überraschungen. Kein Taxameter-Risiko bei Stau.</li>
+          <li><strong>24/7 Erreichbarkeit:</strong> Tag und Nacht, 365 Tage im Jahr für Sie da: 0201 707060.</li>
+          <li><strong>Erfahrung:</strong> Über 30 Jahre Taxiservice in Essen und der Region.</li>
+        </ul>
+        ${CONTACT_BLOCK}
+      </article>`,
   },
   {
     path: '/book',
     title: 'Taxi buchen – Taxi B&B GmbH Essen | Online Buchung',
     description: 'Taxi in Essen einfach online buchen. Festpreis, sofortige Bestätigung, 24/7 verfügbar. Taxi B&B GmbH – 0201 707060.',
+    noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
+        <h1>Taxi buchen – Taxi B&amp;B GmbH Essen</h1>
+        <p>Buchen Sie Ihr Taxi in Essen schnell und einfach online. Wählen Sie Abholadresse, Ziel, Datum und Uhrzeit – wir bestätigen Ihre Buchung umgehend.</p>
+        <h2>So buchen Sie</h2>
+        <ol>
+          <li>Abholadresse und Ziel angeben</li>
+          <li>Datum, Uhrzeit und Personenanzahl wählen</li>
+          <li>Kontaktdaten eingeben und absenden</li>
+          <li>Buchungsbestätigung per E-Mail erhalten</li>
+        </ol>
+        <h2>Oder direkt anrufen</h2>
+        <p>Rund um die Uhr erreichbar: <a href="tel:+4920170706"><strong>0201 707060</strong></a>. Wir nehmen Ihre Buchung sofort entgegen.</p>
+        <h2>Unsere Leistungen</h2>
+        <ul>
+          <li>Flughafentransfer Düsseldorf, Köln/Bonn, Frankfurt</li>
+          <li>Krankenfahrten und Dialysefahrten</li>
+          <li>Großraumtaxi für bis zu 7 Personen</li>
+          <li>Privat- und Geschäftsfahrten</li>
+          <li>Kurierdienst Essen</li>
+        </ul>
+        ${CONTACT_BLOCK}
+      </article>`,
   },
   {
     path: '/fahrtstatus',
     title: 'Fahrtstatus – Taxi B&B GmbH Essen | Buchung verfolgen',
     description: 'Verfolgen Sie Ihren Fahrstatus bei Taxi B&B GmbH Essen. Buchungsnummer eingeben und Echtzeit-Status abrufen.',
+    noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
+        <h1>Fahrtstatus – Buchung verfolgen</h1>
+        <p>Geben Sie Ihre Buchungsnummer ein, um den aktuellen Status Ihrer Taxifahrt bei Taxi B&amp;B GmbH Essen abzurufen.</p>
+        <p>Sie haben keine Buchungsnummer zur Hand oder benötigen sofortige Auskunft? Rufen Sie uns direkt an:</p>
+        <p><a href="tel:+4920170706"><strong>0201 707060</strong></a> – 24 Stunden, 7 Tage die Woche.</p>
+        ${CONTACT_BLOCK}
+      </article>`,
   },
   {
     path: '/confirmation',
     title: 'Buchungsbestätigung – Taxi B&B GmbH Essen',
     description: 'Ihre Buchung bei Taxi B&B GmbH wurde erfolgreich übermittelt.',
     noindex: true,
+    noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
+        <h1>Buchungsbestätigung – Taxi B&amp;B GmbH Essen</h1>
+        <p>Ihre Buchungsanfrage wurde erfolgreich übermittelt. Sie erhalten in Kürze eine Bestätigung.</p>
+        ${CONTACT_BLOCK}
+      </article>`,
   },
   {
     path: '/impressum',
     title: 'Impressum – Taxi B&B GmbH Essen',
     description: 'Impressum der Taxi B&B GmbH Essen. Angaben gemäß § 5 TMG.',
+    noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
+        <h1>Impressum</h1>
+        <p>Angaben gemäß § 5 TMG</p>
+        <h2>Unternehmensangaben</h2>
+        <address>
+          Taxi B&amp;B GmbH<br>
+          Vertreten durch: Lukman AL-Dlemy<br>
+          Menzelstraße 8-10<br>
+          45147 Essen<br>
+          Telefon: <a href="tel:+4920170706">0201 707060</a><br>
+          E-Mail: <a href="mailto:taxibb@outlook.com">taxibb@outlook.com</a>
+        </address>
+        <h2>Registereintrag</h2>
+        <p>Eingetragen im Handelsregister. Registergericht: Amtsgericht Essen.</p>
+        <h2>Aufsichtsbehörde</h2>
+        <p>Stadt Essen, Ordnungsamt – Taxikonzession gemäß PBefG.</p>
+        <h2>Haftungshinweis</h2>
+        <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+      </article>`,
   },
   {
     path: '/datenschutz',
     title: 'Datenschutz – Taxi B&B GmbH Essen',
     description: 'Datenschutzerklärung der Taxi B&B GmbH Essen gemäß DSGVO. Informationen zur Verarbeitung Ihrer personenbezogenen Daten.',
+    noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
+        <h1>Datenschutzerklärung</h1>
+        <p>Taxi B&amp;B GmbH – Essen · Gemäß DSGVO &amp; TDDDG</p>
+        <h2>Verantwortlicher</h2>
+        <address>
+          Taxi B&amp;B GmbH<br>
+          Menzelstraße 8-10, 45147 Essen<br>
+          Telefon: <a href="tel:+4920170706">0201 707060</a><br>
+          E-Mail: <a href="mailto:taxibb@outlook.com">taxibb@outlook.com</a>
+        </address>
+        <h2>Erhebung und Verarbeitung personenbezogener Daten</h2>
+        <p>Wir erheben personenbezogene Daten nur, soweit dies zur Erbringung unserer Dienstleistungen erforderlich ist (z. B. Name, Adresse, Telefonnummer für Buchungen). Die Daten werden nicht an Dritte weitergegeben, es sei denn, dies ist zur Vertragserfüllung notwendig.</p>
+        <h2>Ihre Rechte</h2>
+        <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie das Recht auf Datenübertragbarkeit. Wenden Sie sich dazu an: <a href="mailto:taxibb@outlook.com">taxibb@outlook.com</a>.</p>
+        <h2>Cookies</h2>
+        <p>Diese Website verwendet ausschließlich technisch notwendige Cookies und keine Tracking- oder Analyse-Cookies von Drittanbietern.</p>
+      </article>`,
   },
   {
     path: '/agb',
     title: 'AGB – Taxi B&B GmbH Essen | Allgemeine Geschäftsbedingungen',
     description: 'Allgemeine Geschäftsbedingungen der Taxi B&B GmbH Essen für Taxifahrten und Beförderungsleistungen.',
+    noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
+        <h1>Allgemeine Geschäftsbedingungen</h1>
+        <p>Taxi B&amp;B GmbH – Essen</p>
+        <h2>§ 1 Geltungsbereich</h2>
+        <p>Diese Allgemeinen Geschäftsbedingungen gelten für alle Beförderungsleistungen der Taxi B&amp;B GmbH, Menzelstraße 8-10, 45147 Essen.</p>
+        <h2>§ 2 Vertragsschluss</h2>
+        <p>Der Beförderungsvertrag kommt durch die Bestellung des Fahrgastes und die Annahme durch Taxi B&amp;B GmbH zustande. Die Buchung kann telefonisch, schriftlich oder über das Online-Formular erfolgen.</p>
+        <h2>§ 3 Preise und Zahlung</h2>
+        <p>Es gelten die jeweils gültigen Festpreise oder Tarifpreise gemäß dem amtlichen Taxitarif der Stadt Essen. Zahlungen sind in bar, per EC-Karte oder Kreditkarte möglich.</p>
+        <h2>§ 4 Stornierung</h2>
+        <p>Stornierungen sind bis 2 Stunden vor der vereinbarten Abholzeit kostenfrei. Bei kurzfristigeren Absagen können Stornogebühren anfallen.</p>
+        <h2>§ 5 Haftung</h2>
+        <p>Taxi B&amp;B GmbH haftet für Schäden im Rahmen der gesetzlichen Vorschriften des Personenbeförderungsgesetzes (PBefG). Für Gegenstände, die im Fahrzeug vergessen werden, übernehmen wir keine Haftung.</p>
+        ${CONTACT_BLOCK}
+      </article>`,
   },
 ];
 
@@ -187,6 +306,13 @@ function renderRoute(shellHtml, route) {
 
   const injection = buildHeadTags(route);
   html = html.replace('  </head>', `${injection}\n  </head>`);
+
+  if (route.noscriptBody) {
+    html = html.replace(
+      /<noscript>[\s\S]*?<\/noscript>/,
+      `<noscript>\n      ${route.noscriptBody}\n    </noscript>`,
+    );
+  }
 
   return html;
 }
