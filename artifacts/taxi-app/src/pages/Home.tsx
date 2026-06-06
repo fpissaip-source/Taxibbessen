@@ -282,6 +282,10 @@ const FAQ_ITEMS = [
     q: "Wie schützen Sie meine persönlichen Daten?",
     a: "Ihre Daten werden ausschließlich zur Fahrtdurchführung verwendet und nicht an Dritte weitergegeben. Wir arbeiten DSGVO-konform. Weitere Informationen finden Sie in unserer Datenschutzerklärung auf dieser Website.",
   },
+  {
+    q: "Wo hat Taxi B&B GmbH seinen Sitz?",
+    a: "Taxi B&B GmbH hat seinen Sitz in der Menzelstraße 8–10, 45147 Essen-Holsterhausen. Das Unternehmen wurde 1992 gegründet und ist im Handelsregister Essen unter HRB 36284 eingetragen. Telefon: 0201 707060.",
+  },
 ];
 
 function AeoFaktenblock() {
