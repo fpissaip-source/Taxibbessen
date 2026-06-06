@@ -1,0 +1,151 @@
+Ah, dann ist das ein anderer Fall.
+
+Wenn die alte Webseite vom alten Besitzer ist, dann muss Taxi B&B nicht nur SEO machen, sondern erstmal die digitale Besitzlage sauber trennen.
+
+Was das bedeutet
+
+Wenn alte Seiten wie taxi-beige.de oder taxi-beige-essen.de vom alten Besitzer stammen, dann dürfen sie Taxi B&B nicht weiter unklar mit falschen Daten vermischen.
+
+Das Problem ist dann nicht nur SEO, sondern:
+
+Google sieht mehrere Signale für dasselbe oder ähnliche Unternehmen.
+Alte Domain, alte Telefonnummer, alter Firmenname, alte Einträge, aber teilweise noch Taxi B&B im Footer oder in Verzeichnissen.
+
+Das schwächt taxibbessen.de.
+
+Vorgehen für Taxi B&B
+
+1. Offizielle Identität festlegen
+
+Taxi B&B muss intern schriftlich festlegen:
+
+Offizielle Firma: Taxi B&B GmbH
+Offizielle Website: https://taxibbessen.de
+Offizielle Telefonnummer: 0201 707060
+Offizielle E-Mail: info@taxibbessen.de
+Offizielle Adresse: Menzelstraße 8–10, 45147 Essen
+
+Das ist die neue Wahrheit für Google, Kunden und Verzeichnisse.
+
+⸻
+
+2. Alte Webseite nicht übernehmen, sondern abgrenzen
+
+Wenn die alte Webseite dem alten Besitzer gehört und Taxi B&B keinen Zugriff hat, dann gibt es drei Möglichkeiten:
+
+Beste Lösung
+
+Der alte Besitzer leitet die alte Domain per 301 Redirect auf taxibbessen.de weiter.
+
+Das wäre SEO-technisch am besten.
+
+Zweitbeste Lösung
+
+Der alte Besitzer entfernt alle Hinweise auf Taxi B&B, alte Telefonnummern und falsche Firmendaten.
+
+Dann konkurriert die alte Seite weniger mit euch.
+
+Wenn er nicht kooperiert
+
+Dann müsst ihr Google und externe Verzeichnisse mit neuen, sauberen Signalen überfluten:
+
+* Google Unternehmensprofil richtig
+* Apple Maps richtig
+* Bing Places richtig
+* Gelbe Seiten richtig
+* taxi.de richtig
+* Das Telefonbuch richtig
+* ProvenExpert richtig oder entfernen
+* Website überall taxibbessen.de
+
+Google bietet für Business Profiles einen offiziellen Weg, Zugriff bzw. Ownership anzufordern, wenn ein Profil von jemand anderem verwaltet wird.  
+
+⸻
+
+3. Verzeichnisse korrigieren
+
+Das ist jetzt der wichtigste SEO-Job von Taxi B&B.
+
+Alle Portale müssen aktualisiert werden:
+
+Taxi B&B GmbH
+Menzelstraße 8–10
+45147 Essen
+0201 707060
+https://taxibbessen.de
+info@taxibbessen.de
+
+Besonders wichtig:
+
+* Google Maps
+* Apple Maps
+* Bing Places
+* Gelbe Seiten
+* Das Telefonbuch
+* taxi.de
+* ProvenExpert
+* Facebook
+* Instagram
+
+Wenn irgendwo noch taxi-beige.de steht, muss es raus oder klar als anderes Unternehmen getrennt werden.
+
+⸻
+
+4. Google klar machen: Das hier ist die neue offizielle Seite
+
+Auf taxibbessen.de muss sehr deutlich stehen:
+
+Taxi B&B GmbH – offizieller Webauftritt
+Seit 1992 in Essen
+Menzelstraße 8–10, 45147 Essen
+0201 707060
+
+Zusätzlich solltest du als Entwickler einbauen:
+
+* Organization / TaxiService Schema
+* sameAs-Links zu offiziellen Profilen
+* Impressum mit exakt denselben Firmendaten
+* Footer auf jeder Seite mit denselben Daten
+* Google Maps Einbettung
+* Bewertungslink
+* Search Console
+* Sitemap
+* klare Canonicals
+
+⸻
+
+Was du als Entwickler tun solltest
+
+Dein Job ist jetzt:
+
+1. taxibbessen.de technisch als offizielle Hauptseite aufbauen
+2. alle Unterseiten sauber indexierbar machen
+3. überall dieselben Kontaktdaten verwenden
+4. Schema einbauen
+5. Google Search Console einrichten
+6. Sitemap einreichen
+7. interne Verlinkung stärken
+8. keine Verweise mehr auf alte Domains setzen
+9. falls alte Domains übernommen werden können: 301-Redirects setzen
+10. falls nicht: klare Abgrenzung aufbauen
+
+⸻
+
+Wichtigster Satz für Taxi B&B
+
+Taxi B&B sollte intern so denken:
+
+Die alte Webseite gehört nicht mehr zu uns. Unsere einzige offizielle digitale Adresse ist taxibbessen.de.
+
+Und genau das muss überall sichtbar sein.
+
+Kurz gesagt
+
+Wenn die alte Webseite vom alten Besitzer ist, dann ist der Plan:
+
+1. Alte Seite trennen oder weiterleiten lassen.
+2. Alle Verzeichnisse auf taxibbessen.de korrigieren.
+3. Google Business Profile übernehmen/optimieren.
+4. taxibbessen.de als offizielle Hauptseite stärken.
+
+Das ist wichtiger als neue Texte oder Design. Erst wenn Google keine widersprüchlichen Signale mehr sieht, kann die neue Seite sauber ranken.

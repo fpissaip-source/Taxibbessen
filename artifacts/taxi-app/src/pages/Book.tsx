@@ -36,7 +36,7 @@ export default function Book() {
     }
   };
 
-  const inputCls = "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/35 focus:outline-none focus:border-primary transition-colors text-sm";
+  const inputCls = "w-full bg-white/8 border border-white/25 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-primary focus:bg-white/10 transition-colors text-sm";
 
   if (state === "success") {
     return (

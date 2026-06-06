@@ -1,0 +1,110 @@
+Ja, du hast recht — die Unterseiten/URLs sind da.
+Meine Aussage war zu grob formuliert.
+
+Der eigentliche SEO-Punkt ist nicht: „Es gibt keine Unterseiten“, sondern:
+
+Die vorhandenen Unterseiten wirken für Crawler aktuell wie dieselbe Seite mit demselben Inhalt.
+
+Ich habe gerade z. B. diese URLs geprüft:
+
+* https://taxibbessen.de/
+* https://taxibbessen.de/ueber-uns/
+* https://taxibbessen.de/book/
+* https://taxibbessen.de/fahrzeuge/
+
+Alle zeigen im ausgelesenen HTML dieselbe H1: „24/7 Taxiservice in Essen – Krankenfahrten, Flughafentransfer und Großraumtaxi“ und denselben Leistungs-/FAQ-/Kontaktblock.  
+
+Was das bedeutet
+
+Die Unterseiten existieren technisch, aber Google sieht sie wahrscheinlich nicht als eigenständige SEO-Seiten.
+
+Also:
+
+Nicht falsch:
+/ueber-uns/, /book/, /fahrzeuge/ sind erreichbar.
+
+Aber SEO-Problem:
+Sie haben aktuell keinen eigenen klaren Zweck, keine eigene H1, keinen eigenen Title und keinen eigenen Inhalt.
+
+Dadurch entsteht Duplicate Content bzw. Thin Content.
+
+Was konkret geändert werden muss
+
+/ueber-uns/
+
+Sollte nicht die Startseite wiederholen.
+
+Besser:
+
+H1: Über Taxi B&B GmbH in Essen – seit 1992
+Inhalt:
+- Geschichte des Unternehmens
+- Standort Essen
+- Erfahrung seit 1992
+- Fahrerteam
+- Werte: Pünktlichkeit, Zuverlässigkeit, Diskretion
+- Spezialisierung auf Krankenfahrten, Flughafenfahrten, Großraumtaxi
+
+⸻
+
+/book/
+
+Sollte eine echte Buchungsseite sein.
+
+H1: Taxi in Essen online buchen
+Inhalt:
+- Buchungsformular
+- Telefon-CTA
+- Ablauf der Buchung
+- Sofortfahrt vs. Vorbestellung
+- Flughafentransfer anfragen
+- Krankenfahrt anmelden
+
+Falls dort nur ein Formular ohne SEO-Text ist, kann man sie trotzdem indexierbar lassen, aber sie braucht mindestens eigenen Title, eigene Meta Description und eigene H1.
+
+⸻
+
+/fahrzeuge/
+
+Sollte gezielt auf Großraumtaxi / Mercedes V-Klasse optimiert werden.
+
+H1: Großraumtaxi und Mercedes V-Klasse in Essen
+Inhalt:
+- bis zu 7 Personen
+- Gepäck
+- Flughafenfahrten
+- Gruppenfahrten
+- Geschäftsfahrten
+- echte Bilder der Fahrzeuge
+
+⸻
+
+Wichtigster Fix
+
+Jede Unterseite braucht:
+
+1. eigene URL
+2. eigenen Title
+3. eigene Meta Description
+4. eigene H1
+5. eigenen Text
+6. eigene interne Links
+7. eigene Bilder mit Alt-Text
+8. eigenes Schema, wenn passend
+
+Beispiel:
+
+<title>Großraumtaxi Essen bis 7 Personen | Taxi B&B</title>
+<meta name="description" content="Großraumtaxi in Essen für bis zu 7 Personen. Ideal für Flughafenfahrten, Gruppen, Familien und Geschäftsfahrten. Jetzt Taxi B&B anrufen.">
+<h1>Großraumtaxi Essen bis 7 Personen</h1>
+
+Mein korrigiertes Urteil
+
+Die Unterseiten sind da, ja.
+Aber sie sind aus SEO-Sicht aktuell noch nicht stark genug getrennt.
+
+Der richtige Satz wäre:
+
+Taxi B&B braucht keine neuen URLs zwingend, sondern echte, eigenständige Inhalte auf den vorhandenen Unterseiten.
+
+Wenn du willst, kann ich dir als Nächstes direkt die optimale Seitenstruktur mit Title, H1, Meta Description und Inhaltsblöcken für jede Taxi-B&B-Unterseite erstellen.
