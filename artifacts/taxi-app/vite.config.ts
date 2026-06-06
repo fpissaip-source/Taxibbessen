@@ -3,6 +3,24 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+import sitemap from "vite-plugin-sitemap";
+import { indexableRoutes } from "./src/routes.ts";
+
+const CANONICAL_ORIGIN = "https://taxibbessen.de";
+
+// Derived from the shared route manifest in src/routes.ts — single source of truth.
+// Add/remove routes there; sitemap updates automatically on the next build.
+const sitemapDynamicRoutes = indexableRoutes
+  .map((r) => r.path)
+  .filter((p) => p !== "/");
+
+const sitemapPriority = Object.fromEntries(
+  indexableRoutes.map((r) => [r.path, r.priority]),
+) as Record<string, number>;
+
+const sitemapChangefreq = Object.fromEntries(
+  indexableRoutes.map((r) => [r.path, r.changefreq]),
+) as Record<string, string>;
 
 const rawPort = process.env.PORT;
 
@@ -32,6 +50,15 @@ export default defineConfig({
     react(),
     tailwindcss(),
     runtimeErrorOverlay(),
+    sitemap({
+      hostname: CANONICAL_ORIGIN,
+      dynamicRoutes: sitemapDynamicRoutes,
+      priority: sitemapPriority,
+      changefreq: sitemapChangefreq,
+      outDir: path.resolve(import.meta.dirname, "dist/public"),
+      generateRobotsTxt: false,
+      readable: true,
+    }),
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [

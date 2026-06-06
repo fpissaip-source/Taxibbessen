@@ -25,11 +25,36 @@ import TaxiHolsterhausen from "@/pages/TaxiHolsterhausen";
 import TaxiRuettenscheid from "@/pages/TaxiRuettenscheid";
 import TaxiFrohnhausen from "@/pages/TaxiFrohnhausen";
 import TaxiSuedviertel from "@/pages/TaxiSuedviertel";
+import { routeConfigs } from "@/routes";
 
 import { useLenis } from "@/hooks/useLenis";
 import { getLenis } from "@/lib/lenis";
 
 const queryClient = new QueryClient();
+
+type ComponentType = React.ComponentType;
+
+const routeComponents: Record<string, ComponentType> = {
+  "/":                                    Home,
+  "/book":                                Book,
+  "/confirmation":                        Confirmation,
+  "/admin":                               Admin,
+  "/impressum":                           Impressum,
+  "/agb":                                 AGB,
+  "/datenschutz":                         Datenschutz,
+  "/fahrzeuge":                           Fahrzeuge,
+  "/ueber-uns":                           UeberUns,
+  "/flughafentransfer-essen-duesseldorf": FlughafentransferEssen,
+  "/krankenfahrten-essen":               KrankenfahrtenEssen,
+  "/grossraumtaxi-essen":                GrossraumtaxiEssen,
+  "/dialysefahrten-essen":               DialysefahrtenEssen,
+  "/kurierdienst-essen":                 KurierdienstEssen,
+  "/taxi-essen-hbf":                     TaxiEssenHbf,
+  "/taxi-essen-holsterhausen":           TaxiHolsterhausen,
+  "/taxi-essen-ruettenscheid":           TaxiRuettenscheid,
+  "/taxi-essen-frohnhausen":             TaxiFrohnhausen,
+  "/taxi-essen-suedviertel":             TaxiSuedviertel,
+};
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -49,28 +74,13 @@ function Router() {
     <>
       <ScrollToTop />
       <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/book" component={Book} />
-      <Route path="/confirmation" component={Confirmation} />
-      <Route path="/admin" component={Admin} />
-      <Route path="/impressum" component={Impressum} />
-      <Route path="/agb" component={AGB} />
-      <Route path="/datenschutz" component={Datenschutz} />
-      <Route path="/fahrzeuge" component={Fahrzeuge} />
-      <Route path="/ueber-uns" component={UeberUns} />
-      <Route path="/flughafentransfer-essen-duesseldorf" component={FlughafentransferEssen} />
-      <Route path="/krankenfahrten-essen" component={KrankenfahrtenEssen} />
-      <Route path="/grossraumtaxi-essen" component={GrossraumtaxiEssen} />
-      <Route path="/dialysefahrten-essen" component={DialysefahrtenEssen} />
-      <Route path="/kurierdienst-essen" component={KurierdienstEssen} />
-      <Route path="/taxi-essen-hbf" component={TaxiEssenHbf} />
-      <Route path="/taxi-essen-holsterhausen" component={TaxiHolsterhausen} />
-      <Route path="/taxi-essen-ruettenscheid" component={TaxiRuettenscheid} />
-      <Route path="/taxi-essen-frohnhausen" component={TaxiFrohnhausen} />
-      <Route path="/taxi-essen-suedviertel" component={TaxiSuedviertel} />
-
-      <Route component={NotFound} />
-    </Switch>
+        {routeConfigs.map(({ path }) => {
+          const Component = routeComponents[path];
+          if (!Component) return null;
+          return <Route key={path} path={path} component={Component} />;
+        })}
+        <Route component={NotFound} />
+      </Switch>
     </>
   );
 }
