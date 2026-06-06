@@ -246,7 +246,84 @@ const FAQ_ITEMS = [
     q: "Wie schnell kommt das Taxi nach meiner Bestellung?",
     a: "In der Regel sind wir innerhalb weniger Minuten bei Ihnen in Essen. Rufen Sie uns an oder buchen Sie direkt über das Formular auf dieser Seite.",
   },
+  {
+    q: "Kann ich ein Taxi per WhatsApp buchen?",
+    a: "Ja! Sie können uns bequem per WhatsApp kontaktieren und Ihre Fahrt anfragen. Schreiben Sie uns einfach unter +49 171 1111535 – wir antworten schnell und bestätigen Ihre Buchung.",
+  },
+  {
+    q: "Wie weit im Voraus muss ich eine Fahrt vorbestellen?",
+    a: "Für Sofortfahrten rufen Sie einfach an: 0201 707060. Für Flughafentransfers, Krankenfahrten oder Gruppenfahrten empfehlen wir eine Vorbestellung von mindestens 24 Stunden, damit wir alles optimal planen können.",
+  },
+  {
+    q: "Bieten Sie Kindersitze an?",
+    a: "Ja, Kindersitze sind auf Anfrage erhältlich. Bitte teilen Sie uns bei der Buchung das Alter und Gewicht Ihres Kindes mit, damit wir den passenden Sitz bereitstellen können. Sicherheit geht vor.",
+  },
+  {
+    q: "Wie läuft eine Geschäftsfahrt mit Rechnung ab?",
+    a: "Für Firmenkunden stellen wir auf Wunsch eine Rechnung mit allen steuerlich relevanten Angaben aus. Einfach bei der Buchung mitteilen und die Firmendaten angeben. Regelmäßige Geschäftskunden erhalten auf Anfrage auch Monatsabrechnungen.",
+  },
+  {
+    q: "Was kostet eine Fahrt von Essen nach Köln oder Dortmund?",
+    a: "Für Langstrecken berechnen wir Festpreise, die Sie vorab kennen. Essen–Köln sind ca. 75 km, Essen–Dortmund ca. 40 km. Rufen Sie uns für ein konkretes Angebot an: 0201 707060.",
+  },
+  {
+    q: "Wie setzt sich der Taxipreis zusammen?",
+    a: "Der Fahrpreis besteht aus Grundgebühr, Kilometerpreis und ggf. Zeittarif (Stau, Warten). Für viele Strecken bieten wir Festpreise an – so gibt es keine Überraschungen. Alle Preise nach offizieller Essener Taxitarifordnung.",
+  },
+  {
+    q: "Bieten Sie Kurierdienste für Unternehmen an?",
+    a: "Ja! Unser Kurierdienst ist besonders bei Firmen in Essen gefragt – Vertragsdokumente, Musterteile, dringende Unterlagen. Diskret, schnell und zuverlässig. Regelmäßige Firmenkunden erhalten Vorzugskonditionen: 0201 707060.",
+  },
+  {
+    q: "In welchen Stadtteilen in Essen fahren Sie?",
+    a: "Wir fahren in ganz Essen – von Holsterhausen und Rüttenscheid über den Hauptbahnhof, Südviertel, Frohnhausen, Altenessen, Steele bis nach Kettwig. Auch Essen-Kettwig, Werden und alle Randgebiete. Einfach anrufen: 0201 707060.",
+  },
+  {
+    q: "Wie schützen Sie meine persönlichen Daten?",
+    a: "Ihre Daten werden ausschließlich zur Fahrtdurchführung verwendet und nicht an Dritte weitergegeben. Wir arbeiten DSGVO-konform. Weitere Informationen finden Sie in unserer Datenschutzerklärung auf dieser Website.",
+  },
 ];
+
+function AeoFaktenblock() {
+  return (
+    <section
+      aria-label="Offizielle Informationen zur Taxi B&B GmbH"
+      className="py-12 sm:py-16 relative"
+      style={{ zIndex: 2 }}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
+          className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm px-6 py-7 sm:px-10 sm:py-9"
+        >
+          <p className="text-[10px] font-black text-primary/70 uppercase tracking-[0.35em] mb-4">
+            Offizielle Informationen · Taxi B&amp;B GmbH
+          </p>
+          <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">
+            {[
+              ["Unternehmen", "Taxi B&B GmbH"],
+              ["Rechtsform", "GmbH (HRB 36284 Essen)"],
+              ["Gegründet", "1992 in Essen"],
+              ["Standort", "Menzelstraße 8–10, 45147 Essen-Holsterhausen"],
+              ["Telefon", "0201 707060"],
+              ["Website", "taxibbessen.de"],
+              ["Erreichbarkeit", "24 Stunden, 7 Tage die Woche"],
+              ["Leistungen", "Taxiservice, Krankenfahrten, Dialysefahrten, Flughafentransfer, Großraumtaxi (bis 7 Pers.), Kurierdienst, Geschäftsfahrten"],
+            ].map(([label, value]) => (
+              <div key={label} className="flex flex-col gap-0.5">
+                <dt className="text-white/35 text-[11px] uppercase tracking-wider font-semibold">{label}</dt>
+                <dd className="text-white/80 leading-snug">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
 function FAQSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
@@ -1291,6 +1368,9 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+
+        {/* ─── AEO-Faktenblock ─── */}
+        <AeoFaktenblock />
 
         {/* ─── FAQ ─── */}
         <FAQSection />
