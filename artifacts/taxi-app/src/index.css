@@ -33,7 +33,9 @@
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
 
-  --animate-call-glow: callGlow 2s ease-in-out infinite;
+  --animate-call-glow: callGlow 1.4s ease-out infinite;
+  --animate-call-glow-delay: callGlowDelay 1.4s ease-out infinite;
+  --animate-call-bounce: callBounce 1.4s ease-in-out infinite;
 }
 
 :root {
@@ -102,6 +104,18 @@ body::before {
 
 /* Call button glow pulse */
 @keyframes callGlow {
-  0%, 100% { transform: scale(1); opacity: 0.6; }
-  50%       { transform: scale(1.55); opacity: 0; }
+  0%        { transform: scale(1);    opacity: 0.9; }
+  70%       { transform: scale(2.6);  opacity: 0; }
+  100%      { transform: scale(2.6);  opacity: 0; }
+}
+@keyframes callGlowDelay {
+  0%, 35%   { transform: scale(1);    opacity: 0; }
+  36%       { transform: scale(1);    opacity: 0.7; }
+  100%      { transform: scale(2.4);  opacity: 0; }
+}
+@keyframes callBounce {
+  0%, 100%  { transform: scale(1); }
+  20%       { transform: scale(1.12); }
+  40%       { transform: scale(0.96); }
+  60%       { transform: scale(1.06); }
 }

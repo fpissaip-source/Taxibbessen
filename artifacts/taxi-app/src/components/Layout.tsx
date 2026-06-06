@@ -209,12 +209,15 @@ export function Layout({ children }: { children: ReactNode }) {
             <a href="tel:0201707060" className="group">
               <div className="relative flex items-center justify-center">
                 {scrolled && (
-                  <span className="absolute inset-0 rounded-xl bg-primary/30 animate-call-glow" />
+                  <>
+                    <span className="absolute inset-0 rounded-xl bg-primary/50 animate-call-glow" />
+                    <span className="absolute inset-0 rounded-xl bg-primary/35 animate-call-glow-delay" />
+                  </>
                 )}
                 <div
                   className={`relative w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 ${
                     scrolled
-                      ? "bg-primary shadow-[0_0_18px_4px_rgba(255,193,7,0.55)]"
+                      ? "bg-primary shadow-[0_0_22px_6px_rgba(255,193,7,0.65)] animate-call-bounce"
                       : "bg-transparent border border-white/20"
                   }`}
                 >
@@ -241,12 +244,15 @@ export function Layout({ children }: { children: ReactNode }) {
               </div>
               <div className="relative flex items-center justify-center">
                 {scrolled && (
-                  <span className="absolute inset-0 rounded-xl bg-primary/30 animate-call-glow" />
+                  <>
+                    <span className="absolute inset-0 rounded-xl bg-primary/50 animate-call-glow" />
+                    <span className="absolute inset-0 rounded-xl bg-primary/35 animate-call-glow-delay" />
+                  </>
                 )}
                 <div
                   className={`relative w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-500 ${
                     scrolled
-                      ? "bg-primary shadow-[0_0_18px_4px_rgba(255,193,7,0.55)] group-hover:shadow-[0_0_28px_8px_rgba(255,193,7,0.75)]"
+                      ? "bg-primary shadow-[0_0_22px_6px_rgba(255,193,7,0.65)] group-hover:shadow-[0_0_32px_10px_rgba(255,193,7,0.8)] animate-call-bounce"
                       : "hover:bg-white/15 group-hover:bg-white/15"
                   }`}
                 >
