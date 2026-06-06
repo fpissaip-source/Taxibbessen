@@ -87,7 +87,7 @@ router.post("/memories", async (req, res) => {
     importance: safeImportance,
   }).returning();
 
-  res.status(201).json(row);
+  return res.status(201).json(row);
 });
 
 // POST /api/memories/session
@@ -111,7 +111,7 @@ router.post("/memories/session", async (req, res) => {
     payload: payload ?? null,
   }).returning();
 
-  res.status(201).json(row);
+  return res.status(201).json(row);
 });
 
 // POST /api/memories/:id/connect
@@ -132,7 +132,7 @@ router.post("/memories/:id/connect", async (req, res) => {
     relation: safeRelation as typeof memoryConnectionsTable.$inferInsert["relation"],
   }).returning();
 
-  res.status(201).json(row);
+  return res.status(201).json(row);
 });
 
 export default router;
