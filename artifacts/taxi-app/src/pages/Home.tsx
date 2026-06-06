@@ -145,6 +145,10 @@ function ServicesRevealSection() {
                 <img
                   src={`${base}icons/${src}`}
                   alt={t(titleKey)}
+                  width="128"
+                  height="128"
+                  loading="lazy"
+                  decoding="async"
                   className="h-20 lg:h-32 w-auto object-contain"
                   style={{ filter: "drop-shadow(0 0 18px rgba(255,193,7,0.55))" }}
                 />
@@ -748,14 +752,22 @@ export default function Home() {
             src={framePath(1)}
             alt=""
             aria-hidden
+            width="1080"
+            height="1920"
             className="md:hidden w-full h-full object-cover"
             style={{ objectPosition: "center", opacity: 0.92 }}
           />
+          {/* LCP-Bild auf Mobile: fetchpriority="high" stellt sicher, dass der Browser
+              es sofort mit höchster Priorität lädt — direkter Effekt auf LCP-Score */}
           <img
             ref={sharpOverlayRef}
             src={`${import.meta.env.BASE_URL}hero-sharp.webp`}
             alt=""
             aria-hidden
+            width="1080"
+            height="1920"
+            fetchPriority="high"
+            decoding="sync"
             className="md:hidden absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: "center", opacity: 1 }}
           />
@@ -788,6 +800,10 @@ export default function Home() {
             src={storyFramePath(1)}
             alt=""
             aria-hidden
+            width="1080"
+            height="1920"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
             style={{ objectPosition: "center", opacity: 1 }}
           />
@@ -809,6 +825,10 @@ export default function Home() {
             src={ctaFramePath(1)}
             alt=""
             aria-hidden
+            width="1080"
+            height="1920"
+            loading="lazy"
+            decoding="async"
             className="md:hidden w-full h-full object-cover"
             style={{ objectPosition: "center", opacity: 1 }}
           />
@@ -856,6 +876,10 @@ export default function Home() {
                   id="hero-logo"
                   src={`${import.meta.env.BASE_URL}bb-logo-v7-transparent.webp`}
                   alt="Taxi B&B"
+                  width="520"
+                  height="130"
+                  fetchPriority="high"
+                  decoding="sync"
                   className="mx-auto w-auto"
                   style={{
                     maxHeight: "clamp(68px, 11vw, 130px)",
@@ -985,6 +1009,10 @@ export default function Home() {
                   <img
                     src={`${import.meta.env.BASE_URL}${src}`}
                     alt={label}
+                    width="64"
+                    height="64"
+                    loading="lazy"
+                    decoding="async"
                     className="h-16 w-auto object-contain"
                     style={{ mixBlendMode: "screen", filter: "contrast(2) brightness(1.1)" }}
                   />
@@ -1060,6 +1088,10 @@ export default function Home() {
                   <img
                     src={`${import.meta.env.BASE_URL}story-bg.webp`}
                     alt="Taxi B&B"
+                    width="800"
+                    height="1000"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-all duration-1000"
                   />
                 </div>
@@ -1120,6 +1152,8 @@ export default function Home() {
                   src={brushStroke}
                   alt=""
                   aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[165%] max-w-none h-[210%] pointer-events-none select-none"
                   style={{ filter: "brightness(0) invert(1)", opacity: 0.7 }}
                 />
