@@ -107,7 +107,7 @@ export default function Fahrzeuge() {
             <h1
               className="font-display font-black uppercase tracking-tighter leading-none select-none sr-only"
             >
-              Mercedes-Flotte in Essen – Limousinen, Kombis und Großraumtaxi für bis zu 7 Personen
+              Unsere Fahrzeugflotte – Taxi &amp; Großraumtaxi in Essen
             </h1>
             <span
               aria-hidden="true"
@@ -272,8 +272,112 @@ export default function Fahrzeuge() {
 
         </div>
 
+        {/* ── Fahrzeugdetails (SEO-Textblock) ── */}
+        <div className="container mx-auto px-4 lg:px-8 mt-16">
+          <div className="max-w-3xl mx-auto space-y-10 pb-16">
+            <div>
+              <h2 className="font-display font-black text-2xl sm:text-3xl uppercase tracking-tighter mb-6">
+                Unsere <span className="text-primary">Fahrzeuge</span> im Detail
+              </h2>
+            </div>
+
+            {/* Mercedes E-Klasse */}
+            <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 sm:p-8 space-y-3">
+              <div className="flex items-center gap-3 mb-1">
+                <span className="bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">CLASSIC</span>
+                <span className="text-white/30 text-xs font-bold uppercase tracking-widest">Mercedes E-Klasse T-Modell</span>
+              </div>
+              <h3 className="font-display font-black text-xl text-white">Kombi – Eleganz trifft Raum</h3>
+              <p className="text-white/55 text-sm leading-relaxed">
+                Unser meistgebuchtes Fahrzeug: der Mercedes E-Klasse Kombi verbindet Businessklasse-Komfort mit großzügigem Kofferraumvolumen.
+                Bis zu 4 Personen reisen entspannt in Executive-Sitzen mit Klimaanlage und USB-Ladeanschluss. Der Kombi ist die erste Wahl für
+                Geschäftsreisen, Flughafentransfers und komfortable Alltagsfahrten quer durch Essen und das Ruhrgebiet.
+              </p>
+              <ul className="grid grid-cols-2 gap-2 pt-1">
+                {["4 Personen", "Großer Kofferraum", "Klimaanlage", "USB-Ladung", "Executive-Sitze", "Flughafentransfer"].map((f) => (
+                  <li key={f} className="flex items-center gap-2 text-[11px] text-white/50 font-semibold">
+                    <span className="w-1 h-1 rounded-full bg-primary inline-block flex-shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Mercedes V-Klasse */}
+            <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 sm:p-8 space-y-3">
+              <div className="flex items-center gap-3 mb-1">
+                <span className="bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">VAN</span>
+                <span className="text-white/30 text-xs font-bold uppercase tracking-widest">Mercedes V-Klasse</span>
+              </div>
+              <h3 className="font-display font-black text-xl text-white">Großraumtaxi – bis zu 7 Personen</h3>
+              <p className="text-white/55 text-sm leading-relaxed">
+                Die Mercedes V-Klasse ist unser Großraumtaxi für Familien, Gruppen und Firmenteams. Mit Platz für bis zu 7 Passagiere und
+                reichlich Gepäckraum meistert dieses Fahrzeug jede Herausforderung: Familienurlaub-Anreise zum Flughafen Düsseldorf,
+                Firmendelegationen, Hochzeiten oder Gruppenreisen im Ruhrgebiet. Kindersitze stehen auf Anfrage bereit.
+                WLAN an Bord für produktive Fahrten.
+              </p>
+              <ul className="grid grid-cols-2 gap-2 pt-1">
+                {["7 Personen", "Viel Gepäckraum", "Kindersitze", "WLAN", "Klimaanlage", "Gruppenreisen"].map((f) => (
+                  <li key={f} className="flex items-center gap-2 text-[11px] text-white/50 font-semibold">
+                    <span className="w-1 h-1 rounded-full bg-primary inline-block flex-shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Mercedes E 300 e Hybrid */}
+            <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 sm:p-8 space-y-3">
+              <div className="flex items-center gap-3 mb-1">
+                <span className="bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">ELECTRIC</span>
+                <span className="text-white/30 text-xs font-bold uppercase tracking-widest">Mercedes E 300 e</span>
+              </div>
+              <h3 className="font-display font-black text-xl text-white">Hybrid &amp; Elektro – leise und sauber</h3>
+              <p className="text-white/55 text-sm leading-relaxed">
+                Modernste Antriebstechnik für emissionsarme Fahrten in Essen: Der Mercedes E 300 e fährt im Stadtbereich rein elektrisch –
+                geräuschlos, umweltschonend und ohne Reichweitenangst dank Hybridantrieb. Ideal für Fahrgäste, die Wert auf
+                Nachhaltigkeit legen, ohne auf Businessklasse-Komfort zu verzichten. Perfekt für ruhige Fahrten zu Kliniken, Hotels
+                oder innerstädtischen Zielen.
+              </p>
+              <ul className="grid grid-cols-2 gap-2 pt-1">
+                {["Emissionsarm", "Silent Drive", "Hybridantrieb", "Modernste Technik", "Stadtfahrten", "Klimaanlage"].map((f) => (
+                  <li key={f} className="flex items-center gap-2 text-[11px] text-white/50 font-semibold">
+                    <span className="w-1 h-1 rounded-full bg-primary inline-block flex-shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Entscheidungshilfe */}
+            <div className="border border-primary/20 rounded-2xl p-6 sm:p-8 space-y-5" style={{ background: "hsl(220 15% 7%)" }}>
+              <h2 className="font-display font-black text-xl sm:text-2xl uppercase tracking-tighter text-white">
+                Welches Fahrzeug <span className="text-primary">passt zu Ihnen?</span>
+              </h2>
+              <div className="space-y-3.5 text-sm text-white/60 leading-relaxed">
+                <div className="flex gap-3">
+                  <span className="text-primary font-black flex-shrink-0 mt-0.5">→</span>
+                  <p><strong className="text-white/80">Alleinreisend oder zu zweit?</strong> Der Mercedes E-Klasse Kombi ist Ihr optimales Fahrzeug – komfortabel, gepflegt und mit viel Platz für Gepäck.</p>
+                </div>
+                <div className="flex gap-3">
+                  <span className="text-primary font-black flex-shrink-0 mt-0.5">→</span>
+                  <p><strong className="text-white/80">3 bis 7 Personen oder viel Gepäck?</strong> Das Großraumtaxi (Mercedes V-Klasse) ist die richtige Wahl – alle kommen gemeinsam und entspannt ans Ziel.</p>
+                </div>
+                <div className="flex gap-3">
+                  <span className="text-primary font-black flex-shrink-0 mt-0.5">→</span>
+                  <p><strong className="text-white/80">Umweltbewusst unterwegs?</strong> Der Mercedes E 300 e Hybrid fährt emissionsarm und leise – ideal für innerstädtische Fahrten in Essen.</p>
+                </div>
+                <div className="flex gap-3">
+                  <span className="text-primary font-black flex-shrink-0 mt-0.5">→</span>
+                  <p><strong className="text-white/80">Unsicher?</strong> Rufen Sie uns einfach an – wir beraten Sie persönlich und setzen das passende Fahrzeug für Sie ein: <a href="tel:+4920170706" className="text-primary hover:underline">0201 707060</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* ── Quality Banner ── */}
-        <div className="container mx-auto px-4 lg:px-8 mt-16 pb-32">
+        <div className="container mx-auto px-4 lg:px-8 mt-0 pb-32">
           <div className="relative rounded-[40px] p-8 md:p-16 overflow-hidden border border-white/5" style={{ background: "hsl(220 15% 8%)" }}>
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>

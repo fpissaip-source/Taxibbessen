@@ -72,8 +72,43 @@ export default function Book() {
     <Layout>
       <div className="min-h-[80vh] flex items-center justify-center px-4 py-12" style={{ background: "#0b0a08" }}>
         <div className="w-full max-w-md">
-          <h1 className="text-3xl font-display font-black text-white mb-1">Taxi anfragen</h1>
+          <h1 className="text-3xl font-display font-black text-white mb-1">Taxi in Essen buchen</h1>
+          <p className="text-white/70 text-base font-semibold mb-1">online oder per Telefon</p>
           <p className="text-white/50 text-sm mb-8">Wir melden uns sofort zurück.</p>
+
+          {/* Zwei Buchungswege */}
+          <div className="grid grid-cols-2 gap-3 mb-8">
+            <div className="bg-primary/10 border border-primary/20 rounded-2xl p-4 space-y-1.5">
+              <p className="text-primary font-black text-xs uppercase tracking-widest">Sofortbuchung</p>
+              <p className="text-white font-bold text-sm">Telefon &amp; WhatsApp</p>
+              <p className="text-white/50 text-xs leading-snug">Direktkontakt – Fahrt in wenigen Minuten</p>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-1.5">
+              <p className="text-white/60 font-black text-xs uppercase tracking-widest">Vorbestellung</p>
+              <p className="text-white font-bold text-sm">Online-Formular</p>
+              <p className="text-white/50 text-xs leading-snug">Termin vorplanen – Bestätigung per E-Mail</p>
+            </div>
+          </div>
+
+          {/* 3-Schritt-Ablauf */}
+          <div className="flex items-start gap-3 mb-8">
+            {[
+              { n: "1", label: "Anfrage", sub: "Anrufen, WhatsApp oder Formular" },
+              { n: "2", label: "Bestätigung", sub: "Wir bestätigen sofort" },
+              { n: "3", label: "Abholung", sub: "Fahrer steht pünktlich bereit" },
+            ].map((step, i, arr) => (
+              <div key={step.n} className="flex items-start gap-2 flex-1">
+                <div className="flex flex-col items-center">
+                  <div className="w-7 h-7 rounded-full bg-primary text-black font-black text-xs flex items-center justify-center flex-shrink-0">{step.n}</div>
+                  {i < arr.length - 1 && <div className="w-px flex-1 bg-white/10 mt-1 h-6" />}
+                </div>
+                <div className="pt-0.5">
+                  <p className="text-white font-bold text-xs">{step.label}</p>
+                  <p className="text-white/40 text-[10px] leading-snug">{step.sub}</p>
+                </div>
+              </div>
+            ))}
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-3">
             <div className="grid grid-cols-2 gap-3">
@@ -169,6 +204,25 @@ export default function Book() {
               </a>
             </div>
           </form>
+
+          {/* Vertrauenssignale */}
+          <div className="mt-6 bg-white/[0.03] border border-white/8 rounded-2xl px-5 py-4">
+            <p className="text-white/40 text-[10px] uppercase font-black tracking-widest mb-3">Warum Taxi B&amp;B?</p>
+            <ul className="space-y-2">
+              {[
+                "Über 30 Jahre Erfahrung in Essen – seit 1992",
+                "24/7 erreichbar – auch nachts, sonn- und feiertags",
+                "Festpreis-Garantie – kein Taxameter-Risiko bei Stau",
+                "Mercedes-Flotte – klimatisiert, gepflegt, komfortabel",
+                "Direkte Kassenabrechnung für Krankenfahrten",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-xs text-white/55">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-px" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* SEO-Inhalt */}
           <div className="mt-14 border-t border-white/8 pt-12 space-y-8 text-sm text-white/55 leading-relaxed">

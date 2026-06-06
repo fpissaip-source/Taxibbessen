@@ -112,57 +112,143 @@ const routes: PrerenderRoute[] = [
   {
     ...meta('/fahrzeuge'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
-        <h1>Mercedes-Flotte in Essen – Limousinen, Kombis und Großraumtaxi für bis zu 7 Personen</h1>
-        <p>Taxi B&amp;B GmbH betreibt eine moderne, gepflegte Fahrzeugflotte aus dem Hause Mercedes-Benz. Alle Fahrzeuge sind klimatisiert, regelmäßig gewartet und bieten höchsten Fahrkomfort. <a href="/book">Jetzt Fahrt buchen</a> oder <a href="/ueber-uns">mehr über uns erfahren</a>.</p>
-        <h2>Mercedes E-Klasse Kombi</h2>
-        <p>Unser Standardfahrzeug für Einzel- und Kleingruppenfahrten. Großzügiger Kofferraum, bequeme Sitze und modernste Sicherheitstechnik – ideal für <a href="https://www.dus.com">Flughafentransfers Düsseldorf</a> und Geschäftsreisen.</p>
-        <h2>Mercedes E 300 e Hybrid</h2>
-        <p>Unser umweltfreundlicher Hybrid-Taxi. Der E 300 e fährt im Stadtbereich rein elektrisch und reduziert so Emissionen und Lärm – ohne Abstriche beim Komfort.</p>
+        <h1>Unsere Fahrzeugflotte – Taxi &amp; Großraumtaxi in Essen</h1>
+        <p>Taxi B&amp;B GmbH betreibt eine moderne, gepflegte Fahrzeugflotte aus dem Hause Mercedes-Benz. Alle Fahrzeuge sind klimatisiert, regelmäßig von zertifizierten Fachbetrieben gewartet und bieten höchsten Fahrkomfort. Ob Einzel- oder Gruppenfahrt, ob Flughafentransfer oder medizinischer Transport – wir haben das richtige Fahrzeug für jeden Anlass. <a href="/book">Jetzt Fahrt buchen</a> oder <a href="/ueber-uns">mehr über uns erfahren</a>.</p>
+
+        <h2>Mercedes E-Klasse T-Modell – Kombi</h2>
+        <p>Unser meistgebuchtes Fahrzeug: Der Mercedes E-Klasse Kombi verbindet Businessklasse-Komfort mit großzügigem Kofferraumvolumen. Bis zu 4 Personen reisen entspannt in Executive-Sitzen mit Klimaanlage und USB-Ladeanschluss. Der Kombi ist die erste Wahl für Geschäftsreisen, <a href="/flughafentransfer-essen-duesseldorf">Flughafentransfers nach Düsseldorf</a>, Alltagsfahrten und Fahrten zu medizinischen Einrichtungen. Die Kombikonfiguration erlaubt auch den bequemen Transport von Rollkoffern, Sporttaschen und umfangreichem Gepäck. Dank modernster Sicherheitstechnik und regelmäßiger Wartung ist der E-Klasse Kombi zuverlässig und pannensicher auf jeder Strecke.</p>
+        <ul>
+          <li>Bis zu 4 Passagiere</li>
+          <li>Großer Kofferraum – ideal für Flughafengepäck</li>
+          <li>Klimaanlage, Executive-Sitze, USB-Ladeanschlüsse</li>
+          <li>Ideal für Geschäftsreisen und Flughafentransfers</li>
+        </ul>
+
         <h2>Mercedes V-Klasse – Großraumtaxi für bis zu 7 Personen</h2>
-        <p>Für Gruppen, Familien und Firmenreisende: Die V-Klasse bietet Platz für 7 Personen plus Gepäck. Kindersitze auf Anfrage verfügbar. Ideal für Flughafentransfers in der Gruppe. <a href="/book">Jetzt Großraumtaxi buchen</a>.</p>
+        <p>Die Mercedes V-Klasse ist das perfekte Großraumtaxi in Essen für Familien, Reisegruppen und Firmenteams. Mit Platz für bis zu 7 Passagiere und reichlich Kofferraumvolumen meistert dieses Fahrzeug jede Gruppenreise: Familienurlaub-Anreise zum Flughafen Düsseldorf, Firmendelegationen, Hochzeiten, Gruppenausflüge oder Transfers zum Essener Hauptbahnhof. Kindersitze stehen auf Anfrage für alle Altersgruppen bereit. Das Fahrzeug verfügt über WLAN, Klimaanlage und bequeme Einzelsitze für alle Passagiere. Statt mehrerer Einzeltaxis reisen alle gemeinsam – zum günstigeren Gesamtpreis und ohne Koordinationsaufwand. Ideal auch für <a href="/kurierdienst-essen">Kurierfahrten mit sperrigen Gütern</a> oder umfangreichem Gepäck.</p>
+        <ul>
+          <li>Bis zu 7 Passagiere</li>
+          <li>Kindersitze auf Anfrage</li>
+          <li>WLAN, Klimaanlage, Einzelsitze</li>
+          <li>Ideal für Gruppen, Familien, Firmendelegationen</li>
+          <li>Günstig im Vergleich zu mehreren Einzeltaxis</li>
+        </ul>
+
+        <h2>Mercedes E 300 e – Hybrid &amp; Elektro</h2>
+        <p>Modernste Antriebstechnik für emissionsarme Fahrten in Essen und der Region: Der Mercedes E 300 e fährt im Stadtbereich rein elektrisch – geräuschlos, umweltschonend und ohne Reichweitenangst dank leistungsstarkem Hybridantrieb. Ideal für Fahrgäste, die Wert auf Nachhaltigkeit legen, ohne auf Businessklasse-Komfort zu verzichten. Besonders beliebt für ruhige Fahrten zu Kliniken, Hotels und Praxen, wo ein geräuscharmes Fahrzeug willkommen ist. Auch für Nachtfahrten und frühe Abholungen schätzen Fahrgäste den leisen Elektroantrieb. Gleicher Komfort, gleiche Sicherheit – aber deutlich weniger Emissionen.</p>
+        <ul>
+          <li>Emissionsarmer Hybridantrieb</li>
+          <li>Im Stadtbereich rein elektrisch</li>
+          <li>Geräuschlos – ideal für Kliniken und Hotels</li>
+          <li>Modernste Sicherheits- und Bordtechnik</li>
+        </ul>
+
+        <h2>Welches Fahrzeug passt zu Ihnen?</h2>
+        <p><strong>Allein oder zu zweit:</strong> Wählen Sie den Mercedes E-Klasse Kombi – komfortabel, gepflegt, für Gepäck bestens geeignet.</p>
+        <p><strong>3 bis 7 Personen:</strong> Das Großraumtaxi Mercedes V-Klasse ist die richtige Wahl – alle kommen gemeinsam ans Ziel.</p>
+        <p><strong>Umweltbewusst:</strong> Der Mercedes E 300 e Hybrid fährt emissionsarm und leise durch Essen.</p>
+        <p><strong>Unsicher?</strong> Rufen Sie uns an – wir beraten Sie kostenlos: <a href="tel:+4920170706">0201 707060</a>. <a href="/book">Online buchen</a>.</p>
+
+        <h2>Qualität ohne Kompromisse</h2>
+        <p>Alle Fahrzeuge werden regelmäßig von zertifizierten Kfz-Fachbetrieben gewartet und nach jeder Schicht professionell gereinigt und desinfiziert. Strikte Einhaltung aller Service-Intervalle, modernste Sensorik und lückenlose Technik-Checks garantieren maximale Zuverlässigkeit auf jeder Strecke. Für unsere Kunden bedeutet das: kein Stehen bleiben, keine Verspätungen durch Fahrzeugprobleme – nur pünktliche, sichere und komfortable Fahrten durch Essen und das Ruhrgebiet.</p>
+
+        <h2>Weitere Leistungen</h2>
+        <p><a href="/flughafentransfer-essen-duesseldorf">Flughafentransfer Essen–Düsseldorf</a> · <a href="/krankenfahrten-essen">Krankenfahrten Essen</a> · <a href="/grossraumtaxi-essen">Großraumtaxi Essen</a> · <a href="/kurierdienst-essen">Kurierdienst Essen</a></p>
         ${CONTACT_BLOCK}
       </article>`,
   },
   {
     ...meta('/ueber-uns'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
-        <h1>Taxiunternehmen in Essen seit 1992 – Geschichte und Team</h1>
-        <p>Taxi B&amp;B GmbH wurde 1992 in Essen gegründet. Wir sind kein anonymes Fahrdienst-Portal, kein Algorithmus und keine App, die Sie vergisst, sobald die Fahrt endet. Wir sind ein Essener Familienunternehmen – und das spürt man.</p>
-        <h2>Unsere Geschichte</h2>
-        <p>Taxi B&amp;B GmbH wurde 1992 in Essen gegründet – in einer Zeit, als ein Taxi noch mehr war als eine Fahrt von A nach B. Was damals mit einem Fahrzeug und dem festen Willen begann, Passagiere pünktlich, sicher und freundlich zu befördern, ist heute ein eingespieltes Team aus erfahrenen Fahrern, einer <a href="/fahrzeuge">gepflegten Mercedes-Flotte</a> und einem Kundenstamm, der uns seit Jahrzehnten treu ist.</p>
-        <h2>Was uns ausmacht</h2>
+        <h1>Über Taxi B&amp;B GmbH in Essen</h1>
+        <p>Taxi B&amp;B GmbH ist ein inhabergeführtes Taxiunternehmen in Essen mit über 30 Jahren Erfahrung in der Personenbeförderung. Gegründet 1992 als Familienbetrieb im Herzen des Ruhrgebiets, zählen wir heute zu den etablierten Taxiunternehmen in Essen und der gesamten Region. Unser Standort: Menzelstraße 8–10, 45147 Essen. Erreichbar rund um die Uhr: <a href="tel:+4920170706">0201 707060</a>.</p>
+
+        <h2>Unsere Geschichte seit 1992</h2>
+        <p>Die Gründerfamilie Barger &amp; Beige startete Taxi B&amp;B GmbH 1992 in Essen mit einem klaren Versprechen: Pünktlichkeit, Verlässlichkeit und ein persönliches Lächeln bei jeder Fahrt. Was damals mit einem Fahrzeug begann, ist heute ein eingespieltes Team aus erfahrenen Fahrern und einer gepflegten Mercedes-Flotte. Im Laufe der Jahrzehnte wurde die Flotte kontinuierlich modernisiert: 2003 folgten klimatisierte Komfort-Limousinen, 2008 die Einführung des Großraumtaxis für bis zu 7 Personen und 2012 die Aufnahme der genehmigungspflichtigen Kranken- und Dialysefahrten mit direkter Kassenabrechnung.</p>
+        <p>Viele unserer Fahrgäste sind keine Kunden mehr – sie sind Stammgäste. Familien, die ihre Kinder zum Flughafen schicken. Senioren, die uns für ihre Arzttermine vertrauen. Geschäftsleute, die uns anrufen, bevor sie überhaupt den Termin eingetragen haben. Dieses Vertrauen ist das Ergebnis von über drei Jahrzehnten gelebter Verlässlichkeit.</p>
+
+        <h2>Unser Team und unsere Werte</h2>
         <ul>
-          <li><strong>Pünktlichkeit:</strong> Wir holen Sie zur vereinbarten Zeit ab – ohne Ausreden.</li>
-          <li><strong>Festpreise:</strong> Transparente Preise ohne böse Überraschungen. Kein Taxameter-Risiko bei Stau.</li>
-          <li><strong>24/7 Erreichbarkeit:</strong> Tag und Nacht, 365 Tage im Jahr für Sie da: 0201 707060.</li>
-          <li><strong>Erfahrung:</strong> Über 30 Jahre Taxiservice in Essen. Bewertungen auf <a href="https://www.provenexpert.com/de-de/taxi-bb-gmbh/">ProvenExpert</a>.</li>
+          <li><strong>Pünktlichkeit:</strong> Wir holen Sie zur vereinbarten Zeit ab – ohne Ausreden und ohne Wartezeiten.</li>
+          <li><strong>Festpreise:</strong> Transparente Preise ohne böse Überraschungen – kein Taxameter-Risiko bei Stau oder Umleitung.</li>
+          <li><strong>Persönlicher Service:</strong> Kein Algorithmus, kein anonymes Portal – ein echter Mensch spricht mit Ihnen.</li>
+          <li><strong>24/7 Erreichbarkeit:</strong> Tag und Nacht, 365 Tage im Jahr für Sie da: <a href="tel:+4920170706">0201 707060</a>.</li>
+          <li><strong>Lokale Ortskenntnis:</strong> Unsere Fahrer kennen jeden Stadtteil in Essen – Rüttenscheid, Holsterhausen, Frohnhausen, Steele und mehr.</li>
+          <li><strong>Professionelle Flotte:</strong> Gepflegte Mercedes-Fahrzeuge – Kombi, Großraumtaxi und Hybrid – regelmäßig gewartet.</li>
         </ul>
-        <p><a href="/book">Jetzt Fahrt buchen</a> oder telefonisch unter 0201 707060.</p>
+
+        <h2>Standort in Essen</h2>
+        <p>Unser Betrieb ist in der Menzelstraße 8–10, 45147 Essen ansässig – zentral im Ruhrgebiet, gut erreichbar aus allen Essener Stadtteilen und der gesamten Region. Wir sind 24 Stunden täglich, 7 Tage die Woche, 365 Tage im Jahr für Sie erreichbar.</p>
+
+        <h2>Lizenzen und Zertifizierungen</h2>
+        <ul>
+          <li>Konzession gemäß Personenbeförderungsgesetz (PBefG)</li>
+          <li>Zulassung für Krankenfahrten und Dialysefahrten mit Kassenabrechnung</li>
+          <li>Mitglied bei taxi.de – Deutsches Taxi- und Mietwagengewerbe</li>
+          <li>Handelsregistereintrag: HRB 36284 Amtsgericht Essen</li>
+          <li>Regelmäßige TÜV-Hauptuntersuchungen aller Fahrzeuge</li>
+          <li>Alle Fahrer mit amtlichem Personenbeförderungsschein (P-Schein)</li>
+        </ul>
+
+        <h2>Warum Kunden wiederkommen</h2>
+        <p>In einer Welt, in der Fahrdienste oft austauschbar sind, setzen wir auf Kontinuität. Unsere Fahrer kennen die Stadt, kennen die Staus, kennen die Abkürzungen – und oft kennen sie auch Sie. Wir haben keine Algorithmen, die Sie in eine Warteschlange einreihen. Vertrauen entsteht durch Verlässlichkeit, durch Respekt und durch die kleinen Dinge: das aufgehaltene Gepäck, der freundliche Morgengruß, die Route, die wir kennen, ohne dass Sie sie erklären müssen.</p>
+
+        <h2>Unsere Leistungen</h2>
+        <p><a href="/flughafentransfer-essen-duesseldorf">Flughafentransfer Essen–Düsseldorf</a> · <a href="/krankenfahrten-essen">Krankenfahrten Essen</a> · <a href="/dialysefahrten-essen">Dialysefahrten Essen</a> · <a href="/grossraumtaxi-essen">Großraumtaxi Essen</a> · <a href="/kurierdienst-essen">Kurierdienst Essen</a> · <a href="/fahrzeuge">Unsere Fahrzeuge</a></p>
+        <p><a href="/book">Jetzt Fahrt buchen</a> oder telefonisch unter <a href="tel:+4920170706">0201 707060</a>.</p>
         ${CONTACT_BLOCK}
       </article>`,
   },
   {
     ...meta('/book'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
-        <h1>Taxi online buchen in Essen – Festpreis, Flughafentransfer und Krankenfahrten</h1>
-        <p>Buchen Sie Ihr Taxi in Essen schnell und einfach online. Wählen Sie Abholadresse, Ziel, Datum und Uhrzeit – wir bestätigen Ihre Buchung umgehend. <a href="/ueber-uns">Seit 1992</a> Ihr zuverlässiger Taxiservice.</p>
-        <h2>So buchen Sie</h2>
+        <h1>Taxi in Essen buchen – online oder per Telefon</h1>
+        <p>Taxi B&amp;B GmbH ist Ihr zuverlässiger Taxibetrieb in Essen – buchbar rund um die Uhr, 365 Tage im Jahr. Sie haben zwei Möglichkeiten, Ihr Taxi zu buchen: die Sofortbuchung per Telefon oder WhatsApp für eine Fahrt in wenigen Minuten, oder die komfortable Vorbestellung über das Online-Formular für geplante Termine. Beide Wege führen zum gleichen Ziel: ein pünktliches, gepflegtes Taxi steht für Sie bereit.</p>
+
+        <h2>Zwei Buchungswege – Sie entscheiden</h2>
+        <h3>Sofortbuchung: Telefon &amp; WhatsApp</h3>
+        <p>Der direkteste Weg: Rufen Sie uns an unter <a href="tel:+4920170706"><strong>0201 707060</strong></a> – wir sind 24 Stunden täglich erreichbar und nehmen Ihre Buchung sofort entgegen. Alternativ schreiben Sie uns eine WhatsApp-Nachricht an +49 171 1111535. Innerhalb kürzester Zeit bestätigen wir Ihre Fahrt und teilen Ihnen mit, wann Ihr Fahrer eintrifft. Die Sofortbuchung ist ideal für spontane Fahrten, wenn Sie sofort oder in wenigen Minuten ein Taxi benötigen.</p>
+        <h3>Vorbestellung: Online-Formular</h3>
+        <p>Planen Sie Ihre Fahrt im Voraus? Nutzen Sie unser Online-Buchungsformular auf dieser Seite. Geben Sie Name, Telefonnummer und Ihre Nachricht mit Abholort, Ziel und gewünschter Uhrzeit ein – wir bestätigen Ihre Vorbestellung per E-Mail oder Rückruf. Die Vorbestellung empfiehlt sich besonders für Flughafentransfers mit frühen Abflugzeiten, regelmäßige Krankenfahrten und Dialysefahrten sowie Geschäftsreisen mit fixen Terminen.</p>
+
+        <h2>Ablauf in 3 Schritten</h2>
         <ol>
-          <li>Abholadresse und Ziel angeben</li>
-          <li>Datum, Uhrzeit und Personenanzahl wählen</li>
-          <li>Kontaktdaten eingeben und absenden</li>
-          <li>Buchungsbestätigung per E-Mail erhalten</li>
+          <li><strong>Anfrage senden:</strong> Rufen Sie an, schreiben Sie via WhatsApp oder senden Sie das Online-Formular ab. Geben Sie Abholort, Ziel, Datum, Uhrzeit und Personenanzahl an.</li>
+          <li><strong>Bestätigung erhalten:</strong> Wir bestätigen Ihre Fahrt sofort – per Rückruf oder E-Mail. Sie erfahren, welcher Fahrer kommt und wann er eintrifft.</li>
+          <li><strong>Abholung &amp; Fahrt:</strong> Ihr Fahrer steht pünktlich bereit und bringt Sie sicher, komfortabel und zuverlässig zu Ihrem Ziel.</li>
         </ol>
-        <h2>Oder direkt anrufen</h2>
-        <p>Rund um die Uhr erreichbar: <a href="tel:+4920170706"><strong>0201 707060</strong></a>. Wir nehmen Ihre Buchung sofort entgegen.</p>
-        <h2>Unsere Leistungen</h2>
+
+        <h2>Was Sie in Ihrer Nachricht angeben sollten</h2>
         <ul>
-          <li>Flughafentransfer <a href="https://www.dus.com">Düsseldorf</a>, Köln/Bonn, Frankfurt</li>
-          <li>Krankenfahrten und Dialysefahrten</li>
-          <li><a href="/fahrzeuge">Großraumtaxi für bis zu 7 Personen</a></li>
-          <li>Privat- und Geschäftsfahrten</li>
-          <li>Kurierdienst Essen</li>
+          <li>Abholort (Straße, Hausnummer, Ort oder Stadtteil)</li>
+          <li>Zieladresse oder Zielort</li>
+          <li>Gewünschte Uhrzeit oder Abfahrtszeit</li>
+          <li>Anzahl der Fahrgäste</li>
+          <li>Besondere Wünsche: Kindersitz, Rollstuhl, Gepäck, Großraumtaxi</li>
         </ul>
+
+        <h2>Warum Taxi B&amp;B GmbH buchen?</h2>
+        <ul>
+          <li><strong>Über 30 Jahre Erfahrung in Essen:</strong> Seit 1992 kennen unsere Fahrer jede Straße und jede Abkürzung im Ruhrgebiet.</li>
+          <li><strong>24/7 erreichbar:</strong> Kein Anrufbeantworter, kein Warteschleife – ein Mensch spricht mit Ihnen, egal zu welcher Uhrzeit.</li>
+          <li><strong>Festpreis-Garantie:</strong> Keine bösen Überraschungen bei Stau oder Umleitung – der Preis ist vorher bekannt.</li>
+          <li><strong>Mercedes-Flotte:</strong> Klimatisierte, gepflegte Fahrzeuge – vom Kombi bis zum Großraumtaxi für 7 Personen.</li>
+          <li><strong>Direkte Kassenabrechnung:</strong> Für Krankenfahrten und Dialysefahrten rechnen wir direkt mit Ihrer Krankenkasse ab.</li>
+          <li><strong>Pünktlichkeit:</strong> Kein Taxi zu spät – Pünktlichkeit ist für uns die Grundlage jeder Fahrt.</li>
+        </ul>
+
+        <h2>Unsere Leistungen auf einen Blick</h2>
+        <ul>
+          <li><a href="/flughafentransfer-essen-duesseldorf">Flughafentransfer Essen–Düsseldorf</a>, Köln/Bonn, Frankfurt – Festpreis, Flugverfolgung, kostenlose Wartezeit</li>
+          <li><a href="/krankenfahrten-essen">Krankenfahrten Essen</a> – mit direkter Kassenabrechnung, diskret und einfühlsam</li>
+          <li><a href="/dialysefahrten-essen">Dialysefahrten Essen</a> – regelmäßig, pünktlich, fester Fahrplan möglich</li>
+          <li><a href="/grossraumtaxi-essen">Großraumtaxi Essen</a> – Mercedes V-Klasse, bis zu 7 Personen, Kindersitze auf Anfrage</li>
+          <li><a href="/kurierdienst-essen">Kurierdienst Essen</a> – diskret, direkt, bundesweit auf Anfrage</li>
+          <li>Privat- und Geschäftsfahrten quer durch Essen und das Ruhrgebiet</li>
+        </ul>
+
+        <h2>Taxi in Essen – alle Stadtteile</h2>
+        <p>Wir holen Sie in allen Essener Stadtteilen ab: <a href="/taxi-essen-hbf">Essen Hauptbahnhof</a>, <a href="/taxi-essen-ruettenscheid">Rüttenscheid</a>, <a href="/taxi-essen-holsterhausen">Holsterhausen</a>, <a href="/taxi-essen-frohnhausen">Frohnhausen</a>, <a href="/taxi-essen-suedviertel">Südviertel</a>, Steele, Kettwig, Werden, Altendorf, Borbeck und mehr. Einfach anrufen: <a href="tel:+4920170706">0201 707060</a>.</p>
         ${CONTACT_BLOCK}
       </article>`,
   },

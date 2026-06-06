@@ -128,8 +128,8 @@ export default function UeberUns() {
 
             <Reveal delay={0.05}>
               <h1 className="text-4xl sm:text-5xl font-display font-bold leading-tight mb-5">
-                Mehr als ein Taxi –<br />
-                <span className="text-primary">ein Versprechen.</span>
+                Über Taxi B&amp;B GmbH<br />
+                <span className="text-primary">in Essen</span>
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
