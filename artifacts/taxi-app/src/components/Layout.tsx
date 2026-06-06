@@ -431,9 +431,45 @@ export function Layout({ children }: { children: ReactNode }) {
             </div>
           </div>
 
-          <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-muted-foreground uppercase tracking-widest">
+          {/* Zahlungsarten */}
+          <div className="mt-10 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-3 flex-wrap justify-center sm:justify-start">
+              <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 mr-1">Zahlung:</span>
+              {/* Bargeld */}
+              <span className="flex items-center gap-1.5 bg-white/[0.06] border border-white/10 rounded-lg px-2.5 py-1.5 text-[10px] font-black uppercase tracking-wider text-white/60">
+                <svg className="w-3.5 h-3.5 text-primary/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="2" y="6" width="20" height="12" rx="2"/><path d="M22 10H2M6 14h.01"/>
+                </svg>
+                Bar
+              </span>
+              {/* EC-Karte */}
+              <span className="flex items-center gap-1.5 bg-white/[0.06] border border-white/10 rounded-lg px-2.5 py-1.5 text-[10px] font-black uppercase tracking-wider text-white/60">
+                <svg className="w-3.5 h-3.5 text-primary/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/>
+                </svg>
+                EC-Karte
+              </span>
+              {/* Visa */}
+              <span className="flex items-center gap-1.5 bg-white/[0.06] border border-white/10 rounded-lg px-2.5 py-1.5 text-[10px] font-black uppercase tracking-wider" style={{ color: "#1a1f71" }}>
+                <svg viewBox="0 0 48 48" className="w-8 h-4" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="48" height="48" rx="6" fill="#1a1f71"/>
+                  <path d="M19.5 31.5L21.9 16.5H25.9L23.5 31.5H19.5ZM15.1 16.5L11.3 26.3L10.8 23.7L10.8 23.7L9.4 17.7C9.1 16.7 8.3 16.5 7.3 16.5H1.1L1 16.9C2.4 17.2 4 17.7 5.3 18.4L8.7 31.5H12.9L19.1 16.5H15.1ZM41.5 31.5H45.3L42 16.5H38.6C37.7 16.5 37 17 36.6 17.8L30.7 31.5H34.9L35.7 29.2H40.8L41.5 31.5ZM36.8 26L39 20.1L40.2 26H36.8ZM32.1 20.3C31.7 19.9 30.8 19.5 29.7 19.5C27.6 19.5 26.1 20.6 26.1 22.1C26.1 23.3 27.1 23.9 28.8 24.7C30.5 25.4 30.8 25.8 30.8 26.4C30.8 27.2 29.9 27.6 29 27.6C27.7 27.6 27 27.3 26 26.8L25.5 26.5L25 29.5C25.6 29.8 26.8 30.1 28 30.1C30.3 30.1 31.9 29 31.9 27.4C31.9 26.5 31.3 25.8 29.8 25.1C28.2 24.4 27.2 23.9 27.2 23.3C27.2 22.7 27.9 22.2 29.2 22.2C30.3 22.2 31 22.5 31.7 22.8L32.1 23L32.6 20.1L32.1 20.3Z" fill="white"/>
+                </svg>
+              </span>
+              {/* Mastercard */}
+              <span className="flex items-center gap-1 bg-white/[0.06] border border-white/10 rounded-lg px-2.5 py-1.5">
+                <svg viewBox="0 0 48 30" className="w-9 h-5" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="18" cy="15" r="13" fill="#EB001B"/>
+                  <circle cx="30" cy="15" r="13" fill="#F79E1B"/>
+                  <path d="M24 5.5a13 13 0 0 1 0 19A13 13 0 0 1 24 5.5z" fill="#FF5F00"/>
+                </svg>
+              </span>
+            </div>
+            <span className="text-[10px] font-bold text-muted-foreground/50 uppercase tracking-widest">Präzision in Bewegung.</span>
+          </div>
+
+          <div className="mt-6 pt-5 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-muted-foreground uppercase tracking-widest">
             <span>© {new Date().getFullYear()} Taxi B&B GmbH. Essen.</span>
-            <span>Präzision in Bewegung.</span>
           </div>
         </div>
       </footer>

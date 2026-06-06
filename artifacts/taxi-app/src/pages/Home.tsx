@@ -187,12 +187,40 @@ const FAQ_ITEMS = [
     a: "Wir berechnen transparente Festpreise ohne böse Überraschungen. Die Strecke Essen–Flughafen Düsseldorf beträgt ca. 35–40 km. Rufen Sie uns für ein konkretes Angebot an: 0201 707060.",
   },
   {
+    q: "Gibt es Festpreise für meine Taxifahrt?",
+    a: "Ja! Für viele Strecken – besonders Flughafentransfers und regelmäßige Fahrten – bieten wir Festpreise an. So wissen Sie vorab genau, was Ihre Fahrt kostet. Anfragen unter 0201 707060.",
+  },
+  {
     q: "Kann ich ein Großraumtaxi für 7 Personen buchen?",
     a: "Ja! Unsere Mercedes V-Klasse bietet Platz für bis zu 7 Personen – ideal für Gruppen, Familien und Firmenausflüge. Kindersitze auf Anfrage. Jetzt buchen: 0201 707060.",
   },
   {
     q: "Bieten Sie Krankenfahrten und Dialysefahrten an?",
     a: "Ja, wir führen Krankenfahrten, Dialysefahrten und Therapiefahrten in Essen und Umgebung durch. Wir arbeiten mit Krankenkassen zusammen und holen Sie pünktlich ab.",
+  },
+  {
+    q: "Fahren Sie auch Rollstuhlfahrer oder mobilitätseingeschränkte Personen?",
+    a: "Ja, wir unterstützen mobilitätseingeschränkte Fahrgäste und bieten barrierefreie Fahrten an. Bitte teilen Sie uns Ihre Anforderungen bei der Buchung mit: 0201 707060.",
+  },
+  {
+    q: "Wie viel Gepäck darf ich mitnehmen?",
+    a: "Unser Mercedes E-Klasse Kombi bietet reichlich Kofferraumplatz. Mit der Mercedes V-Klasse können bis zu 7 Personen mit großem Gepäck reisen. Größere Mengen bitte vorab anfragen.",
+  },
+  {
+    q: "Darf ich mit Haustieren ins Taxi?",
+    a: "Kleine Haustiere in einer Transportbox sind in der Regel kein Problem. Bitte informieren Sie uns bei der Buchung, damit wir alles vorbereiten können.",
+  },
+  {
+    q: "Muss ich die Fahrt vorab bezahlen?",
+    a: "Nein – Sie bezahlen bequem nach der Fahrt. Wir akzeptieren Bargeld, EC-Karte und Kreditkarte (Visa/Mastercard). Bei Krankenfahrten rechnen wir direkt mit Ihrer Krankenkasse ab.",
+  },
+  {
+    q: "Wie kann ich eine Fahrt stornieren?",
+    a: "Rufen Sie uns so früh wie möglich an: 0201 707060. Bei rechtzeitiger Absage entstehen keine Kosten. Für kurzfristige Stornierungen sprechen Sie uns bitte direkt an.",
+  },
+  {
+    q: "Bekomme ich eine Quittung oder einen Beleg?",
+    a: "Selbstverständlich! Sie erhalten auf Wunsch einen Taxibeleg nach jeder Fahrt. Für Geschäftskunden stellen wir auch Rechnungen aus. Einfach beim Fahrer anfragen.",
   },
   {
     q: "Ist Taxi B&B GmbH wirklich 24 Stunden erreichbar?",
@@ -967,6 +995,52 @@ export default function Home() {
               ))}
             </div>
 
+          </div>
+        </section>
+
+        {/* ─── BEWERTUNGS-CTA ─── */}
+        <section className="py-16 sm:py-20 relative" style={{ zIndex: 2 }}>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+            <motion.div
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-60px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-2xl mx-auto rounded-[32px] border border-primary/25 bg-white/[0.04] backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.45)] p-8 sm:p-10 text-center"
+            >
+              {/* Sterne */}
+              <div className="flex items-center justify-center gap-1.5 mb-4">
+                {[1,2,3,4].map((n) => (
+                  <svg key={n} className="w-7 h-7 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+                <svg className="w-7 h-7 text-white/20" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              </div>
+              <p className="text-[11px] font-black text-primary uppercase tracking-[0.4em] mb-3">4,0 von 5 Sternen · Google</p>
+              <h2 className="font-display font-black uppercase tracking-tighter leading-none mb-3" style={{ fontSize: "clamp(1.6rem,4vw,2.8rem)" }}>
+                Zufrieden mit unserer Fahrt?
+              </h2>
+              <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-7 max-w-sm mx-auto">
+                Helfen Sie anderen Fahrgästen und hinterlassen Sie uns eine Bewertung auf Google – es dauert nur eine Minute.
+              </p>
+              <a
+                href="https://www.google.com/maps/search/Taxi+B%26B+GmbH+Essen"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 bg-primary text-black font-black text-sm uppercase tracking-widest px-7 py-3.5 rounded-full hover:shadow-[0_0_28px_rgba(255,193,7,0.5)] transition-all hover:scale-[1.03]"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                Jetzt auf Google bewerten
+              </a>
+            </motion.div>
           </div>
         </section>
 
