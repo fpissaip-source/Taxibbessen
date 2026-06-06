@@ -14,7 +14,7 @@ type PrerenderRoute = {
   description: string;
   noindex?: boolean;
   noscriptBody?: string;
-  schemaOrg?: Record<string, unknown>;
+  schemaOrg?: Record<string, unknown> | Record<string, unknown>[];
 };
 
 function meta(path: string): Pick<PrerenderRoute, 'path' | 'title' | 'description' | 'noindex'> {
@@ -495,6 +495,31 @@ const TAXI_HBF_SCHEMA = {
   }
 };
 
+function breadcrumbLabel(title: string): string {
+  return title.split(/ [|–] /)[0].trim();
+}
+
+function makeBreadcrumb(path: string, title: string): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Startseite",
+        "item": `${CANONICAL_DOMAIN}/`
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": breadcrumbLabel(title),
+        "item": `${CANONICAL_DOMAIN}${path}/`
+      }
+    ]
+  };
+}
+
 const NOSCRIPT_STYLE = 'font-family:sans-serif;max-width:800px;margin:2rem auto;padding:1rem;color:#111';
 const CONTACT_BLOCK = `
         <h2>Kontakt</h2>
@@ -946,6 +971,19 @@ const routes: PrerenderRoute[] = [
   },
 ];
 
+// ── BreadcrumbList-Injektion: alle nicht-Root, nicht-noindex Seiten erhalten
+//    automatisch ein BreadcrumbList-Schema als zusätzlichen JSON-LD Block. ──
+for (const route of routes) {
+  if (route.path === '/' || route.noindex) continue;
+  const crumb = makeBreadcrumb(route.path, route.title);
+  if (route.schemaOrg) {
+    const existing = Array.isArray(route.schemaOrg) ? route.schemaOrg : [route.schemaOrg];
+    route.schemaOrg = [...existing, crumb];
+  } else {
+    route.schemaOrg = crumb;
+  }
+}
+
 // ── Validation: alle indexierbaren Routen aus routes.ts müssen einen
 //    Prerender-Eintrag haben. So wird prerender.mts automatisch aktuell
 //    gehalten, sobald neue Routen in routes.ts hinzugefügt werden. ─────────
@@ -1006,9 +1044,12 @@ function buildHeadTags(route: PrerenderRoute): string {
   }
 
   if (route.schemaOrg) {
-    tags.push(
-      `    <script type="application/ld+json">\n    ${JSON.stringify(route.schemaOrg, null, 2).replace(/\n/g, '\n    ')}\n    </script>`,
-    );
+    const schemas = Array.isArray(route.schemaOrg) ? route.schemaOrg : [route.schemaOrg];
+    for (const schema of schemas) {
+      tags.push(
+        `    <script type="application/ld+json">\n    ${JSON.stringify(schema, null, 2).replace(/\n/g, '\n    ')}\n    </script>`,
+      );
+    }
   }
 
   return tags.join('\n');
