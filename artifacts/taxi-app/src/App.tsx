@@ -15,6 +15,16 @@ import AGB from "@/pages/AGB";
 import Datenschutz from "@/pages/Datenschutz";
 import Fahrzeuge from "@/pages/Fahrzeuge";
 import UeberUns from "@/pages/UeberUns";
+import FlughafentransferEssen from "@/pages/FlughafentransferEssen";
+import KrankenfahrtenEssen from "@/pages/KrankenfahrtenEssen";
+import GrossraumtaxiEssen from "@/pages/GrossraumtaxiEssen";
+import DialysefahrtenEssen from "@/pages/DialsyefahrtenEssen";
+import KurierdienstEssen from "@/pages/KurierdienstEssen";
+import TaxiEssenHbf from "@/pages/TaxiEssenHbf";
+import TaxiHolsterhausen from "@/pages/TaxiHolsterhausen";
+import TaxiRuettenscheid from "@/pages/TaxiRuettenscheid";
+import TaxiFrohnhausen from "@/pages/TaxiFrohnhausen";
+import TaxiSuedviertel from "@/pages/TaxiSuedviertel";
 
 import { useLenis } from "@/hooks/useLenis";
 import { getLenis } from "@/lib/lenis";
@@ -48,6 +58,16 @@ function Router() {
       <Route path="/datenschutz" component={Datenschutz} />
       <Route path="/fahrzeuge" component={Fahrzeuge} />
       <Route path="/ueber-uns" component={UeberUns} />
+      <Route path="/flughafentransfer-essen-duesseldorf" component={FlughafentransferEssen} />
+      <Route path="/krankenfahrten-essen" component={KrankenfahrtenEssen} />
+      <Route path="/grossraumtaxi-essen" component={GrossraumtaxiEssen} />
+      <Route path="/dialysefahrten-essen" component={DialysefahrtenEssen} />
+      <Route path="/kurierdienst-essen" component={KurierdienstEssen} />
+      <Route path="/taxi-essen-hbf" component={TaxiEssenHbf} />
+      <Route path="/taxi-essen-holsterhausen" component={TaxiHolsterhausen} />
+      <Route path="/taxi-essen-ruettenscheid" component={TaxiRuettenscheid} />
+      <Route path="/taxi-essen-frohnhausen" component={TaxiFrohnhausen} />
+      <Route path="/taxi-essen-suedviertel" component={TaxiSuedviertel} />
 
       <Route component={NotFound} />
     </Switch>

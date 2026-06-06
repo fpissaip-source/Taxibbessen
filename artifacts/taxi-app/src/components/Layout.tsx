@@ -373,8 +373,8 @@ export function Layout({ children }: { children: ReactNode }) {
       <footer className="bg-background border-t border-white/5 py-16 relative" style={{ zIndex: 2 }}>
         <div className="absolute -top-24 left-0 right-0 h-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 100%)", zIndex: 1 }} />
         <div className="container mx-auto px-4 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div className="md:col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-12">
+            <div className="md:col-span-2 lg:col-span-2 xl:col-span-2">
               <div className="flex items-center gap-3 mb-5">
                 <img id="footer-logo" src={`${import.meta.env.BASE_URL}bb-logo-v7-transparent.webp`} alt="Taxi B&B" className="h-9 w-auto" />
                 <span className="font-display font-black text-xl uppercase tracking-tighter">Taxi B&B GmbH</span>
@@ -405,6 +405,18 @@ export function Layout({ children }: { children: ReactNode }) {
                   <Mail className="w-4 h-4 text-primary shrink-0" />
                   <a href="mailto:taxibb@outlook.com" className="hover:text-primary transition-colors">taxibb@outlook.com</a>
                 </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-black text-white uppercase tracking-widest text-xs mb-6">Regionen</h4>
+              <ul className="space-y-3 text-sm font-bold">
+                <li><Link href="/taxi-essen-holsterhausen" className="text-muted-foreground hover:text-primary transition-colors">Holsterhausen</Link></li>
+                <li><Link href="/taxi-essen-ruettenscheid" className="text-muted-foreground hover:text-primary transition-colors">Rüttenscheid</Link></li>
+                <li><Link href="/taxi-essen-frohnhausen" className="text-muted-foreground hover:text-primary transition-colors">Frohnhausen</Link></li>
+                <li><Link href="/taxi-essen-suedviertel" className="text-muted-foreground hover:text-primary transition-colors">Südviertel</Link></li>
+                <li className="pt-2 border-t border-white/5"><Link href="/taxi-essen-hbf" className="text-muted-foreground hover:text-primary transition-colors">Hauptbahnhof</Link></li>
+                <li><Link href="/flughafentransfer-essen-duesseldorf" className="text-muted-foreground hover:text-primary transition-colors">Flughafentransfer</Link></li>
               </ul>
             </div>
 

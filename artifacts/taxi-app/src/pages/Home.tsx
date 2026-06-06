@@ -59,12 +59,12 @@ function ServiceCard({ title, sub, index, icon: Icon }: { title: string; sub: st
 }
 
 const SERVICE_ITEMS = [
-  { src: "krankenfahrten.webp",    titleKey: "hero_service2_title", descKey: "hero_service2_desc" },
-  { src: "geschaeftsfahrten.webp", titleKey: "hero_service1_title", descKey: "hero_service1_desc" },
-  { src: "flughafentransfer.webp", titleKey: "hero_service3_title", descKey: "hero_service3_desc" },
-  { src: "kurierdokumente.webp",   titleKey: "hero_service4_title", descKey: "hero_service4_desc" },
-  { src: "kurierdienst.webp",      titleKey: "hero_service5_title", descKey: "hero_service5_desc" },
-  { src: "hauszuhaus.webp",        titleKey: "hero_service6_title", descKey: "hero_service6_desc" },
+  { src: "krankenfahrten.webp",    titleKey: "hero_service2_title", descKey: "hero_service2_desc", href: "/krankenfahrten-essen" },
+  { src: "geschaeftsfahrten.webp", titleKey: "hero_service1_title", descKey: "hero_service1_desc", href: null },
+  { src: "flughafentransfer.webp", titleKey: "hero_service3_title", descKey: "hero_service3_desc", href: "/flughafentransfer-essen-duesseldorf" },
+  { src: "kurierdokumente.webp",   titleKey: "hero_service4_title", descKey: "hero_service4_desc", href: null },
+  { src: "kurierdienst.webp",      titleKey: "hero_service5_title", descKey: "hero_service5_desc", href: "/kurierdienst-essen" },
+  { src: "hauszuhaus.webp",        titleKey: "hero_service6_title", descKey: "hero_service6_desc", href: null },
 ] as const;
 
 function ServicesRevealSection() {
@@ -97,7 +97,7 @@ function ServicesRevealSection() {
     <div>
       {/* ── Scroll-Reveal: alle 6 Leistungen — 1 Spalte ── */}
       <div className="grid grid-cols-1 gap-y-12 lg:gap-y-20">
-        {SERVICE_ITEMS.map(({ src, titleKey, descKey }, i) => (
+        {SERVICE_ITEMS.map(({ src, titleKey, descKey, href }, i) => (
           <div
             key={src}
             ref={(el) => { itemRefs.current[i] = el; }}
@@ -160,6 +160,15 @@ function ServicesRevealSection() {
               <p className="font-medium leading-relaxed w-full text-left text-sm lg:text-base max-w-sm lg:max-w-md text-white/75">
                 {t(descKey)}
               </p>
+              {href && (
+                <Link
+                  href={href}
+                  className="mt-4 inline-flex items-center gap-1.5 text-primary font-black text-xs uppercase tracking-widest hover:underline"
+                >
+                  Mehr erfahren
+                  <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+                </Link>
+              )}
             </motion.div>
           </div>
         ))}

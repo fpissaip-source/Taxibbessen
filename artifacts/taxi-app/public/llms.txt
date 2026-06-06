@@ -1,6 +1,6 @@
 # Taxi B&B GmbH
 
-Taxi B&B GmbH is a licensed taxi and passenger transport company based in Essen, Germany. The company offers local and long-distance taxi rides, airport transfers, and on-demand booking services for private and business customers in the Ruhr region.
+Taxi B&B GmbH is a licensed taxi and passenger transport company based in Essen, Germany (founded 1992). The company offers local and long-distance taxi rides, airport transfers, medical transport (Krankenfahrten), dialysis transport, courier services, and large-capacity rides (up to 7 passengers) for private and business customers in the Ruhr region.
 
 ## Canonical Domain
 
@@ -10,6 +10,7 @@ https://taxibbessen.de
 
 - Primary language: German (de-DE)
 - Market: Essen, North Rhine-Westphalia, Germany
+- Service area: Essen and surrounding Ruhr region; also nationwide and European long-distance
 
 ## Key Pages
 
@@ -18,11 +19,30 @@ https://taxibbessen.de
 - About us: https://taxibbessen.de/ueber-uns
 - Book a ride: https://taxibbessen.de/book
 
+## Service Pages
+
+- Airport transfer Essen–Düsseldorf: https://taxibbessen.de/flughafentransfer-essen-duesseldorf
+- Medical transport (Krankenfahrten): https://taxibbessen.de/krankenfahrten-essen
+- Large taxi (Großraumtaxi, 7 persons): https://taxibbessen.de/grossraumtaxi-essen
+- Dialysis transport (Dialysefahrten): https://taxibbessen.de/dialysefahrten-essen
+- Courier service (Kurierdienst): https://taxibbessen.de/kurierdienst-essen
+- Taxi at Essen main station (HBF): https://taxibbessen.de/taxi-essen-hbf
+
+## District / Area Pages
+
+- Taxi in Essen-Holsterhausen: https://taxibbessen.de/taxi-essen-holsterhausen
+- Taxi in Essen-Rüttenscheid: https://taxibbessen.de/taxi-essen-ruettenscheid
+- Taxi in Essen-Frohnhausen: https://taxibbessen.de/taxi-essen-frohnhausen
+- Taxi in Essen-Südviertel: https://taxibbessen.de/taxi-essen-suedviertel
+
+## Legal
+
 - Legal notice (Impressum): https://taxibbessen.de/impressum
 - Privacy policy (Datenschutz): https://taxibbessen.de/datenschutz
 - Terms & conditions (AGB): https://taxibbessen.de/agb
 
 ## Contact
 
-- Phone: 0201 707060
+- Phone: 0201 707060 (24/7)
 - Email: taxibb@outlook.com
+- Address: Menzelstraße 8-10, 45147 Essen, Germany
