@@ -5,7 +5,7 @@ const de = {
   nav_about: "Über uns",
   nav_services: "Leistungen",
   nav_vehicles: "Unsere Fahrzeuge",
-  nav_status: "Fahrtstatus prüfen",
+
   nav_call: "Anrufen:",
   nav_need_taxi: "Jetzt ein Taxi brauchen?",
   nav_book_cta: "Jetzt ein Taxi bestellen!",

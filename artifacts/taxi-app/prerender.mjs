@@ -158,19 +158,6 @@ const routes = [
       </article>`,
   },
   {
-    path: '/fahrtstatus',
-    title: 'Fahrtstatus – Taxi B&B GmbH Essen | Buchung verfolgen',
-    description: 'Verfolgen Sie Ihren Fahrstatus bei Taxi B&B GmbH Essen. Buchungsnummer eingeben und Echtzeit-Status abrufen.',
-    noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
-        <h1>Fahrtstatus prüfen – Ihre Taxibuchung bei Taxi B&B Essen verfolgen</h1>
-        <p>Geben Sie Ihre Buchungsnummer ein, um den aktuellen Status Ihrer Taxifahrt bei Taxi B&amp;B GmbH Essen abzurufen.</p>
-        <p>Sie haben keine Buchungsnummer zur Hand oder benötigen sofortige Auskunft? Rufen Sie uns direkt an:</p>
-        <p><a href="tel:+4920170706"><strong>0201 707060</strong></a> – 24 Stunden, 7 Tage die Woche.</p>
-        <p>Noch keine Fahrt gebucht? <a href="/book">Jetzt Taxi online buchen</a> oder <a href="/ueber-uns">mehr über uns erfahren</a>.</p>
-        ${CONTACT_BLOCK}
-      </article>`,
-  },
-  {
     path: '/confirmation',
     title: 'Buchungsbestätigung – Taxi B&B GmbH Essen',
     description: 'Ihre Buchung bei Taxi B&B GmbH wurde erfolgreich übermittelt.',

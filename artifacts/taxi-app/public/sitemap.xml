@@ -35,14 +35,6 @@
   </url>
 
   <url>
-    <loc>https://taxibbessen.de/fahrtstatus</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://taxibbessen.de/fahrtstatus"/>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
     <loc>https://taxibbessen.de/impressum</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://taxibbessen.de/impressum"/>
     <lastmod>2026-05-29</lastmod>

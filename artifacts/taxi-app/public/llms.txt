@@ -17,7 +17,7 @@ https://taxibbessen.de
 - Fleet / vehicles: https://taxibbessen.de/fahrzeuge
 - About us: https://taxibbessen.de/ueber-uns
 - Book a ride: https://taxibbessen.de/book
-- Ride status: https://taxibbessen.de/fahrtstatus
+
 - Legal notice (Impressum): https://taxibbessen.de/impressum
 - Privacy policy (Datenschutz): https://taxibbessen.de/datenschutz
 - Terms & conditions (AGB): https://taxibbessen.de/agb

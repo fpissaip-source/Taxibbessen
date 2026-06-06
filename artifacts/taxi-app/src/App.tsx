@@ -15,7 +15,7 @@ import AGB from "@/pages/AGB";
 import Datenschutz from "@/pages/Datenschutz";
 import Fahrzeuge from "@/pages/Fahrzeuge";
 import UeberUns from "@/pages/UeberUns";
-import Fahrtstatus from "@/pages/Fahrtstatus";
+
 import { useLenis } from "@/hooks/useLenis";
 import { getLenis } from "@/lib/lenis";
 
@@ -48,7 +48,7 @@ function Router() {
       <Route path="/datenschutz" component={Datenschutz} />
       <Route path="/fahrzeuge" component={Fahrzeuge} />
       <Route path="/ueber-uns" component={UeberUns} />
-      <Route path="/fahrtstatus" component={Fahrtstatus} />
+
       <Route component={NotFound} />
     </Switch>
     </>
