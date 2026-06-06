@@ -11,15 +11,15 @@ const CANONICAL_ORIGIN = "https://taxibbessen.de";
 // Derived from the shared route manifest in src/routes.ts — single source of truth.
 // Add/remove routes there; sitemap updates automatically on the next build.
 const sitemapDynamicRoutes = indexableRoutes
-  .map((r) => r.path)
+  .map((r) => (r.path === "/" ? r.path : `${r.path}/`))
   .filter((p) => p !== "/");
 
 const sitemapPriority = Object.fromEntries(
-  indexableRoutes.map((r) => [r.path, r.priority]),
+  indexableRoutes.map((r) => [r.path === "/" ? r.path : `${r.path}/`, r.priority]),
 ) as Record<string, number>;
 
 const sitemapChangefreq = Object.fromEntries(
-  indexableRoutes.map((r) => [r.path, r.changefreq]),
+  indexableRoutes.map((r) => [r.path === "/" ? r.path : `${r.path}/`, r.changefreq]),
 ) as Record<string, string>;
 
 const rawPort = process.env.PORT;

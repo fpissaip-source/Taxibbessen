@@ -26,8 +26,8 @@ function setMetaContent(selector: string, createAttrs: [string, string], content
 
 export function usePageMeta({ title, description, schemaOrg, noindex }: PageMeta) {
   useEffect(() => {
-    const path = window.location.pathname.replace(/\/$/, "") || "/";
-    const canonicalUrl = path === "/" ? CANONICAL_DOMAIN : `${CANONICAL_DOMAIN}${path}`;
+    const path = window.location.pathname.replace(/\/?$/, "/");
+    const canonicalUrl = `${CANONICAL_DOMAIN}${path}`;
 
     document.title = title;
 

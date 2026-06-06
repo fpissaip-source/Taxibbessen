@@ -519,8 +519,8 @@ function escapeAttr(str: string): string {
 function buildHeadTags(route: PrerenderRoute): string {
   const canonicalUrl =
     route.path === '/'
-      ? CANONICAL_DOMAIN
-      : `${CANONICAL_DOMAIN}${route.path}`;
+      ? `${CANONICAL_DOMAIN}/`
+      : `${CANONICAL_DOMAIN}${route.path}/`;
   const title = escapeAttr(route.title);
   const desc = escapeAttr(route.description);
 
