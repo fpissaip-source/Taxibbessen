@@ -326,15 +326,6 @@ export function Layout({ children }: { children: ReactNode }) {
                 >
                   {t("nav_about")}
                 </Link>
-                <Link
-                  href="/fahrtstatus"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center px-3 py-2.5 rounded-xl font-black text-base transition-all ${
-                    location === "/fahrtstatus" ? "bg-primary/10 text-primary" : "text-foreground hover:bg-white/5"
-                  }`}
-                >
-                  {t("nav_status")}
-                </Link>
 
               </nav>
 

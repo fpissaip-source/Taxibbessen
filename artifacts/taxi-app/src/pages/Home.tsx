@@ -1151,12 +1151,6 @@ export default function Home() {
                 <span className="text-xs font-black uppercase tracking-widest text-primary group-hover:text-primary transition-colors">Online</span>
               </motion.a>
             </motion.div>
-            <p className="text-center text-sm text-muted-foreground mt-6">
-              Buchung bereits aufgegeben?{" "}
-              <Link href="/fahrtstatus" className="text-primary font-bold hover:underline underline-offset-4">
-                Fahrtstatus prüfen →
-              </Link>
-            </p>
           </div>
         </section>
 
