@@ -405,6 +405,246 @@ const GROSSRAUMTAXI_SCHEMA = {
   }
 };
 
+const FLUGHAFENTRANSFER_FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "de",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie viel kostet ein Flughafentransfer von Essen nach Düsseldorf?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir berechnen Festpreise ohne Taxameter-Risiko. Die Strecke Essen–Düsseldorf (DUS) beträgt ca. 35–40 km. Rufen Sie uns für ein konkretes Angebot an: 0201 707060 – 24/7 erreichbar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Zu welchen Flughäfen fahren Sie von Essen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir fahren Sie zu allen Flughäfen der Region: Düsseldorf (DUS), Köln/Bonn (CGN), Dortmund (DTM) und Frankfurt (FRA). Bundesweit auf Anfrage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was passiert, wenn mein Flug Verspätung hat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir verfolgen Ihren Flug in Echtzeit und passen die Abholzeit automatisch an. Wartezeit durch Flugverspätungen ist für Sie kostenlos – wir sind da, wenn Sie ankommen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich den Flughafentransfer auch für eine Gruppe buchen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja! Unsere Mercedes V-Klasse bietet Platz für bis zu 7 Personen – ideal für Familien, Reisegruppen und Firmenteams. Kindersitze auf Anfrage. Anrufen: 0201 707060."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich den Flughafentransfer auch nachts oder früh morgens buchen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolut. Wir sind 24 Stunden täglich, 7 Tage die Woche erreichbar – egal ob Nachtflug um 3 Uhr oder Frühschicht um 4:30 Uhr. Einfach anrufen: 0201 707060."
+      }
+    }
+  ]
+};
+
+const KRANKENFAHRTEN_FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "de",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Übernimmt die Krankenkasse die Kosten für Krankenfahrten mit Taxi B&B?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, wir rechnen direkt mit gesetzlichen Krankenkassen ab – kein bürokratischer Aufwand für Sie. Sie benötigen lediglich eine gültige ärztliche Verordnung. Wir sind für alle gesetzlichen Krankenversicherungen zugelassen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Für welche medizinischen Fahrten sind Sie zugelassen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir führen alle genehmigungspflichtigen Krankenfahrten durch: Dialyse, Strahlentherapie, Chemotherapie, Arzttermine, Rehakliniken, Krankenhausaufnahmen und -entlassungen sowie Physiotherapie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Holt ihr uns direkt an der Haustür ab?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, wir bieten Haustür-zu-Haustür-Service. Auf Wunsch begleiten wir Sie auch bis zur Eingangstür der Klinik oder Praxis. Pünktlichkeit und Einfühlsamkeit stehen bei uns an erster Stelle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie buche ich eine Krankenfahrt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rufen Sie uns an: 0201 707060 – 24/7 erreichbar. Für regelmäßige Fahrten (z. B. wöchentliche Dialyse) richten wir gerne einen festen Fahrplan ein. Alternativ können Sie auch online vorbuchen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Fahren Sie auch zu Kliniken außerhalb von Essen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, wir fahren zu Kliniken, Praxen und Rehazentren in Essen und der gesamten Region – auch nach Bochum, Gelsenkirchen, Duisburg und auf Anfrage bundesweit."
+      }
+    }
+  ]
+};
+
+const DIALYSEFAHRTEN_FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "de",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Rechnen Sie Dialysefahrten direkt mit der Krankenkasse ab?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, wir rechnen Dialysefahrten direkt mit gesetzlichen Krankenkassen ab. Sie benötigen eine ärztliche Verordnung. Es entstehen Ihnen keine Vorkosten – wir kümmern uns um die Abrechnung."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Können wir einen festen Fahrplan für regelmäßige Dialysefahrten vereinbaren?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, für Patienten mit regelmäßiger Dialyse (z. B. dreimal pro Woche) richten wir gerne einen festen Fahrplan ein. So müssen Sie sich um nichts kümmern – wir sind verlässlich pünktlich."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "In welchen Städten bieten Sie Dialysefahrten an?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir fahren zu Dialysezentren in Essen, Bochum, Gelsenkirchen und Duisburg. Weitere Orte auf Anfrage. Rufen Sie uns an: 0201 707060."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sind Ihre Fahrer im Umgang mit Dialysepatienten erfahren?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Unsere Fahrer sind einfühlsam und kennen die besonderen Bedürfnisse von Dialysepatienten. Wir holen Sie pünktlich ab und bringen Sie sicher nach Hause – Haustür zu Haustür."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was benötige ich, um Dialysefahrten über die Krankenkasse abzurechnen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sie benötigen eine ärztliche Verordnung für Krankenfahrten (Muster 4). Diese legen Sie uns einmalig vor – danach übernehmen wir die Abrechnung direkt mit Ihrer gesetzlichen Krankenkasse."
+      }
+    }
+  ]
+};
+
+const GROSSRAUMTAXI_FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "de",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie viele Personen passen in das Großraumtaxi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unsere Mercedes V-Klasse bietet Platz für bis zu 7 Personen plus Gepäck. Ideal für Familien, Reisegruppen und Firmendelegationen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sind Kindersitze im Großraumtaxi verfügbar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, Kindersitze stehen auf Anfrage für alle Altersgruppen bereit. Bitte geben Sie bei der Buchung Alter und Gewicht der Kinder an, damit wir den passenden Sitz vorbereiten können."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich das Großraumtaxi für einen Flughafentransfer buchen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, der Flughafentransfer mit dem Großraumtaxi ist unsere häufigste Buchung. Wir fahren Sie und Ihre Gruppe komfortabel und zum Festpreis zu den Flughäfen Düsseldorf, Köln/Bonn, Dortmund und Frankfurt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was kostet das Großraumtaxi in Essen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir berechnen Festpreise ohne Taxameter-Risiko. Rufen Sie uns an für ein konkretes Angebot: 0201 707060. Oft günstiger als zwei getrennte Taxis!"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Fahren Sie auch Hochzeiten und Events mit dem Großraumtaxi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja! Die Mercedes V-Klasse eignet sich perfekt für Hochzeiten, Geburtstage, Konzerte und Firmenevents. Stilvoll, pünktlich und komfortabel. Jetzt buchen: 0201 707060."
+      }
+    }
+  ]
+};
+
+const KURIERDIENST_FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "de",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was transportiert Taxi B&B im Kurierdienst?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir transportieren Dokumente, Akten, Pakete, medizinische Proben und Unterlagen sowie persönliche Gegenstände – diskret, direkt und zuverlässig. Für Unternehmen, Kanzleien, Arztpraxen und Privatpersonen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie schnell liefert der Kurierdienst in Essen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Als Express-Kurierdienst sind wir in der Regel innerhalb kürzester Zeit abholbereit. Wir fahren direkt von A nach B – ohne Umwege und ohne Zwischenstopps. Anrufen: 0201 707060."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Fahren Sie auch bundesweit als Kurierdienst?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, auf Anfrage fahren wir bundesweit. Für Fernstrecken-Kurierfahrten rufen Sie uns einfach an und wir machen Ihnen ein Festpreisangebot: 0201 707060."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ist der Kurierdienst auch für medizinische Proben geeignet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, wir transportieren medizinische Proben, Laborunterlagen und Rezepte für Arztpraxen, Kliniken und Apotheken – schnell, diskret und zuverlässig in Essen und Umgebung."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wann ist der Kurierdienst erreichbar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unser Kurierdienst ist 24 Stunden täglich, 7 Tage die Woche erreichbar. Rufen Sie uns einfach an: 0201 707060. Wir sind auch nachts und an Wochenenden für Sie da."
+      }
+    }
+  ]
+};
+
 const KURIERDIENST_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -751,7 +991,7 @@ const routes: PrerenderRoute[] = [
   // ── Service-Unterseiten ──────────────────────────────────────────────────
   {
     ...meta('/flughafentransfer-essen-duesseldorf'),
-    schemaOrg: FLUGHAFENTRANSFER_SCHEMA,
+    schemaOrg: [FLUGHAFENTRANSFER_SCHEMA, FLUGHAFENTRANSFER_FAQ_SCHEMA],
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Flughafentransfer Essen Düsseldorf – Pünktlich &amp; Komfortabel</h1>
         <p>Taxi B&amp;B GmbH bringt Sie bequem und pünktlich von Essen zu allen wichtigen Flughäfen der Region. Die beliebteste Strecke ist der Flughafentransfer Essen–Düsseldorf (DUS) mit ca. 35–40 km Entfernung. Wir fahren Sie auch zum Flughafen Köln/Bonn (CGN), Dortmund (DTM) und Frankfurt (FRA). Festpreise, keine bösen Überraschungen. Einfach anrufen oder <a href="/book">online buchen</a>.</p>
@@ -776,7 +1016,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/krankenfahrten-essen'),
-    schemaOrg: KRANKENFAHRTEN_SCHEMA,
+    schemaOrg: [KRANKENFAHRTEN_SCHEMA, KRANKENFAHRTEN_FAQ_SCHEMA],
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Krankenfahrten Essen – Zuverlässig &amp; mit Krankenkassenabrechnung</h1>
         <p>Taxi B&amp;B GmbH führt alle gesetzlich genehmigten Krankenfahrten in Essen und Umgebung durch. Wir rechnen direkt mit Ihrer Krankenkasse ab – kein bürokratischer Aufwand für Sie. Sie benötigen lediglich eine gültige Verordnung Ihres Arztes. Wir sind für alle gesetzlichen Krankenversicherungen zugelassen und kennen die Abrechnungsprozesse genau.</p>
@@ -799,7 +1039,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/grossraumtaxi-essen'),
-    schemaOrg: GROSSRAUMTAXI_SCHEMA,
+    schemaOrg: [GROSSRAUMTAXI_SCHEMA, GROSSRAUMTAXI_FAQ_SCHEMA],
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Großraumtaxi Essen – Mercedes V-Klasse für bis zu 7 Personen</h1>
         <p>Unser Großraumtaxi in Essen ist die Mercedes V-Klasse – mit Platz für bis zu 7 Personen und reichlich Kofferraumplatz. Ob Familie mit Kindern, Reisegruppe oder Firmenteam: Sie reisen bequem, klimatisiert und ohne Stress. Das Fahrzeug ist regelmäßig gewartet und gepflegt. Einfach anrufen: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -822,7 +1062,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/dialysefahrten-essen'),
-    schemaOrg: DIALYSEFAHRTEN_SCHEMA,
+    schemaOrg: [DIALYSEFAHRTEN_SCHEMA, DIALYSEFAHRTEN_FAQ_SCHEMA],
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Dialysefahrten Essen – Regelmäßig, Pünktlich &amp; Zuverlässig</h1>
         <p>Dialysepatienten sind auf zuverlässige, regelmäßige Fahrten angewiesen – meist dreimal pro Woche, immer zur gleichen Zeit. Taxi B&amp;B GmbH übernimmt diese Verantwortung mit Sorgfalt und Pünktlichkeit. Wir kennen die Dialysezentren und Kliniken in Essen und Umgebung genau. Anrufen: 0201 707060 oder <a href="/book">online buchen</a>.</p>
@@ -839,7 +1079,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/kurierdienst-essen'),
-    schemaOrg: KURIERDIENST_SCHEMA,
+    schemaOrg: [KURIERDIENST_SCHEMA, KURIERDIENST_FAQ_SCHEMA],
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Kurierdienst Essen – Schnell, Diskret &amp; Zuverlässig</h1>
         <p>Taxi B&amp;B GmbH übernimmt für Sie Express-Kurierfahrten in Essen und der gesamten Region. Wir liefern direkt von Absender zu Empfänger – ohne Umwege, ohne Wartezeiten. Ideal für Unternehmen, Kanzleien, Arztpraxen und Privatpersonen mit zeitkritischen Sendungen. Wir sind 24/7 erreichbar. Rufen Sie an: 0201 707060 oder <a href="/book">online buchen</a>.</p>
