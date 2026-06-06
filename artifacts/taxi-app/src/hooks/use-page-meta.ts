@@ -63,6 +63,19 @@ export function usePageMeta({ title, description, schemaOrg, noindex }: PageMeta
     }
     canonicalEl.setAttribute("href", canonicalUrl);
 
+    // hreflang — signals primary language (de) + x-default for crawlers
+    const HREFLANG_LANGS = ["de", "x-default"] as const;
+    for (const lang of HREFLANG_LANGS) {
+      let hEl = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${lang}"]`);
+      if (!hEl) {
+        hEl = document.createElement("link");
+        hEl.setAttribute("rel", "alternate");
+        hEl.setAttribute("hreflang", lang);
+        document.head.appendChild(hEl);
+      }
+      hEl.setAttribute("href", canonicalUrl);
+    }
+
     setMetaContent('meta[property="og:url"]', ["property", "og:url"], canonicalUrl);
     setMetaContent('meta[property="og:title"]', ["property", "og:title"], title);
     setMetaContent('meta[property="og:description"]', ["property", "og:description"], description);
