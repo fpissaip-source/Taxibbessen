@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import { Layout } from "@/components/Layout";
 import { ReviewCarousel } from "@/components/ReviewCarousel";
 import { HeroBookingWidget } from "@/components/HeroBookingWidget";
+import { ContactForm } from "@/components/ContactForm";
 import { Button } from "@/components/ui";
 import { Phone, Shield, Sparkles, Navigation, ArrowRight, Mail, Globe, MessageCircle, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
@@ -1361,7 +1362,7 @@ export default function Home() {
                 variants={ctaGlowItem}
                 custom={{ glow: "0 0 26px rgba(255,193,7,0.55)", bgDim: "rgba(255,193,7,0.06)", bgLit: "rgba(255,193,7,0.32)" }}
                 whileHover={{ backgroundColor: "rgba(255,193,7,0.4)", scale: 1.03 }}
-                href="/book"
+                href="#anfrage"
                 className="group flex flex-col items-center gap-2 px-4 py-4 rounded-2xl border border-primary/40 hover:border-primary/70 transition-colors"
               >
                 <div className="w-10 h-10 rounded-xl bg-primary/25 flex items-center justify-center group-hover:bg-primary/35 transition-colors">
@@ -1370,6 +1371,12 @@ export default function Home() {
                 <span className="text-xs font-black uppercase tracking-widest text-primary group-hover:text-primary transition-colors">Online</span>
               </motion.a>
             </motion.div>
+
+            {/* ── Buchungsformular ── */}
+            <div id="anfrage" className="mt-12 max-w-md mx-auto scroll-mt-24">
+              <p className="text-white/40 text-[11px] uppercase font-black tracking-[0.4em] mb-6 text-center">Online anfragen</p>
+              <ContactForm />
+            </div>
           </div>
         </section>
 

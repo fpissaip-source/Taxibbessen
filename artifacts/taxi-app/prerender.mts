@@ -870,6 +870,7 @@ const routes: PrerenderRoute[] = [
     ...meta('/book'),
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi in Essen buchen – online oder per Telefon</h1>
+        <p>Diese Seite leitet automatisch zur Startseite weiter. Das Buchungsformular finden Sie direkt auf der <a href="/#kontakt">Startseite unter „Kontakt"</a>.</p>
         <p>Taxi B&amp;B GmbH ist Ihr zuverlässiger Taxibetrieb in Essen – buchbar rund um die Uhr, 365 Tage im Jahr. Sie haben zwei Möglichkeiten, Ihr Taxi zu buchen: die Sofortbuchung per Telefon oder WhatsApp für eine Fahrt in wenigen Minuten, oder die komfortable Vorbestellung über das Online-Formular für geplante Termine. Beide Wege führen zum gleichen Ziel: ein pünktliches, gepflegtes Taxi steht für Sie bereit.</p>
 
         <h2>Zwei Buchungswege – Sie entscheiden</h2>
