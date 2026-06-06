@@ -712,7 +712,7 @@ export default function Home() {
             alt=""
             aria-hidden
             className="md:hidden w-full h-full object-cover"
-            style={{ objectPosition: "center", opacity: 0.75 }}
+            style={{ objectPosition: "center", opacity: 0.92 }}
           />
           <img
             ref={sharpOverlayRef}
@@ -756,7 +756,7 @@ export default function Home() {
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.45) 0%, rgba(8,10,16,0.22) 45%, rgba(8,10,16,0.48) 100%)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.22) 0%, rgba(8,10,16,0.08) 45%, rgba(8,10,16,0.25) 100%)" }}
           />
         </div>
 
@@ -777,7 +777,7 @@ export default function Home() {
           />
           <div
             className="md:hidden absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.45) 0%, rgba(8,10,16,0.22) 45%, rgba(8,10,16,0.48) 100%)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.22) 0%, rgba(8,10,16,0.08) 45%, rgba(8,10,16,0.25) 100%)" }}
           />
           {/* Desktop: looping autoplay airport video (16:9) */}
           <video
@@ -792,7 +792,7 @@ export default function Home() {
           </video>
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.45) 0%, rgba(8,10,16,0.22) 45%, rgba(8,10,16,0.48) 100%)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(8,10,16,0.22) 0%, rgba(8,10,16,0.08) 45%, rgba(8,10,16,0.25) 100%)" }}
           />
         </div>
 
@@ -800,8 +800,8 @@ export default function Home() {
         {/* -mt-20 pulls this section up behind the fixed nav */}
         <div className="relative -mt-20" style={{ zIndex: 2 }}>
           {/* Dark overlays for readability — exakt wie deployed */}
-          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.0) 100%)" }} />
-          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 30%, rgba(0,0,0,0.45) 100%)" }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.38) 40%, rgba(0,0,0,0.12) 70%, rgba(0,0,0,0.0) 100%)" }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.20) 0%, transparent 30%, rgba(0,0,0,0.28) 100%)" }} />
           <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 75%, hsl(220,20%,4%) 100%)" }} />
 
           <section className="relative min-h-screen flex flex-col overflow-hidden pt-20 pb-8" style={{ zIndex: 1 }}>
@@ -895,7 +895,7 @@ export default function Home() {
         {/* Fixed video (at last frame) shines through as background */}
         <section id="leistungen" ref={servicesRef} className="py-24 lg:py-32 relative" style={{ zIndex: 2 }}>
           {/* Voll deckende Abdunklung — exakt wie deployed, dunkel→leicht→dunkel, kein schwebendes Band */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, hsl(220,20%,4%) 0%, rgba(8,10,16,0.68) 20%, rgba(8,10,16,0.68) 80%, rgba(8,10,16,0.32) 100%)" }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, hsl(220,20%,4%) 0%, rgba(8,10,16,0.52) 20%, rgba(8,10,16,0.52) 80%, rgba(8,10,16,0.18) 100%)" }} />
           <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
             <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
