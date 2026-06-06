@@ -45,6 +45,7 @@
     {
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "TaxiService", "Organization"],
+      "@id": "https://taxibbessen.de/#organization",
       "name": "Taxi B&B GmbH",
       "legalName": "Taxi B&B GmbH",
       "description": "Taxi B&B GmbH ist Ihr zuverlässiger Taxiservice in Essen seit 1992. Wir bieten 24/7 Fahrten, Flughafentransfer Düsseldorf, Krankenfahrten und Großraumtaxis für bis zu 7 Personen.",
@@ -52,6 +53,26 @@
       "telephone": "+49-201-707060",
       "email": "taxibb@outlook.com",
       "foundingDate": "1992",
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "Handelsregister",
+        "value": "HRB 36284 Amtsgericht Essen"
+      },
+      "knowsAbout": ["Taxiservice", "Flughafentransfer", "Krankenfahrten", "Großraumtaxi", "Personenbeförderung"],
+      "slogan": "Ihr zuverlässiger Taxiservice in Essen seit 1992",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+49-201-707060",
+        "email": "taxibb@outlook.com",
+        "contactType": "customer service",
+        "availableLanguage": "German",
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      },
       "logo": "https://taxibbessen.de/og-logo.jpg",
       "image": "https://taxibbessen.de/bb-logo-v7-transparent.webp",
       "priceRange": "€€",
