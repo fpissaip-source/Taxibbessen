@@ -95,6 +95,156 @@ const HOMEPAGE_FAQ_SCHEMA = {
   ]
 };
 
+const UEBER_UNS_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://taxibbessen.de/#localbusiness",
+      "name": "Taxi B&B GmbH",
+      "legalName": "Taxi B&B GmbH",
+      "foundingDate": "1992",
+      "description": "Inhabergeführtes Taxiunternehmen in Essen seit 1992. Flughafentransfers, Krankenfahrten, Großraumtaxi und Kurierdienst – 24/7 erreichbar.",
+      "url": "https://taxibbessen.de",
+      "telephone": "+492017070600",
+      "email": "taxibb@outlook.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Menzelstraße 8-10",
+        "addressLocality": "Essen",
+        "postalCode": "45147",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 51.4439,
+        "longitude": 7.0026
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Essen" },
+        { "@type": "State", "name": "Nordrhein-Westfalen" }
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 20 },
+      "sameAs": [
+        "https://www.taxi.de",
+        "https://taxibbessen.de"
+      ],
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "Handelsregister",
+        "value": "HRB 36284 Amtsgericht Essen"
+      },
+      "priceRange": "€€"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://taxibbessen.de/#organization",
+      "name": "Taxi B&B GmbH",
+      "legalName": "Taxi B&B GmbH",
+      "foundingDate": "1992",
+      "url": "https://taxibbessen.de",
+      "telephone": "+492017070600",
+      "email": "taxibb@outlook.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Menzelstraße 8-10",
+        "addressLocality": "Essen",
+        "postalCode": "45147",
+        "addressCountry": "DE"
+      },
+      "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 5, "maxValue": 20 },
+      "areaServed": "Essen, Ruhrgebiet, Nordrhein-Westfalen",
+      "sameAs": [
+        "https://www.taxi.de",
+        "https://taxibbessen.de"
+      ]
+    }
+  ]
+};
+
+const FAHRZEUGE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Fahrzeugflotte – Taxi B&B GmbH Essen",
+  "description": "Die Fahrzeugflotte von Taxi B&B GmbH: Mercedes E-Klasse Kombi, Mercedes V-Klasse Großraumtaxi und Mercedes E 300 e Hybrid.",
+  "url": "https://taxibbessen.de/fahrzeuge",
+  "numberOfItems": 3,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "Mercedes E-Klasse T-Modell – Kombi",
+        "description": "Businessklasse-Komfort mit großzügigem Kofferraumvolumen. Bis zu 4 Passagiere, Klimaanlage, Executive-Sitze und USB-Ladeanschlüsse. Ideal für Flughafentransfers und Geschäftsreisen.",
+        "brand": { "@type": "Brand", "name": "Mercedes-Benz" },
+        "category": "Taxi / Personenbeförderung",
+        "offers": {
+          "@type": "Offer",
+          "seller": { "@id": "https://taxibbessen.de/#localbusiness" },
+          "areaServed": "Essen, Nordrhein-Westfalen",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "priceCurrency": "EUR",
+            "description": "Festpreis auf Anfrage"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "Mercedes V-Klasse – Großraumtaxi",
+        "description": "Großraumtaxi für bis zu 7 Personen mit WLAN, Klimaanlage und Einzelsitzen. Kindersitze auf Anfrage. Ideal für Gruppen, Familien und Firmendelegationen.",
+        "brand": { "@type": "Brand", "name": "Mercedes-Benz" },
+        "category": "Großraumtaxi / Personenbeförderung",
+        "offers": {
+          "@type": "Offer",
+          "seller": { "@id": "https://taxibbessen.de/#localbusiness" },
+          "areaServed": "Essen, Nordrhein-Westfalen",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "priceCurrency": "EUR",
+            "description": "Festpreis auf Anfrage"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "Mercedes E 300 e – Hybrid & Elektro",
+        "description": "Emissionsarmer Hybridantrieb, im Stadtbereich rein elektrisch. Geräuschlos und umweltschonend – ideal für Fahrten zu Kliniken, Hotels und Praxen sowie Nachtfahrten.",
+        "brand": { "@type": "Brand", "name": "Mercedes-Benz" },
+        "category": "Hybridtaxi / Personenbeförderung",
+        "offers": {
+          "@type": "Offer",
+          "seller": { "@id": "https://taxibbessen.de/#localbusiness" },
+          "areaServed": "Essen, Nordrhein-Westfalen",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "priceCurrency": "EUR",
+            "description": "Festpreis auf Anfrage"
+          }
+        }
+      }
+    }
+  ]
+};
+
 const NOSCRIPT_STYLE = 'font-family:sans-serif;max-width:800px;margin:2rem auto;padding:1rem;color:#111';
 const CONTACT_BLOCK = `
         <h2>Kontakt</h2>
@@ -111,6 +261,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/fahrzeuge'),
+    schemaOrg: FAHRZEUGE_SCHEMA,
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Unsere Fahrzeugflotte – Taxi &amp; Großraumtaxi in Essen</h1>
         <p>Taxi B&amp;B GmbH betreibt eine moderne, gepflegte Fahrzeugflotte aus dem Hause Mercedes-Benz. Alle Fahrzeuge sind klimatisiert, regelmäßig von zertifizierten Fachbetrieben gewartet und bieten höchsten Fahrkomfort. Ob Einzel- oder Gruppenfahrt, ob Flughafentransfer oder medizinischer Transport – wir haben das richtige Fahrzeug für jeden Anlass. <a href="/book">Jetzt Fahrt buchen</a> oder <a href="/ueber-uns">mehr über uns erfahren</a>.</p>
@@ -159,6 +310,7 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/ueber-uns'),
+    schemaOrg: UEBER_UNS_SCHEMA,
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Über Taxi B&amp;B GmbH in Essen</h1>
         <p>Taxi B&amp;B GmbH ist ein inhabergeführtes Taxiunternehmen in Essen mit über 30 Jahren Erfahrung in der Personenbeförderung. Gegründet 1992 als Familienbetrieb im Herzen des Ruhrgebiets, zählen wir heute zu den etablierten Taxiunternehmen in Essen und der gesamten Region. Unser Standort: Menzelstraße 8–10, 45147 Essen. Erreichbar rund um die Uhr: <a href="tel:+4920170706">0201 707060</a>.</p>
