@@ -874,6 +874,11 @@ export default function Home() {
             className="hidden md:block absolute bottom-0 right-0 pointer-events-none"
             style={{ width: 160, height: 48, background: "linear-gradient(to top left, #0b0a08 30%, transparent 100%)" }}
           />
+          {/* White diagonal fade — top-left */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.45) 28%, rgba(255,255,255,0.08) 52%, transparent 68%)" }}
+          />
         </div>
 
         {/* ─── STORY SCROLL-VIDEO BACKGROUND (übrig — kein Desktop-Ersatz) ─── */}
