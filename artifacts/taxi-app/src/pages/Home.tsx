@@ -874,11 +874,6 @@ export default function Home() {
             className="hidden md:block absolute bottom-0 right-0 pointer-events-none"
             style={{ width: 160, height: 48, background: "linear-gradient(to top left, #0b0a08 30%, transparent 100%)" }}
           />
-          {/* White diagonal fade — top-left */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.45) 28%, rgba(255,255,255,0.08) 52%, transparent 68%)" }}
-          />
         </div>
 
         {/* ─── STORY SCROLL-VIDEO BACKGROUND (übrig — kein Desktop-Ersatz) ─── */}
@@ -952,6 +947,8 @@ export default function Home() {
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.38) 40%, rgba(0,0,0,0.12) 70%, rgba(0,0,0,0.0) 100%)" }} />
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.20) 0%, transparent 30%, rgba(0,0,0,0.28) 100%)" }} />
           <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none" style={{ zIndex: 0, background: "linear-gradient(to bottom, transparent 0%, hsl(220,20%,4%) 75%, hsl(220,20%,4%) 100%)" }} />
+          {/* White diagonal fade — top-left */}
+          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: "linear-gradient(135deg, rgba(255,255,255,0.80) 0%, rgba(255,255,255,0.42) 25%, rgba(255,255,255,0.06) 50%, transparent 65%)" }} />
 
           <section className="relative min-h-screen flex flex-col overflow-hidden pt-20 pb-8" style={{ zIndex: 1 }}>
 
