@@ -297,7 +297,7 @@ export function Layout({ children }: { children: ReactNode }) {
             >
               <div className="flex items-center justify-between px-6 py-6 border-b border-border/50">
                 <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                  <img src={`${import.meta.env.BASE_URL}bb-logo-v7-transparent.webp`} alt="Taxi B&B" className="h-9 w-auto" />
+                  <img src={`${import.meta.env.BASE_URL}bb-logo-v7-transparent.webp`} alt="Taxi B&B" className="h-9 w-auto" loading="lazy" decoding="async" />
                 </Link>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 rounded-xl hover:bg-muted transition-colors">
                   <X className="w-5 h-5" />
@@ -382,7 +382,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-12">
             <div className="md:col-span-2 lg:col-span-2 xl:col-span-2">
               <div className="flex items-center gap-3 mb-5">
-                <img id="footer-logo" src={`${import.meta.env.BASE_URL}bb-logo-v7-transparent.webp`} alt="Taxi B&B" className="h-9 w-auto" />
+                <img id="footer-logo" src={`${import.meta.env.BASE_URL}bb-logo-v7-transparent.webp`} alt="Taxi B&B" className="h-9 w-auto" loading="lazy" decoding="async" />
                 <span className="font-display font-black text-xl uppercase tracking-tighter">Taxi B&B GmbH</span>
               </div>
               <p className="text-muted-foreground max-w-sm leading-relaxed text-sm mb-6">{t("footer_desc")}</p>

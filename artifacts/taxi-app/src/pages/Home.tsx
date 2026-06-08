@@ -1022,6 +1022,8 @@ export default function Home() {
                         alt={label}
                         className="h-12 lg:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
                         style={{ filter: "drop-shadow(0 0 10px rgba(255,193,7,0.55))" }}
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <span className="text-[9px] lg:text-[11px] font-black tracking-wide text-white/65 uppercase leading-tight group-hover:text-primary transition-colors">

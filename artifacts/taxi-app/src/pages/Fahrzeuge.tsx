@@ -184,6 +184,8 @@ export default function Fahrzeuge() {
                     alt={c.title}
                     className="absolute inset-0 w-full h-full object-cover"
                     style={{ objectPosition: c.objectPosition }}
+                    loading="lazy"
+                    decoding="async"
                     draggable={false}
                   />
 
