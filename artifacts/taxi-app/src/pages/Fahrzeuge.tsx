@@ -241,7 +241,7 @@ export default function Fahrzeuge() {
                             ))}
                           </div>
                           <Link
-                            href={`/book?msg=${encodeURIComponent(c.bookMsg)}`}
+                            href="/#anfrage"
                             className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest text-[10px] lg:text-xs group hover:gap-4 transition-all duration-300"
                           >
                             <span className="w-5 h-px bg-primary group-hover:w-8 transition-all duration-300" />
