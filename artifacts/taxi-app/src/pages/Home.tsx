@@ -678,7 +678,7 @@ export default function Home() {
         f.src = storyFramePath(i);
         frames.push(f);
       }
-    }, { rootMargin: '0px' });
+    }, { rootMargin: '500% 0px' });
 
     observer.observe(triggerEl);
 

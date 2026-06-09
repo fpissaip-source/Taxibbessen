@@ -1,7 +1,6 @@
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { CookieBanner } from "@/components/CookieBanner";
 import { useEffect } from "react";
-import { initGA, trackPageView } from "@/lib/analytics";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -66,15 +65,7 @@ function ScrollToTop() {
     } else {
       window.scrollTo({ top: 0, behavior: "instant" });
     }
-    trackPageView(location);
   }, [location]);
-  return null;
-}
-
-function GAInit() {
-  useEffect(() => {
-    initGA();
-  }, []);
   return null;
 }
 
@@ -98,7 +89,6 @@ function AppInner() {
   useLenis();
   return (
     <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-      <GAInit />
       <Router />
     </WouterRouter>
   );
