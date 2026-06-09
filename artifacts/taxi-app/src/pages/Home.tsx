@@ -471,21 +471,26 @@ export default function Home() {
       return Math.min(Math.max(1 - (window.scrollY - (servicesTop + vh * 0.15)) / (vh * 0.35), 0), 1);
     };
 
-    const PRIORITY_COUNT = 20;
     const frames: HTMLImageElement[] = [];
+    let framesLoaded = false;
 
-    for (let i = 1; i <= FRAME_COUNT; i++) {
-      const f = new Image();
-      if (i <= PRIORITY_COUNT) (f as HTMLImageElement & { fetchpriority: string }).fetchpriority = "high";
-      f.src = framePath(i);
-      frames.push(f);
-    }
+    // Defer all frame downloads until the user actually scrolls.
+    // Until then the hero-sharp.webp poster (opacity: 1) covers the sequence
+    // canvas entirely, so no frames are visible and none need to be in memory.
+    const loadFrames = () => {
+      if (framesLoaded) return;
+      framesLoaded = true;
+      for (let i = 1; i <= FRAME_COUNT; i++) {
+        const f = new Image();
+        f.src = framePath(i);
+        frames.push(f);
+      }
+    };
 
     let targetProgress = 0;
     let currentProgress = 0;
     let lastFrame = -1;
     let rafId: number;
-    let started = false;
 
     const getProgress = () => {
       const servicesEl = servicesRef.current;
@@ -500,27 +505,29 @@ export default function Home() {
     // Find the closest already-loaded frame to the target index so we never
     // "skip" to start/end when intermediate frames haven't downloaded yet.
     const nearestReady = (target: number) => {
-      if (isReady(frames[target])) return target;
-      for (let d = 1; d < FRAME_COUNT; d++) {
+      if (frames[target] && isReady(frames[target])) return target;
+      for (let d = 1; d < frames.length; d++) {
         const lo = target - d;
         const hi = target + d;
-        if (lo >= 0 && isReady(frames[lo])) return lo;
-        if (hi < FRAME_COUNT && isReady(frames[hi])) return hi;
+        if (lo >= 0 && frames[lo] && isReady(frames[lo])) return lo;
+        if (hi < frames.length && frames[hi] && isReady(frames[hi])) return hi;
       }
       return -1;
     };
 
     const rafLoop = () => {
       currentProgress += (targetProgress - currentProgress) * 0.12;
-      const idx = Math.min(
-        FRAME_COUNT - 1,
-        Math.max(0, Math.round(currentProgress * (FRAME_COUNT - 1))),
-      );
-      if (idx !== lastFrame) {
-        const ready = nearestReady(idx);
-        if (ready >= 0) {
-          img.src = frames[ready].src;
-          lastFrame = idx;
+      if (frames.length > 0) {
+        const idx = Math.min(
+          FRAME_COUNT - 1,
+          Math.max(0, Math.round(currentProgress * (FRAME_COUNT - 1))),
+        );
+        if (idx !== lastFrame) {
+          const ready = nearestReady(idx);
+          if (ready >= 0) {
+            img.src = frames[ready].src;
+            lastFrame = idx;
+          }
         }
       }
       if (sharpOverlayRef.current) {
@@ -532,30 +539,31 @@ export default function Home() {
     };
 
     const onScroll = () => {
+      // Trigger frame loading on the very first scroll interaction
+      loadFrames();
       targetProgress = getProgress();
       heroTargetOpacity = getHeroOpacity();
     };
 
-    const startLoop = () => {
-      if (started) return;
-      started = true;
-      targetProgress = getProgress();
-      heroTargetOpacity = getHeroOpacity();
-      currentProgress = targetProgress;
-      window.addEventListener("scroll", onScroll, { passive: true });
-      rafId = requestAnimationFrame(rafLoop);
-    };
+    // Start the RAF loop immediately — frames load lazily on first scroll
+    targetProgress = getProgress();
+    heroTargetOpacity = getHeroOpacity();
+    currentProgress = targetProgress;
+    window.addEventListener("scroll", onScroll, { passive: true });
+    rafId = requestAnimationFrame(rafLoop);
 
-    const priorityDecodes = frames.slice(0, PRIORITY_COUNT).map((f) =>
-      f.decode ? f.decode().catch(() => {}) : Promise.resolve()
-    );
-
-    Promise.all(priorityDecodes).then(startLoop);
-
-    const fallback = setTimeout(startLoop, 800);
+    // Fallback: load frames after the browser goes idle (covers non-scrolling
+    // visitors and bots that trigger JS but never fire scroll events)
+    const idleCb = typeof requestIdleCallback !== "undefined"
+      ? requestIdleCallback(loadFrames, { timeout: 4000 })
+      : setTimeout(loadFrames, 4000) as unknown as number;
 
     return () => {
-      clearTimeout(fallback);
+      if (typeof requestIdleCallback !== "undefined") {
+        cancelIdleCallback(idleCb);
+      } else {
+        clearTimeout(idleCb as unknown as ReturnType<typeof setTimeout>);
+      }
       window.removeEventListener("scroll", onScroll);
       if (rafId) cancelAnimationFrame(rafId);
     };
