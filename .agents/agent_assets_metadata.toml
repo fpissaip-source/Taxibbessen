@@ -18,3 +18,9 @@ id = "jticWg2QO1OREYlWPVlJD"
 uri = "file://attached_assets/preview_grossraum7_nobg.png"
 type = "image"
 title = "Großraum 7 Personen — ohne Hintergrund"
+
+[[outputs]]
+id = "oDx6SKRKGcZ3f1_VdhiVH"
+uri = "file://graphify-vault.tar.gz"
+type = "unspecified"
+title = "Taxi B&B Graphify Vault (Obsidian)"
