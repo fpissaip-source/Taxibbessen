@@ -1332,8 +1332,12 @@ function renderRoute(shellHtml: string, route: PrerenderRoute): string {
   html = html.replace('  </head>', `${injection}\n  </head>`);
 
   if (route.noscriptBody) {
+    // Target only the body <noscript> that wraps the fallback <article>.
+    // The head also has a <noscript> (font-stylesheet fallback) which must
+    // not be touched — so we match specifically on <noscript> followed by
+    // optional whitespace and an opening <article tag.
     html = html.replace(
-      /<noscript>[\s\S]*?<\/noscript>/,
+      /<noscript>\s*<article[\s\S]*?<\/noscript>/,
       `<noscript>\n      ${route.noscriptBody}\n    </noscript>`,
     );
   }
