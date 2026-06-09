@@ -9,7 +9,7 @@ export default function Book() {
   usePageMeta({ title: _bookTitle, description: _bookDesc });
 
   useEffect(() => {
-    window.location.replace("/#kontakt");
+    window.location.replace("/#anfrage");
   }, []);
 
   return (

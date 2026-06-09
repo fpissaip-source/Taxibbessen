@@ -15,6 +15,7 @@ type PrerenderRoute = {
   noindex?: boolean;
   noscriptBody?: string;
   schemaOrg?: Record<string, unknown> | Record<string, unknown>[];
+  extraHeadTags?: string;
 };
 
 function meta(path: string): Pick<PrerenderRoute, 'path' | 'title' | 'description' | 'noindex'> {
@@ -868,9 +869,10 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/book'),
+    extraHeadTags: `    <meta http-equiv="refresh" content="0; url=/#anfrage" />`,
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
         <h1>Taxi in Essen buchen – online oder per Telefon</h1>
-        <p>Diese Seite leitet automatisch zur Startseite weiter. Das Buchungsformular finden Sie direkt auf der <a href="/#kontakt">Startseite unter „Kontakt"</a>.</p>
+        <p>Diese Seite leitet automatisch zur Startseite weiter. Das Buchungsformular finden Sie direkt auf der <a href="/#anfrage">Startseite unter „Anfrage"</a>.</p>
         <p>Taxi B&amp;B GmbH ist Ihr zuverlässiger Taxibetrieb in Essen – buchbar rund um die Uhr, 365 Tage im Jahr. Sie haben zwei Möglichkeiten, Ihr Taxi zu buchen: die Sofortbuchung per Telefon oder WhatsApp für eine Fahrt in wenigen Minuten, oder die komfortable Vorbestellung über das Online-Formular für geplante Termine. Beide Wege führen zum gleichen Ziel: ein pünktliches, gepflegtes Taxi steht für Sie bereit.</p>
 
         <h2>Zwei Buchungswege – Sie entscheiden</h2>
@@ -1291,6 +1293,10 @@ function buildHeadTags(route: PrerenderRoute): string {
         `    <script type="application/ld+json">\n    ${JSON.stringify(schema, null, 2).replace(/\n/g, '\n    ')}\n    </script>`,
       );
     }
+  }
+
+  if (route.extraHeadTags) {
+    tags.push(route.extraHeadTags);
   }
 
   return tags.join('\n');
