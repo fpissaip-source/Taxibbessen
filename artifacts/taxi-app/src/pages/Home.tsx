@@ -753,11 +753,11 @@ export default function Home() {
       // Start the fade early enough that it is fully opaque BEFORE the photo
       // bottom — while the photo still covers the background — so the story clip
       // is completely replaced; directly below the photo only this clip shows.
-      const appear = storyTop + vh * 0.25;
+      const appear = storyTop + vh * 0.1;
       const finish = Math.max(faqTop + vh * 0.8, appear + vh);
       const progress = clamp((window.scrollY - appear) / Math.max(finish - appear, 1), 0, 1);
-      // Fade in quickly, hold at 1, then fade out smoothly from finish onward.
-      const fadeIn = clamp((window.scrollY - appear) / (vh * 0.25), 0, 1);
+      // Fade in slowly over half a viewport — prevents flicker when scrolling up fast.
+      const fadeIn = clamp((window.scrollY - appear) / (vh * 0.5), 0, 1);
       const fadeOut = clamp(1 - (window.scrollY - finish) / (vh * 0.5), 0, 1);
       const opacity = Math.min(fadeIn, fadeOut);
       return { progress, opacity };
@@ -817,7 +817,7 @@ export default function Home() {
           f.src = ctaFramePath(i);
           frames.push(f);
         }
-      }, { rootMargin: '100% 0px' });
+      }, { rootMargin: '300% 0px' });
       observer.observe(sectionEl);
 
       return () => {
@@ -826,6 +826,7 @@ export default function Home() {
         window.removeEventListener("resize", onResize);
         if (rafId) cancelAnimationFrame(rafId);
       };
+
     }
 
     return () => {
@@ -922,7 +923,6 @@ export default function Home() {
             aria-hidden
             width="1080"
             height="1920"
-            loading="lazy"
             decoding="async"
             className="md:hidden w-full h-full object-cover"
             style={{ objectPosition: "center", opacity: 1 }}
