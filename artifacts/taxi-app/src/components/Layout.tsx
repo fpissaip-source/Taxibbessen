@@ -393,7 +393,33 @@ export function Layout({ children }: { children: ReactNode }) {
                 <a href="tel:0201707060" className="p-3 bg-white/5 rounded-xl hover:text-primary transition-colors border border-white/5">
                   <Phone className="w-5 h-5" />
                 </a>
+                <a
+                  href="https://www.instagram.com/taxiessenbb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Taxi B&B auf Instagram folgen"
+                  className="p-3 bg-white/5 rounded-xl hover:text-primary transition-colors border border-white/5"
+                >
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+                  </svg>
+                </a>
               </div>
+              <a
+                href="https://www.instagram.com/taxiessenbb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:border-primary/50 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest text-muted-foreground"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+                </svg>
+                @taxiessenbb folgen
+              </a>
             </div>
 
             <div>
