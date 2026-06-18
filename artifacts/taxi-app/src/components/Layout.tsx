@@ -91,7 +91,10 @@ export function Layout({ children }: { children: ReactNode }) {
     setHeroLogoVisible(true); // reset on route change
     const attach = () => {
       const el = document.getElementById("hero-logo");
-      if (!el) return;
+      if (!el) {
+        setHeroLogoVisible(false); // Unterseiten ohne Hero → Header immer sichtbar
+        return;
+      }
       const observer = new IntersectionObserver(
         ([entry]) => setHeroLogoVisible(entry.isIntersecting),
         { threshold: 0.1 }
