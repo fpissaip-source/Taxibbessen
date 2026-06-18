@@ -1,0 +1,44 @@
+Details Build Deploy HTTP Network Flow
+You reached the start of the range
+Jun 18, 2026 at 2:42 PM
+file:///app/artifacts/taxi-app/railway-start.mjs:58
+# Railway deploy Thu Jun 18 12:40:31 PM UTC 2026
+^
+SyntaxError: Invalid or unexpected token
+    at compileSourceTextModule (node:internal/modules/esm/utils:339:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:168:18)
+    at callTranslator (node:internal/modules/esm/loader:428:14)
+    at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:434:30)
+    at async link (node:internal/modules/esm/module_job:87:21)
+Node.js v20.18.1
+Starting Container
+file:///app/artifacts/taxi-app/railway-start.mjs:58
+# Railway deploy Thu Jun 18 12:40:31 PM UTC 2026
+^
+SyntaxError: Invalid or unexpected token
+    at compileSourceTextModule (node:internal/modules/esm/utils:339:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:168:18)
+    at callTranslator (node:internal/modules/esm/loader:428:14)
+    at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:434:30)
+    at async link (node:internal/modules/esm/module_job:87:21)
+Node.js v20.18.1
+file:///app/artifacts/taxi-app/railway-start.mjs:58
+# Railway deploy Thu Jun 18 12:40:31 PM UTC 2026
+^
+SyntaxError: Invalid or unexpected token
+    at compileSourceTextModule (node:internal/modules/esm/utils:339:16)
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:168:18)
+    at callTranslator (node:internal/modules/esm/loader:428:14)
+    at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:434:30)
+    at async link (node:internal/modules/esm/module_job:87:21)
+Node.js v20.18.1
+Node.js v20.18.1
+^
+    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:168:18)
+    at callTranslator (node:internal/modules/esm/loader:428:14)
+    at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:434:30)
+    at async link (node:internal/modules/esm/module_job:87:21)
+SyntaxError: Invalid or unexpected token
+    at compileSourceTextModule (node:internal/modules/esm/utils:339:16)
+file:///app/artifacts/taxi-app/railway-start.mjs:58
+# Railway deploy Thu Jun 18 12:40:31 PM UTC 2026
