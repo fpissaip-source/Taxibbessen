@@ -53,7 +53,7 @@ function ServiceCard({ title, sub, index, icon: Icon }: { title: string; sub: st
         <Icon className="w-7 h-7 text-primary" />
       </div>
       <div>
-        <h3 className="text-xs font-black text-primary uppercase tracking-[0.3em] mb-2">{title}</h3>
+        <p className="text-xs font-black text-primary uppercase tracking-[0.3em] mb-2">{title}</p>
         <p className="text-2xl font-black text-white leading-tight">{sub}</p>
       </div>
     </motion.div>
@@ -960,7 +960,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="text-center"
               >
-                <h1 className="sr-only">24/7 Taxiservice in Essen – Krankenfahrten, Flughafentransfer und Großraumtaxi</h1>
+                <h1 className="text-center font-display font-black uppercase tracking-[0.22em] text-white/50 mb-2" style={{ fontSize: "clamp(0.45rem, 1.1vw, 0.7rem)" }}>24/7 Taxiservice in Essen – Krankenfahrten, Flughafentransfer und Großraumtaxi</h1>
                 <img
                   id="hero-logo"
                   src={`${import.meta.env.BASE_URL}bb-logo-v7-transparent.webp`}

@@ -7,6 +7,7 @@ import { PAGE_META_MANIFEST } from './src/page-meta-manifest.ts';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, 'dist/public');
 const CANONICAL_DOMAIN = 'https://taxibbessen.de';
+const BUILD_DATE = new Date().toISOString().split('T')[0];
 
 type PrerenderRoute = {
   path: string;
@@ -761,7 +762,7 @@ function makeBreadcrumb(path: string, title: string): Record<string, unknown> {
   };
 }
 
-const NOSCRIPT_STYLE = 'font-family:sans-serif;max-width:800px;margin:2rem auto;padding:1rem;color:#111';
+const NOSCRIPT_STYLE = 'font-family:system-ui,sans-serif;max-width:820px;margin:0 auto';
 const CONTACT_BLOCK = `
         <h2>Kontakt</h2>
         <address>
@@ -1287,6 +1288,24 @@ function buildHeadTags(route: PrerenderRoute): string {
     );
   }
 
+  if (!route.noindex) {
+    const webPageSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "url": canonicalUrl,
+      "name": route.title,
+      "description": route.description,
+      "inLanguage": "de",
+      "datePublished": "2024-01-01",
+      "dateModified": BUILD_DATE,
+      "isPartOf": { "@id": "https://taxibbessen.de/#website" },
+      "author": { "@id": "https://taxibbessen.de/#organization" },
+    };
+    tags.push(
+      `    <script type="application/ld+json">\n    ${JSON.stringify(webPageSchema, null, 2).replace(/\n/g, '\n    ')}\n    </script>`,
+    );
+  }
+
   if (route.schemaOrg) {
     const schemas = Array.isArray(route.schemaOrg) ? route.schemaOrg : [route.schemaOrg];
     for (const schema of schemas) {
@@ -1337,9 +1356,12 @@ function renderRoute(shellHtml: string, route: PrerenderRoute): string {
   // regex matching against the built HTML and guarantees only the body
   // placeholder is ever touched — never the head <noscript> font fallback.
   if (route.noscriptBody) {
+    const seoBody = route.noscriptBody
+      .replace(/<h1>/gi, '<h2>')
+      .replace(/<\/h1>/gi, '</h2>');
     html = html.replace(
       '<!-- PRERENDER_NOSCRIPT_PLACEHOLDER -->',
-      `<noscript>\n      ${route.noscriptBody}\n    </noscript>`,
+      `<section class="prerender-seo" style="background:#0c0b09;color:rgba(255,255,255,.78);font-family:system-ui,-apple-system,sans-serif;font-size:.95rem;line-height:1.75;padding:3rem 1.5rem 4rem;border-top:1px solid rgba(255,255,255,.1)" aria-label="Ergänzende Informationen"><style>.prerender-seo h2{font-size:1.15rem;font-weight:700;margin:1.5rem 0 .4rem;color:rgba(255,193,7,.9)}.prerender-seo a{color:rgba(255,193,7,.85);text-decoration:underline}.prerender-seo address{font-style:normal;margin:.5rem 0}.prerender-seo ul{padding-left:1.25rem;margin:.5rem 0}.prerender-seo li{margin:.25rem 0}.prerender-seo dl{margin:.5rem 0}.prerender-seo dt{font-weight:700;color:rgba(255,193,7,.8);margin-top:.75rem}.prerender-seo dd{margin:.1rem 0 .5rem 1rem}</style>\n      ${seoBody}\n    </section>`,
     );
   } else {
     html = html.replace('<!-- PRERENDER_NOSCRIPT_PLACEHOLDER -->', '');
@@ -1372,6 +1394,20 @@ function main(): void {
       const outPath = join(dir, 'index.html');
       writeFileSync(outPath, rendered, 'utf-8');
       console.log(`✓ ${route.path}  →  dist/public${route.path}/index.html`);
+    }
+  }
+
+  const sitemapPath = join(DIST, 'sitemap.xml');
+  if (existsSync(sitemapPath)) {
+    let sitemap = readFileSync(sitemapPath, 'utf-8');
+    // The vite-plugin-sitemap already adds a <lastmod> with the full ISO timestamp.
+    // Ensure every <url> that is missing a <lastmod> gets one (defensive fallback).
+    if (!sitemap.includes('<lastmod>')) {
+      sitemap = sitemap.replace(/<\/loc>/g, `</loc>\n    <lastmod>${BUILD_DATE}</lastmod>`);
+      writeFileSync(sitemapPath, sitemap, 'utf-8');
+      console.log(`✓ sitemap.xml → lastmod ${BUILD_DATE} (fallback)`);
+    } else {
+      console.log(`✓ sitemap.xml already contains lastmod (set by vite-plugin-sitemap)`);
     }
   }
 

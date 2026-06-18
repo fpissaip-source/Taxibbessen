@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
     "build": "node scripts/convert-images.mjs && tsx scripts/validate-meta.mts && vite build --config vite.config.ts && tsx prerender.mts && tsx scripts/validate-schema.mts",
-    "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
+    "serve": "node serve.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
@@ -77,6 +77,8 @@
     "zod": "catalog:"
   },
   "dependencies": {
+    "compression": "^1.8.1",
+    "express": "^5.2.1",
     "lenis": "^1.3.23"
   }
 }
