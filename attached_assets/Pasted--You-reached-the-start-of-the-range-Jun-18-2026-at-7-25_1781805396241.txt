@@ -1,0 +1,157 @@
+
+You reached the start of the range
+Jun 18, 2026 at 7:25 PM
+
+stage-0
+FROM ghcr.io/railwayapp/nixpacks:ubuntu-1745885067@sha256:d45c89d80e13d7ad0fd555b5130f22a866d9dd10e861f589932303ef2314c7de
+8s
+
+stage-0
+WORKDIR /app/ cached
+1ms
+scheduling build on Metal builder "production-builderv3-europe-west4-xdz4"
+fetched snapshot sha256:d7848193c1c4f14264d89a93de78ea0c3339f41efb6cc25eda02907f210215c5 (528 MB bytes)
+fetching snapshot
+503.4 MB
+7.7s
+modified file: artifacts/taxi-app/railway-start.mjs (1742b -> 943b)
+uploading snapshot
+503.4 MB
+15.6s
+unpacking archive
+515.3 MB
+6.2s
+using build driver nixpacks-v1.41.0
+ 
+╔══════════════════════════════ Nixpacks v1.41.0 ══════════════════════════════╗
+║ setup      │ nodejs_20, pnpm-9_x, openssl                                    ║
+║──────────────────────────────────────────────────────────────────────────────║
+║ install    │ true                                                            ║
+║──────────────────────────────────────────────────────────────────────────────║
+║ build      │ pnpm install --no-frozen-lockfile && pnpm --filter              ║
+║            │ @workspace/taxi-app run build                                   ║
+║──────────────────────────────────────────────────────────────────────────────║
+║ start      │ node artifacts/taxi-app/railway-start.mjs                       ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+ 
+ 
+Saved output to:
+  snapshot-target-unpack
+
+internal
+load build definition from Dockerfile
+0ms
+
+internal
+load metadata for ghcr.io/railwayapp/nixpacks:ubuntu-1745885067
+26s
+
+internal
+load .dockerignore
+0ms
+UndefinedVar: Usage of undefined variable '$NIXPACKS_PATH' (line 18)(https://docs.docker.com/go/dockerfile/rule/undefined-var/)
+ details: Variables should be defined before their use
+
+internal
+load build context
+0ms
+
+stage-0
+COPY .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix cached
+0ms
+
+stage-0
+RUN nix-env -if .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix && nix-collect-garbage -d cached
+0ms
+
+stage-0
+COPY . /app/.
+1s
+
+stage-0
+RUN true
+373ms
+
+stage-0
+COPY . /app/.
+3m 25s
+
+stage-0
+RUN pnpm install --no-frozen-lockfile && pnpm --filter @workspace/taxi-app run build
+1m 45s
+Scope: all 9 workspace projects
+   ╭──────────────────────────────────────────────────────────────────╮
+   │                                                                  │
+   │                Update available! 9.15.9 → 11.8.0.                │
+   │   Changelog: https://github.com/pnpm/pnpm/releases/tag/v11.8.0   │
+   │                Run "pnpm add -g pnpm" to update.                 │
+   │                                                                  │
+   ╰──────────────────────────────────────────────────────────────────╯
+Progress: resolved 0, reused 0, downloaded 1, added 0
+Progress: resolved 66, reused 0, downloaded 66, added 0
+Progress: resolved 78, reused 0, downloaded 78, added 0
+Progress: resolved 80, reused 0, downloaded 80, added 0
+artifacts/taxi-app                       |  WARN  deprecated recharts@2.15.4
+Progress: resolved 85, reused 0, downloaded 85, added 0
+Progress: resolved 86, reused 0, downloaded 86, added 0
+Progress: resolved 87, reused 0, downloaded 87, added 0
+Progress: resolved 87, reused 0, downloaded 88, added 0
+Progress: resolved 88, reused 0, downloaded 88, added 0
+Progress: resolved 88, reused 0, downloaded 89, added 0
+Progress: resolved 89, reused 0, downloaded 89, added 0
+Progress: resolved 162, reused 0, downloaded 130, added 0
+Progress: resolved 236, reused 0, downloaded 204, added 0
+Progress: resolved 306, reused 0, downloaded 268, added 0
+Progress: resolved 391, reused 0, downloaded 317, added 0
+Progress: resolved 481, reused 0, downloaded 357, added 0
+Progress: resolved 495, reused 0, downloaded 370, added 0
+Progress: resolved 526, reused 0, downloaded 392, added 0
+Progress: resolved 542, reused 0, downloaded 408, added 0
+Progress: resolved 544, reused 0, downloaded 410, added 0
+Progress: resolved 578, reused 0, downloaded 444, added 0
+Progress: resolved 645, reused 0, downloaded 486, added 0
+Progress: resolved 676, reused 0, downloaded 517, added 0
+Progress: resolved 679, reused 0, downloaded 520, added 0
+ WARN  2 deprecated subdependencies found: @esbuild-kit/core-utils@3.3.2, @esbuild-kit/esm-loader@2.6.5
+Packages: +118
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 680, reused 0, downloaded 521, added 97
+Progress: resolved 680, reused 0, downloaded 521, added 118, done
+ WARN  Failed to create bin at /app/artifacts/taxi-app/node_modules/.bin/yaml. ENOENT: no such file or directory, open '/app/node_modules/.pnpm/yaml@2.8.4/node_modules/yaml/bin.mjs'
+ WARN  Failed to create bin at /app/artifacts/taxi-app/node_modules/.bin/tsx. ENOENT: no such file or directory, open '/app/node_modules/.pnpm/tsx@4.21.0/node_modules/tsx/dist/cli.mjs'
+ WARN  Failed to create bin at /app/artifacts/taxi-app/node_modules/.bin/jiti. ENOENT: no such file or directory, open '/app/node_modules/.pnpm/jiti@2.7.0/node_modules/jiti/lib/jiti-cli.mjs'
+ WARN  Failed to create bin at /app/artifacts/mockup-sandbox/node_modules/.bin/tsx. ENOENT: no such file or directory, open '/app/node_modules/.pnpm/tsx@4.21.0/node_modules/tsx/dist/cli.mjs'
+ WARN  Failed to create bin at /app/artifacts/mockup-sandbox/node_modules/.bin/jiti. ENOENT: no such file or directory, open '/app/node_modules/.pnpm/jiti@2.7.0/node_modules/jiti/lib/jiti-cli.mjs'
+ WARN  Failed to create bin at /app/artifacts/mockup-sandbox/node_modules/.bin/yaml. ENOENT: no such file or directory, open '/app/node_modules/.pnpm/yaml@2.8.4/node_modules/yaml/bin.mjs'
+ WARN  Failed to create bin at /app/lib/api-spec/node_modules/.bin/tsc. ENOENT: no such file or directory, open '/app/node_modules/.pnpm/typescript@5.9.3/node_modules/typescript/bin/tsc'
+ WARN  Failed to create bin at /app/lib/api-spec/node_modules/.bin/tsserver. ENOENT: no such file or directory, open '/app/node_modules/.pnpm/typescript@5.9.3/node_modules/typescript/bin/tsserver'
+ WARN  Failed to create bin at /app/lib/api-spec/node_modules/.bin/prettier. ENOENT: no such file or directory, open '/app/node_modules/.pnpm/prettier@3.8.3/node_modules/prettier/bin/prettier.cjs'
+. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+. preinstall: Done
+devDependencies: skipped because NODE_ENV is set to production
+ WARN  Issues with peer dependencies found
+artifacts/api-server
+└─┬ esbuild-plugin-pino 2.3.3
+  └── ✕ unmet peer esbuild@">=0.25.0 <=0.25.8": found 0.27.3
+Done in 35.2s using pnpm v9.15.9
+> @workspace/taxi-app@0.0.0 build /app/artifacts/taxi-app
+> node scripts/convert-images.mjs && tsx scripts/validate-meta.mts && vite build --config vite.config.ts && tsx prerender.mts && tsx scripts/validate-schema.mts
+node:internal/modules/esm/resolve:854
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'sharp' imported from /app/artifacts/taxi-app/scripts/convert-images.mjs
+    at packageResolve (node:internal/modules/esm/resolve:854:9)
+    at moduleResolve (node:internal/modules/esm/resolve:927:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1169:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:542:12)
+    at ModuleLoader.resolve (node:internal/modules/esm/loader:510:25)
+    at ModuleLoader.getModuleJob (node:internal/modules/esm/loader:239:38)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/module_job:96:40)
+    at link (node:internal/modules/esm/module_job:95:36) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+Node.js v20.18.1
+/app/artifacts/taxi-app:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/taxi-app@0.0.0 build: `node scripts/convert-images.mjs && tsx scripts/validate-meta.mts && vite build --config vite.config.ts && tsx prerender.mts && tsx scripts/validate-schema.mts`
+Exit status 1
+Build Failed: build daemon returned an error < failed to solve: process "/bin/bash -ol pipefail -c pnpm install --no-frozen-lockfile && pnpm --filter @workspace/taxi-app run build" did not complete successfully: exit code: 1 >

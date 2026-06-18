@@ -1,0 +1,100 @@
+
+
+@workspace/taxi-app
+Deployments
+Variables
+Metrics
+Console
+Settings
+www.taxibbessen.de
+EU West
+1 Replica
+
+HISTORY
+Hide Skipped
+@workspace/taxi-app
+
+Failed
+Jun 18, 2026 at 7:30 PM
+Get Help
+Details Build Deploy HTTP Network Flow
+Diagnosis › Try running a diagnosis to understand why this deployment failed.
+
+Diagnose
+You reached the start of the range
+Jun 18, 2026 at 7:25 PM
+
+stage-0
+FROM ghcr.io/railwayapp/nixpacks:ubuntu-1745885067@sha256:d45c89d80e13d7ad0fd555b5130f22a866d9dd10e861f589932303ef2314c7de
+8s
+
+stage-0
+WORKDIR /app/ cached
+1ms
+scheduling build on Metal builder "production-builderv3-europe-west4-xdz4"
+fetched snapshot sha256:d7848193c1c4f14264d89a93de78ea0c3339f41efb6cc25eda02907f210215c5 (528 MB bytes)
+fetching snapshot
+503.4 MB
+7.7s
+modified file: artifacts/taxi-app/railway-start.mjs (1742b -> 943b)
+uploading snapshot
+503.4 MB
+15.6s
+unpacking archive
+515.3 MB
+6.2s
+using build driver nixpacks-v1.41.0
+ 
+╔══════════════════════════════ Nixpacks v1.41.0 ══════════════════════════════╗
+║ setup      │ nodejs_20, pnpm-9_x, openssl                                    ║
+║──────────────────────────────────────────────────────────────────────────────║
+║ install    │ true                                                            ║
+║──────────────────────────────────────────────────────────────────────────────║
+║ build      │ pnpm install --no-frozen-lockfile && pnpm --filter              ║
+║            │ @workspace/taxi-app run build                                   ║
+║──────────────────────────────────────────────────────────────────────────────║
+║ start      │ node artifacts/taxi-app/railway-start.mjs                       ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+ 
+ 
+Saved output to:
+  snapshot-target-unpack
+
+internal
+load build definition from Dockerfile
+0ms
+
+internal
+load metadata for ghcr.io/railwayapp/nixpacks:ubuntu-1745885067
+26s
+
+internal
+load .dockerignore
+0ms
+UndefinedVar: Usage of undefined variable '$NIXPACKS_PATH' (line 18)(https://docs.docker.com/go/dockerfile/rule/undefined-var/)
+ details: Variables should be defined before their use
+
+internal
+load build context
+0ms
+
+stage-0
+COPY .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix cached
+0ms
+
+stage-0
+RUN nix-env -if .nixpacks/nixpkgs-ffeebf0acf3ae8b29f8c7049cd911b9636efd7e7.nix && nix-collect-garbage -d cached
+0ms
+
+stage-0
+COPY . /app/.
+1s
+
+stage-0
+RUN true
+373ms
+
+stage-0
+COPY . /app/.
+3m 25s
+
