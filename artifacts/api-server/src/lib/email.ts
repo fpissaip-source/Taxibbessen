@@ -112,13 +112,19 @@ export async function sendBookingNotification(booking: BookingEmailData): Promis
 </body>
 </html>`;
 
-  await resend.emails.send({
+  const { data, error } = await resend.emails.send({
     from: "Taxi B&B Buchungen <buchungen@hareb.org>",
     to: ["taxibb@outlook.com", "issa@hareb.org"],
     subject,
     html,
-    replyTo: booking.customerPhone ? undefined : undefined,
   });
+
+  if (error) {
+    console.error("[EMAIL] Buchung senden fehlgeschlagen:", JSON.stringify(error));
+    throw new Error(`Resend error: ${error.message}`);
+  }
+
+  console.log("[EMAIL] Buchung gesendet, id:", data?.id);
 }
 
 export interface ContactEmailData {
@@ -191,10 +197,17 @@ export async function sendContactNotification(data: ContactEmailData): Promise<v
 </body>
 </html>`;
 
-  await resend.emails.send({
+  const { data: sentData, error: sendError } = await resend.emails.send({
     from: "Taxi B&B Anfragen <buchungen@hareb.org>",
     to: ["taxibb@outlook.com", "issa@hareb.org"],
     subject,
     html,
   });
+
+  if (sendError) {
+    console.error("[EMAIL] Kontakt senden fehlgeschlagen:", JSON.stringify(sendError));
+    throw new Error(`Resend error: ${sendError.message}`);
+  }
+
+  console.log("[EMAIL] Kontakt gesendet, id:", sentData?.id);
 }
