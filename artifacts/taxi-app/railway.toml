@@ -1,9 +1,9 @@
 [build]
 builder = "nixpacks"
-buildCommand = "pnpm install --no-frozen-lockfile && npm install -g serve && pnpm --filter @workspace/taxi-app run build"
+buildCommand = "pnpm install --no-frozen-lockfile && pnpm --filter @workspace/taxi-app run build"
 
 [deploy]
-startCommand = "serve -l $PORT -s artifacts/taxi-app/dist/public"
+startCommand = "pnpm --filter @workspace/taxi-app run serve"
 healthcheckPath = "/"
 healthcheckTimeout = 30
 restartPolicyType = "on_failure"
