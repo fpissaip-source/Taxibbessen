@@ -7,6 +7,9 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const PORT = process.env.PORT || 3000;
 const distDir = join(__dirname, "dist/public");
 
+console.log(`Starting server on port ${PORT}`);
+console.log(`Serving from: ${distDir}`);
+
 const mime = {
   ".html": "text/html; charset=utf-8",
   ".js": "application/javascript",
@@ -33,21 +36,22 @@ const server = createServer((req, res) => {
     filePath = join(distDir, "index.html");
   }
 
+  const ext = extname(filePath);
+  const isHtml = ext === ".html";
+  const ct = mime[ext] || "application/octet-stream";
+  const cacheControl = isHtml ? "no-cache" : "public, max-age=31536000, immutable";
+
   try {
     const content = readFileSync(filePath);
-    const ct = mime[extname(filePath)] || "application/octet-stream";
-    res.writeHead(200, { "Content-Type": ct, "Cache-Control": "public, max-age=31536000, immutable" });
-    if (filePath.endsWith("index.html")) {
-      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-cache" });
-    }
+    res.writeHead(200, { "Content-Type": ct, "Cache-Control": cacheControl });
     res.end(content);
-  } catch {
-    res.writeHead(404);
+  } catch (err) {
+    console.error("Error serving", filePath, err.message);
+    res.writeHead(404, { "Content-Type": "text/plain" });
     res.end("Not found");
   }
 });
 
 server.listen(PORT, "0.0.0.0", () => {
-  console.log(`Taxi B&B static server running on port ${PORT}`);
-  console.log(`Serving from: ${distDir}`);
+  console.log(`Server ready on port ${PORT}`);
 });
