@@ -433,6 +433,24 @@ export default function Home() {
     description: _homeDesc,
   });
 
+  // Scroll to the in-page anchor when arriving via a #hash link (e.g. the
+  // /book redirect lands on /#anfrage). Native hash-scroll fails here because
+  // the target only exists after React mounts, so we do it manually.
+  useEffect(() => {
+    const id = window.location.hash.replace(/^#/, "");
+    if (!id) return;
+    let tries = 0;
+    const tryScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "auto", block: "start" });
+        return;
+      }
+      if (tries++ < 20) requestAnimationFrame(tryScroll);
+    };
+    requestAnimationFrame(tryScroll);
+  }, []);
+
   // Image-sequence scrubber — bulletproof on iOS Safari, no <video> black-frame issues
   const FRAME_COUNT = 97;
   const framePath = (n: number) =>

@@ -917,55 +917,10 @@ const routes: PrerenderRoute[] = [
   },
   {
     ...meta('/book'),
+    extraHeadTags: `    <meta http-equiv="refresh" content="0;url=/#anfrage" />`,
     noscriptBody: `<article lang="de" style="${NOSCRIPT_STYLE}">
-        <h1>Taxi in Essen buchen – online oder per Telefon</h1>
-        <p>Taxi B&amp;B GmbH ist Ihr zuverlässiger Taxibetrieb in Essen – buchbar rund um die Uhr, 365 Tage im Jahr. Auf dieser Seite können Sie eine Fahrt direkt online anfragen oder uns telefonisch erreichen. Sie haben zwei Möglichkeiten, Ihr Taxi zu buchen: die Sofortbuchung per Telefon oder WhatsApp für eine Fahrt in wenigen Minuten, oder die komfortable Vorbestellung über das Online-Formular für geplante Termine. Beide Wege führen zum gleichen Ziel: ein pünktliches, gepflegtes Taxi steht für Sie bereit.</p>
-
-        <h2>Zwei Buchungswege – Sie entscheiden</h2>
-        <h3>Sofortbuchung: Telefon &amp; WhatsApp</h3>
-        <p>Der direkteste Weg: Rufen Sie uns an unter <a href="tel:+4920170706"><strong>0201 707060</strong></a> – wir sind 24 Stunden täglich erreichbar und nehmen Ihre Buchung sofort entgegen. Alternativ schreiben Sie uns eine WhatsApp-Nachricht an +49 171 1111535. Innerhalb kürzester Zeit bestätigen wir Ihre Fahrt und teilen Ihnen mit, wann Ihr Fahrer eintrifft. Die Sofortbuchung ist ideal für spontane Fahrten, wenn Sie sofort oder in wenigen Minuten ein Taxi benötigen.</p>
-        <h3>Vorbestellung: Online-Formular</h3>
-        <p>Planen Sie Ihre Fahrt im Voraus? Nutzen Sie unser Online-Buchungsformular auf dieser Seite. Geben Sie Name, Telefonnummer und Ihre Nachricht mit Abholort, Ziel und gewünschter Uhrzeit ein – wir bestätigen Ihre Vorbestellung per E-Mail oder Rückruf. Die Vorbestellung empfiehlt sich besonders für Flughafentransfers mit frühen Abflugzeiten, regelmäßige Krankenfahrten und Dialysefahrten sowie Geschäftsreisen mit fixen Terminen.</p>
-
-        <h2>Ablauf in 3 Schritten</h2>
-        <ol>
-          <li><strong>Anfrage senden:</strong> Rufen Sie an, schreiben Sie via WhatsApp oder senden Sie das Online-Formular ab. Geben Sie Abholort, Ziel, Datum, Uhrzeit und Personenanzahl an.</li>
-          <li><strong>Bestätigung erhalten:</strong> Wir bestätigen Ihre Fahrt sofort – per Rückruf oder E-Mail. Sie erfahren, welcher Fahrer kommt und wann er eintrifft.</li>
-          <li><strong>Abholung &amp; Fahrt:</strong> Ihr Fahrer steht pünktlich bereit und bringt Sie sicher, komfortabel und zuverlässig zu Ihrem Ziel.</li>
-        </ol>
-
-        <h2>Was Sie in Ihrer Nachricht angeben sollten</h2>
-        <ul>
-          <li>Abholort (Straße, Hausnummer, Ort oder Stadtteil)</li>
-          <li>Zieladresse oder Zielort</li>
-          <li>Gewünschte Uhrzeit oder Abfahrtszeit</li>
-          <li>Anzahl der Fahrgäste</li>
-          <li>Besondere Wünsche: Kindersitz, Rollstuhl, Gepäck, Großraumtaxi</li>
-        </ul>
-
-        <h2>Warum Taxi B&amp;B GmbH buchen?</h2>
-        <ul>
-          <li><strong>Über 30 Jahre Erfahrung in Essen:</strong> Seit 1992 kennen unsere Fahrer jede Straße und jede Abkürzung im Ruhrgebiet.</li>
-          <li><strong>24/7 erreichbar:</strong> Kein Anrufbeantworter, kein Warteschleife – ein Mensch spricht mit Ihnen, egal zu welcher Uhrzeit.</li>
-          <li><strong>Festpreis-Garantie:</strong> Keine bösen Überraschungen bei Stau oder Umleitung – der Preis ist vorher bekannt.</li>
-          <li><strong>Mercedes-Flotte:</strong> Klimatisierte, gepflegte Fahrzeuge – vom Kombi bis zum Großraumtaxi für 7 Personen.</li>
-          <li><strong>Direkte Kassenabrechnung:</strong> Für Krankenfahrten und Dialysefahrten rechnen wir direkt mit Ihrer Krankenkasse ab.</li>
-          <li><strong>Pünktlichkeit:</strong> Kein Taxi zu spät – Pünktlichkeit ist für uns die Grundlage jeder Fahrt.</li>
-        </ul>
-
-        <h2>Unsere Leistungen auf einen Blick</h2>
-        <ul>
-          <li><a href="/flughafentransfer-essen-duesseldorf">Flughafentransfer Essen–Düsseldorf</a>, Köln/Bonn, Frankfurt – Festpreis, Flugverfolgung, kostenlose Wartezeit</li>
-          <li><a href="/krankenfahrten-essen">Krankenfahrten Essen</a> – mit direkter Kassenabrechnung, diskret und einfühlsam</li>
-          <li><a href="/dialysefahrten-essen">Dialysefahrten Essen</a> – regelmäßig, pünktlich, fester Fahrplan möglich</li>
-          <li><a href="/grossraumtaxi-essen">Großraumtaxi Essen</a> – Mercedes V-Klasse, bis zu 7 Personen, Kindersitze auf Anfrage</li>
-          <li><a href="/kurierdienst-essen">Kurierdienst Essen</a> – diskret, direkt, bundesweit auf Anfrage</li>
-          <li>Privat- und Geschäftsfahrten quer durch Essen und das Ruhrgebiet</li>
-        </ul>
-
-        <h2>Taxi in Essen – alle Stadtteile</h2>
-        <p>Wir holen Sie in allen Essener Stadtteilen ab: <a href="/taxi-essen-hbf">Essen Hauptbahnhof</a>, <a href="/taxi-essen-ruettenscheid">Rüttenscheid</a>, <a href="/taxi-essen-holsterhausen">Holsterhausen</a>, <a href="/taxi-essen-frohnhausen">Frohnhausen</a>, <a href="/taxi-essen-suedviertel">Südviertel</a>, Steele, Kettwig, Werden, Altendorf, Borbeck und mehr. Einfach anrufen: <a href="tel:+4920170706">0201 707060</a>.</p>
-        ${CONTACT_BLOCK}
+        <h1>Taxi in Essen buchen</h1>
+        <p>Sie werden zum Buchungsformular weitergeleitet. Falls die Weiterleitung nicht funktioniert, <a href="/#anfrage">klicken Sie hier</a> oder rufen Sie uns an: <a href="tel:+4920170706">0201 707060</a>.</p>
       </article>`,
   },
   {

@@ -7,7 +7,7 @@ export type RouteConfig = {
 
 export const routeConfigs: RouteConfig[] = [
   { path: "/",                                   indexable: true,  priority: 1.0, changefreq: "weekly"  },
-  { path: "/book",                               indexable: true,  priority: 0.9, changefreq: "monthly" },
+  { path: "/book",                               indexable: false, priority: 0.9, changefreq: "monthly" },
   { path: "/flughafentransfer-essen-duesseldorf",indexable: true,  priority: 0.9, changefreq: "monthly" },
   { path: "/krankenfahrten-essen",               indexable: true,  priority: 0.9, changefreq: "monthly" },
   { path: "/grossraumtaxi-essen",                indexable: true,  priority: 0.9, changefreq: "monthly" },
