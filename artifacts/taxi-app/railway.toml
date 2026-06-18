@@ -4,7 +4,5 @@ buildCommand = "pnpm install --no-frozen-lockfile && pnpm --filter @workspace/ta
 
 [deploy]
 startCommand = "node artifacts/taxi-app/railway-start.mjs"
-healthcheckPath = "/"
-healthcheckTimeout = 30
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
