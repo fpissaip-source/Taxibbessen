@@ -24,10 +24,33 @@ const migrationsFolder = path.resolve(
   "../../../lib/db/migrations",
 );
 
+const MIGRATION_MAX_ATTEMPTS = 30;
+const MIGRATION_RETRY_DELAY_MS = 2000;
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function runMigrations() {
+  for (let attempt = 1; attempt <= MIGRATION_MAX_ATTEMPTS; attempt++) {
+    try {
+      await migrate(db, { migrationsFolder });
+      logger.info({ attempt }, "Database migrations applied");
+      return;
+    } catch (err) {
+      if (attempt === MIGRATION_MAX_ATTEMPTS) {
+        throw err;
+      }
+      logger.warn(
+        { err, attempt, maxAttempts: MIGRATION_MAX_ATTEMPTS },
+        "Database migration attempt failed (DB may not be reachable yet), retrying…",
+      );
+      await sleep(MIGRATION_RETRY_DELAY_MS);
+    }
+  }
+}
+
 async function start() {
   try {
-    await migrate(db, { migrationsFolder });
-    logger.info("Database migrations applied");
+    await runMigrations();
   } catch (err) {
     logger.error({ err }, "Failed to apply database migrations");
     process.exit(1);
