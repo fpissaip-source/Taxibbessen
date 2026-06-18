@@ -852,6 +852,8 @@ export default function Home() {
           <img
             ref={sharpOverlayRef}
             src={`${import.meta.env.BASE_URL}hero-sharp.webp`}
+            srcSet={`${import.meta.env.BASE_URL}hero-sharp-540w.webp 540w, ${import.meta.env.BASE_URL}hero-sharp.webp 1080w`}
+            sizes="100vw"
             alt=""
             aria-hidden
             width="1080"
@@ -1189,6 +1191,8 @@ export default function Home() {
                 <div className="aspect-[4/5] rounded-[40px] overflow-hidden bg-muted">
                   <img
                     src={`${import.meta.env.BASE_URL}story-bg.webp`}
+                    srcSet={`${import.meta.env.BASE_URL}story-bg-400w.webp 400w, ${import.meta.env.BASE_URL}story-bg-800w.webp 800w, ${import.meta.env.BASE_URL}story-bg.webp 1x`}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     alt="Taxi B&B"
                     width="800"
                     height="1000"
