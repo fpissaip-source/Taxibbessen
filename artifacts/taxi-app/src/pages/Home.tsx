@@ -539,18 +539,7 @@ export default function Home() {
     window.addEventListener("scroll", onScroll, { passive: true });
     rafId = requestAnimationFrame(rafLoop);
 
-    // Fallback: load frames after the browser goes idle (covers non-scrolling
-    // visitors and bots that trigger JS but never fire scroll events)
-    const idleCb = typeof requestIdleCallback !== "undefined"
-      ? requestIdleCallback(loadFrames, { timeout: 4000 })
-      : setTimeout(loadFrames, 4000) as unknown as number;
-
     return () => {
-      if (typeof requestIdleCallback !== "undefined") {
-        cancelIdleCallback(idleCb);
-      } else {
-        clearTimeout(idleCb as unknown as ReturnType<typeof setTimeout>);
-      }
       window.removeEventListener("scroll", onScroll);
       if (rafId) cancelAnimationFrame(rafId);
     };
