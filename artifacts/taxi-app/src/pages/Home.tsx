@@ -817,7 +817,7 @@ export default function Home() {
     <Layout>
       <div>
         {/* ─── FIXED IMAGE-SEQUENCE BACKGROUND — spans Hero + Services ─── */}
-        <div ref={heroLayerRef} className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1, backgroundColor: "#0b0a08" }}>
+        <div ref={heroLayerRef} className="fixed top-0 left-0 w-full h-screen overflow-hidden pointer-events-none" style={{ height: "100lvh", zIndex: 1, backgroundColor: "#0b0a08" }}>
           {/* Mobile: scroll-scrubbed image-sequence */}
           <img
             ref={imgRef}
@@ -827,7 +827,7 @@ export default function Home() {
             width="1080"
             height="1920"
             className="md:hidden w-full h-full object-cover"
-            style={{ objectPosition: "center", opacity: 0.92 }}
+            style={{ objectPosition: "center", opacity: 0.92, transform: "translateZ(0)", backfaceVisibility: "hidden" }}
           />
           {/* LCP-Bild auf Mobile: fetchpriority="high" stellt sicher, dass der Browser
               es sofort mit höchster Priorität lädt — direkter Effekt auf LCP-Score */}
@@ -864,8 +864,8 @@ export default function Home() {
         {/* ─── STORY SCROLL-VIDEO BACKGROUND (übrig — kein Desktop-Ersatz) ─── */}
         <div
           ref={storyLayerRef}
-          className="fixed inset-0 overflow-hidden pointer-events-none"
-          style={{ zIndex: 1, opacity: 0, backgroundColor: "#100f12" }}
+          className="fixed top-0 left-0 w-full h-screen overflow-hidden pointer-events-none"
+          style={{ height: "100lvh", zIndex: 1, opacity: 0, backgroundColor: "#100f12" }}
         >
           <img
             ref={storyImgRef}
@@ -877,7 +877,7 @@ export default function Home() {
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover"
-            style={{ objectPosition: "center", opacity: 1 }}
+            style={{ objectPosition: "center", opacity: 1, transform: "translateZ(0)", backfaceVisibility: "hidden" }}
           />
           <div
             className="absolute inset-0"
@@ -888,8 +888,8 @@ export default function Home() {
         {/* ─── CTA/AIRPORT BACKGROUND ─── */}
         <div
           ref={ctaLayerRef}
-          className="fixed inset-0 overflow-hidden pointer-events-none"
-          style={{ zIndex: 1, opacity: 0, backgroundColor: "#100a0a" }}
+          className="fixed top-0 left-0 w-full h-screen overflow-hidden pointer-events-none"
+          style={{ height: "100lvh", zIndex: 1, opacity: 0, backgroundColor: "#100a0a" }}
         >
           {/* Mobile: scroll-scrubbed image-sequence */}
           <img
@@ -901,7 +901,7 @@ export default function Home() {
             height="1920"
             decoding="async"
             className="md:hidden w-full h-full object-cover"
-            style={{ objectPosition: "center", opacity: 1 }}
+            style={{ objectPosition: "center", opacity: 1, transform: "translateZ(0)", backfaceVisibility: "hidden" }}
           />
           <div
             className="md:hidden absolute inset-0"
