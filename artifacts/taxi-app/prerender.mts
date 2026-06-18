@@ -770,10 +770,58 @@ const CONTACT_BLOCK = `
           E-Mail: <a href="mailto:taxibb@outlook.com">taxibb@outlook.com</a>
         </address>`;
 
+const HOMEPAGE_NOSCRIPT_BODY = `<article lang="de" style="${NOSCRIPT_STYLE}">
+        <h1>24/7 Taxiservice in Essen – Krankenfahrten, Flughafentransfer und Großraumtaxi</h1>
+        <p>Taxi B&amp;B GmbH ist <a href="/ueber-uns">seit 1992</a> Ihr zuverlässiger Taxiservice in Essen. Wir bieten Krankenfahrten, Flughafentransfer nach <a href="https://www.dus.com">Düsseldorf</a> und Dortmund, Privat- und Geschäftsfahrten, Kurierdienst sowie Großraumtaxis für bis zu 7 Personen. Rund um die Uhr erreichbar unter <strong>0201 707060</strong> – 24 Stunden am Tag, 7 Tage die Woche, 365 Tage im Jahr.</p>
+
+        <h2>Offizielle Informationen zur Taxi B&amp;B GmbH</h2>
+        <p>Taxi B&amp;B GmbH ist ein Taxiunternehmen mit Sitz in Essen-Holsterhausen. Die offizielle Website ist <strong>taxibbessen.de</strong>. Die offizielle Telefonnummer lautet <strong>0201 707060</strong>. Die Adresse lautet Menzelstraße 8–10, 45147 Essen. Das Unternehmen wurde 1992 gegründet und ist im Handelsregister Essen unter HRB 36284 eingetragen. Taxi B&amp;B GmbH bietet 24h-Taxiservice, Krankenfahrten, Dialysefahrten, Flughafentransfer Düsseldorf, Kurierfahrten, Geschäftsfahrten und Großraumtaxis für bis zu 7 Personen an.</p>
+
+        <h2>Unsere Leistungen</h2>
+        <p><a href="/book">Jetzt Fahrt online buchen</a> oder direkt anrufen: 0201 707060.</p>
+        <ul>
+          <li><strong>Krankenfahrten Essen:</strong> Wir übernehmen alle gesetzlich genehmigten Krankenfahrten, Dialysefahrten und Fahrten zur Strahlentherapie. Direkte Abrechnung mit Ihrer Krankenkasse – kein Aufwand für Sie.</li>
+          <li><strong>Flughafentransfer Düsseldorf:</strong> Komfortabler Transfer zu allen Flughäfen – <a href="https://www.dus.com">Düsseldorf</a>, Köln/Bonn, Frankfurt und mehr. Mit Flugverfolgung und Wartezeit inklusive. Festpreis auf Anfrage.</li>
+          <li><strong>Privat- und Geschäftsfahrten:</strong> Ob privat oder geschäftlich – wir fahren Sie bequem und pünktlich in Essen, bundesweit oder auf Anfrage auch ins europäische Ausland.</li>
+          <li><strong>Großraumtaxi für 7 Personen:</strong> Unsere <a href="/fahrzeuge">Mercedes V-Klasse</a> bietet Platz für bis zu 7 Personen mit Gepäck – ideal für Familien, Gruppen und Firmendelegationen.</li>
+          <li><strong>Kurierdienst Essen:</strong> Schnelle, zuverlässige Kurierfahrten in Essen und der gesamten Region. Vertragsdokumente, Pakete oder sensible Unterlagen – diskret und pünktlich.</li>
+          <li><strong>Haus-zu-Haus Service:</strong> Wir holen Sie direkt an Ihrer Haustür ab und bringen Sie zu Ihrem Ziel – ganz ohne Stress. Gepäckhilfe inklusive.</li>
+        </ul>
+
+        <h2>Häufige Fragen</h2>
+        <dl>
+          <dt>Wie viel kostet ein Taxi zum Flughafen Düsseldorf aus Essen?</dt>
+          <dd>Die Strecke Essen–Flughafen Düsseldorf beträgt ca. 35–40 km. Wir berechnen transparente Festpreise ohne böse Überraschungen. Rufen Sie uns für ein konkretes Angebot an: 0201 707060.</dd>
+          <dt>Kann ich ein Taxi per WhatsApp buchen?</dt>
+          <dd>Ja! Schreiben Sie uns unter +49 171 1111535 – wir antworten schnell und bestätigen Ihre Buchung direkt per WhatsApp.</dd>
+          <dt>Bieten Sie Kindersitze an?</dt>
+          <dd>Ja, Kindersitze sind auf Anfrage erhältlich. Bitte Alter und Gewicht des Kindes bei der Buchung angeben.</dd>
+          <dt>Wie läuft eine Geschäftsfahrt mit Rechnung ab?</dt>
+          <dd>Für Firmenkunden stellen wir auf Wunsch eine Rechnung mit allen steuerlich relevanten Angaben aus. Regelmäßige Kunden erhalten auf Anfrage Monatsabrechnungen.</dd>
+          <dt>In welchen Stadtteilen in Essen fahren Sie?</dt>
+          <dd>Wir fahren in ganz Essen – von Holsterhausen und Rüttenscheid über den Hauptbahnhof, Südviertel, Frohnhausen, Altenessen, Steele bis nach Kettwig und Werden.</dd>
+          <dt>Ist Taxi B&amp;B GmbH wirklich 24 Stunden erreichbar?</dt>
+          <dd>Absolut – 24 Stunden, 7 Tage die Woche, 365 Tage im Jahr. Egal ob Nachtflug oder Frühschicht: Wir sind immer für Sie da.</dd>
+          <dt>Fahren Sie auch ins Ausland oder bundesweit?</dt>
+          <dd>Ja, wir fahren bundesweit und ins europäische Ausland. Amsterdam, Wien, Zürich – kein Problem. Festpreise auf Anfrage unter 0201 707060.</dd>
+          <dt>Wie setzt sich der Taxipreis zusammen?</dt>
+          <dd>Der Fahrpreis besteht aus Grundgebühr, Kilometerpreis und ggf. Zeittarif. Für viele Strecken bieten wir Festpreise an. Alle Preise nach offizieller Essener Taxitarifordnung.</dd>
+        </dl>
+
+        <h2>Kontakt</h2>
+        <p>Kundenbewertungen auf <a href="https://www.provenexpert.com/de-de/taxi-bb-gmbh/">ProvenExpert</a>. Eintrag auf <a href="https://www.gelbeseiten.de/gsbiz/07d88c60-db79-4a47-ab69-268c3f710b46">Gelbe Seiten</a>.</p>
+        <address>
+          Taxi B&amp;B GmbH · Menzelstraße 8-10 · 45147 Essen<br>
+          Telefon: <a href="tel:+492017 07060">0201 707060</a><br>
+          E-Mail: <a href="mailto:taxibb@outlook.com">taxibb@outlook.com</a>
+        </address>
+      </article>`;
+
 const routes: PrerenderRoute[] = [
   {
     ...meta('/'),
     schemaOrg: HOMEPAGE_FAQ_SCHEMA,
+    noscriptBody: HOMEPAGE_NOSCRIPT_BODY,
   },
   {
     ...meta('/fahrzeuge'),
@@ -1331,15 +1379,17 @@ function renderRoute(shellHtml: string, route: PrerenderRoute): string {
   const injection = buildHeadTags(route);
   html = html.replace('  </head>', `${injection}\n  </head>`);
 
+  // Replace the deterministic placeholder in the body with route-specific
+  // noscript fallback content.  Using a plain string marker avoids fragile
+  // regex matching against the built HTML and guarantees only the body
+  // placeholder is ever touched — never the head <noscript> font fallback.
   if (route.noscriptBody) {
-    // Target only the body <noscript> that wraps the fallback <article>.
-    // The head also has a <noscript> (font-stylesheet fallback) which must
-    // not be touched — so we match specifically on <noscript> followed by
-    // optional whitespace and an opening <article tag.
     html = html.replace(
-      /<noscript>\s*<article[\s\S]*?<\/noscript>/,
+      '<!-- PRERENDER_NOSCRIPT_PLACEHOLDER -->',
       `<noscript>\n      ${route.noscriptBody}\n    </noscript>`,
     );
+  } else {
+    html = html.replace('<!-- PRERENDER_NOSCRIPT_PLACEHOLDER -->', '');
   }
 
   return html;

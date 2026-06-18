@@ -431,19 +431,6 @@ export default function Home() {
   usePageMeta({
     title: _homeTitle,
     description: _homeDesc,
-    schemaOrg: {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "inLanguage": "de",
-      "mainEntity": FAQ_ITEMS.map((item) => ({
-        "@type": "Question",
-        "name": item.q,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": item.a,
-        },
-      })),
-    },
   });
 
   // Image-sequence scrubber — bulletproof on iOS Safari, no <video> black-frame issues
