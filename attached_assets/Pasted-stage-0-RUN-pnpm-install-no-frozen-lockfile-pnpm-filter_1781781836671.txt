@@ -1,0 +1,73 @@
+stage-0
+RUN pnpm install --no-frozen-lockfile && pnpm --filter @workspace/taxi-app run build
+18s
+Scope: all 9 workspace projects
+Progress: resolved 0, reused 0, downloaded 1, added 0
+artifacts/mockup-sandbox                 |  WARN  deprecated recharts@2.15.4
+Progress: resolved 89, reused 0, downloaded 89, added 0
+Progress: resolved 489, reused 0, downloaded 378, added 0
+ WARN  2 deprecated subdependencies found: @esbuild-kit/core-utils@3.3.2, @esbuild-kit/esm-loader@2.6.5
+Packages: +511
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 673, reused 0, downloaded 512, added 43
+Progress: resolved 673, reused 0, downloaded 512, added 511, done
+.../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.27.7/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.18.20/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.27.3/node_modules/esbuild postinstall$ node install.js
+.../sharp@0.34.5/node_modules/sharp install$ node install/check.js || npm run build
+.../esbuild@0.27.7/node_modules/esbuild postinstall: Done
+.../esbuild@0.25.12/node_modules/esbuild postinstall: Done
+.../esbuild@0.18.20/node_modules/esbuild postinstall: Done
+.../esbuild@0.27.3/node_modules/esbuild postinstall: Done
+.../sharp@0.34.5/node_modules/sharp install: Done
+. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+. preinstall: Done
+devDependencies:
++ prettier 3.8.3 (3.8.4 is available)
++ typescript 5.9.3 (6.0.3 is available)
+ WARN  Issues with peer dependencies found
+artifacts/api-server
+└─┬ esbuild-plugin-pino 2.3.3
+  └── ✕ unmet peer esbuild@">=0.25.0 <=0.25.8": found 0.27.3
+Done in 6s using pnpm v9.15.9
+> @workspace/taxi-app@0.0.0 build /app/artifacts/taxi-app
+> node scripts/convert-images.mjs && tsx scripts/validate-meta.mts && vite build --config vite.config.ts && tsx prerender.mts && tsx scripts/validate-schema.mts
+Converting public/icons/ …
+  ✓ 247.png → 247.webp
+  ✓ 247.png → 247.avif
+  ✓ 247.webp → 247.avif
+  ✓ bundesweit.png → bundesweit.webp
+  ✓ bundesweit.png → bundesweit.avif
+  ✓ bundesweit.webp → bundesweit.avif
+  ✓ flughafentransfer.webp → flughafentransfer.avif
+  ✓ geschaeftsfahrten.webp → geschaeftsfahrten.avif
+  ✓ grossraum7.png → grossraum7.webp
+  ✓ grossraum7.png → grossraum7.avif
+  ✓ grossraum7.webp → grossraum7.avif
+  ✓ hauszuhaus.webp → hauszuhaus.avif
+  ✓ krankenfahrten.webp → krankenfahrten.avif
+  ✓ kurierdienst.webp → kurierdienst.avif
+  ✓ kurierdokumente.webp → kurierdokumente.avif
+Converting public/images/ …
+Skipping /app/artifacts/taxi-app/public/images (not found)
+Done.
+✅  page-meta-manifest: alle 19 Routen abgedeckt.
+You are using Node.js 18.20.5. Vite requires Node.js version 20.19+ or 22.12+. Please upgrade your Node.js version.
+failed to load config from /app/artifacts/taxi-app/vite.config.ts
+error during build:
+Error: Cannot find native binding. npm has a bug related to optional dependencies (https://github.com/npm/cli/issues/4828). Please try `npm i` again after removing both package-lock.json and node_modules directory.
+    at Object.<anonymous> (/app/node_modules/.pnpm/@tailwindcss+oxide@4.3.0/node_modules/@tailwindcss/oxide/index.js:563:11)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:203:29)
+    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadConfigFromBundledFile (file:///app/node_modules/.pnpm/vite@7.3.3_@types+node@25.6.2_jiti@2.7.0_lightningcss@1.32.0_tsx@4.21.0_yaml@2.8.4/node_modules/vite/dist/node/chunks/config.js:35936:12)
+    at async bundleAndLoadConfigFile (file:///app/node_modules/.pnpm/vite@7.3.3_@types+node@25.6.2_jiti@2.7.0_lightningcss@1.32.0_tsx@4.21.0_yaml@2.8.4/node_modules/vite/dist/node/chunks/config.js:35824:17)
+/app/artifacts/taxi-app:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/taxi-app@0.0.0 build: `node scripts/convert-images.mjs && tsx scripts/validate-meta.mts && vite build --config vite.config.ts && tsx prerender.mts && tsx scripts/validate-schema.mts`
+Exit status 1
+Build Failed: build daemon returned an error < failed to solve: process "/bin/bash -ol pipefail -c pnpm install --no-frozen-lockfile && pnpm --filter @workspace/taxi-app run build" did not complete successfully: exit code: 1 >
