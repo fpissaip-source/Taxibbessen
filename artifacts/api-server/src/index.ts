@@ -24,11 +24,15 @@ const migrationsFolder = path.resolve(
   "../../../lib/db/migrations",
 );
 
-const MIGRATION_MAX_ATTEMPTS = 30;
-const MIGRATION_RETRY_DELAY_MS = 2000;
+const MIGRATION_MAX_ATTEMPTS = 60;
+const MIGRATION_RETRY_DELAY_MS = 3000;
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// Run migrations in the background so the HTTP server can start immediately and
+// pass the platform healthcheck. The database (e.g. Railway private networking)
+// may not be reachable in the first moments after startup, so we retry with a
+// delay. Failure here is logged but never crashes the process.
 async function runMigrations() {
   for (let attempt = 1; attempt <= MIGRATION_MAX_ATTEMPTS; attempt++) {
     try {
@@ -36,34 +40,26 @@ async function runMigrations() {
       logger.info({ attempt }, "Database migrations applied");
       return;
     } catch (err) {
-      if (attempt === MIGRATION_MAX_ATTEMPTS) {
-        throw err;
-      }
       logger.warn(
         { err, attempt, maxAttempts: MIGRATION_MAX_ATTEMPTS },
-        "Database migration attempt failed (DB may not be reachable yet), retrying…",
+        "Database migration attempt failed (DB not reachable yet), retrying…",
       );
       await sleep(MIGRATION_RETRY_DELAY_MS);
     }
   }
+  logger.error(
+    "Database migrations did not complete: the database is unreachable. " +
+      "Check that DATABASE_URL points to a reachable database.",
+  );
 }
 
-async function start() {
-  try {
-    await runMigrations();
-  } catch (err) {
-    logger.error({ err }, "Failed to apply database migrations");
+app.listen(port, (err) => {
+  if (err) {
+    logger.error({ err }, "Error listening on port");
     process.exit(1);
   }
 
-  app.listen(port, (err) => {
-    if (err) {
-      logger.error({ err }, "Error listening on port");
-      process.exit(1);
-    }
+  logger.info({ port }, "Server listening");
 
-    logger.info({ port }, "Server listening");
-  });
-}
-
-start();
+  void runMigrations();
+});
