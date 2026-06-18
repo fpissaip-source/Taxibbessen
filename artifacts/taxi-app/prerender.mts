@@ -1309,8 +1309,9 @@ function buildHeadTags(route: PrerenderRoute): string {
   if (route.schemaOrg) {
     const schemas = Array.isArray(route.schemaOrg) ? route.schemaOrg : [route.schemaOrg];
     for (const schema of schemas) {
+      const enriched = { ...schema, datePublished: '2024-01-01', dateModified: BUILD_DATE };
       tags.push(
-        `    <script type="application/ld+json">\n    ${JSON.stringify(schema, null, 2).replace(/\n/g, '\n    ')}\n    </script>`,
+        `    <script type="application/ld+json">\n    ${JSON.stringify(enriched, null, 2).replace(/\n/g, '\n    ')}\n    </script>`,
       );
     }
   }
@@ -1356,9 +1357,7 @@ function renderRoute(shellHtml: string, route: PrerenderRoute): string {
   // regex matching against the built HTML and guarantees only the body
   // placeholder is ever touched — never the head <noscript> font fallback.
   if (route.noscriptBody) {
-    const seoBody = route.noscriptBody
-      .replace(/<h1>/gi, '<h2>')
-      .replace(/<\/h1>/gi, '</h2>');
+    const seoBody = route.noscriptBody;
     html = html.replace(
       '<!-- PRERENDER_NOSCRIPT_PLACEHOLDER -->',
       `<section class="prerender-seo" style="background:#0c0b09;color:rgba(255,255,255,.78);font-family:system-ui,-apple-system,sans-serif;font-size:.95rem;line-height:1.75;padding:3rem 1.5rem 4rem;border-top:1px solid rgba(255,255,255,.1)" aria-label="Ergänzende Informationen"><style>.prerender-seo h2{font-size:1.15rem;font-weight:700;margin:1.5rem 0 .4rem;color:rgba(255,193,7,.9)}.prerender-seo a{color:rgba(255,193,7,.85);text-decoration:underline}.prerender-seo address{font-style:normal;margin:.5rem 0}.prerender-seo ul{padding-left:1.25rem;margin:.5rem 0}.prerender-seo li{margin:.25rem 0}.prerender-seo dl{margin:.5rem 0}.prerender-seo dt{font-weight:700;color:rgba(255,193,7,.8);margin-top:.75rem}.prerender-seo dd{margin:.1rem 0 .5rem 1rem}</style>\n      ${seoBody}\n    </section>`,
