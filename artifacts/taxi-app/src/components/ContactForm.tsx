@@ -7,7 +7,7 @@ const WaIcon = () => (
   </svg>
 );
 
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+const BASE = (import.meta.env.VITE_API_URL ?? import.meta.env.BASE_URL).replace(/\/$/, "");
 
 const inputCls = "w-full bg-white/8 border border-white/25 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-primary focus:bg-white/10 transition-colors text-sm";
 

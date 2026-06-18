@@ -3,7 +3,7 @@ import { sendContactNotification } from "../lib/email";
 
 const router = Router();
 
-router.post("/api/contact", async (req, res) => {
+router.post("/contact", async (req, res) => {
   const { firstName, lastName, email, phone, message } = req.body ?? {};
 
   if (!firstName?.trim() || !lastName?.trim() || !phone?.trim()) {
