@@ -1,3 +1,7 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { migrate } from "drizzle-orm/node-postgres/migrator";
+import { db } from "@workspace/db";
 import app from "./app";
 import { logger } from "./lib/logger";
 
@@ -15,11 +19,28 @@ if (Number.isNaN(port) || port <= 0) {
   throw new Error(`Invalid PORT value: "${rawPort}"`);
 }
 
-app.listen(port, (err) => {
-  if (err) {
-    logger.error({ err }, "Error listening on port");
+const migrationsFolder = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../../../lib/db/migrations",
+);
+
+async function start() {
+  try {
+    await migrate(db, { migrationsFolder });
+    logger.info("Database migrations applied");
+  } catch (err) {
+    logger.error({ err }, "Failed to apply database migrations");
     process.exit(1);
   }
 
-  logger.info({ port }, "Server listening");
-});
+  app.listen(port, (err) => {
+    if (err) {
+      logger.error({ err }, "Error listening on port");
+      process.exit(1);
+    }
+
+    logger.info({ port }, "Server listening");
+  });
+}
+
+start();
