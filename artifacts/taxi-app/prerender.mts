@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { indexableRoutes } from './src/routes.ts';
+import { routeConfigs, indexableRoutes } from './src/routes.ts';
 import { PAGE_META_MANIFEST } from './src/page-meta-manifest.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -1396,19 +1396,34 @@ function main(): void {
     }
   }
 
-  const sitemapPath = join(DIST, 'sitemap.xml');
-  if (existsSync(sitemapPath)) {
-    let sitemap = readFileSync(sitemapPath, 'utf-8');
-    // The vite-plugin-sitemap already adds a <lastmod> with the full ISO timestamp.
-    // Ensure every <url> that is missing a <lastmod> gets one (defensive fallback).
-    if (!sitemap.includes('<lastmod>')) {
-      sitemap = sitemap.replace(/<\/loc>/g, `</loc>\n    <lastmod>${BUILD_DATE}</lastmod>`);
-      writeFileSync(sitemapPath, sitemap, 'utf-8');
-      console.log(`✓ sitemap.xml → lastmod ${BUILD_DATE} (fallback)`);
-    } else {
-      console.log(`✓ sitemap.xml already contains lastmod (set by vite-plugin-sitemap)`);
-    }
-  }
+  // Generate sitemap.xml from the route manifest — single source of truth.
+  // All URLs use trailing-slash form to match the canonical and OG URLs emitted
+  // by prerender (buildHeadTags) and the client-side hook (use-page-meta.ts).
+  const sitemapEntries = indexableRoutes.map((r) => {
+    const loc = r.path === '/' ? `${CANONICAL_DOMAIN}/` : `${CANONICAL_DOMAIN}${r.path}/`;
+    return [
+      '  <url>',
+      `    <loc>${loc}</loc>`,
+      `    <lastmod>${BUILD_DATE}</lastmod>`,
+      `    <changefreq>${r.changefreq}</changefreq>`,
+      `    <priority>${r.priority.toFixed(1)}</priority>`,
+      '  </url>',
+    ].join('\n');
+  });
+  const sitemapXml = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...sitemapEntries,
+    '</urlset>',
+    '',
+  ].join('\n');
+  writeFileSync(join(DIST, 'sitemap.xml'), sitemapXml, 'utf-8');
+  console.log(`✓ sitemap.xml → ${indexableRoutes.length} URLs (trailing-slash, priority+changefreq from routes.ts)`);
+
+  // Write a manifest of all known SPA paths so the Express server can gate 404s.
+  const knownPaths = routeConfigs.map((r) => r.path);
+  writeFileSync(join(DIST, '_routes.json'), JSON.stringify(knownPaths), 'utf-8');
+  console.log(`✓ _routes.json → ${knownPaths.length} known SPA paths`);
 
   console.log(`\n✅  Prerendered ${routes.length} routes (${indexableRoutes.length} indexable from routes.ts).`);
 }
