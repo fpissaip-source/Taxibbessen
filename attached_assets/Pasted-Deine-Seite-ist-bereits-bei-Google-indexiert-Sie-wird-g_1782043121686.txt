@@ -1,0 +1,101 @@
+Deine Seite ist bereits bei Google indexiert. Sie wird gefunden, wenn man nach „taxibbessen.de“ oder „Taxi B&B GmbH Essen“ sucht. Das Problem ist also nicht, dass Google sie komplett ignoriert, sondern dass sie für „Taxi Essen“ noch nicht weit genug oben rankt.  
+
+Warum du bei „Taxi Essen“ nicht auftauchst
+
+1. „Taxi Essen“ ist praktisch auch ein Firmenname
+
+Der stärkste Konkurrent heißt tatsächlich Taxi Essen e.G., besitzt die Domain taxiessen.de, existiert laut eigener Darstellung seit 1919 und wird als eines der größten Taxiunternehmen der Stadt mit mehr als 220 Fahrzeugen beschrieben. Google interpretiert „Taxi Essen“ deshalb teilweise als gezielte Suche nach genau diesem Unternehmen – nicht nur als allgemeine Suche nach irgendeinem Taxi in Essen.  
+
+Diesen Konkurrenten beim Hauptbegriff sofort zu überholen, ist entsprechend schwierig.
+
+2. Deine Unterseiten scheinen noch nicht vollständig im Google-Index zu sein
+
+Deine Website besitzt bereits gute Unterseiten wie:
+
+* /krankenfahrten-essen/
+* /grossraumtaxi-essen/
+* /flughafentransfer-essen-duesseldorf/
+* /dialysefahrten-essen/
+* /kurierdienst-essen/
+
+Die Seiten sind erreichbar und inhaltlich grundsätzlich auf passende Suchbegriffe ausgerichtet. Bei meinen gezielten Google-Suchen wurden diese Unterseiten allerdings noch nicht als eigenständige Suchergebnisse ausgespielt.  
+
+Das deutet darauf hin, dass Google die neue Seitenstruktur noch nicht vollständig verarbeitet hat. In der Google Search Console solltest du deshalb die Sitemap einreichen und jede wichtige Seite über „URL-Prüfung → Indexierung beantragen“ übermitteln. Google bestätigt, dass die URL-Prüfung den Indexstatus anzeigt und eine erneute Crawling-Anfrage ermöglicht.  
+
+3. Deine Firmendaten sind im Internet nicht einheitlich
+
+Auf der neuen Website steht:
+
+0201 707060.  
+
+In mehreren Branchenverzeichnissen sowie auf der alten Website taxi-beige-essen.de erscheint dagegen:
+
+0201 707068.  
+
+Außerdem taucht dieselbe Firma beziehungsweise dieselbe Anschrift sowohl unter taxibbessen.de als auch unter taxi-beige-essen.de auf. Das kann Google die eindeutige Zuordnung erschweren.
+
+Du solltest überall dieselben Hauptdaten verwenden:
+
+Taxi B&B GmbH
+Menzelstraße 8–10
+45147 Essen
+0201 707060
+https://www.taxibbessen.de/
+
+Falls 707068 ebenfalls aktiv ist, sollte trotzdem überall eine einheitliche Hauptnummer stehen und die andere nur als zusätzliche Telefonnummer hinterlegt werden. Wenn die alte Taxi-Beige-Website nicht mehr gebraucht wird, sollte sie per 301-Weiterleitung auf die neue Website verweisen.
+
+4. Noch zu wenig lokale Bekanntheit und Bewertungen
+
+Google nennt für lokale Suchergebnisse hauptsächlich drei Faktoren:
+
+Relevanz, Entfernung und Bekanntheit. Zur Bekanntheit zählen unter anderem Links von anderen Websites sowie Anzahl und Qualität der Rezensionen.  
+
+Dein ProvenExpert-Profil wird derzeit als nicht bewertet dargestellt. Ein anderes Branchenprofil zeigt nur eine geringe Zahl an Google-Bewertungen. Das ist im Vergleich zu etablierten Konkurrenten ein schwaches Vertrauenssignal.  
+
+Besonders wichtig sind deshalb echte Bewertungen im Google-Unternehmensprofil – nicht nur bei ProvenExpert.
+
+Das solltest du jetzt in dieser Reihenfolge machen
+
+1. Google Search Console einrichten
+    * Domain taxibbessen.de bestätigen.
+    * Sitemap einreichen.
+    * Startseite und alle Leistungsseiten einzeln prüfen.
+    * Für nicht indexierte Seiten die Indexierung beantragen.
+2. Google-Unternehmensprofil vollständig optimieren
+    * Hauptkategorie: „Taxiunternehmen“.
+    * Website, Hauptnummer, 24-Stunden-Öffnungszeiten und Adresse korrekt eintragen.
+    * Krankenfahrten, Flughafentransfer, Großraumtaxi und Kurierdienst als Leistungen ergänzen.
+    * Buchungslink direkt auf das Formular setzen.
+    * Echte Bilder von Fahrzeugen, Fahrern und Betrieb hochladen.
+3. Alle alten Firmeneinträge vereinheitlichen
+    * Gelbe Seiten
+    * Das Telefonbuch
+    * taxi.de
+    * ProvenExpert
+    * Bing Places und Apple Business Connect
+    * Alte Taxi-Beige-Seite
+4. Mehr echte Google-Bewertungen sammeln
+    * Nach jeder gelungenen Fahrt einen direkten Bewertungslink senden.
+    * Nicht zehn Bewertungen an einem Tag kaufen oder künstlich erzeugen.
+    * Langsam und regelmäßig echte Bewertungen sammeln.
+5. Mehr reale Vertrauenssignale auf die Website
+    * Eigene Fotos statt ausschließlich allgemeiner Werbegrafiken.
+    * Tatsächliche Fahrzeugflotte.
+    * Team und Firmengeschichte.
+    * Konkrete Preisbeispiele.
+    * Bediengebiete und häufig angefahrene Kliniken, Hotels und Flughäfen.
+    * Nachweise oder Erläuterungen zur Krankenfahrten-Abrechnung.
+6. Lokale Verlinkungen aufbauen
+    * Einträge bei lokalen Branchenportalen.
+    * Kooperationen mit Hotels, Arztpraxen, Pflegediensten und Veranstaltungsorten.
+    * Partner sollen auf taxibbessen.de verlinken.
+
+Meine ehrliche Einschätzung
+
+Die Website selbst ist bereits deutlich besser für SEO vorbereitet als eine normale kleine Taxi-Website: gute Seitentitel, klare Überschriften, eigene Leistungsseiten und viel lokaler Text.  
+
+Das Hauptproblem ist momentan nicht der Text, sondern:
+
+neue beziehungsweise noch nicht vollständig indexierte Seiten + uneinheitliche Firmendaten + wenig Bewertungen/Autorität + ein extrem starker Konkurrent, der exakt „Taxi Essen“ heißt.
+
+Für Begriffe wie „Krankenfahrten Essen“, „Großraumtaxi Essen“ oder „Flughafentransfer Essen Düsseldorf“ hast du zunächst realistisch bessere Chancen als beim alleinigen Hauptbegriff „Taxi Essen“. Sobald diese Seiten Rankings, Klicks, Bewertungen und Links sammeln, kann auch die Startseite beim Hauptbegriff steigen.
