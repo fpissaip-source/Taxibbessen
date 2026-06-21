@@ -68,6 +68,9 @@
     max-width: 100%;
     background-color: hsl(220, 20%, 4%);
   }
+  html {
+    scrollbar-gutter: stable;
+  }
   body {
     @apply bg-background text-foreground font-sans antialiased;
     -webkit-font-smoothing: antialiased;
