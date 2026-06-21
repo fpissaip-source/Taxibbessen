@@ -139,7 +139,7 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="min-h-screen flex flex-col bg-background" dir={isRtl ? "rtl" : "ltr"}>
       {/* Fixed Nav */}
       <header
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? "py-3" : "py-5"}`}
+        className="fixed top-0 left-0 right-0 z-[100] py-4"
       >
         {/* Blur layer with gradient mask – fades in when hero logo leaves viewport */}
         <div
