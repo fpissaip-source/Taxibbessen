@@ -25,6 +25,7 @@ export const PAGE_META_MANIFEST: PageMetaEntry[] = [
     path: '/book',
     title: 'Taxi buchen – Taxi B&B GmbH Essen | Online Anfrage',
     description: 'Taxi in Essen einfach anfragen. Wir melden uns sofort. Taxi B&B GmbH – 0201 707060.',
+    noindex: true,
   },
   {
     path: '/confirmation',
