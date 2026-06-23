@@ -21,12 +21,12 @@ if (isIOS) {
       min-height: 72px !important;
       padding: 0 !important;
       margin: 0 !important;
+      overflow: visible !important;
       transform: translate3d(0, var(--ios-header-shift, 0px), 0) !important;
       -webkit-transform: translate3d(0, var(--ios-header-shift, 0px), 0) !important;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       will-change: transform;
-      contain: layout paint style;
       isolation: isolate;
     }
 
