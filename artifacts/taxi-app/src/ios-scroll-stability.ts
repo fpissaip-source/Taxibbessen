@@ -16,8 +16,10 @@ if (isIOS) {
     html.${ROOT_CLASS} header.${HEADER_CLASS} {
       position: fixed !important;
       top: 0 !important;
-      transform: translate3d(0, 0, 0) !important;
-      -webkit-transform: translate3d(0, 0, 0) !important;
+      left: 0 !important;
+      right: 0 !important;
+      transform: translate3d(0, var(--ios-header-shift, 0px), 0) !important;
+      -webkit-transform: translate3d(0, var(--ios-header-shift, 0px), 0) !important;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       will-change: transform;
@@ -44,25 +46,49 @@ if (isIOS) {
   `;
   document.head.appendChild(style);
 
-  let hasScrolled = window.scrollY > 0;
   let posterLocked = false;
   let scheduled = false;
+
+  const clamp = (value: number, min: number, max: number) =>
+    Math.min(Math.max(value, min), max);
 
   const findImage = (fragment: string) =>
     Array.from(document.images).find(
       (image) => image.currentSrc.includes(fragment) || image.src.includes(fragment),
     );
 
+  // Pin the header to the top of the *visible* area.
+  //
+  // `visualViewport.offsetTop` reflects how far the visible viewport is offset
+  // from the layout viewport (e.g. while Safari's address/tool bar animates, or
+  // during rubber-band overscroll / when the keyboard appears). We translate the
+  // header by exactly that amount so it tracks the visible top instead of jumping.
+  //
+  // IMPORTANT: the shift is read DIRECTLY from offsetTop on every frame and never
+  // accumulated. The previous implementation measured the header's own (already
+  // shifted) position and added that "drift" back into the correction, which fed
+  // into its own measurement and ran away to the clamp limit — dropping the header
+  // into the middle of the screen. Reading offsetTop directly is self-correcting
+  // and bounded, so it can never drift.
+  const applyHeaderShift = (header: HTMLElement) => {
+    const offsetTop = window.visualViewport?.offsetTop ?? 0;
+    const shift = clamp(offsetTop, 0, 120);
+    header.style.setProperty("--ios-header-shift", `${shift}px`);
+  };
+
   const refresh = () => {
     scheduled = false;
 
     const header = document.querySelector<HTMLElement>("header");
-    header?.classList.add(HEADER_CLASS);
+    if (header) {
+      header.classList.add(HEADER_CLASS);
+      applyHeaderShift(header);
+    }
 
     const heroLogo = document.getElementById("hero-logo");
     heroLogo?.closest("section")?.classList.add(HERO_SECTION_CLASS);
 
-    if (!hasScrolled || posterLocked) return;
+    if (posterLocked) return;
 
     const poster = findImage("hero-sharp");
     const sequence = findImage("hero-frames/");
@@ -88,17 +114,25 @@ if (isIOS) {
     requestAnimationFrame(refresh);
   };
 
+  // Keep the header glued to the visible top in real time during scroll / bar
+  // animation. This runs every frame the viewport moves but only writes a CSS
+  // variable, so it stays cheap.
+  const pinHeader = () => {
+    const header = document.querySelector<HTMLElement>("header");
+    if (header) applyHeaderShift(header);
+  };
+
   window.addEventListener(
     "scroll",
     () => {
-      hasScrolled = true;
+      pinHeader();
       scheduleRefresh();
     },
     { passive: true },
   );
   window.addEventListener("resize", scheduleRefresh, { passive: true });
-  window.visualViewport?.addEventListener("resize", scheduleRefresh, { passive: true });
-  window.visualViewport?.addEventListener("scroll", scheduleRefresh, { passive: true });
+  window.visualViewport?.addEventListener("resize", () => { pinHeader(); scheduleRefresh(); }, { passive: true });
+  window.visualViewport?.addEventListener("scroll", pinHeader, { passive: true });
 
   const observer = new MutationObserver(scheduleRefresh);
   observer.observe(document.documentElement, {
