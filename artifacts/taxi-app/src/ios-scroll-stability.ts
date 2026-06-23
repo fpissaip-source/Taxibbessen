@@ -15,21 +15,63 @@ if (isIOS) {
   style.textContent = `
     html.${ROOT_CLASS} header.${HEADER_CLASS} {
       position: fixed !important;
-      top: 0 !important;
-      transform: translate3d(0, 0, 0) !important;
-      -webkit-transform: translate3d(0, 0, 0) !important;
+      inset: 0 0 auto 0 !important;
+      width: 100% !important;
+      height: 72px !important;
+      min-height: 72px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      transform: translate3d(0, var(--ios-header-shift, 0px), 0) !important;
+      -webkit-transform: translate3d(0, var(--ios-header-shift, 0px), 0) !important;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       will-change: transform;
+      contain: layout paint style;
       isolation: isolate;
     }
 
+    html.${ROOT_CLASS} header.${HEADER_CLASS} > div.relative {
+      position: absolute !important;
+      top: 16px !important;
+      right: 0 !important;
+      left: 0 !important;
+      height: 40px !important;
+      min-height: 40px !important;
+      transform: none !important;
+      -webkit-transform: none !important;
+    }
+
     html.${ROOT_CLASS} header.${HEADER_CLASS} > div.absolute {
+      top: 0 !important;
+      bottom: 0 !important;
+      opacity: 0 !important;
       -webkit-backdrop-filter: none !important;
       backdrop-filter: none !important;
-      background-color: rgba(0, 0, 0, 0.56) !important;
-      transform: translateZ(0);
-      -webkit-transform: translateZ(0);
+      background: transparent !important;
+      mask-image: none !important;
+      -webkit-mask-image: none !important;
+      transform: none !important;
+      -webkit-transform: none !important;
+    }
+
+    @media (max-width: 767px) {
+      html.${ROOT_CLASS} header.${HEADER_CLASS} .animate-call-glow,
+      html.${ROOT_CLASS} header.${HEADER_CLASS} .animate-call-glow-delay {
+        display: none !important;
+        animation: none !important;
+      }
+
+      html.${ROOT_CLASS} header.${HEADER_CLASS} a[href^="tel:"] .w-10.h-10 {
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        transition: none !important;
+      }
+
+      html.${ROOT_CLASS} header.${HEADER_CLASS} a[href^="tel:"] svg {
+        color: hsl(45 100% 51%) !important;
+        transition: none !important;
+      }
     }
 
     html.${ROOT_CLASS} .${HERO_SECTION_CLASS} {
@@ -44,55 +86,116 @@ if (isIOS) {
   `;
   document.head.appendChild(style);
 
-  let hasScrolled = window.scrollY > 0;
+  let baselineViewportOffset: number | null = null;
+  let baselineControlsTop: number | null = null;
+  let manualCorrection = 0;
   let posterLocked = false;
+  let posterMonitorId = 0;
   let scheduled = false;
+
+  const clamp = (value: number, min: number, max: number) =>
+    Math.min(Math.max(value, min), max);
 
   const findImage = (fragment: string) =>
     Array.from(document.images).find(
       (image) => image.currentSrc.includes(fragment) || image.src.includes(fragment),
     );
 
-  const refresh = () => {
-    scheduled = false;
+  const getHeader = () => document.querySelector<HTMLElement>("header");
 
-    const header = document.querySelector<HTMLElement>("header");
-    header?.classList.add(HEADER_CLASS);
+  const getHeaderControls = (header: HTMLElement) =>
+    header.querySelector<HTMLElement>(":scope > div.relative");
 
+  const applyHeaderShift = (header: HTMLElement) => {
+    const viewportOffset = window.visualViewport?.offsetTop ?? 0;
+    if (baselineViewportOffset === null) baselineViewportOffset = viewportOffset;
+
+    const viewportCorrection = viewportOffset - baselineViewportOffset;
+    const totalShift = clamp(viewportCorrection + manualCorrection, -80, 80);
+    header.style.setProperty("--ios-header-shift", `${totalShift}px`);
+  };
+
+  const stabilizeHeader = () => {
+    const header = getHeader();
+    if (!header) return;
+
+    header.classList.add(HEADER_CLASS);
+    applyHeaderShift(header);
+
+    const controls = getHeaderControls(header);
+    if (!controls) return;
+
+    requestAnimationFrame(() => {
+      const currentTop = controls.getBoundingClientRect().top;
+      if (baselineControlsTop === null) {
+        baselineControlsTop = currentTop;
+        return;
+      }
+
+      const drift = baselineControlsTop - currentTop;
+      if (Math.abs(drift) < 0.35) return;
+
+      manualCorrection = clamp(manualCorrection + drift, -80, 80);
+      applyHeaderShift(header);
+    });
+  };
+
+  const stabilizeHeroHeight = () => {
     const heroLogo = document.getElementById("hero-logo");
     heroLogo?.closest("section")?.classList.add(HERO_SECTION_CLASS);
+  };
 
-    if (!hasScrolled || posterLocked) return;
+  const monitorHeroPoster = () => {
+    if (posterLocked) return;
 
     const poster = findImage("hero-sharp");
     const sequence = findImage("hero-frames/");
-    if (!poster || !sequence || !sequence.complete || sequence.naturalWidth === 0) return;
 
-    const posterOpacity = Number.parseFloat(poster.style.opacity || "1");
-    if (!Number.isFinite(posterOpacity) || posterOpacity > 0.05) return;
-
-    sequence.decoding = "sync";
-    void sequence.decode().catch(() => undefined).finally(() => {
-      requestAnimationFrame(() => {
+    if (
+      poster &&
+      sequence &&
+      sequence.complete &&
+      sequence.naturalWidth > 0 &&
+      Number.parseFloat(poster.style.opacity || "1") <= 0.05
+    ) {
+      sequence.decoding = "sync";
+      void sequence.decode().catch(() => undefined).finally(() => {
         requestAnimationFrame(() => {
-          poster.classList.add(POSTER_CLASS);
-          posterLocked = true;
+          requestAnimationFrame(() => {
+            poster.classList.add(POSTER_CLASS);
+            posterLocked = true;
+          });
         });
       });
-    });
+      return;
+    }
+
+    posterMonitorId = requestAnimationFrame(monitorHeroPoster);
   };
 
   const scheduleRefresh = () => {
     if (scheduled) return;
     scheduled = true;
-    requestAnimationFrame(refresh);
+    requestAnimationFrame(() => {
+      scheduled = false;
+      stabilizeHeader();
+      stabilizeHeroHeight();
+    });
+  };
+
+  const startPosterMonitor = () => {
+    if (posterLocked || posterMonitorId) return;
+    posterMonitorId = requestAnimationFrame(() => {
+      posterMonitorId = 0;
+      monitorHeroPoster();
+    });
   };
 
   window.addEventListener(
     "scroll",
     () => {
-      hasScrolled = true;
       scheduleRefresh();
+      startPosterMonitor();
     },
     { passive: true },
   );
@@ -101,12 +204,7 @@ if (isIOS) {
   window.visualViewport?.addEventListener("scroll", scheduleRefresh, { passive: true });
 
   const observer = new MutationObserver(scheduleRefresh);
-  observer.observe(document.documentElement, {
-    childList: true,
-    subtree: true,
-    attributes: true,
-    attributeFilter: ["src", "style"],
-  });
+  observer.observe(document.body, { childList: true, subtree: true });
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", scheduleRefresh, { once: true });
