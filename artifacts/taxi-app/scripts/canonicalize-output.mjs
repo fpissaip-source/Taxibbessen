@@ -31,15 +31,32 @@ const files = [
   "llms.txt",
 ];
 
+function removePrerenderSeo(content) {
+  const start = content.indexOf('<section class="prerender-seo"');
+  if (start < 0) return content;
+
+  const closingTag = "</section>";
+  const end = content.indexOf(closingTag, start);
+  if (end < 0) return content;
+
+  return content.slice(0, start) + content.slice(end + closingTag.length);
+}
+
 for (const relativePath of files) {
   const path = join(root, relativePath);
   if (!existsSync(path)) continue;
 
   let content = readFileSync(path, "utf8");
   content = content.replaceAll(from, to);
+
+  if (relativePath.endsWith("index.html")) {
+    content = removePrerenderSeo(content);
+  }
+
   if (relativePath === "sitemap.xml") {
     content = content.replace(/^\s*<lastmod>[^<]*<\/lastmod>\s*\r?\n/gm, "");
   }
+
   writeFileSync(path, content, "utf8");
 }
 
