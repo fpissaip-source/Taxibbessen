@@ -26,12 +26,31 @@ const routes = [
 ];
 
 function sanitize(value) {
-  if (Array.isArray(value)) return value.map(sanitize);
+  if (Array.isArray(value)) {
+    return value
+      .filter((item) => {
+        if (!item || typeof item !== "object") return true;
+        return !(
+          item["@type"] === "Question" &&
+          item.name === "Muss ich die Fahrt vorab bezahlen?"
+        );
+      })
+      .map(sanitize);
+  }
+
   if (!value || typeof value !== "object") return value;
 
   return Object.fromEntries(
     Object.entries(value)
-      .filter(([key]) => !["aggregateRating", "review", "geo"].includes(key))
+      .filter(
+        ([key]) =>
+          ![
+            "aggregateRating",
+            "review",
+            "geo",
+            "paymentAccepted",
+          ].includes(key),
+      )
       .map(([key, child]) => [key, sanitize(child)]),
   );
 }
