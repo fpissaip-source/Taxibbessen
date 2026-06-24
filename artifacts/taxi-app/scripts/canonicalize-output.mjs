@@ -63,4 +63,5 @@ for (const relativePath of files) {
 }
 
 await import("./sanitize-schema-output.mjs");
+await import("./validate-seo-output.mjs");
 console.log(`Canonical URLs and no-script fallbacks normalized to ${to}`);
