@@ -1,63 +1,50 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 import { getPageMeta } from "@/page-meta-manifest";
+import { createServiceSchema } from "@/seo/business";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TaxiService",
-      "name": "Taxi Essen Hauptbahnhof",
-      "url": "https://taxibbessen.de/taxi-essen-hbf",
-      "provider": { "@id": "https://taxibbessen.de/#organization" },
-      "areaServed": ["Essen", "Essen Hauptbahnhof", "Essen-Stadtmitte"],
-      "description": "Taxi am Essen Hauptbahnhof – schnell, zuverlässig, 24/7. Vorbestellung möglich. Taxi B&B GmbH – 0201 707060.",
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Taxi Essen Hauptbahnhof", "item": "https://taxibbessen.de/taxi-essen-hbf" },
-      ],
-    },
-  ],
-};
+const schema = createServiceSchema({
+  name: "Taxi am Essen Hauptbahnhof",
+  path: "/taxi-essen-hbf",
+  description: "Vorbestellbare Taxifahrten vom und zum Essen Hauptbahnhof. Abholpunkt, Zugankunft, Gepäck und Ziel werden bei der Anfrage abgestimmt.",
+  areaServed: ["Essen", "Essen Hauptbahnhof", "Essen-Stadtmitte"],
+});
 
 const sections = [
   {
-    h2: "Taxi am Essen Hauptbahnhof – immer verfügbar",
+    h2: "Taxi am Essen Hauptbahnhof vorbestellen",
     body: (
       <>
-        <p>Der Essen Hauptbahnhof ist einer der wichtigsten Verkehrsknotenpunkte im Ruhrgebiet – hier kommen täglich tausende Reisende an. Taxi B&B GmbH ist <strong>24 Stunden am Tag</strong> erreichbar und bringt Sie vom Essen HBF schnell und bequem zu Ihrem Ziel.</p>
-        <p>Ob Hotel, Geschäftstermin, Messe oder Privatadresse – wir kennen Essen und bringen Sie ohne Umwege dorthin. Vorbestellung empfohlen, damit Ihr Taxi bei der Ankunft schon wartet.</p>
+        <p>Taxi B&B GmbH ist rund um die Uhr erreichbar und kann Fahrten vom oder zum Essen Hauptbahnhof vorplanen. Eine Vorbestellung ist besonders bei festen Anschlusszeiten oder größerem Gepäck sinnvoll.</p>
+        <p>Geben Sie bei der Anfrage Zugankunft, erreichbare Telefonnummer, Zieladresse und den gewünschten Treffpunkt an. Die Abholung wird anschließend bestätigt.</p>
       </>
     ),
   },
   {
-    h2: "Vom Essen HBF zu allen Zielen",
+    h2: "Ziele ab Essen Hauptbahnhof",
     body: (
       <ul className="list-disc list-inside space-y-2">
-        <li><strong>Hotels in Essen</strong> – z. B. Mövenpick, Sheraton, ATLANTIC</li>
-        <li><strong>Messe Essen</strong> – direkte Fahrt zur Messe und zurück</li>
-        <li><strong>Flughafen Düsseldorf</strong> – komfortabler Weiterflug-Transfer</li>
-        <li><strong>Stadtteile Essen</strong> – Rüttenscheid, Holsterhausen, Frohnhausen und mehr</li>
-        <li><strong>Kliniken & Arztpraxen</strong> – Universitätsklinikum, St. Josef-Krankenhaus</li>
+        <li><strong>Hotels und Geschäftstermine</strong> – in der Innenstadt und den Stadtteilen</li>
+        <li><strong>Messe Essen</strong> – direkte Weiterfahrt nach Rüttenscheid</li>
+        <li><strong>Flughafen Düsseldorf</strong> – als vorbestellter Anschluss-Transfer</li>
+        <li><strong>Essener Stadtteile</strong> – unter anderem Rüttenscheid, Holsterhausen und Frohnhausen</li>
+        <li><strong>Kliniken und Arztpraxen</strong> – nach vollständiger Zielangabe</li>
       </ul>
     ),
   },
   {
-    h2: "Vorbestellung – Ihr Taxi wartet auf Sie",
+    h2: "Abholpunkt und Zugankunft abstimmen",
     body: (
       <>
-        <p>Reisen Sie mit dem ICE oder RE nach Essen? <strong>Bestellen Sie Ihr Taxi einfach im Voraus</strong> – rufen Sie uns an oder buchen Sie online. Wir stehen pünktlich bei Ihrer Ankunft bereit.</p>
-        <p>Mit der Angabe Ihrer Zugnummer können wir Verspätungen einkalkulieren. Kein Warten, kein Suchen – Ihr Fahrer erwartet Sie direkt am Ausgang.</p>
+        <p>Bei einer Vorbestellung können Zugnummer und geplante Ankunft angegeben werden. Änderungen oder Verspätungen sollten zusätzlich telefonisch mitgeteilt werden.</p>
+        <p>Der konkrete Treffpunkt am Hauptbahnhof wird vor der Fahrt vereinbart. So wissen beide Seiten, an welchem Ausgang oder Haltepunkt die Abholung stattfindet.</p>
       </>
     ),
   },
   {
-    h2: "Auch mit Gepäck kein Problem",
+    h2: "Fahrten mit Gepäck oder als Gruppe",
     body: (
       <>
-        <p>Großer Koffer, Sporttasche oder Kinderwagen? Unser Fahrer hilft Ihnen gerne beim Verladen. Für Gruppen oder besonders viel Gepäck steht unsere <a href="/grossraumtaxi-essen" className="text-primary hover:underline">Mercedes V-Klasse</a> mit bis zu 7 Sitzplätzen bereit.</p>
+        <p>Bitte geben Sie größere Koffer, Kinderwagen oder Sportausrüstung bei der Anfrage an. Für Gruppen kann eine <a href="/grossraumtaxi-essen" className="text-primary hover:underline">Mercedes V-Klasse für bis zu 7 Fahrgäste</a> angefragt werden.</p>
       </>
     ),
   },
@@ -66,15 +53,15 @@ const sections = [
 const faq = [
   {
     q: "Wie bestelle ich ein Taxi am Essen Hauptbahnhof?",
-    a: "Rufen Sie uns an: 0201 707060 – wir sind 24/7 erreichbar. Oder buchen Sie online und geben Sie 'Essen Hauptbahnhof' als Abholort an.",
+    a: "Rufen Sie unter 0201 707060 an oder senden Sie eine Online-Anfrage. Geben Sie Zugankunft, Treffpunkt, Ziel, Personenzahl und Gepäck an.",
   },
   {
-    q: "Wie lange dauert die Fahrt vom Essen HBF nach Düsseldorf Flughafen?",
-    a: "Ca. 35–45 Minuten, je nach Verkehr. Wir berechnen Festpreise ohne Taktung.",
+    q: "Wie lange dauert die Fahrt vom Essen HBF zum Flughafen Düsseldorf?",
+    a: "Die Fahrzeit hängt von Tageszeit, Verkehr und Abholpunkt ab. Häufig liegt sie ungefähr zwischen 35 und 50 Minuten; eine verbindliche Fahrzeit kann nicht garantiert werden.",
   },
   {
-    q: "Fahren Sie auch nachts vom Hauptbahnhof?",
-    a: "Ja, wir sind 24 Stunden am Tag, 7 Tage die Woche erreichbar – auch für Spät- und Nachtzüge.",
+    q: "Kann ich auch nachts eine Fahrt vom Hauptbahnhof anfragen?",
+    a: "Taxi B&B ist rund um die Uhr erreichbar. Eine Vorbestellung erhöht die Planungssicherheit, besonders bei späten oder frühen Zugverbindungen.",
   },
 ];
 
@@ -86,8 +73,8 @@ export default function TaxiEssenHbf() {
       title={_title}
       description={_desc}
       h1="Taxi Essen Hauptbahnhof"
-      badge="24/7 · Vorbestellung möglich"
-      intro="Ihr Taxi am Essen Hauptbahnhof – pünktlich, wenn Ihr Zug ankommt. Wir bringen Sie direkt zu Ihrem Ziel in Essen, zum Flughafen oder in die gesamte Region."
+      badge="24/7 erreichbar · Vorbestellung möglich"
+      intro="Taxifahrten vom und zum Essen Hauptbahnhof. Treffpunkt, Zugankunft, Ziel und Gepäck stimmen wir bei der Anfrage mit Ihnen ab."
       sections={sections}
       faq={faq}
       stadtteileLinks={[
