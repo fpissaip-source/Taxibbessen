@@ -1,48 +1,48 @@
-# Taxi B&B GmbH
+# Taxi B&B GmbH Essen
 
-Taxi B&B GmbH is a licensed taxi and passenger transport company based in Essen, Germany (founded 1992). The company offers local and long-distance taxi rides, airport transfers, medical transport (Krankenfahrten), dialysis transport, courier services, and large-capacity rides (up to 7 passengers) for private and business customers in the Ruhr region.
+Taxi B&B GmbH ist ein Taxiunternehmen mit Sitz in Essen. Das Unternehmen bietet klassische Taxifahrten, Flughafentransfers, Krankenfahrten, Dialysefahrten, Großraumfahrten und Kurierfahrten an.
 
-## Canonical Domain
+## Verbindliche Unternehmensdaten
 
-https://taxibbessen.de
+- Name: Taxi B&B GmbH
+- Website: https://www.taxibbessen.de/
+- Telefon: 0201 707060
+- E-Mail: taxibb@outlook.com
+- Adresse: Menzelstraße 8-10, 45147 Essen, Deutschland
+- Handelsregister: HRB 36284, Amtsgericht Essen
+- Gründungsjahr: 1992
 
-## Language & Market
+## Sprache und Markt
 
-- Primary language: German (de-DE)
-- Market: Essen, North Rhine-Westphalia, Germany
-- Service area: Essen and surrounding Ruhr region; also nationwide and European long-distance
+- Hauptsprache: Deutsch (de-DE)
+- Hauptmarkt: Essen und umliegendes Ruhrgebiet
 
-## Key Pages
+## Hauptseiten
 
-- Homepage & booking: https://taxibbessen.de/
-- Fleet / vehicles: https://taxibbessen.de/fahrzeuge
-- About us: https://taxibbessen.de/ueber-uns
-- Book a ride: https://taxibbessen.de/book
+- Startseite: https://www.taxibbessen.de/
+- Fahrzeuge: https://www.taxibbessen.de/fahrzeuge/
+- Über uns: https://www.taxibbessen.de/ueber-uns/
 
-## Service Pages
+## Leistungen
 
-- Airport transfer Essen–Düsseldorf: https://taxibbessen.de/flughafentransfer-essen-duesseldorf
-- Medical transport (Krankenfahrten): https://taxibbessen.de/krankenfahrten-essen
-- Large taxi (Großraumtaxi, 7 persons): https://taxibbessen.de/grossraumtaxi-essen
-- Dialysis transport (Dialysefahrten): https://taxibbessen.de/dialysefahrten-essen
-- Courier service (Kurierdienst): https://taxibbessen.de/kurierdienst-essen
-- Taxi at Essen main station (HBF): https://taxibbessen.de/taxi-essen-hbf
+- Flughafentransfer Essen–Düsseldorf: https://www.taxibbessen.de/flughafentransfer-essen-duesseldorf/
+- Krankenfahrten in Essen: https://www.taxibbessen.de/krankenfahrten-essen/
+- Großraumtaxi in Essen: https://www.taxibbessen.de/grossraumtaxi-essen/
+- Dialysefahrten in Essen: https://www.taxibbessen.de/dialysefahrten-essen/
+- Kurierdienst in Essen: https://www.taxibbessen.de/kurierdienst-essen/
+- Taxi am Essen Hauptbahnhof: https://www.taxibbessen.de/taxi-essen-hbf/
 
-## District / Area Pages
+## Stadtteile
 
-- Taxi in Essen-Holsterhausen: https://taxibbessen.de/taxi-essen-holsterhausen
-- Taxi in Essen-Rüttenscheid: https://taxibbessen.de/taxi-essen-ruettenscheid
-- Taxi in Essen-Frohnhausen: https://taxibbessen.de/taxi-essen-frohnhausen
-- Taxi in Essen-Südviertel: https://taxibbessen.de/taxi-essen-suedviertel
+- Essen-Holsterhausen: https://www.taxibbessen.de/taxi-essen-holsterhausen/
+- Essen-Rüttenscheid: https://www.taxibbessen.de/taxi-essen-ruettenscheid/
+- Essen-Frohnhausen: https://www.taxibbessen.de/taxi-essen-frohnhausen/
+- Essen-Südviertel: https://www.taxibbessen.de/taxi-essen-suedviertel/
 
-## Legal
+## Rechtliches
 
-- Legal notice (Impressum): https://taxibbessen.de/impressum
-- Privacy policy (Datenschutz): https://taxibbessen.de/datenschutz
-- Terms & conditions (AGB): https://taxibbessen.de/agb
+- Impressum: https://www.taxibbessen.de/impressum/
+- Datenschutz: https://www.taxibbessen.de/datenschutz/
+- AGB: https://www.taxibbessen.de/agb/
 
-## Contact
-
-- Phone: 0201 707060 (24/7)
-- Email: taxibb@outlook.com
-- Address: Menzelstraße 8-10, 45147 Essen, Germany
+Hinweis: Preise, Abrechnungsmöglichkeiten, Fahrzeugverfügbarkeit und besondere Anforderungen werden vor der Fahrt individuell bestätigt.
