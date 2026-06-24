@@ -1,7 +1,9 @@
 import { useEffect } from "react";
-
-const CANONICAL_DOMAIN = "https://www.taxibbessen.de";
-const LEGACY_DOMAIN = "https://taxibbessen.de";
+import {
+  ORGANIZATION_ID,
+  SITE_ORIGIN,
+  canonicalUrl,
+} from "@/seo/business";
 
 interface PageMeta {
   title: string;
@@ -11,26 +13,30 @@ interface PageMeta {
 }
 
 const DEFAULT_META = {
-  title: "Taxi B&B GmbH Essen – 24/7 Taxiservice | 0201 707060",
-  description: "Taxi B&B GmbH Essen – Ihr zuverlässiger Taxiservice seit 1992. Flughafentransfer Düsseldorf, Krankenfahrten, Großraumtaxi für 7 Personen. 24/7 erreichbar: 0201 707060.",
+  title: "Taxi B&B Essen | Taxiservice seit 1992",
+  description: "Taxi B&B GmbH in Essen: klassische Taxifahrten, Flughafentransfer, Krankenfahrten, Großraumtaxi und Kurierdienst. Rund um die Uhr erreichbar: 0201 707060.",
 };
 
 function setMetaContent(selector: string, createAttrs: [string, string], content: string) {
-  let el = document.querySelector<HTMLMetaElement>(selector);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute(createAttrs[0], createAttrs[1]);
-    document.head.appendChild(el);
+  let element = document.querySelector<HTMLMetaElement>(selector);
+  if (!element) {
+    element = document.createElement("meta");
+    element.setAttribute(createAttrs[0], createAttrs[1]);
+    document.head.appendChild(element);
   }
-  el.setAttribute("content", content);
+  element.setAttribute("content", content);
 }
 
 function serializeSchema(schemaOrg: Record<string, unknown>): string {
-  return JSON.stringify(schemaOrg).replaceAll(LEGACY_DOMAIN, CANONICAL_DOMAIN);
+  return JSON.stringify(schemaOrg)
+    .replaceAll("https://taxibbessen.de", SITE_ORIGIN)
+    .replaceAll(`${SITE_ORIGIN}/#localbusiness`, ORGANIZATION_ID)
+    .replaceAll('"MedicalBusiness"', '"Service"')
+    .replaceAll('"MedicalTherapy"', '"Service"');
 }
 
-function hasPrerenderedSchemaForUrl(canonicalUrl: string): boolean {
-  const canonicalWithoutTrailingSlash = canonicalUrl.replace(/\/$/, "");
+function hasPrerenderedSchemaForUrl(url: string): boolean {
+  const withoutTrailingSlash = url.replace(/\/$/, "");
 
   return Array.from(
     document.querySelectorAll<HTMLScriptElement>(
@@ -38,89 +44,84 @@ function hasPrerenderedSchemaForUrl(canonicalUrl: string): boolean {
     ),
   ).some((script) => {
     const text = script.textContent ?? "";
-    return (
-      text.includes(`"${canonicalUrl}"`) ||
-      text.includes(`"${canonicalWithoutTrailingSlash}"`)
-    );
+    return text.includes(`"${url}"`) || text.includes(`"${withoutTrailingSlash}"`);
   });
 }
 
 export function usePageMeta({ title, description, schemaOrg, noindex }: PageMeta) {
   useEffect(() => {
-    const path = window.location.pathname.replace(/\/?$/, "/");
-    const canonicalUrl = `${CANONICAL_DOMAIN}${path}`;
+    const url = canonicalUrl(window.location.pathname);
 
     document.title = title;
-
     setMetaContent('meta[name="description"]', ["name", "description"], description);
+    setMetaContent(
+      'meta[name="robots"]',
+      ["name", "robots"],
+      noindex ? "noindex, nofollow" : "index, follow",
+    );
 
-    let noindexEl = document.querySelector<HTMLMetaElement>('meta[name="robots"][data-page-meta]');
     if (noindex) {
-      if (!noindexEl) {
-        noindexEl = document.createElement("meta");
-        noindexEl.setAttribute("name", "robots");
-        noindexEl.setAttribute("data-page-meta", "1");
-        document.head.appendChild(noindexEl);
-      }
-      noindexEl.setAttribute("content", "noindex, nofollow");
-
-      document.querySelector('link[rel="canonical"]')?.removeAttribute("href");
+      document.querySelector('link[rel="canonical"]')?.remove();
+      document
+        .querySelectorAll('link[rel="alternate"][hreflang]')
+        .forEach((element) => element.remove());
       document.querySelector<HTMLScriptElement>('script[data-schema="page-specific"]')?.remove();
 
       return () => {
-        noindexEl?.remove();
         document.title = DEFAULT_META.title;
         setMetaContent('meta[name="description"]', ["name", "description"], DEFAULT_META.description);
+        setMetaContent('meta[name="robots"]', ["name", "robots"], "index, follow");
       };
-    } else {
-      noindexEl?.remove();
     }
 
-    let canonicalEl = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canonicalEl) {
-      canonicalEl = document.createElement("link");
-      canonicalEl.setAttribute("rel", "canonical");
-      document.head.appendChild(canonicalEl);
+    let canonicalElement = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonicalElement) {
+      canonicalElement = document.createElement("link");
+      canonicalElement.setAttribute("rel", "canonical");
+      document.head.appendChild(canonicalElement);
     }
-    canonicalEl.setAttribute("href", canonicalUrl);
+    canonicalElement.setAttribute("href", url);
 
-    const HREFLANG_LANGS = ["de", "x-default"] as const;
-    for (const lang of HREFLANG_LANGS) {
-      let hEl = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${lang}"]`);
-      if (!hEl) {
-        hEl = document.createElement("link");
-        hEl.setAttribute("rel", "alternate");
-        hEl.setAttribute("hreflang", lang);
-        document.head.appendChild(hEl);
+    for (const language of ["de", "x-default"] as const) {
+      let alternate = document.querySelector<HTMLLinkElement>(
+        `link[rel="alternate"][hreflang="${language}"]`,
+      );
+      if (!alternate) {
+        alternate = document.createElement("link");
+        alternate.setAttribute("rel", "alternate");
+        alternate.setAttribute("hreflang", language);
+        document.head.appendChild(alternate);
       }
-      hEl.setAttribute("href", canonicalUrl);
+      alternate.setAttribute("href", url);
     }
 
-    setMetaContent('meta[property="og:url"]', ["property", "og:url"], canonicalUrl);
+    setMetaContent('meta[property="og:url"]', ["property", "og:url"], url);
     setMetaContent('meta[property="og:title"]', ["property", "og:title"], title);
     setMetaContent('meta[property="og:description"]', ["property", "og:description"], description);
-
     setMetaContent('meta[name="twitter:title"]', ["name", "twitter:title"], title);
     setMetaContent('meta[name="twitter:description"]', ["name", "twitter:description"], description);
 
-    let scriptEl = document.querySelector<HTMLScriptElement>('script[data-schema="page-specific"]');
-    const hasPrerenderedSchema = hasPrerenderedSchemaForUrl(canonicalUrl);
+    let scriptElement = document.querySelector<HTMLScriptElement>(
+      'script[data-schema="page-specific"]',
+    );
+    const hasPrerenderedSchema = hasPrerenderedSchemaForUrl(url);
 
     if (schemaOrg && !hasPrerenderedSchema) {
-      if (!scriptEl) {
-        scriptEl = document.createElement("script");
-        scriptEl.setAttribute("type", "application/ld+json");
-        scriptEl.setAttribute("data-schema", "page-specific");
-        document.head.appendChild(scriptEl);
+      if (!scriptElement) {
+        scriptElement = document.createElement("script");
+        scriptElement.setAttribute("type", "application/ld+json");
+        scriptElement.setAttribute("data-schema", "page-specific");
+        document.head.appendChild(scriptElement);
       }
-      scriptEl.textContent = serializeSchema(schemaOrg);
-    } else if (scriptEl) {
-      scriptEl.remove();
+      scriptElement.textContent = serializeSchema(schemaOrg);
+    } else {
+      scriptElement?.remove();
     }
 
     return () => {
       document.title = DEFAULT_META.title;
       setMetaContent('meta[name="description"]', ["name", "description"], DEFAULT_META.description);
+      setMetaContent('meta[name="robots"]', ["name", "robots"], "index, follow");
       setMetaContent('meta[property="og:title"]', ["property", "og:title"], DEFAULT_META.title);
       setMetaContent('meta[property="og:description"]', ["property", "og:description"], DEFAULT_META.description);
       setMetaContent('meta[name="twitter:title"]', ["name", "twitter:title"], DEFAULT_META.title);
