@@ -31,7 +31,7 @@ const files = [
   "llms.txt",
 ];
 
-function removePrerenderSeo(content) {
+function wrapPrerenderFallback(content) {
   const start = content.indexOf('<section class="prerender-seo"');
   if (start < 0) return content;
 
@@ -39,7 +39,9 @@ function removePrerenderSeo(content) {
   const end = content.indexOf(closingTag, start);
   if (end < 0) return content;
 
-  return content.slice(0, start) + content.slice(end + closingTag.length);
+  const sectionEnd = end + closingTag.length;
+  const section = content.slice(start, sectionEnd);
+  return `${content.slice(0, start)}<noscript>${section}</noscript>${content.slice(sectionEnd)}`;
 }
 
 for (const relativePath of files) {
@@ -50,7 +52,7 @@ for (const relativePath of files) {
   content = content.replaceAll(from, to);
 
   if (relativePath.endsWith("index.html")) {
-    content = removePrerenderSeo(content);
+    content = wrapPrerenderFallback(content);
   }
 
   if (relativePath === "sitemap.xml") {
@@ -61,4 +63,4 @@ for (const relativePath of files) {
 }
 
 await import("./sanitize-schema-output.mjs");
-console.log(`Canonical URLs normalized to ${to}`);
+console.log(`Canonical URLs and no-script fallbacks normalized to ${to}`);
