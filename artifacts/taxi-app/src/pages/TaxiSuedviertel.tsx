@@ -1,65 +1,67 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 import { getPageMeta } from "@/page-meta-manifest";
+import { createServiceSchema } from "@/seo/business";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TaxiService",
-      "name": "Taxi Essen-Südviertel",
-      "url": "https://taxibbessen.de/taxi-essen-suedviertel",
-      "provider": { "@id": "https://taxibbessen.de/#organization" },
-      "areaServed": ["Essen-Südviertel", "Essen", "Nordrhein-Westfalen"],
-      "description": "Taxi in Essen-Südviertel – zuverlässig, 24/7, Festpreis. Flughafentransfer, Krankenfahrten. Taxi B&B GmbH – 0201 707060.",
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Taxi Essen-Südviertel", "item": "https://taxibbessen.de/taxi-essen-suedviertel" },
-      ],
-    },
-  ],
-};
+const schema = createServiceSchema({
+  name: "Taxi im Essen-Südviertel",
+  path: "/taxi-essen-suedviertel",
+  description: "Taxifahrten im Essener Südviertel zu Huyssenallee, Aalto-Theater, Philharmonie, Stadtgarten und weiteren Zielen.",
+  areaServed: ["Essen-Südviertel", "Essen", "Nordrhein-Westfalen"],
+});
 
 const sections = [
   {
-    h2: "Taxi im Essener Südviertel",
+    h2: "Taxi an der Huyssenallee und im Südviertel",
     body: (
       <>
-        <p>Das <strong>Essener Südviertel</strong> liegt zentral und gut angebunden – und Taxi B&B GmbH ist schnell bei Ihnen. Ob morgens zum Termin, mittags zum Einkaufen oder abends sicher nach Hause – wir fahren Sie 24/7.</p>
-        <p>Als alteingesessenes Taxiunternehmen aus Essen kennen wir das Südviertel und die gesamte Stadt genau. Kurze Wartezeiten, Festpreise, klimatisierte Fahrzeuge.</p>
+        <p>Das Essener Südviertel liegt zwischen Hauptbahnhof, Stadtgarten und Rüttenscheid. Taxi B&B kann Abholungen an Wohnadressen, Hotels, Büros und vereinbarten Treffpunkten entlang der <strong>Huyssenallee</strong> und in den umliegenden Straßen einplanen.</p>
+        <p>Bei Geschäftsterminen oder Hotelabholungen sollte der Firmen- beziehungsweise Hotelname zusammen mit der vollständigen Adresse angegeben werden.</p>
       </>
     ),
   },
   {
-    h2: "Wohin fahren wir Sie aus dem Südviertel?",
+    h2: "Kultur, Veranstaltungen und Geschäftstermine",
     body: (
       <ul className="list-disc list-inside space-y-2">
-        <li><strong>Flughafen Düsseldorf, Köln/Bonn, Frankfurt</strong> – Festpreis, Flugverfolgung inklusive</li>
-        <li><strong>Essen Hauptbahnhof</strong> – kurze, direkte Verbindung</li>
-        <li><strong>Rüttenscheid & Holsterhausen</strong> – Nachbarstadtteile in Minuten</li>
-        <li><strong>Universitätsklinikum & St. Josef-Krankenhaus</strong> – für Arzttermine</li>
-        <li><strong>Messe Essen & Hotels</strong> – für Geschäftsreisende</li>
+        <li><strong>Aalto-Theater</strong> – Abholung nach einer Vorstellung an einem vereinbarten Treffpunkt</li>
+        <li><strong>Philharmonie Essen und Saalbau</strong> – für Konzerte und Veranstaltungen</li>
+        <li><strong>Stadtgarten Essen</strong> – Treffpunkt an einem vorher genannten Zugang</li>
+        <li><strong>Huyssenallee</strong> – Hotels, Büros und Geschäftstermine</li>
+        <li><strong>Essen Hauptbahnhof</strong> – kurze Verbindung zu Fern- und Regionalzügen</li>
       </ul>
     ),
   },
   {
-    h2: "Flughafentransfer aus dem Südviertel",
+    h2: "Flughafentransfer und Gruppenfahrten",
     body: (
       <>
-        <p>Der beliebteste Fahrtwunsch aus dem Südviertel: <a href="/flughafentransfer-essen-duesseldorf" className="text-primary hover:underline">Flughafentransfer nach Düsseldorf</a>. Wir fahren Sie komfortabel, pünktlich und zum Festpreis – egal ob früh morgens oder spät nachts.</p>
-        <p>Für Gruppen steht unsere <a href="/grossraumtaxi-essen" className="text-primary hover:underline">Mercedes V-Klasse</a> mit bis zu 7 Sitzplätzen bereit.</p>
+        <p>Ein <a href="/flughafentransfer-essen-duesseldorf" className="text-primary hover:underline">Flughafentransfer nach Düsseldorf</a> kann aus dem Südviertel vorbestellt werden. Flugzeit, Personenzahl, Gepäck und gewünschte Abholung sollten vollständig angegeben werden.</p>
+        <p>Für Gruppen kann eine <a href="/grossraumtaxi-essen" className="text-primary hover:underline">Mercedes V-Klasse für bis zu 7 Fahrgäste</a> angefragt werden. Fahrzeugverfügbarkeit und Preis werden vor der Fahrt bestätigt.</p>
       </>
     ),
   },
   {
-    h2: "Taxi im Südviertel bestellen",
+    h2: "Taxi im Südviertel anfragen",
     body: (
       <>
-        <p>Anrufen genügt: <strong>0201 707060</strong> – 24 Stunden erreichbar. Oder <a href="/book" className="text-primary hover:underline">online buchen</a>.</p>
+        <p>Rufen Sie uns unter <strong>0201 707060</strong> an oder senden Sie eine <a href="/book" className="text-primary hover:underline">Online-Anfrage</a>. Bei Veranstaltungen empfiehlt sich eine frühzeitige Vorbestellung.</p>
       </>
     ),
+  },
+];
+
+const faq = [
+  {
+    q: "Kann ich nach einer Veranstaltung im Aalto-Theater oder der Philharmonie abgeholt werden?",
+    a: "Ja, eine Abholung kann vorbestellt werden. Wegen hoher Auslastung und möglicher Zufahrtsbeschränkungen sollte ein genauer Treffpunkt vereinbart werden.",
+  },
+  {
+    q: "Wie bestelle ich ein Taxi zu einem Hotel an der Huyssenallee?",
+    a: "Nennen Sie Hotelname, vollständige Adresse, gewünschte Zeit, Ziel und eine erreichbare Telefonnummer. Die Abholung wird anschließend bestätigt.",
+  },
+  {
+    q: "Kann ich aus dem Südviertel einen Flughafentransfer buchen?",
+    a: "Ja, Flughafentransfers können angefragt werden. Personenzahl, Gepäck, Flugzeit, Fahrzeug und Preis werden vor der Fahrt abgestimmt.",
   },
 ];
 
@@ -71,14 +73,10 @@ export default function TaxiSuedviertel() {
       title={_title}
       description={_desc}
       h1="Taxi Südviertel Essen"
-      badge="Essen-Südviertel · 24/7 verfügbar"
-      intro="Ihr zuverlässiger Taxiservice im Essener Südviertel – rund um die Uhr, pünktlich und zum Festpreis. Wir kennen den Stadtteil und bringen Sie überall hin."
+      badge="Huyssenallee · Aalto-Theater · Philharmonie"
+      intro="Taxifahrten im Essener Südviertel zu Hotels, Büros, Kulturveranstaltungen, dem Hauptbahnhof und weiteren Zielen."
       sections={sections}
-      faq={[
-        { q: "Wie schnell kommt das Taxi im Südviertel?", a: "In der Regel innerhalb weniger Minuten. Rufen Sie an: 0201 707060." },
-        { q: "Fahren Sie auch nachts im Südviertel?", a: "Ja, wir sind 24/7 erreichbar – auch nachts und am Wochenende." },
-        { q: "Was kostet ein Taxi vom Südviertel zum Flughafen Düsseldorf?", a: "Wir berechnen Festpreise. Rufen Sie uns für ein genaues Angebot an: 0201 707060." },
-      ]}
+      faq={faq}
       stadtteileLinks={[
         { href: "/taxi-essen-hbf", label: "Taxi Essen HBF" },
         { href: "/taxi-essen-ruettenscheid", label: "Taxi Rüttenscheid" },
