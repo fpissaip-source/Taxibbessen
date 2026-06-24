@@ -60,4 +60,5 @@ for (const relativePath of files) {
   writeFileSync(path, content, "utf8");
 }
 
+await import("./sanitize-schema-output.mjs");
 console.log(`Canonical URLs normalized to ${to}`);
