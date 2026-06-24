@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+import { mediaPerformancePlugin } from "./scripts/media-performance-plugin.mjs";
 
 const rawPort = process.env.PORT;
 const isBuild = process.argv.includes("build");
@@ -24,6 +25,7 @@ const basePath = process.env.BASE_PATH ?? "/";
 export default defineConfig({
   base: basePath,
   plugins: [
+    mediaPerformancePlugin(),
     react(),
     tailwindcss(),
     runtimeErrorOverlay(),
