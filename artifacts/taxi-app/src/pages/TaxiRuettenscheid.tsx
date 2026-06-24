@@ -1,65 +1,67 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 import { getPageMeta } from "@/page-meta-manifest";
+import { createServiceSchema } from "@/seo/business";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TaxiService",
-      "name": "Taxi Essen-Rüttenscheid",
-      "url": "https://taxibbessen.de/taxi-essen-ruettenscheid",
-      "provider": { "@id": "https://taxibbessen.de/#organization" },
-      "areaServed": ["Essen-Rüttenscheid", "Essen", "Nordrhein-Westfalen"],
-      "description": "Taxi in Essen-Rüttenscheid – zuverlässig, 24/7. Flughafentransfer, Krankenfahrten, Großraumtaxi. Taxi B&B GmbH – 0201 707060.",
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Taxi Essen-Rüttenscheid", "item": "https://taxibbessen.de/taxi-essen-ruettenscheid" },
-      ],
-    },
-  ],
-};
+const schema = createServiceSchema({
+  name: "Taxi in Essen-Rüttenscheid",
+  path: "/taxi-essen-ruettenscheid",
+  description: "Taxifahrten in Essen-Rüttenscheid zu Restaurants, Veranstaltungen, Messe Essen, Grugahalle und weiteren Zielen.",
+  areaServed: ["Essen-Rüttenscheid", "Essen", "Nordrhein-Westfalen"],
+});
 
 const sections = [
   {
-    h2: "Taxi in Essen-Rüttenscheid",
+    h2: "Taxi auf der Rüttenscheider Straße und im Stadtteil",
     body: (
       <>
-        <p><strong>Essen-Rüttenscheid</strong> ist eines der beliebtesten Viertel der Stadt – bekannt für seine Restaurants, Cafés und das lebhafte Nachtleben auf der Rüttenscheider Straße. Taxi B&B GmbH ist Ihr verlässlicher Partner für alle Fahrten im und aus dem Rü.</p>
-        <p>Ob nach dem Restaurantbesuch nach Hause, zum Flughafen oder zum Arzttermin – wir sind rund um die Uhr für Sie erreichbar.</p>
+        <p>Rüttenscheid verbindet Wohngebiete, Gastronomie, Büros und Veranstaltungsorte. Taxi B&B kann Abholungen entlang der <strong>Rüttenscheider Straße</strong> sowie an Wohn- und Geschäftsadressen im Stadtteil einplanen.</p>
+        <p>Bei stark besuchten Veranstaltungen oder am Wochenende ist ein eindeutiger Treffpunkt besonders wichtig. Nennen Sie am besten Hausnummer, Restaurant, Hoteleingang oder eine gut erreichbare Seitenstraße.</p>
       </>
     ),
   },
   {
-    h2: "Beliebte Fahrtziele aus Rüttenscheid",
+    h2: "Messe, Grugahalle und Grugapark",
     body: (
       <ul className="list-disc list-inside space-y-2">
-        <li><strong>Flughafen Düsseldorf</strong> – ca. 35 km, Festpreis auf Anfrage</li>
-        <li><strong>Essen Hauptbahnhof</strong> – schnelle Verbindung</li>
-        <li><strong>Museum Folkwang</strong> – für Kulturbegeisterte</li>
-        <li><strong>Universitätsklinikum Essen</strong> – für Behandlungen und Arzttermine</li>
-        <li><strong>Holsterhausen, Frohnhausen, Stadtmitte</strong> – alle Stadtteile erreichbar</li>
+        <li><strong>Messe Essen</strong> – Abholung an einem vereinbarten Eingang oder Taxihaltepunkt</li>
+        <li><strong>Grugahalle</strong> – für Konzerte, Shows und Veranstaltungen</li>
+        <li><strong>Grugapark</strong> – Abholung an einem vorher genannten Eingang</li>
+        <li><strong>Museum Folkwang</strong> – Verbindung Richtung Südviertel und Innenstadt</li>
+        <li><strong>Essen Hauptbahnhof</strong> – Anschluss an Fern- und Regionalzüge</li>
       </ul>
     ),
   },
   {
-    h2: "Nachttaxi & Abholservice in Rüttenscheid",
+    h2: "Abendfahrten und Gruppen in Rüttenscheid",
     body: (
       <>
-        <p>Genießen Sie das Nachtleben auf der Rüttenscheider Straße und kommen Sie sicher nach Hause? Wir fahren <strong>24 Stunden, auch nachts und am Wochenende</strong>. Ein kurzer Anruf genügt – wir sind schnell bei Ihnen.</p>
-        <p>Auch für Gruppen: Unsere Mercedes V-Klasse fasst bis zu 7 Personen – ideal nach einem gemeinsamen Abend im Restaurant oder Club.</p>
+        <p>Für Restaurantbesuche, Veranstaltungen und Abendtermine können Hin- und Rückfahrten vorbestellt werden. Bei einer Gruppe sollten Personenzahl und gewünschte Abholzeit bereits bei der Anfrage angegeben werden.</p>
+        <p>Eine <a href="/grossraumtaxi-essen" className="text-primary hover:underline">Mercedes V-Klasse für bis zu 7 Fahrgäste</a> kann angefragt werden. Die Verfügbarkeit wird vor der Fahrt bestätigt.</p>
       </>
     ),
   },
   {
-    h2: "Taxi in Rüttenscheid bestellen",
+    h2: "Taxi in Rüttenscheid anfragen",
     body: (
       <>
-        <p>Rufen Sie uns an: <strong>0201 707060</strong> – wir sind rund um die Uhr erreichbar. Oder buchen Sie <a href="/book" className="text-primary hover:underline">online</a> mit Rüttenscheider Adresse als Abholpunkt.</p>
+        <p>Rufen Sie uns unter <strong>0201 707060</strong> an oder senden Sie eine <a href="/book" className="text-primary hover:underline">Online-Anfrage</a>. Bei Veranstaltungen sollten Sie genügend Vorlauf einplanen.</p>
       </>
     ),
+  },
+];
+
+const faq = [
+  {
+    q: "Wo kann ich mich in Rüttenscheid abholen lassen?",
+    a: "Abholungen sind an Wohnadressen, Hotels, Restaurants und vereinbarten Treffpunkten möglich. Bei Veranstaltungen sollte ein genauer Eingang oder eine Seitenstraße genannt werden.",
+  },
+  {
+    q: "Kann ich eine Rückfahrt nach einer Veranstaltung vorbestellen?",
+    a: "Ja, eine Rückfahrt kann vorab angefragt werden. Wegen möglicher Straßensperrungen oder hoher Auslastung wird der genaue Treffpunkt bei der Buchung abgestimmt.",
+  },
+  {
+    q: "Ist ein Großraumtaxi in Rüttenscheid verfügbar?",
+    a: "Eine Mercedes V-Klasse für bis zu 7 Fahrgäste kann angefragt werden. Bitte Personenzahl und Gepäck beziehungsweise zusätzliche Gegenstände angeben.",
   },
 ];
 
@@ -71,14 +73,10 @@ export default function TaxiRuettenscheid() {
       title={_title}
       description={_desc}
       h1="Taxi Rüttenscheid"
-      badge="Essen-Rüttenscheid · 24/7 verfügbar"
-      intro="Ihr Taxi im Rü – schnell, zuverlässig, rund um die Uhr. Taxi B&B GmbH bringt Sie aus Essen-Rüttenscheid zu jedem Ziel – Flughafen, HBF oder sicher nach Hause nach dem Abend."
+      badge="Rüttenscheider Straße · Messe · Grugahalle"
+      intro="Taxifahrten in Rüttenscheid zu Restaurants, Hotels, Messe Essen, Grugahalle und weiteren Zielen. Treffpunkt und Abholzeit werden vorab abgestimmt."
       sections={sections}
-      faq={[
-        { q: "Wie schnell kommt das Taxi in Rüttenscheid?", a: "In der Regel innerhalb weniger Minuten. Rufen Sie an: 0201 707060." },
-        { q: "Fahren Sie auch nachts im Rü?", a: "Ja, wir sind 24/7 erreichbar – ideal für den Heimweg nach dem Abendessen oder Nachtleben." },
-        { q: "Gibt es ein Großraumtaxi für Gruppen in Rüttenscheid?", a: "Ja, unsere Mercedes V-Klasse fasst bis zu 7 Personen – perfekt für Gruppen." },
-      ]}
+      faq={faq}
       stadtteileLinks={[
         { href: "/taxi-essen-hbf", label: "Taxi Essen HBF" },
         { href: "/taxi-essen-holsterhausen", label: "Taxi Holsterhausen" },
