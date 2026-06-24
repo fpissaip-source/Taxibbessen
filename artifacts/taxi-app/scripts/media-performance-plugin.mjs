@@ -8,13 +8,32 @@ export function mediaPerformancePlugin() {
       let output = code;
 
       output = output.replace(
+        `  {
+    q: "Muss ich die Fahrt vorab bezahlen?",
+    a: "Nein – Sie bezahlen bequem nach der Fahrt. Wir akzeptieren Bargeld, EC-Karte und Kreditkarte (Visa/Mastercard). Bei Krankenfahrten rechnen wir direkt mit Ihrer Krankenkasse ab.",
+  },
+`,
+        "",
+      );
+
+      output = output.replace(
         "const loadFrames = () => {\n      if (framesLoaded) return;",
-        `const shouldReduceMedia =\n      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||\n      (navigator).connection?.saveData === true;\n\n    const loadFrames = () => {\n      if (framesLoaded || shouldReduceMedia) return;`,
+        `const shouldReduceMedia =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      (navigator).connection?.saveData === true;
+
+    const loadFrames = () => {
+      if (framesLoaded || shouldReduceMedia) return;`,
       );
 
       output = output.replaceAll(
         "      observer.disconnect();\n      for (let i = 1; i <=",
-        `      observer.disconnect();\n      const shouldReduceMedia =\n        window.matchMedia("(prefers-reduced-motion: reduce)").matches ||\n        (navigator).connection?.saveData === true;\n      if (shouldReduceMedia) return;\n      for (let i = 1; i <=`,
+        `      observer.disconnect();
+      const shouldReduceMedia =
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+        (navigator).connection?.saveData === true;
+      if (shouldReduceMedia) return;
+      for (let i = 1; i <=`,
       );
 
       output = output
