@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
-const CANONICAL_DOMAIN = "https://taxibbessen.de";
+const CANONICAL_DOMAIN = "https://www.taxibbessen.de";
+const LEGACY_DOMAIN = "https://taxibbessen.de";
 
 interface PageMeta {
   title: string;
@@ -24,6 +25,26 @@ function setMetaContent(selector: string, createAttrs: [string, string], content
   el.setAttribute("content", content);
 }
 
+function serializeSchema(schemaOrg: Record<string, unknown>): string {
+  return JSON.stringify(schemaOrg).replaceAll(LEGACY_DOMAIN, CANONICAL_DOMAIN);
+}
+
+function hasPrerenderedSchemaForUrl(canonicalUrl: string): boolean {
+  const canonicalWithoutTrailingSlash = canonicalUrl.replace(/\/$/, "");
+
+  return Array.from(
+    document.querySelectorAll<HTMLScriptElement>(
+      'script[type="application/ld+json"]:not([data-schema])',
+    ),
+  ).some((script) => {
+    const text = script.textContent ?? "";
+    return (
+      text.includes(`"${canonicalUrl}"`) ||
+      text.includes(`"${canonicalWithoutTrailingSlash}"`)
+    );
+  });
+}
+
 export function usePageMeta({ title, description, schemaOrg, noindex }: PageMeta) {
   useEffect(() => {
     const path = window.location.pathname.replace(/\/?$/, "/");
@@ -33,7 +54,6 @@ export function usePageMeta({ title, description, schemaOrg, noindex }: PageMeta
 
     setMetaContent('meta[name="description"]', ["name", "description"], description);
 
-    // noindex pages: add noindex directive and strip canonical/OG/Twitter
     let noindexEl = document.querySelector<HTMLMetaElement>('meta[name="robots"][data-page-meta]');
     if (noindex) {
       if (!noindexEl) {
@@ -44,8 +64,9 @@ export function usePageMeta({ title, description, schemaOrg, noindex }: PageMeta
       }
       noindexEl.setAttribute("content", "noindex, nofollow");
 
-      // Remove canonical/OG/Twitter for noindex pages to avoid stale tags
       document.querySelector('link[rel="canonical"]')?.removeAttribute("href");
+      document.querySelector<HTMLScriptElement>('script[data-schema="page-specific"]')?.remove();
+
       return () => {
         noindexEl?.remove();
         document.title = DEFAULT_META.title;
@@ -63,7 +84,6 @@ export function usePageMeta({ title, description, schemaOrg, noindex }: PageMeta
     }
     canonicalEl.setAttribute("href", canonicalUrl);
 
-    // hreflang — signals primary language (de) + x-default for crawlers
     const HREFLANG_LANGS = ["de", "x-default"] as const;
     for (const lang of HREFLANG_LANGS) {
       let hEl = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${lang}"]`);
@@ -84,14 +104,16 @@ export function usePageMeta({ title, description, schemaOrg, noindex }: PageMeta
     setMetaContent('meta[name="twitter:description"]', ["name", "twitter:description"], description);
 
     let scriptEl = document.querySelector<HTMLScriptElement>('script[data-schema="page-specific"]');
-    if (schemaOrg) {
+    const hasPrerenderedSchema = hasPrerenderedSchemaForUrl(canonicalUrl);
+
+    if (schemaOrg && !hasPrerenderedSchema) {
       if (!scriptEl) {
         scriptEl = document.createElement("script");
         scriptEl.setAttribute("type", "application/ld+json");
         scriptEl.setAttribute("data-schema", "page-specific");
         document.head.appendChild(scriptEl);
       }
-      scriptEl.textContent = JSON.stringify(schemaOrg);
+      scriptEl.textContent = serializeSchema(schemaOrg);
     } else if (scriptEl) {
       scriptEl.remove();
     }
