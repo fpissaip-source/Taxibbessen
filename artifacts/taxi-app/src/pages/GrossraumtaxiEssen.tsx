@@ -1,64 +1,51 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 import { getPageMeta } from "@/page-meta-manifest";
+import { createServiceSchema } from "@/seo/business";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TaxiService",
-      "name": "Großraumtaxi Essen",
-      "url": "https://taxibbessen.de/grossraumtaxi-essen",
-      "provider": { "@id": "https://taxibbessen.de/#organization" },
-      "areaServed": ["Essen", "Ruhrgebiet", "Düsseldorf", "Nordrhein-Westfalen"],
-      "description": "Großraumtaxi Essen für bis zu 7 Personen – Mercedes V-Klasse, Flughafentransfer, Gruppenfahrten. Kindersitze auf Anfrage. Taxi B&B GmbH – 24/7.",
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Großraumtaxi Essen", "item": "https://taxibbessen.de/grossraumtaxi-essen" },
-      ],
-    },
-  ],
-};
+const schema = createServiceSchema({
+  name: "Großraumtaxi in Essen",
+  path: "/grossraumtaxi-essen",
+  description: "Großraumtaxi in Essen für Gruppen und Familien. Personenzahl, Gepäck, Fahrzeugverfügbarkeit und Preis werden vor der Fahrt bestätigt.",
+  areaServed: ["Essen", "Ruhrgebiet", "Düsseldorf", "Nordrhein-Westfalen"],
+});
 
 const sections = [
   {
-    h2: "Mercedes V-Klasse – Platz für 7 Personen",
+    h2: "Mercedes V-Klasse für Gruppenfahrten",
     body: (
       <>
-        <p>Unser Großraumtaxi in Essen ist die <strong>Mercedes V-Klasse</strong> – mit Platz für bis zu 7 Personen und reichlich Kofferraumplatz. Ob Familie mit Kindern, Reisegruppe oder Firmenteam: Sie reisen bequem, klimatisiert und ohne Stress.</p>
-        <p>Alle Sitze sind bequem und bieten ausreichend Beinfreiheit auch für Langstrecken. Das Fahrzeug ist regelmäßig gewartet und gepflegt.</p>
+        <p>Für größere Gruppen kann eine <strong>Mercedes V-Klasse für bis zu 7 Fahrgäste</strong> angefragt werden. Das Fahrzeug eignet sich unter anderem für Familien, Reisegruppen und Firmenteams.</p>
+        <p>Die mögliche Gepäckmenge hängt von der tatsächlichen Personenzahl ab. Bitte nennen Sie bei der Anfrage alle Fahrgäste, Koffer, Kinderwagen oder weiteren Gegenstände.</p>
       </>
     ),
   },
   {
-    h2: "Wann brauchen Sie ein Großraumtaxi?",
+    h2: "Typische Einsatzbereiche",
     body: (
       <ul className="list-disc list-inside space-y-2">
-        <li><strong>Flughafentransfer für Gruppen</strong> – alle kommen gemeinsam an</li>
-        <li><strong>Familienausflüge</strong> – mit Kindersitzen und Kinderwagen</li>
-        <li><strong>Firmenfahrten & Delegationen</strong> – professionell und diskret</li>
-        <li><strong>Hochzeiten & Events</strong> – stilvoll und pünktlich</li>
-        <li><strong>Gruppenreisen</strong> – gemeinsam zum Bahnhof, Konzert oder Hotel</li>
+        <li><strong>Flughafentransfer für Gruppen</strong> – gemeinsame An- und Abreise</li>
+        <li><strong>Familienfahrten</strong> – mit vorab abgestimmtem Platzbedarf</li>
+        <li><strong>Firmenfahrten und Delegationen</strong> – planbare Abholzeiten</li>
+        <li><strong>Hochzeiten und Veranstaltungen</strong> – nach Vorbestellung</li>
+        <li><strong>Bahnhof, Hotel oder Konzert</strong> – eine Fahrt für die gesamte Gruppe</li>
       </ul>
     ),
   },
   {
-    h2: "Kindersitze & Sonderausstattung",
+    h2: "Kindersitze und besondere Anforderungen",
     body: (
       <>
-        <p>Für Familien mit kleinen Kindern stellen wir auf Anfrage <strong>Kindersitze</strong> bereit. Bitte geben Sie bei der Buchung Alter und Gewicht der Kinder an, damit wir den richtigen Sitz bereitstellen können.</p>
-        <p>Haben Sie besondere Anforderungen – zum Beispiel Platz für einen Rollator oder Sportgeräte? Sprechen Sie uns an – wir finden eine Lösung.</p>
+        <p>Kindersitze und zusätzlicher Platz für Rollator, Kinderwagen oder Sportausrüstung müssen bei der Buchung ausdrücklich angefragt werden. Die Verfügbarkeit wird vor der Fahrt bestätigt.</p>
+        <p>Geben Sie bei Kindersitzen bitte Alter und Gewicht des Kindes an, damit geprüft werden kann, welche Ausstattung benötigt wird.</p>
       </>
     ),
   },
   {
-    h2: "Großraumtaxi Essen buchen",
+    h2: "Großraumtaxi in Essen anfragen",
     body: (
       <>
-        <p>Rufen Sie uns an unter <strong>0201 707060</strong> oder <a href="/book" className="text-primary hover:underline">buchen Sie online</a>. Bitte geben Sie die Personenanzahl und ggf. Gepäck bei der Buchung an, damit wir das richtige Fahrzeug für Sie einplanen.</p>
-        <p>Wir sind 24 Stunden am Tag, 7 Tage die Woche erreichbar – auch für kurzfristige Buchungen.</p>
+        <p>Rufen Sie uns unter <strong>0201 707060</strong> an oder senden Sie eine <a href="/book" className="text-primary hover:underline">Online-Anfrage</a>. Personenzahl, Gepäck, Abholort, Ziel und gewünschte Zeit sollten vollständig angegeben werden.</p>
+        <p>Fahrzeugverfügbarkeit und Preis werden vor der Fahrt bestätigt.</p>
       </>
     ),
   },
@@ -66,20 +53,20 @@ const sections = [
 
 const faq = [
   {
-    q: "Wie viele Personen passen in das Großraumtaxi?",
-    a: "Unsere Mercedes V-Klasse fasst bis zu 7 Personen inklusive Fahrer. Mit ausreichend Kofferraumplatz auch für größere Gepäckstücke.",
+    q: "Wie viele Personen können mit dem Großraumtaxi fahren?",
+    a: "Eine Mercedes V-Klasse für bis zu 7 Fahrgäste kann angefragt werden. Die mögliche Gepäckmenge hängt von der Personenzahl ab und sollte vorab abgestimmt werden.",
   },
   {
-    q: "Gibt es Kindersitze im Großraumtaxi?",
-    a: "Ja, Kindersitze sind auf Anfrage verfügbar. Bitte Alter und Gewicht der Kinder bei der Buchung angeben.",
+    q: "Sind Kindersitze verfügbar?",
+    a: "Kindersitze können angefragt werden. Bitte nennen Sie Alter und Gewicht des Kindes; die Verfügbarkeit wird vor der Fahrt bestätigt.",
   },
   {
     q: "Kann ich das Großraumtaxi für einen Flughafentransfer buchen?",
-    a: "Ja, das ist eine der häufigsten Buchungen. Wir fahren Gruppen komfortabel zu allen Flughäfen – Düsseldorf, Köln/Bonn, Frankfurt, Dortmund.",
+    a: "Ja, Gruppenfahrten zu Flughäfen können angefragt werden. Geben Sie Personenzahl, Gepäckmenge und Flugdaten bei der Buchung an.",
   },
   {
     q: "Was kostet ein Großraumtaxi in Essen?",
-    a: "Wir berechnen Festpreise. Rufen Sie uns an (0201 707060) oder buchen Sie online für ein genaues Angebot.",
+    a: "Der Preis richtet sich nach Strecke, Abholzeit und Anforderungen. Sie erhalten nach vollständiger Anfrage eine konkrete Auskunft.",
   },
 ];
 
@@ -91,8 +78,8 @@ export default function GrossraumtaxiEssen() {
       title={_title}
       description={_desc}
       h1="Großraumtaxi Essen"
-      badge="Bis zu 7 Personen · Mercedes V-Klasse"
-      intro="Platz für die ganze Gruppe: Unsere Mercedes V-Klasse fasst bis zu 7 Personen mit Gepäck – ideal für Flughafentransfers, Familienausflüge und Firmenfahrten in Essen und Umgebung."
+      badge="Bis zu 7 Fahrgäste · Mercedes V-Klasse"
+      intro="Großraumtaxi für Gruppen, Familien und Firmenteams in Essen. Personenzahl, Gepäck und besondere Anforderungen werden vor der Fahrt abgestimmt."
       sections={sections}
       faq={faq}
       relatedLinks={[
