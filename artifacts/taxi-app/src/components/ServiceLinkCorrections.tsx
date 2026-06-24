@@ -14,9 +14,28 @@ function correctServiceLinks() {
 
     const card = image.parentElement?.parentElement?.parentElement;
     const link = card?.querySelector<HTMLAnchorElement>("a");
-    if (link) link.setAttribute("href", entry[1]);
+    if (!link) return;
+
+    link.href = entry[1];
+    link.dataset.correctedServiceHref = entry[1];
   });
 }
+
+document.addEventListener(
+  "click",
+  (event) => {
+    const target = event.target instanceof Element
+      ? event.target.closest<HTMLAnchorElement>("a[data-corrected-service-href]")
+      : null;
+    const destination = target?.dataset.correctedServiceHref;
+    if (!destination) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    window.location.href = destination;
+  },
+  true,
+);
 
 const observer = new MutationObserver(correctServiceLinks);
 observer.observe(document.documentElement, { childList: true, subtree: true });
