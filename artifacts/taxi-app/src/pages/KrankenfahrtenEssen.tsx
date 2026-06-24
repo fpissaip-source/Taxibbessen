@@ -1,64 +1,51 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 import { getPageMeta } from "@/page-meta-manifest";
+import { createServiceSchema } from "@/seo/business";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TaxiService",
-      "name": "Krankenfahrten Essen",
-      "url": "https://taxibbessen.de/krankenfahrten-essen",
-      "provider": { "@id": "https://taxibbessen.de/#organization" },
-      "areaServed": ["Essen", "Bochum", "Duisburg", "Nordrhein-Westfalen"],
-      "description": "Zuverlässige Krankenfahrten in Essen – Dialyse, Strahlentherapie, Arzttermine. Direkte Abrechnung mit der Krankenkasse. Taxi B&B GmbH seit 1992.",
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Krankenfahrten Essen", "item": "https://taxibbessen.de/krankenfahrten-essen" },
-      ],
-    },
-  ],
-};
+const schema = createServiceSchema({
+  name: "Krankenfahrten in Essen",
+  path: "/krankenfahrten-essen",
+  description: "Krankenfahrten in Essen zu Arztterminen, Therapien, Kliniken und Reha-Einrichtungen. Voraussetzungen und Abrechnung werden vor der Fahrt abgestimmt.",
+  areaServed: ["Essen", "Bochum", "Duisburg", "Ruhrgebiet"],
+});
 
 const sections = [
   {
-    h2: "Krankenfahrten mit direkter Krankenkassenabrechnung",
+    h2: "Krankenfahrten mit vorheriger Abstimmung",
     body: (
       <>
-        <p>Taxi B&B GmbH führt alle gesetzlich genehmigten Krankenfahrten in Essen und Umgebung durch. Wir rechnen direkt mit Ihrer Krankenkasse ab – <strong>kein bürokratischer Aufwand für Sie</strong>. Sie benötigen lediglich eine gültige Verordnung Ihres Arztes.</p>
-        <p>Wir sind für alle gesetzlichen Krankenversicherungen zugelassen und kennen die Abrechnungsprozesse genau. Sprechen Sie uns einfach an – wir helfen Ihnen unkompliziert.</p>
+        <p>Taxi B&B GmbH übernimmt Krankenfahrten in Essen und Umgebung, beispielsweise zu Arztterminen, Kliniken und ambulanten Therapien. Ob eine Kostenübernahme möglich ist, hängt von der ärztlichen Verordnung, einer möglichen Genehmigung und den Vorgaben Ihrer Krankenkasse ab.</p>
+        <p>Eine direkte Abrechnung kann bei entsprechend genehmigten Fahrten nach vorheriger Prüfung vereinbart werden. Bitte stimmen Sie die Unterlagen und Abrechnungsart vor der ersten Fahrt mit uns ab.</p>
       </>
     ),
   },
   {
-    h2: "Für welche Fahrten eignet sich unser Service?",
+    h2: "Für welche Fahrten kann der Service angefragt werden?",
     body: (
       <ul className="list-disc list-inside space-y-2">
-        <li><strong>Dialysefahrten</strong> – regelmäßig, pünktlich, verlässlich</li>
-        <li><strong>Strahlentherapie & Chemotherapie</strong> – einfühlsam und diskret</li>
-        <li><strong>Arzttermine & Facharztkliniken</strong> – in Essen und Umgebung</li>
-        <li><strong>Rehakliniken & Physiotherapie</strong> – bequem Tür zu Tür</li>
-        <li><strong>Krankenhausaufnahme & Entlassung</strong> – wir sind pünktlich da</li>
+        <li><strong>Dialysefahrten</strong> – regelmäßig und nach festem Zeitplan</li>
+        <li><strong>Strahlen- und Chemotherapietermine</strong> – planbare Hin- und Rückfahrten</li>
+        <li><strong>Arzttermine und Fachkliniken</strong> – in Essen und der Region</li>
+        <li><strong>Reha und Physiotherapie</strong> – nach vorheriger Terminabstimmung</li>
+        <li><strong>Krankenhausaufnahme und Entlassung</strong> – mit vereinbartem Abholzeitpunkt</li>
       </ul>
     ),
   },
   {
-    h2: "Unsere Fahrer – einfühlsam und erfahren",
+    h2: "Planbare Abholung und persönliche Unterstützung",
     body: (
       <>
-        <p>Unsere Fahrer kennen die Kliniken, Dialysezentren und Arztpraxen in Essen und der gesamten Region. <strong>Pünktlichkeit und Einfühlsamkeit</strong> stehen bei uns an erster Stelle – gerade bei Patienten, die auf regelmäßige Fahrten angewiesen sind.</p>
-        <p>Wir holen Sie direkt an Ihrer Haustür ab und begleiten Sie auf Wunsch bis zur Eingangstür der Praxis oder Klinik. Nach dem Termin bringen wir Sie sicher wieder nach Hause.</p>
+        <p>Unsere Fahrer kennen viele Kliniken, Dialysezentren und Arztpraxen in Essen und der Region. Bei der Buchung können Sie mitteilen, ob Hilfe beim Ein- und Aussteigen oder eine Begleitung bis zum Eingang benötigt wird.</p>
+        <p>Medizinische Betreuung oder qualifizierter Krankentransport gehören nicht zu einer normalen Taxifahrt. Bei medizinischem Überwachungsbedarf wenden Sie sich bitte an einen geeigneten Krankentransportdienst.</p>
       </>
     ),
   },
   {
-    h2: "Krankenfahrten in Essen buchen",
+    h2: "Krankenfahrt in Essen anfragen",
     body: (
       <>
-        <p>Rufen Sie uns einfach an unter <strong>0201 707060</strong> – wir sind 24/7 erreichbar. Sie können Ihre Krankenfahrt auch <a href="/book" className="text-primary hover:underline">online vorbuchen</a>. Bitte halten Sie Ihre Krankenkassenkarte und die ärztliche Verordnung bereit.</p>
-        <p>Für regelmäßige Fahrten (z. B. wöchentliche Dialyse) richten wir gerne einen festen Fahrplan ein – verlässlich und ohne zusätzlichen Aufwand für Sie.</p>
+        <p>Rufen Sie uns unter <strong>0201 707060</strong> an oder senden Sie eine <a href="/book" className="text-primary hover:underline">Online-Anfrage</a>. Halten Sie vorhandene Verordnungen, Genehmigungen, Terminzeiten und die vollständigen Abhol- und Zieladressen bereit.</p>
+        <p>Für regelmäßige Fahrten kann nach Abstimmung ein wiederkehrender Fahrplan eingerichtet werden.</p>
       </>
     ),
   },
@@ -66,20 +53,20 @@ const sections = [
 
 const faq = [
   {
-    q: "Wer übernimmt die Kosten für Krankenfahrten?",
-    a: "Bei genehmigungspflichtigen Krankenfahrten (z. B. Dialyse, Strahlentherapie, bestimmte Arzttermine) übernimmt die gesetzliche Krankenversicherung die Kosten. Wir rechnen direkt mit Ihrer Kasse ab.",
+    q: "Wann übernimmt die Krankenkasse die Kosten einer Krankenfahrt?",
+    a: "Das hängt von der Art der Behandlung, der ärztlichen Verordnung und gegebenenfalls einer vorherigen Genehmigung der Krankenkasse ab. Klären Sie die Voraussetzungen vor Fahrtbeginn mit Ihrer Krankenkasse.",
   },
   {
-    q: "Was brauche ich für eine genehmigte Krankenfahrt?",
-    a: "Sie benötigen eine ärztliche Verordnung für Krankenbeförderung sowie die Genehmigung Ihrer Krankenkasse. Wir helfen Ihnen gerne bei Fragen zum Ablauf.",
+    q: "Kann Taxi B&B direkt mit meiner Krankenkasse abrechnen?",
+    a: "Bei genehmigten Fahrten kann eine direkte Abrechnung nach vorheriger Prüfung möglich sein. Bitte senden oder zeigen Sie uns die erforderlichen Unterlagen vor der ersten Fahrt.",
   },
   {
     q: "Fahren Sie auch nachts oder am Wochenende?",
-    a: "Ja, wir sind 24 Stunden am Tag, 7 Tage die Woche erreichbar – auch nachts, am Wochenende und an Feiertagen.",
+    a: "Taxi B&B ist rund um die Uhr erreichbar. Medizinisch planbare Fahrten sollten trotzdem möglichst frühzeitig vorbestellt werden.",
   },
   {
-    q: "Können Sie mich regelmäßig zur Dialyse fahren?",
-    a: "Ja, für regelmäßige Fahrten (Dialyse, Therapie etc.) richten wir gerne einen festen Fahrplan ein. Rufen Sie uns an: 0201 707060.",
+    q: "Können regelmäßige Fahrten eingerichtet werden?",
+    a: "Ja, für wiederkehrende Termine wie Dialyse oder Therapie kann nach Abstimmung ein fester Fahrplan eingerichtet werden. Änderungen sollten möglichst früh telefonisch mitgeteilt werden.",
   },
 ];
 
@@ -92,7 +79,7 @@ export default function KrankenfahrtenEssen() {
       description={_desc}
       h1="Krankenfahrten Essen"
       badge="Taxi B&B GmbH · Seit 1992"
-      intro="Wir führen alle gesetzlich genehmigten Krankenfahrten in Essen durch und rechnen direkt mit Ihrer Krankenkasse ab. Einfühlsam, pünktlich und ohne bürokratischen Aufwand für Sie."
+      intro="Krankenfahrten zu Arztterminen, Therapien und Kliniken in Essen. Voraussetzungen, Unterlagen und Abrechnungsmöglichkeiten stimmen wir vor der Fahrt mit Ihnen ab."
       sections={sections}
       faq={faq}
       relatedLinks={[
