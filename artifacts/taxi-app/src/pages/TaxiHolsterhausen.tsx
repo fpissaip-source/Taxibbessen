@@ -1,64 +1,67 @@
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 import { getPageMeta } from "@/page-meta-manifest";
+import { createServiceSchema } from "@/seo/business";
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TaxiService",
-      "name": "Taxi Essen-Holsterhausen",
-      "url": "https://taxibbessen.de/taxi-essen-holsterhausen",
-      "provider": { "@id": "https://taxibbessen.de/#organization" },
-      "areaServed": ["Essen-Holsterhausen", "Essen", "Nordrhein-Westfalen"],
-      "description": "Taxi in Essen-Holsterhausen – schnell, zuverlässig, 24/7. Flughafentransfer, Krankenfahrten, Großraumtaxi. Taxi B&B GmbH – 0201 707060.",
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://taxibbessen.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Taxi Essen-Holsterhausen", "item": "https://taxibbessen.de/taxi-essen-holsterhausen" },
-      ],
-    },
-  ],
-};
+const schema = createServiceSchema({
+  name: "Taxi in Essen-Holsterhausen",
+  path: "/taxi-essen-holsterhausen",
+  description: "Taxifahrten in Essen-Holsterhausen mit Abholung an Wohnadressen, dem Universitätsklinikum und weiteren Zielen im Stadtteil.",
+  areaServed: ["Essen-Holsterhausen", "Essen", "Nordrhein-Westfalen"],
+});
 
 const sections = [
   {
-    h2: "Ihr Taxidienst in Essen-Holsterhausen",
+    h2: "Taxi direkt in Essen-Holsterhausen",
     body: (
       <>
-        <p>Taxi B&B GmbH ist Ihr zuverlässiger Taxiservice direkt in <strong>Essen-Holsterhausen</strong>. Unser Unternehmen sitzt in der Menzelstraße 8–10 – mitten im Stadtgebiet und damit schnell bei Ihnen. Wir kennen Holsterhausen und die umliegenden Straßen wie unsere Westentasche.</p>
-        <p>Von der Abholung an der Haustür bis zur Ankunft am Ziel – wir bringen Sie komfortabel und pünktlich dorthin. 24 Stunden am Tag, 7 Tage die Woche.</p>
+        <p>Taxi B&B GmbH hat seinen Unternehmenssitz in der <strong>Menzelstraße 8-10 in Essen-Holsterhausen</strong>. Abholungen können an Wohnadressen, Praxen, Geschäften und vereinbarten Treffpunkten im Stadtteil geplant werden.</p>
+        <p>Bitte nennen Sie bei der Anfrage die vollständige Hausnummer und eine erreichbare Telefonnummer. Bei größeren Gebäudekomplexen sollte zusätzlich ein konkreter Eingang oder Treffpunkt vereinbart werden.</p>
       </>
     ),
   },
   {
-    h2: "Typische Fahrtziele aus Holsterhausen",
+    h2: "Häufig angefragte Ziele aus Holsterhausen",
     body: (
       <ul className="list-disc list-inside space-y-2">
-        <li><strong>Flughafen Düsseldorf (DUS)</strong> – ca. 35–40 km, Festpreis auf Anfrage</li>
-        <li><strong>Essen Hauptbahnhof</strong> – schnelle Verbindung in die Innenstadt</li>
-        <li><strong>Universitätsklinikum Essen</strong> – für Arzttermine und Behandlungen</li>
-        <li><strong>Messe Essen</strong> – für Besucher und Aussteller</li>
-        <li><strong>Rüttenscheid, Frohnhausen, Stadtmitte</strong> – alle Stadtteile erreichbar</li>
+        <li><strong>Universitätsklinikum Essen</strong> – Abholung an einem vorher vereinbarten Eingang</li>
+        <li><strong>Gemarkenstraße und Stadtteilzentrum</strong> – für Einkäufe, Termine und Besuche</li>
+        <li><strong>Essen Hauptbahnhof</strong> – als Anschluss an Bahnreisen</li>
+        <li><strong>Messe Essen und Rüttenscheid</strong> – für Veranstaltungen und Geschäftstermine</li>
+        <li><strong>Flughafen Düsseldorf</strong> – nach Vorbestellung mit Gepäckangabe</li>
       </ul>
     ),
   },
   {
-    h2: "Krankenfahrten & Dialyse in Holsterhausen",
+    h2: "Kranken- und Dialysefahrten aus Holsterhausen",
     body: (
       <>
-        <p>Benötigen Sie regelmäßige <a href="/krankenfahrten-essen" className="text-primary hover:underline">Krankenfahrten</a> oder <a href="/dialysefahrten-essen" className="text-primary hover:underline">Dialysefahrten</a> aus Holsterhausen? Wir rechnen direkt mit Ihrer Krankenkasse ab und richten auf Wunsch einen festen Fahrplan ein.</p>
+        <p><a href="/krankenfahrten-essen" className="text-primary hover:underline">Krankenfahrten</a> und <a href="/dialysefahrten-essen" className="text-primary hover:underline">Dialysefahrten</a> können regelmäßig oder für einzelne Termine angefragt werden. Verordnung, Genehmigung und Abrechnungsmöglichkeiten werden vor der ersten Fahrt geprüft.</p>
+        <p>Bei einer Abholung am Universitätsklinikum oder einer Praxis sollte der genaue Eingang beziehungsweise Gebäudeteil angegeben werden.</p>
       </>
     ),
   },
   {
-    h2: "Taxi in Holsterhausen bestellen",
+    h2: "Taxi in Holsterhausen anfragen",
     body: (
       <>
-        <p>Einfach anrufen: <strong>0201 707060</strong> – wir sind sofort für Sie da. Oder buchen Sie bequem <a href="/book" className="text-primary hover:underline">online</a> und geben Sie Ihre Adresse in Holsterhausen als Abholpunkt an.</p>
+        <p>Rufen Sie unter <strong>0201 707060</strong> an oder senden Sie eine <a href="/book" className="text-primary hover:underline">Online-Anfrage</a>. Abholzeit und Verfügbarkeit werden anschließend bestätigt.</p>
       </>
     ),
+  },
+];
+
+const faq = [
+  {
+    q: "Welche Angaben benötigen Sie für eine Abholung in Holsterhausen?",
+    a: "Bitte nennen Sie Straße, Hausnummer, gewünschten Zeitpunkt, Ziel, Personenzahl und eine erreichbare Telefonnummer. Bei Kliniken oder größeren Gebäuden ist ein genauer Eingang hilfreich.",
+  },
+  {
+    q: "Kann ich aus Holsterhausen einen Flughafentransfer buchen?",
+    a: "Ja, Flughafentransfers können vorbestellt werden. Geben Sie Flugzeit, Personenzahl und Gepäckmenge an; Preis und Fahrzeug werden vorab bestätigt.",
+  },
+  {
+    q: "Sind regelmäßige Krankenfahrten aus Holsterhausen möglich?",
+    a: "Regelmäßige Fahrten können nach Abstimmung eingerichtet werden. Erforderliche Unterlagen und Abrechnungsmöglichkeiten sollten vor der ersten Fahrt geklärt werden.",
   },
 ];
 
@@ -70,14 +73,10 @@ export default function TaxiHolsterhausen() {
       title={_title}
       description={_desc}
       h1="Taxi Holsterhausen"
-      badge="Essen-Holsterhausen · 24/7 verfügbar"
-      intro="Ihr zuverlässiges Taxi in Essen-Holsterhausen – direkt vor Ihrer Tür. Taxi B&B GmbH kennt den Stadtteil und bringt Sie schnell an jedes Ziel."
+      badge="Unternehmenssitz in Essen-Holsterhausen"
+      intro="Taxifahrten in Holsterhausen mit Abholung an Wohnadressen, Praxen, dem Universitätsklinikum und vereinbarten Treffpunkten im Stadtteil."
       sections={sections}
-      faq={[
-        { q: "Wie schnell kommt das Taxi in Holsterhausen?", a: "In der Regel sind wir innerhalb weniger Minuten bei Ihnen. Rufen Sie an: 0201 707060." },
-        { q: "Fahren Sie auch nachts in Holsterhausen?", a: "Ja, wir sind 24/7 erreichbar – auch nachts und am Wochenende." },
-        { q: "Gibt es Festpreise für Fahrten aus Holsterhausen?", a: "Ja, wir berechnen Festpreise. Rufen Sie uns für ein Angebot an: 0201 707060." },
-      ]}
+      faq={faq}
       stadtteileLinks={[
         { href: "/taxi-essen-hbf", label: "Taxi Essen HBF" },
         { href: "/taxi-essen-ruettenscheid", label: "Taxi Rüttenscheid" },
